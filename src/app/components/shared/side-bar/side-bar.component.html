@@ -1,13 +1,14 @@
 <div class="side-bar">
   <ul class="elements">
-    <li *ngFor="let item of menuElements">
-      <span class="icon">-</span>
-      <span class="name">{{ item.text }}</span>
+    <li *ngFor="let item of menuElements" [ngClass]="{'parent': item.parent, 'active': item.text === 'dashboard'}">
+      <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
+      <span class="name bold">{{ item.text }}</span>
       <ng-container *ngIf="item.parent">
+        <i class="fa fa-arrow-up"></i>
         <ul class="sub-elements">
           <li *ngFor="let subItem of item.subelements">
-            <span class="icon">-</span>
-            <span class="name">{{ subItem.text }}</span>
+            <img class="icon" alt="" src="assets/images/side-bar/{{ subItem.icon }}.svg" />
+            <span class="name light">{{ subItem.text }}</span>
           </li>
         </ul>
       </ng-container>

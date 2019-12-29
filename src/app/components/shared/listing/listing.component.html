@@ -1,1 +1,16 @@
-<p>listing works!</p>
+<div class="listing">
+  <div class="listing-icon"> X </div>
+  <table>
+    <tr>
+      <th *ngFor="let meta of metaDefinition">{{ meta.text }}</th>
+      <th>control</th>
+    </tr>
+    <tr *ngFor="let object of contents">
+      <td *ngFor="let meta of metaDefinition">{{ object['meta'] }}</td>
+      <td>
+        <span (click)="editProject(object.id)">Edit</span>
+        <span>Delete</span>
+      </td>
+    </tr>
+  </table>
+</div>

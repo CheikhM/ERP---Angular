@@ -3,6 +3,9 @@
 * {
   margin: 0;
 }
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 ul {
   padding: 0;
 }
@@ -11,4 +14,10 @@ li {
 }
 .flex {
   display: flex;
+}
+.bold {
+  font-weight: 700;
+}
+.light {
+  font-weight: 300;
 }

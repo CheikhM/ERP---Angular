@@ -1,24 +1,73 @@
 .side-bar {
   position: fixed;
   top: 0;
-  left: 0; /* English version */
-  /* right: 0; !* Arabic use *! */
+  left: 0; /* LTR version */
   height: 800px;
   width: 280px;
-  background: green;
+  color: white;
+  background: #1B2133;
   padding-top: 20px;
   padding-bottom: 20px;
+  box-shadow: 0 0 4px 4px #423a3a;
+  overflow: auto;
 }
 
 .elements {
-  padding-right: 20px;
-  padding-left: 20px;
+  margin-top: 125px; /* todo remove */
 }
+
 .elements li {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 22px 10px 22px 10px;
 }
+
+.elements li.parent {
+  position: relative;
+}
+li.active {
+  background: #202f4f;
+  border-left: 2px solid red;
+}
+
+li.parent:after {
+  /*
+  content: '';
+  */
+  position: absolute;
+  display: block;
+  background: #202f4f;
+  width: 100%;
+  left: 0;
+  z-index: -9999;
+  top: 80px; /* 40px or 80px */
+  height: 40px;
+}
+
+.elements .name {
+  margin-left: 10px;
+}
+
+.elements .name + i {
+  float: right;
+}
+
 .sub-elements {
-  margin-top: 10px;
+  display: none;
+  margin-top: 20px;
+}
+
+.sub-elements li:last-child {
+  padding-bottom: 0;
+}
+
+.sub-elements li {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+img.icon {
+  width: 22px;
+  float: left;
 }
 

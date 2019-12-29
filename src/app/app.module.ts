@@ -11,6 +11,8 @@ import { SideBarComponent } from './components/shared/side-bar/side-bar.componen
 import { ListingComponent } from './components/shared/listing/listing.component';
 import { ConfirmBoxComponent } from './components/shared/confirm-box/confirm-box.component';
 import { ListingTitleComponent } from './components/shared/listing-title/listing-title.component';
+import { ProjectsListComponent } from './components/projects/projects-list/projects-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { ListingTitleComponent } from './components/shared/listing-title/listing
     SideBarComponent,
     ListingComponent,
     ConfirmBoxComponent,
-    ListingTitleComponent
+    ListingTitleComponent,
+    ProjectsListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

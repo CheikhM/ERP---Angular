@@ -1,0 +1,16 @@
+html {
+  direction: rtl;
+}
+.side-bar {
+  right: 0;
+  left: initial;
+}
+.main-content {
+  margin-left: 0  !important;
+  margin-right: 280px;
+  text-align: right;
+}
+.listing-icon {
+  right: 15px;
+  left: initial;
+}
