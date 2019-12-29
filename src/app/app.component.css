@@ -1,7 +1,16 @@
+.wrapper {
+  position: relative;
+  top: 0;
+  height: 100vh;
+}
+.main-panel {
+  height: 100%;
+  max-height: 100%;
+  float: right;
+  width: calc(100% - 280px);
+  position: relative;
+}
 .main-content {
-  margin-left:280px;
-  background: yellow;
-  min-height: 800px;/* same as the side bar */
   padding: 15px 60px 15px 60px;
-  background: white;
+  background: #E4EBF7;
 }

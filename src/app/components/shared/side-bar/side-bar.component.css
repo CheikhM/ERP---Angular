@@ -1,30 +1,37 @@
 .side-bar {
   position: fixed;
   top: 0;
-  left: 0; /* LTR version */
-  height: 800px;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  max-height: 100%;
   width: 280px;
   color: white;
   background: #1B2133;
   padding-top: 20px;
   padding-bottom: 20px;
   box-shadow: 0 0 4px 4px #423a3a;
-  overflow: auto;
 }
-
-.elements {
-  margin-top: 125px; /* todo remove */
+.side-bar__elements {
+  position: relative;
+  height: calc(100vh - 150px);
+  overflow: auto;
+  padding-bottom: 30px;
+}
+.elements-header {
+  height: 150px; /* todo review */
 }
 
 .elements li {
   font-size: 20px;
   line-height: 20px;
-  padding: 22px 10px 22px 10px;
+  padding: 20px 10px 20px 10px;
 }
 
 .elements li.parent {
   position: relative;
 }
+
 li.active {
   background: #202f4f;
   border-left: 2px solid red;
@@ -53,7 +60,9 @@ li.parent:after {
 }
 
 .sub-elements {
+  /*
   display: none;
+  */
   margin-top: 20px;
 }
 

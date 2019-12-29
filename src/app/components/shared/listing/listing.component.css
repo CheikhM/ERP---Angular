@@ -1,8 +1,9 @@
 .listing {
   position: relative;
-  background: red;
+  background: white;
   height: 500px;
   padding: 20px;
+  border-radius: 10px;
 }
 .listing table {
   width: 100%;
@@ -17,5 +18,7 @@
   position: absolute;
   top: -15px;
   left: 15px;
-  background: yellow;
+  background: #F45B63;
+  border-radius: 2px;
+  box-shadow: 3px 3px 6px black;
 }

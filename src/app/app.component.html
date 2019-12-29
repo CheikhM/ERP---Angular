@@ -1,10 +1,18 @@
-<!-- side bar -->
-<app-side-bar></app-side-bar>
-<!--end side bar -->
+<div class="wrapper">
+  <!-- side bar -->
+  <app-side-bar></app-side-bar>
+  <!--end side bar -->
 
-<!-- the main content -->
-<div class="main-content">
-  <app-header></app-header>
-  <router-outlet></router-outlet>
+  <div class="main-panel">
+    <!-- app header -->
+    <app-header></app-header>
+    <!-- end of app header -->
+
+    <!-- the main content -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- end of the main content -->
+  </div>
 </div>
-<!-- end of the main content -->
+

@@ -1,5 +1,8 @@
 header {
-  height: 60px;
+  padding: 20px 60px 0 60px;
+  margin-left: 280px;
+  height: 150px;
+  background: white;
 }
 .config {
   float: right;
