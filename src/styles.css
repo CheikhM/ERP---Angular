@@ -28,6 +28,24 @@ li {
   font-weight: 300;
 }
 
+button.add-new {
+  height: 35px;
+  color: white;
+  background: #57C059;
+  outline: none;
+  border: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+select.action {
+  height: 35px;
+  float: left;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* scroll bar style */
 /* width */
 ::-webkit-scrollbar {
