@@ -1,0 +1,7 @@
+.main-content {
+  margin-left:280px;
+  background: yellow;
+  min-height: 800px;/* same as the side bar */
+  padding: 15px 60px 15px 60px;
+  background: white;
+}

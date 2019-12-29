@@ -1,0 +1,16 @@
+<div class="side-bar">
+  <ul class="elements">
+    <li *ngFor="let item of menuElements">
+      <span class="icon">-</span>
+      <span class="name">{{ item.text }}</span>
+      <ng-container *ngIf="item.parent">
+        <ul class="sub-elements">
+          <li *ngFor="let subItem of item.subelements">
+            <span class="icon">-</span>
+            <span class="name">{{ subItem.text }}</span>
+          </li>
+        </ul>
+      </ng-container>
+    </li>
+  </ul>
+</div>

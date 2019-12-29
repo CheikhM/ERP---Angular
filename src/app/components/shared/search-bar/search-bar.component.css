@@ -1,0 +1,13 @@
+.search-bar {
+  height: 35px;
+}
+.search, .filter-text {
+  border: 1px solid;
+}
+.search {
+  width: 100%;
+}
+.filter-text {
+  width: 150px;
+}
+
