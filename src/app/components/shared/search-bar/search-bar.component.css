@@ -11,6 +11,8 @@
   width: 100%;
   padding-left: 12px;
   font-size: 18px;
+  outline: none;
+  background: url("/assets/images/search-bar/search-icon.svg") no-repeat;
 }
 .filter-text {
   width: 160px;

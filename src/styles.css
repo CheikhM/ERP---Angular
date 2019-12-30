@@ -36,6 +36,7 @@ button.add-new {
   border: 0;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 select.action {
@@ -44,6 +45,7 @@ select.action {
   background: white;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 /* scroll bar style */

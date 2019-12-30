@@ -24,13 +24,14 @@
   font-size: 20px;
   line-height: 20px;
   padding: 20px 10px 20px 10px;
+  cursor: pointer;
 }
 
 .elements li.parent {
   position: relative;
 }
 
-li.active {
+li.active, .elements  li:not(.collapse):hover {
   background: #202f4f;
   border-left: 2px solid red;
 }
@@ -53,8 +54,9 @@ li.parent:after {
   margin-left: 10px;
 }
 
-.elements .name + i {
+.elements .name + .arrow {
   float: right;
+  width: 12px;
 }
 
 .sub-elements {
@@ -78,3 +80,6 @@ img.icon {
   float: left;
 }
 
+.collapsed .sub-elements {
+  display: none;
+}

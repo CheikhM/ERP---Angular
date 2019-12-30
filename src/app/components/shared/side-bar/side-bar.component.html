@@ -4,11 +4,11 @@
   </div>
   <div class="side-bar__elements">
     <ul class="elements">
-      <li *ngFor="let item of menuElements" [ngClass]="{'parent': item.parent, 'active': (item.text === 'Dashboard')}">
+      <li *ngFor="let item of menuElements" [ngClass]="{'parent collapsed': item.parent, 'active': (item.text === 'Dashboard')}">
         <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
         <span class="name bold">{{ item.text }}</span>
         <ng-container *ngIf="item.parent">
-          <i class="fa fa-arrow-down"></i>
+          <img src="/assets/images/side-bar/arrow-icon.svg" class="arrow" />
           <ul class="sub-elements">
             <li *ngFor="let subItem of item.subelements">
               <img class="icon" alt="" src="assets/images/side-bar/{{ subItem.icon }}.svg" />

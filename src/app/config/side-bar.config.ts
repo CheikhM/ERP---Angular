@@ -9,7 +9,7 @@ export const menuElements = [
     ]
   },
   {
-    text: 'Purchase orders', icon: 'icon-Purchase', route: 'default', parent: true, subelements: [
+    text: 'Purchase orders', icon: 'purchase-icon', route: 'default', parent: true, subelements: [
       {text: 'List all', icon00: 'list-all', route: 'default'},
       {text: 'Suppliers', icon: 'icon-suppliers', route: 'default'},
     ]
@@ -20,7 +20,7 @@ export const menuElements = [
       {text: 'Beneficiars', icon: 'icon-benefits', route: 'default'},
     ]
   },
-  {text: 'Warehouse', icon: 'warehouse', route: 'default', parent: false},
+  {text: 'Warehouse', icon: 'warehouse-icon', route: 'default', parent: false},
   {text: 'Users', icon: 'users', route: 'default', parent: false},
   {text: 'Backup', icon: 'backup', route: 'default', parent: false},
 ];
