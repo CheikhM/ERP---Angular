@@ -12,6 +12,13 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+.listing td {
+  padding: 0 5px 30px 5px;
+  font-size: 15px;
+}
+.listing th {
+  padding-bottom: 30px;
+}
 
 .listing-icon {
   text-align: center;
@@ -27,4 +34,13 @@
 .listing-icon img {
   width: 25px;
   margin-top: 12px;
+}
+.listing .filter {
+  width: 18px;
+  cursor: pointer;
+}
+.control img {
+  width: 25px;
+  cursor: pointer;
+  margin-left: 4px;
 }

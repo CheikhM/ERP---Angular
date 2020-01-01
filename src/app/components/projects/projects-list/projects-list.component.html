@@ -1,5 +1,6 @@
 <app-listing [metaDefinition]="metaDefinition"
-             [contents]="projects"
+             [contents]="filteredProjects"
              [model]="'Project'"
              (onEditClick)="editProject($event)"
+             (onDeleteClick)="deleteProject($event)"
 ></app-listing>

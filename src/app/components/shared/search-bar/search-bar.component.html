@@ -1,4 +1,8 @@
 <div class="flex search-bar">
-  <input class="search" type="text" id="#" />
-  <span class="filter-text">Filters - ico</span>
+  <label for="search"></label>
+  <input class="search" type="text" id="search" alt="search input" (keyup)="sendSearchText($event.target.value)" />
+  <span class="filter-text">
+    Filters
+    <img src="/assets/images/search-bar/icon-filter.svg" alt="" />
+  </span>
 </div>

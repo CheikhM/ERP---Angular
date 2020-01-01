@@ -4,8 +4,13 @@ header {
 }
 
 .config {
-  padding: 20px 60px 20px 60px;
+  padding: 5px 60px 40px 60px;
 }
 .config .items {
   float: right;
+}
+
+.items img {
+  width: 25px;
+  margin-left: 5px;
 }

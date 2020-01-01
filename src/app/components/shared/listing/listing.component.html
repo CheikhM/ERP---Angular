@@ -4,14 +4,19 @@
   </div>
   <table>
     <tr>
-      <th *ngFor="let meta of metaDefinition">{{ meta.text }}</th>
+      <th *ngFor="let meta of metaDefinition">
+        {{ meta.text }}
+        <img class="filter" src="/assets/images/listing/sort.svg" alt="" />
+      </th>
       <th>control</th>
     </tr>
     <tr *ngFor="let object of contents">
-      <td *ngFor="let meta of metaDefinition">{{ object['meta'] }}</td>
-      <td>
-        <span (click)="editProject(object.id)">Edit</span>
-        <span>Delete</span>
+      <td *ngFor="let meta of metaDefinition">
+        {{ object[meta.attribute] }}
+      </td>
+      <td class="control">
+        <img (click)="editElement(object.id)" src="/assets/images/listing/edit-icon.svg" alt="" class="edit" />
+        <img (click)="deleteElement(object.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete" />
       </td>
     </tr>
   </table>

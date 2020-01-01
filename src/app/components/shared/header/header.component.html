@@ -2,9 +2,16 @@
 
   <div class="config">
     <div class="items">
-      <span>A</span>
-      <span>B</span>
-      <span>C</span>
+      <a href="#">
+        <img src="/assets/images/general/notification-icon.svg" alt="" class="" />
+      </a>
+      <a href="#">
+
+        <img src="/assets/images/general/settings-icon.svg" alt="" class="" />
+      </a>
+      <a href="#">
+        <img src="/assets/images/general/user-icon.svg" alt="" class="" />
+      </a>
     </div>
   </div>
 
@@ -13,7 +20,7 @@
   <!-- end listing title -->
 
   <!-- search bar -->
-  <app-search-bar></app-search-bar>
+  <app-search-bar (emitData)="searchProject($event)"></app-search-bar>
   <!-- end search bar -->
 
 </header>

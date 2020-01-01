@@ -12,8 +12,9 @@ export class ListingComponent implements OnInit {
   metaDefinition: any [];
   @Input()
   contents: any [];
-
+  // delete and edit actions
   @Output() onEditClick: EventEmitter<any> = new EventEmitter();
+  @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }
@@ -21,7 +22,13 @@ export class ListingComponent implements OnInit {
   ngOnInit() {
   }
 
-  editProject(id: number) {
+  // emit the project id, to be edited
+  editElement(id: number) {
     this.onEditClick.emit(id);
+  }
+
+  // emit the project id, to be soft deleted
+  deleteElement(id: number) {
+    this.onDeleteClick.emit(id);
   }
 }
