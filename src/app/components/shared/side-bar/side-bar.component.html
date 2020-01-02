@@ -4,7 +4,7 @@
   </div>
   <div class="side-bar__elements">
     <ul class="elements">
-      <li *ngFor="let item of menuElements" [ngClass]="{'parent collapsed': item.parent, 'active': (item.text === 'Dashboard')}">
+      <li *ngFor="let item of menuElements" [routerLink]="[item.route]" [ngClass]="{'parent collapsed': item.parent, 'active': item.route === location.path()}">
         <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
         <span class="name bold">{{ item.text }}</span>
         <ng-container *ngIf="item.parent">
