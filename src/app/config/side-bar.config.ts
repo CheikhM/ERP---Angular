@@ -4,7 +4,7 @@ export const menuElements = [
   {text: 'Projects', icon: 'icon-project', route: '/projects/all', parent: false},
   {
     text: 'Sales', icon: 'icon-sales', route: 'default', parent: true, subelements: [
-      {text: 'Bids', icon: 'icon-bids', route: 'default'},
+      {text: 'Bids', icon: 'bids-icon', route: 'default'},
       {text: 'Deals', icon: 'icon-deal', route: 'default'},
     ]
   },

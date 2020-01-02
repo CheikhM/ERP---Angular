@@ -38,9 +38,7 @@ li.active, .elements  li:not(.collapse):hover {
 }
 
 li.parent:after {
-  /*
-  content: '';
-  */
+  /*content: '';*/
   position: absolute;
   display: block;
   background: #202f4f;

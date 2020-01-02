@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-confirm-box',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm-box.component.css']
 })
 export class ConfirmBoxComponent implements OnInit {
+  @Input()
+  popupID: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    // $('#deleteProjectModal').modal('show');
   }
 
 }
