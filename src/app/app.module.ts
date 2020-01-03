@@ -13,6 +13,7 @@ import { ConfirmBoxComponent } from './components/shared/confirm-box/confirm-box
 import { ListingTitleComponent } from './components/shared/listing-title/listing-title.component';
 import { ProjectsListComponent } from './components/projects/projects-list/projects-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProjectDetailsComponent } from './components/projects/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     ListingComponent,
     ConfirmBoxComponent,
     ListingTitleComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="listing">
+<div class="aw-container listing">
   <div class="listing-icon">
     <img src="/assets/images/side-bar/icon-project.svg" alt="" />
   </div>
@@ -11,7 +11,7 @@
       <th>control</th>
     </tr>
     <tr *ngFor="let object of contents" class="list-element">
-      <td *ngFor="let meta of metaDefinition">
+      <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]">
         {{ object[meta.attribute] }}
       </td>
       <td class="control">
