@@ -44,3 +44,8 @@
   cursor: pointer;
   margin-left: 4px;
 }
+
+tr.list-element:hover {
+  background: #e4ebf7;
+  cursor: pointer;
+}

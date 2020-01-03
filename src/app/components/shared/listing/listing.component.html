@@ -10,7 +10,7 @@
       </th>
       <th>control</th>
     </tr>
-    <tr *ngFor="let object of contents">
+    <tr *ngFor="let object of contents" class="list-element">
       <td *ngFor="let meta of metaDefinition">
         {{ object[meta.attribute] }}
       </td>

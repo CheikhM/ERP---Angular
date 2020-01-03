@@ -13,6 +13,7 @@ export class ProjectService {
   constructor(private http: HttpClient) {
   }
 
+  // get the list of all non deleted projects
   getAllProjects(): Observable<Project []> {
     return this.http.get(Connection.api.projects.get).pipe(
       map(response => response), map(projects => {
@@ -20,4 +21,11 @@ export class ProjectService {
       })
     );
   }
+
+  // delete a project using the project id
+  deleteProject(id: number): Observable<any> {
+    return this.http.get(Connection.api.delete.get + '?id=' + id);
+  }
+
+
 }

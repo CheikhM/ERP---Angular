@@ -3,6 +3,8 @@ import {ProjectService} from '../../../services/project.service';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 
+declare var $: any;
+
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
@@ -19,6 +21,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   ];
   searchText: string;
   private searchTextSub: Subscription;
+  private toBeDeletedId: number;
 
   constructor(private projectService: ProjectService,
               private sharedService: SharedService) {
@@ -30,7 +33,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     // search project
     this.searchTextSub = this.sharedService.getSearchText().subscribe(item => {
       this.searchProject(item);
-      // this.projects = this.projects.find(i => i.id === 1);
     });
   }
 
@@ -54,7 +56,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
   // soft delete a project
   deleteProject(projectId) {
-    console.log('delete:', projectId);
+    this.toBeDeletedId = projectId;
+    $('#deleteProjectModal').modal('show');
   }
 
   ngOnDestroy(): void {
@@ -65,6 +68,21 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   private searchProject(text: string) {
     if (this.projects) {
       this.filteredProjects = this.projects.filter(project => project.name.includes(text));
+    }
+  }
+
+  confirmProjectDelete(action: boolean) {
+    if (action && this.toBeDeletedId) {
+
+      this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
+        return result.status;
+      }, error => {
+        console.log('error: ', error);
+      }, () => {
+        this.getAllProjects();
+      });
+
+      $('#deleteProjectModal').modal('hide');
     }
   }
 }

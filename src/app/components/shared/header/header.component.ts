@@ -6,14 +6,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  listingPage = true;
+  includeSearchBar = true;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.loadPageHeader();
   }
 
-  searchProject($event) {
-    console.log('search: ', $event);
+  // the header is dynamic
+  private loadPageHeader() {
+    return true;
   }
 }

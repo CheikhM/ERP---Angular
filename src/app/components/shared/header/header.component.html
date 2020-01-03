@@ -3,24 +3,24 @@
   <div class="config">
     <div class="items">
       <a href="#">
-        <img src="/assets/images/general/notification-icon.svg" alt="" class="" />
+        <img src="/assets/images/general/notification-icon.svg" alt="" class=""/>
       </a>
       <a href="#">
 
-        <img src="/assets/images/general/settings-icon.svg" alt="" class="" />
+        <img src="/assets/images/general/settings-icon.svg" alt="" class=""/>
       </a>
       <a href="#">
-        <img src="/assets/images/general/user-icon.svg" alt="" class="" />
+        <img src="/assets/images/general/user-icon.svg" alt="" class=""/>
       </a>
     </div>
   </div>
 
   <!-- listing title -->
-  <app-listing-title></app-listing-title>
+  <app-listing-title *ngIf="listingPage"></app-listing-title>
   <!-- end listing title -->
 
   <!-- search bar -->
-  <app-search-bar (emitData)="searchProject($event)"></app-search-bar>
+  <app-search-bar *ngIf="includeSearchBar"></app-search-bar>
   <!-- end search bar -->
 
 </header>

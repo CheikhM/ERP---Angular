@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 @Component({
@@ -10,6 +10,8 @@ export class ConfirmBoxComponent implements OnInit {
   @Input()
   popupID: string;
 
+  @Output() confirmAction: EventEmitter<any> = new EventEmitter();
+
   constructor() {
   }
 
@@ -17,4 +19,11 @@ export class ConfirmBoxComponent implements OnInit {
     // $('#deleteProjectModal').modal('show');
   }
 
+  confirmDelete() {
+    this.confirmAction.emit(true);
+  }
+
+  cancelDelete() {
+    this.confirmAction.emit(false);
+  }
 }
