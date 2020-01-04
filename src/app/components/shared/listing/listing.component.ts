@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-listing',
@@ -16,7 +17,7 @@ export class ListingComponent implements OnInit {
   @Output() onEditClick: EventEmitter<any> = new EventEmitter();
   @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
 
-  constructor() {
+  constructor(private sharedService: SharedService) {
   }
 
   ngOnInit() {
@@ -30,5 +31,9 @@ export class ListingComponent implements OnInit {
   // emit the project id, to be soft deleted
   deleteElement(id: number) {
     this.onDeleteClick.emit(id);
+  }
+  // set the current object
+  setCurrentListingObject(object: any) {
+    this.sharedService.setCurrentListingElement(object);
   }
 }

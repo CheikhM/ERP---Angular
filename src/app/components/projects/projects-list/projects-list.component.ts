@@ -75,11 +75,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     if (action && this.toBeDeletedId) {
 
       this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
-        return result.status;
+        // todo check for delete error
+        console.log(result.status);
       }, error => {
         console.log('error: ', error);
       }, () => {
-        this.getAllProjects();
+        this.projects = this.projects.filter(project => project.id !== this.toBeDeletedId);
+        this.filteredProjects = this.projects;
       });
 
       $('#deleteProjectModal').modal('hide');

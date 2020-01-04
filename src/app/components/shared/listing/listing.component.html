@@ -11,7 +11,7 @@
       <th>control</th>
     </tr>
     <tr *ngFor="let object of contents" class="list-element">
-      <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]">
+      <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]" (click)="setCurrentListingObject(object)">
         {{ object[meta.attribute] }}
       </td>
       <td class="control">

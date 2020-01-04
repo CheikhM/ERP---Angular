@@ -6,6 +6,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class SharedService {
   private searchText = new BehaviorSubject('');
+  private CurrentListingElement = new BehaviorSubject(null);
 
   constructor() {
   }
@@ -17,4 +18,15 @@ export class SharedService {
   public setSearchText(searchText: string) {
     this.searchText.next(searchText);
   }
+
+
+  // setters and getters for current project
+  public getCurrentListingElement() {
+    return this.CurrentListingElement.asObservable();
+  }
+
+  public setCurrentListingElement(searchText: string) {
+    this.CurrentListingElement.next(searchText);
+  }
+
 }

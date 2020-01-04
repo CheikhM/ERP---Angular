@@ -1,0 +1,33 @@
+.details {
+
+}
+
+.details input[type="text"] {
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: black;
+}
+
+.details input[type="text"]:disabled {
+  background: #fff;
+}
+
+.currency-form {
+  position: relative;
+}
+.currency-form:before {
+  content: '$';
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: calc(1.5em + .75rem + 2px);
+  background: #e4ebf7;
+  top: 32px;
+  border: 1px solid #ced4da;
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+}

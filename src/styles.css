@@ -11,10 +11,20 @@ body {
 .aw-container {
   position: relative;
   background: white;
-  height: 500px;
-  padding: 20px;
+  height: auto;
+  padding: 35px 20px 35px 20px;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+.submit {
+  margin-top: 50px;
+}
+
+.submit input[type="submit"] {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 ul {

@@ -1,3 +1,49 @@
-<div class="aw-container">
-  ici
+<div class="aw-container details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <label>Project Name</label>
+          <input class="form-control" type="text" [(ngModel)]="project.name" disabled />
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input class="form-control" type="text" [(ngModel)]="project.startDate" disabled />
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <input class="form-control" type="text"  [(ngModel)]="project.status" disabled />
+        </div>
+        <div class="form-group">
+          <label>Project Manager</label>
+          <input class="form-control" type="text" [(ngModel)]="project.manager" disabled />
+        </div>
+        <div class="form-group">
+          <label>Project Code</label>
+          <input class="form-control" type="text" [(ngModel)]="project.code" disabled />
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group currency-form">
+          <label>PO Value</label>
+          <input class="form-control" type="text" [(ngModel)]="project.poValue" disabled />
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input class="form-control" type="text" [(ngModel)]="project.endDate" disabled />
+        </div>
+        <div class="form-group currency-form">
+          <label>Expenses</label>
+          <input class="form-control" type="text" [(ngModel)]="project.expenses" disabled />
+        </div>
+        <div class="form-group">
+          <label>E-Link</label>
+          <input class="form-control" type="text" [(ngModel)]="project.link" disabled />
+        </div>
+        <div class="submit">
+          <input class="btn btn-success" type="submit" value="Edit project" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

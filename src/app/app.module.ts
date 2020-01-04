@@ -14,6 +14,7 @@ import { ListingTitleComponent } from './components/shared/listing-title/listing
 import { ProjectsListComponent } from './components/projects/projects-list/projects-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './components/projects/project-details/project-details.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProjectDetailsComponent } from './components/projects/project-details/p
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
