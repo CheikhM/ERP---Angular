@@ -10,12 +10,15 @@ import {Location} from '@angular/common';
 export class SideBarComponent implements OnInit {
   menuElements = menuElements;
 
-  constructor(private location: Location) {
+  constructor(public location: Location) {
 
   }
 
   ngOnInit() {
-    //console.log(this.location.path());
+    // console.log(this.location.path());
   }
 
+  test() {
+    return false;
+  }
 }

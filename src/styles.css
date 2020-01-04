@@ -67,6 +67,23 @@ select.action {
   cursor: pointer;
 }
 
+.header-workflow {
+  padding: 15px 60px 15px 60px;
+  width: 100%;
+}
+.header-workflow .title {
+  display: inline-block;
+  width: calc(20% - 5px);
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background: #1B2133;
+  margin-left: 5px;
+  height: 50px;
+  padding-top: 12px;
+  padding-left: 10px;
+  cursor: pointer;
+}
 /* scroll bar style */
 /* width */
 ::-webkit-scrollbar {
@@ -81,13 +98,15 @@ select.action {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: gray;
+  background: #cccccc;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: #919191;
 }
 
 /* end of scroll bar style */
+
+

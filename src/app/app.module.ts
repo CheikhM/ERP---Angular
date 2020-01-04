@@ -15,6 +15,7 @@ import { ProjectsListComponent } from './components/projects/projects-list/proje
 import {HttpClientModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './components/projects/project-details/project-details.component';
 import {FormsModule} from '@angular/forms';
+import { WorkflowComponent } from './components/shared/workflow/workflow.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {FormsModule} from '@angular/forms';
     ListingTitleComponent,
     ProjectsListComponent,
     ProjectDetailsComponent,
+    WorkflowComponent,
   ],
   imports: [
     BrowserModule,

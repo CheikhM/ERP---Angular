@@ -1,7 +1,7 @@
 import {environment} from '../../environments/environment';
 
 export class Connection {
-  private static apiProject = environment.api;
+  private static apiProject = environment['api'];
 
   public static get api(): any {
     return {

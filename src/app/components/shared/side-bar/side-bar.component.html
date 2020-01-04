@@ -4,19 +4,19 @@
   </div>
   <div class="side-bar__elements">
     <ul class="elements">
-      <li *ngFor="let item of menuElements" [routerLink]="[item.route]" [ngClass]="{'parent collapsed': item.parent, 'active': item.route === location.path()}">
-        <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
-        <span class="name bold">{{ item.text }}</span>
-        <ng-container *ngIf="item.parent">
-          <img src="/assets/images/side-bar/arrow-icon.svg" class="arrow" />
-          <ul class="sub-elements">
-            <li *ngFor="let subItem of item.subelements">
-              <img class="icon" alt="" src="assets/images/side-bar/{{ subItem.icon }}.svg" />
-              <span class="name light">{{ subItem.text }}</span>
-            </li>
-          </ul>
-        </ng-container>
-      </li>
+      <ng-container *ngFor="let item of menuElements">
+        <li [routerLink]="[item.route]" [ngClass]="{'parent collapsed': item.parent, 'active': item.route === location.path()}">
+          <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
+          <span class="name bold">{{ item.text }}</span>
+          <img *ngIf="item.parent" src="/assets/images/side-bar/arrow-icon.svg" class="arrow" />
+        </li>
+        <div class="sub-elements" *ngIf="item.parent">
+          <li *ngFor="let subItem of item.subelements">
+            <img class="icon" alt="" src="assets/images/side-bar/{{ subItem.icon }}.svg" />
+            <span class="name light">{{ subItem.text }}</span>
+          </li>
+        </div>
+      </ng-container>
     </ul>
   </div>
 </div>

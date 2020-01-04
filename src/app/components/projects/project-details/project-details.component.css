@@ -7,11 +7,9 @@
   right: 5px;
   top: 5px;
 }
-.details .delete-icon {
+.details .delete-icon, .details .return-icon {
   width: 35px;
-}
-.details .return-icon {
-  width: 35px;
+  cursor: pointer;
 }
 
 .details input[type="text"] {
