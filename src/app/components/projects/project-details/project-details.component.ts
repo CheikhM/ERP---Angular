@@ -33,4 +33,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.currentProjectSub.unsubscribe();
   }
+
+  deleteElement(id: number) {
+    console.log(id);
+  }
 }

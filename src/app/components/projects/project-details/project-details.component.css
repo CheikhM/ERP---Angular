@@ -1,5 +1,17 @@
 .details {
+ /* */
+}
 
+.details .header {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.details .delete-icon {
+  width: 35px;
+}
+.details .return-icon {
+  width: 35px;
 }
 
 .details input[type="text"] {
