@@ -51,7 +51,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
   // edit a project with
   editProject(projectID) {
-    console.log('edit', projectID);
+    // console.log('edit', projectID);
   }
 
   // soft delete a project
@@ -76,9 +76,9 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
       this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
         // todo check for delete error
-        console.log(result.status);
+        // console.log(result.status);
       }, error => {
-        console.log('error: ', error);
+        // console.log('error: ', error);
       }, () => {
         this.projects = this.projects.filter(project => project.id !== this.toBeDeletedId);
         this.filteredProjects = this.projects;

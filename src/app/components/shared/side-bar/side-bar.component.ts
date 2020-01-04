@@ -15,7 +15,7 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.location.path());
+    //console.log(this.location.path());
   }
 
 }

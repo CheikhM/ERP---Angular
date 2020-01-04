@@ -28,7 +28,7 @@ export class ProjectService {
   }
 
 
-  getProjectByID(id: number): Observable<Project> {
+  getProjectByID(id: number): Observable <any> {
     return this.http.get(Connection.api.projects.getSingle + '?id=' + id);
   }
 
