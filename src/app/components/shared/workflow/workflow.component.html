@@ -1,7 +1,15 @@
+
+<!-- project details workflow -->
 <div class="header-workflow">
-  <span class="title">Details</span>
-  <span class="title">Nots</span>
+  <a [routerLink]="['/projects/project/' + objectID]">
+    <span class="title">Details</span>
+  </a>
+  <a [routerLink]="['/projects/project/' + objectID + '/notes']">
+    <span class="title">Notes</span>
+  </a>
   <span class="title">BoQs</span>
   <span class="title">Deliverbals</span>
   <span class="title">Invoices</span>
 </div>
+
+<!-- end project workflow -->

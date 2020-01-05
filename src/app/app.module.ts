@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './components/projects/project-details/project-details.component';
 import {FormsModule} from '@angular/forms';
 import { WorkflowComponent } from './components/shared/workflow/workflow.component';
+import { ProjectNotesComponent } from './components/projects/project-notes/project-notes.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { WorkflowComponent } from './components/shared/workflow/workflow.compone
     ProjectsListComponent,
     ProjectDetailsComponent,
     WorkflowComponent,
+    ProjectNotesComponent,
   ],
   imports: [
     BrowserModule,

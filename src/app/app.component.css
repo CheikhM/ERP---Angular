@@ -3,6 +3,18 @@
   top: 0;
   height: 100vh;
 }
+
+/* side bar hidden */
+.sb-hidden .main-panel {
+  width: calc(100% - 280px);
+}
+
+
+/*
+-webkit-transform: translate3d(-260px,0,0);
+transform: translate3d(-260px,0,0);
+ */
+
 .main-panel {
   height: 100%;
   max-height: 100%;

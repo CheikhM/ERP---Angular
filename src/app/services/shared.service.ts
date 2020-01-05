@@ -6,6 +6,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class SharedService {
   private searchText = new BehaviorSubject('');
+  private workflowID = new BehaviorSubject(0);
   private CurrentListingElement = new BehaviorSubject(null);
 
   constructor() {
@@ -25,8 +26,17 @@ export class SharedService {
     return this.CurrentListingElement.asObservable();
   }
 
-  public setCurrentListingElement(searchText: string) {
-    this.CurrentListingElement.next(searchText);
+  public setCurrentListingElement(object: any) {
+    this.CurrentListingElement.next(object);
+  }
+
+  // setters and getters for the workflow ID
+  public getworkflowID() {
+    return this.workflowID.asObservable();
+  }
+
+  public setworkflowID(id: number) {
+    this.workflowID.next(id);
   }
 
 }

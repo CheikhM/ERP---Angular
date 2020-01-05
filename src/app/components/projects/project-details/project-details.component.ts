@@ -21,7 +21,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
               private projectService: ProjectService,
               private sharedService: SharedService) {
     // get the current project id
+
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    // set the current project id
+    this.sharedService.setworkflowID(this.currentProjectID);
   }
 
   ngOnInit() {

@@ -13,18 +13,23 @@
         <img src="/assets/images/general/user-icon.svg" alt="" class=""/>
       </a>
     </div>
+    <!--
+    <div class="side-bar-toggle">
+      <img src="/assets/images/general/navbar-icon.svg" alt="" class=""/>
+    </div>
+    -->
   </div>
 
   <!-- listing title -->
-  <app-listing-title *ngIf="false"></app-listing-title>
+  <app-listing-title *ngIf="listingPage"></app-listing-title>
   <!-- end listing title -->
 
   <!-- search bar -->
-  <app-search-bar *ngIf="false"></app-search-bar>
+  <app-search-bar *ngIf="listingPage"></app-search-bar>
   <!-- end search bar -->
 
 
-  <!-- header of listing element -->
-  <app-workflow></app-workflow>
+  <!-- header of listing project element -->
+  <app-workflow *ngIf="!listingPage" [objectID]="workflowID"></app-workflow>
   <!-- end header lising elements -->
 </header>
