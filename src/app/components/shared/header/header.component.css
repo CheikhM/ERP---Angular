@@ -14,3 +14,14 @@ header {
   width: 25px;
   margin-left: 5px;
 }
+
+
+@media screen and (max-width: 768px){
+  .config {
+    padding: 5px 10px 20px 10px;
+  }
+  .listing-title {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

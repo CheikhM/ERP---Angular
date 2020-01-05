@@ -66,3 +66,12 @@ img.icon {
 .collapsed + .sub-elements {
   display: none;
 }
+
+
+
+@media screen and (max-width: 991px){
+  .side-bar {
+    width: 0;
+    box-shadow: none;
+  }
+}

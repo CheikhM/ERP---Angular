@@ -27,3 +27,17 @@ transform: translate3d(-260px,0,0);
   padding: 15px 60px 15px 60px;
   background: #E4EBF7;
 }
+
+@media screen and (max-width: 768px){
+  .main-content {
+    padding: 5px 0 5px 0;
+  }
+}
+
+@media screen and (max-width: 991px){
+  .main-panel {
+    width: 100%;
+    float: unset;
+  }
+}
+

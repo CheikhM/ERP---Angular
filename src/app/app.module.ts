@@ -17,6 +17,9 @@ import { ProjectDetailsComponent } from './components/projects/project-details/p
 import {FormsModule} from '@angular/forms';
 import { WorkflowComponent } from './components/shared/workflow/workflow.component';
 import { ProjectNotesComponent } from './components/projects/project-notes/project-notes.component';
+import { ProjectDevliverablesComponent } from './components/projects/project-devliverables/project-devliverables.component';
+import { InvoicesComponent } from './components/projects/invoices/invoices.component';
+import { BoqsComponent } from './components/projects/boqs/boqs.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { ProjectNotesComponent } from './components/projects/project-notes/proje
     ProjectDetailsComponent,
     WorkflowComponent,
     ProjectNotesComponent,
+    ProjectDevliverablesComponent,
+    InvoicesComponent,
+    BoqsComponent,
   ],
   imports: [
     BrowserModule,

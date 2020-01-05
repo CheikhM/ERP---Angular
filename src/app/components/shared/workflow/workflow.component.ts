@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-workflow',
@@ -10,7 +11,7 @@ export class WorkflowComponent implements OnInit {
   @Input()
   objectID: number;
 
-  constructor() { }
+  constructor(public location: Location) { }
 
   ngOnInit() {
   }

@@ -11,6 +11,10 @@
   width: 35px;
   cursor: pointer;
 }
+.details .return-icon {
+  height: 27px;
+  width: 35px;
+}
 
 .details input[type="text"] {
   margin-bottom: 20px;

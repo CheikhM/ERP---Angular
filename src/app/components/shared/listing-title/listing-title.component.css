@@ -21,3 +21,19 @@
 button.add-new {
   margin-left: 10px;
 }
+
+@media screen and (max-width: 768px){
+  .listing-title {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  button span {
+     /* display: none; */
+  }
+}
+
+@media screen and (max-width: 570px){
+  button span {
+    display: none;
+  }
+}

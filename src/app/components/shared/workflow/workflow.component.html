@@ -1,15 +1,21 @@
 
 <!-- project details workflow -->
 <div class="header-workflow">
-  <a [routerLink]="['/projects/project/' + objectID]">
+  <a [routerLink]="['/projects/project/' + objectID]" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID}">
     <span class="title">Details</span>
   </a>
-  <a [routerLink]="['/projects/project/' + objectID + '/notes']">
+  <a [routerLink]="['/projects/project/' + objectID + '/notes']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/notes'}">
     <span class="title">Notes</span>
   </a>
-  <span class="title">BoQs</span>
-  <span class="title">Deliverbals</span>
-  <span class="title">Invoices</span>
+  <a [routerLink]="['/projects/project/' + objectID + '/bill-of-quantities']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/bill-of-quantities'}">
+    <span class="title">BoQs</span>
+  </a>
+  <a [routerLink]="['/projects/project/' + objectID + '/deliverables']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/deliverables'}" >
+    <span class="title">Deliverables</span>
+  </a>
+  <a [routerLink]="['/projects/project/' + objectID + '/invoices']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/invoices'}">
+    <span class="title">Invoices</span>
+  </a>
 </div>
 
 <!-- end project workflow -->

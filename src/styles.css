@@ -110,3 +110,8 @@ select.action {
 /* end of scroll bar style */
 
 
+@media screen and (max-width: 768px){
+  .aw-container {
+   border-radius: 0;
+  }
+}
