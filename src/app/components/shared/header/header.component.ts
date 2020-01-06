@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentPath: string;
   private workflowID: number;
   private workflowIDSub: Subscription;
+  listingTitleData: any;
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (event.url.includes('all')) {
           this.workflowPresent = false;
           this.listingPage = true;
+          this.loadHeaderTitlesInfos(event.url);
         } else if (event.url === '/') {
           this.listingPage = false;
           this.workflowPresent = false;
@@ -51,5 +53,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.workflowIDSub.unsubscribe();
+  }
+
+  // todo rework
+  private loadHeaderTitlesInfos(path: string) {
+    if (path.includes('bids')) {
+      this.listingTitleData = {
+        title: 'Bids',
+        sTitle: 'Bid'
+      };
+    } else if (path.includes('deals')) {
+      this.listingTitleData = {
+        title: 'Deals',
+        sTitle: 'Deal'
+      };
+    } else if (path.includes('projects')) {
+      this.listingTitleData = {
+        title: 'Projects',
+        sTitle: 'Project'
+      };
+    }
   }
 }
