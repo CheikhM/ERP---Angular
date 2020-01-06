@@ -1,0 +1,9 @@
+.danger-icon {
+float: left;
+}
+.danger-icon img {
+  width: 50px;
+}
+.content {
+  padding-left: 70px;
+}

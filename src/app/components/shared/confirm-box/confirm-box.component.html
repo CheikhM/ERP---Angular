@@ -2,18 +2,18 @@
 <div class="modal fade" [id]="popupID" tabindex="-1" role="dialog" aria-labelledby="confirmBox" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Delete project</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body">
-        are you sure ?
+        <div class="danger-icon">
+          <img src="/assets/images/general/danger-icon.svg" alt="" class="danger-icon" />
+        </div>
+        <div class="content">
+          <h3>Delete Project</h3>
+          <span>You can undone the operation within 1 month</span>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelDelete()" >Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="confirmDelete()">Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelDelete()" >CANCEL</button>
+        <button type="button" class="btn btn-primary" (click)="confirmDelete()">DELETE</button>
       </div>
     </div>
   </div>
