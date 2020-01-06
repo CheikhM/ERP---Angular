@@ -20,6 +20,9 @@ import { ProjectNotesComponent } from './components/projects/project-notes/proje
 import { ProjectDevliverablesComponent } from './components/projects/project-devliverables/project-devliverables.component';
 import { InvoicesComponent } from './components/projects/invoices/invoices.component';
 import { BoqsComponent } from './components/projects/boqs/boqs.component';
+import { DetailsTitleComponent } from './components/projects/project-details/details-title/details-title.component';
+import { BidsComponent } from './components/sales/bids/bids.component';
+import { DealsComponent } from './components/sales/deals/deals.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { BoqsComponent } from './components/projects/boqs/boqs.component';
     ProjectDevliverablesComponent,
     InvoicesComponent,
     BoqsComponent,
+    DetailsTitleComponent,
+    BidsComponent,
+    DealsComponent,
   ],
   imports: [
     BrowserModule,

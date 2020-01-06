@@ -28,26 +28,21 @@
   outline: none;
 }
 
-.elements li.parent {
-  position: relative;
+.elements  li:not(.collapse):hover {
+  background: #202f4f!important;
+  border-left: 2px solid red!important;
 }
 
-li.active, .elements  li:not(.collapse):hover {
+.elements li.active {
   background: #202f4f;
   border-left: 2px solid red;
 }
 
-li.parent:after {
-  /*content: '';*/
-  position: absolute;
-  display: block;
-  background: #202f4f;
-  width: 100%;
-  left: 0;
-  z-index: -9999;
-  top: 80px; /* 40px or 80px */
-  height: 40px;
+.elements:hover li.active:not(this) {
+  background: none;
+  border: none;
 }
+
 
 .elements .name {
   margin-left: 10px;
@@ -60,14 +55,13 @@ li.parent:after {
 
 img.icon {
   width: 22px;
+  height: 22px;
   float: left;
 }
 
 .collapsed + .sub-elements {
   display: none;
 }
-
-
 
 @media screen and (max-width: 991px){
   .side-bar {

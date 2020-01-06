@@ -11,7 +11,7 @@
           <img *ngIf="item.parent" src="/assets/images/side-bar/arrow-icon.svg" class="arrow" />
         </li>
         <div class="sub-elements" *ngIf="item.parent">
-          <li *ngFor="let subItem of item.subelements">
+          <li *ngFor="let subItem of item.subelements" [routerLink]="[subItem.route]" [ngClass]="{'active': subItem.route === location.path()}">
             <img class="icon" alt="" src="assets/images/side-bar/{{ subItem.icon }}.svg" />
             <span class="name light">{{ subItem.text }}</span>
           </li>

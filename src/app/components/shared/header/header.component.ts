@@ -10,9 +10,8 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  listingPage = false;
-  // includeWorkflow: boolean;
-
+  listingPage: boolean;
+  workflowPresent: boolean;
   currentPath: string;
   private workflowID: number;
   private workflowIDSub: Subscription;
@@ -30,8 +29,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.url.includes('all')) {
+          this.workflowPresent = false;
           this.listingPage = true;
+        } else if (event.url === '/') {
+          this.listingPage = false;
+          this.workflowPresent = false;
         } else {
+          this.workflowPresent = true;
           this.listingPage = false;
         }
       }

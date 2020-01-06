@@ -6,6 +6,8 @@ import {ProjectNotesComponent} from './components/projects/project-notes/project
 import {InvoicesComponent} from './components/projects/invoices/invoices.component';
 import {ProjectDevliverablesComponent} from './components/projects/project-devliverables/project-devliverables.component';
 import {BoqsComponent} from './components/projects/boqs/boqs.component';
+import {BidsComponent} from './components/sales/bids/bids.component';
+import {DealsComponent} from './components/sales/deals/deals.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'projects/project/' + ':id' + '/bill-of-quantities', component: BoqsComponent },
   { path: 'projects/project/' + ':id' + '/deliverables', component: ProjectDevliverablesComponent },
   { path: 'projects/project/' + ':id' + '/invoices', component: InvoicesComponent },
+  { path: 'sales/bids/all', component: BidsComponent },
+  { path: 'sales/deals/all', component: DealsComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,16 @@
+.add-icon {
+  width: 40px;
+  position: absolute;
+  top: -20px;
+  right: 25%;
+  cursor: pointer;
+}
+
+.title {
+  position: absolute;
+  top: -33px;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-left: 5px;
+}

@@ -30,6 +30,6 @@
 
 
   <!-- header of listing project element -->
-  <app-workflow *ngIf="!listingPage" [objectID]="workflowID"></app-workflow>
+  <app-workflow *ngIf="workflowPresent" [objectID]="workflowID"></app-workflow>
   <!-- end header lising elements -->
 </header>

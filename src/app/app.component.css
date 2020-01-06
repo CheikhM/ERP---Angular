@@ -23,6 +23,7 @@ transform: translate3d(-260px,0,0);
   position: relative;
 }
 .main-content {
+  position: relative;
   height: 100%;
   padding: 15px 60px 15px 60px;
   background: #E4EBF7;
