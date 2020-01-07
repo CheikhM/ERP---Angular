@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://adresses.lh/api/'
+  api: 'http://wadan.lh/api/'
 };
 
 /*
