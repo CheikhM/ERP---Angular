@@ -9,6 +9,7 @@
   color: white;
   background: #1B2133;
   box-shadow: 0 0 4px 4px #423a3a;
+  z-index: 999;
 }
 .side-bar__elements {
   position: relative;

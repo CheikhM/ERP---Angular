@@ -26,7 +26,6 @@ transform: translate3d(-260px,0,0);
   position: relative;
   height: 100%;
   padding: 15px 60px 15px 60px;
-  background: #E4EBF7;
 }
 
 @media screen and (max-width: 768px){

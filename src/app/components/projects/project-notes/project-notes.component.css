@@ -1,0 +1,58 @@
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.note {
+  position: relative;
+  height: 255px;
+  min-width: 240px;
+  background: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 1 0 21%;
+  margin: 5px;
+}
+
+.note .pin-icon {
+  position: absolute;
+  width: 30px;
+  top: -10px;
+  right: 15px;
+}
+
+.note .date {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.note .text {
+  height: 135px;
+  overflow: auto;
+  font-weight: 600;
+}
+
+.note h5 {
+  margin-top: 20px;
+  color: #89d38b;
+}
+
+.note .vertical-ellipsis {
+  width: 15px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.col-4 {
+  padding: 0;
+}
+
+
+.custom-select {
+  margin-left: 5px;
+}

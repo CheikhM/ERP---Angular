@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background: #e4ebf7;
 }
 
 .aw-container {
@@ -182,8 +183,18 @@ tr.list-element:hover {
   margin-left: 3px;
   cursor: pointer;
 }
+.aw-pagination .circle-sign:hover {
+  background: white;
+}
+tr.white-bg:hover {
+  background: #a4c780;
+}
 /* end of listing style */
 
+
+.custom-select {
+  width: auto;
+}
 @media screen and (max-width: 768px){
   .aw-container {
    border-radius: 0;
