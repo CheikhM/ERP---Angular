@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   listingPage: boolean;
   workflowPresent: boolean;
   currentPath: string;
-  private workflowID: number;
+  public workflowID: number;
   private workflowIDSub: Subscription;
   listingTitleData: any;
 

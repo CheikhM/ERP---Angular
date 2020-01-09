@@ -1,0 +1,9 @@
+.close-icon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+  z-index: 999;
+}

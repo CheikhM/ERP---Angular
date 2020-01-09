@@ -195,8 +195,31 @@ tr.white-bg:hover {
 .custom-select {
   width: auto;
 }
+
+
+.custom-popup .modal-dialog {
+  max-width: 700px !important;
+}
+.custom-popup .modal-content {
+  border-radius: 10px;
+}
+.custom-popup h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.cdk-overlay-container {
+  z-index: 9999999;
+}
+.cdk-overlay-pane {
+  z-index: 999999!important;
+}
 @media screen and (max-width: 768px){
   .aw-container {
    border-radius: 0;
   }
 }
+
+/*
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/

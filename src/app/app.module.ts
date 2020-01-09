@@ -23,6 +23,9 @@ import { BoqsComponent } from './components/projects/boqs/boqs.component';
 import { DetailsTitleComponent } from './components/projects/project-details/details-title/details-title.component';
 import { BidsComponent } from './components/sales/bids/bids.component';
 import { DealsComponent } from './components/sales/deals/deals.component';
+import { EditProjectPopupComponent } from './components/projects/edit-project-popup/edit-project-popup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -45,14 +48,23 @@ import { DealsComponent } from './components/sales/deals/deals.component';
     DetailsTitleComponent,
     BidsComponent,
     DealsComponent,
+    EditProjectPopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

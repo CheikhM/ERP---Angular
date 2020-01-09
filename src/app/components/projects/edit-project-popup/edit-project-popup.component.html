@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div class="modal fade custom-popup edit-project" id="newProject" tabindex="-1" role="dialog" aria-labelledby="newProject"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-project container">
+          <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal" />
+          <div class="row">
+            <div class="col-12">
+              <h3 class="title">{{ title }}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label>Project Name</label>
+                <input class="form-control" type="text" value="{{ project?.name }}" />
+              </div>
+              <div class="form-group">
+                <label>dddd</label>
+                <mat-form-field>
+                  <input  matInput [matDatepicker]="picker" type="text" value="{{ project?.startDate }}" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <input class="form-control" type="text" value="{{ project?.status }}" />
+              </div>
+              <div class="form-group">
+                <label>Project Manager</label>
+                <input class="form-control" type="text" value="{{ project?.manager }}" />
+              </div>
+              <div class="form-group">
+                <label>Project Code</label>
+                <input class="form-control" type="text" value="{{ project?.code }}" />
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+              <div class="form-group currency-form">
+                <label>PO Value</label>
+                <input class="form-control" type="text" value="{{ project?.poValue }}" />
+              </div>
+              <div class="form-group">
+                <label>End Date</label>
+                <input class="form-control" type="text" value="{{ project?.endDate }}" />
+              </div>
+              <div class="form-group currency-form">
+                <label>Expenses</label>
+                <input class="form-control" type="text" value="{{ project?.expenses }}" />
+              </div>
+              <div class="form-group">
+                <label>E-Link</label>
+                <input class="form-control" type="text" value="{{ project?.link }}" />
+              </div>
+              <div class="submit">
+                <input class="btn btn-success" type="submit" value="Edit project"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End modal -->
