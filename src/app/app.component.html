@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="isAuth">
   <!-- side bar -->
   <app-side-bar></app-side-bar>
   <!--end side bar -->
@@ -17,3 +17,6 @@
   </div>
 </div>
 
+<div class="container" *ngIf="!isAuth">
+  <router-outlet></router-outlet>
+</div>

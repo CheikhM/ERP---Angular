@@ -8,10 +8,12 @@ import {ProjectDevliverablesComponent} from './components/projects/project-devli
 import {BoqsComponent} from './components/projects/boqs/boqs.component';
 import {BidsComponent} from './components/sales/bids/bids.component';
 import {DealsComponent} from './components/sales/deals/deals.component';
+import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
+import {LoginComponent} from './components/auth/login/login.component';
 
 // todo lazy loading
 const routes: Routes = [
-  { path: 'projects/all', component: ProjectsListComponent },
+  { path: 'projects/all', component: ProjectsListComponent, canActivate: [AuthGuard] },
   { path: 'projects/project/' + ':id', component: ProjectDetailsComponent },
   { path: 'projects/project/' + ':id' + '/notes', component: ProjectNotesComponent },
   { path: 'projects/project/' + ':id' + '/bill-of-quantities', component: BoqsComponent },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'projects/project/' + ':id' + '/invoices', component: InvoicesComponent },
   { path: 'sales/bids/all', component: BidsComponent },
   { path: 'sales/deals/all', component: DealsComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
