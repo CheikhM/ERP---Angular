@@ -43,7 +43,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
         this.projects = resp;
         this.filteredProjects = resp;
       },
-      error => console.log(error),
+      error => // console.log(error),
       () => {
       }
     );

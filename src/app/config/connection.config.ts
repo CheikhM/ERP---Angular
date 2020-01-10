@@ -11,6 +11,9 @@ export class Connection {
       },
       delete: {
         get: this.apiProject + 'projects/delete'
+      },
+      auth: {
+        login: this.apiProject + 'auth/login'
       }
     };
   }
