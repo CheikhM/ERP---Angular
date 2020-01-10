@@ -10,17 +10,19 @@ import {BidsComponent} from './components/sales/bids/bids.component';
 import {DealsComponent} from './components/sales/deals/deals.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {LoginComponent} from './components/auth/login/login.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 
 // todo lazy loading
 const routes: Routes = [
   { path: 'projects/all', component: ProjectsListComponent, canActivate: [AuthGuard] },
-  { path: 'projects/project/' + ':id', component: ProjectDetailsComponent },
-  { path: 'projects/project/' + ':id' + '/notes', component: ProjectNotesComponent },
-  { path: 'projects/project/' + ':id' + '/bill-of-quantities', component: BoqsComponent },
-  { path: 'projects/project/' + ':id' + '/deliverables', component: ProjectDevliverablesComponent },
-  { path: 'projects/project/' + ':id' + '/invoices', component: InvoicesComponent },
-  { path: 'sales/bids/all', component: BidsComponent },
-  { path: 'sales/deals/all', component: DealsComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'projects/project/' + ':id', component: ProjectDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'projects/project/' + ':id' + '/notes', component: ProjectNotesComponent, canActivate: [AuthGuard] },
+  { path: 'projects/project/' + ':id' + '/bill-of-quantities', component: BoqsComponent, canActivate: [AuthGuard] },
+  { path: 'projects/project/' + ':id' + '/deliverables', component: ProjectDevliverablesComponent, canActivate: [AuthGuard] },
+  { path: 'projects/project/' + ':id' + '/invoices', component: InvoicesComponent, canActivate: [AuthGuard] },
+  { path: 'sales/bids/all', component: BidsComponent, canActivate: [AuthGuard] },
+  { path: 'sales/deals/all', component: DealsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 ];
 
