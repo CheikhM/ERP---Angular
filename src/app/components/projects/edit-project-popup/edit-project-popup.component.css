@@ -7,3 +7,7 @@
   cursor: pointer;
   z-index: 999;
 }
+
+::ng-deep .mat-input-underline {
+  display: none;
+}

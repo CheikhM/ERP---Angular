@@ -191,7 +191,60 @@ tr.white-bg:hover {
 }
 /* end of listing style */
 
+/* project details */
+.details .header {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.details .delete-icon, .details .return-icon {
+  width: 35px;
+  cursor: pointer;
+}
+.details .return-icon {
+  height: 27px;
+  width: 35px;
+}
 
+.details input[type="text"] {
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: black;
+}
+
+.edit-project input[type="text"] {
+  font-weight: 700;
+  text-align: center;
+  color: black;
+}
+
+.details input[type="text"]:disabled {
+  background: #fff;
+}
+
+.currency-form {
+  position: relative;
+}
+
+.currency-form:before {
+  content: '$';
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: calc(1.5em + .75rem + 2px);
+  background: #e4ebf7;
+  top: 32px;
+  border: 1px solid #ced4da;
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+}
+
+
+/* end of project details */
 .custom-select {
   width: auto;
 }
@@ -207,12 +260,39 @@ tr.white-bg:hover {
   font-weight: 700;
   margin-bottom: 15px;
 }
+
+/*  angular material style start */
+
 .cdk-overlay-container {
   z-index: 9999999;
 }
 .cdk-overlay-pane {
   z-index: 999999!important;
 }
+
+.mat-form-field {
+  display: block!important;
+}
+.mat-form-field-wrapper {
+  border: 1px solid #ced4da !important;
+  border-radius: .25rem !important;
+  height: calc(1.5em + .75rem + 2px) !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #495057 !important;
+  padding: .375rem .75rem !important;
+}
+.mat-form-field-underline {
+  display: none;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0 !important;
+  border-top: 0;
+}
+
+/*  angular material style end */
+
 @media screen and (max-width: 768px){
   .aw-container {
    border-radius: 0;

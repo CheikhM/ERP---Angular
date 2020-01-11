@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 declare var $: any;
+
 @Component({
   selector: 'app-listing-title',
   templateUrl: './listing-title.component.html',
@@ -10,7 +11,6 @@ export class ListingTitleComponent implements OnInit {
 
   @Input()
   data: any;
-
   constructor() {
   }
 
@@ -19,7 +19,10 @@ export class ListingTitleComponent implements OnInit {
 
   AddElement() {
     if (this.data.sTitle === 'Project') {
-      $('#newProject').modal('show');
+      $('#newProject').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
     }
   }
 }

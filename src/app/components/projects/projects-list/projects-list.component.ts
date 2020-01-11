@@ -2,6 +2,7 @@ import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/c
 import {ProjectService} from '../../../services/project.service';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
+import {Project} from '../../../models/project.model';
 
 declare var $: any;
 
@@ -22,6 +23,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   searchText: string;
   private searchTextSub: Subscription;
   private toBeDeletedId: number;
+  manageAction = 'Add Project';
+  projectTobeManaged: Project;
 
   constructor(private projectService: ProjectService,
               private sharedService: SharedService) {
@@ -44,14 +47,21 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
         this.filteredProjects = resp;
       },
       error => // console.log(error),
-      () => {
-      }
+        () => {
+        }
     );
   }
 
   // edit a project with
   editProject(projectID) {
-    // console.log('edit', projectID);
+
+    this.manageAction = 'Edit Project';
+    this.projectTobeManaged = this.projects.find(item => item.id === projectID);
+
+    $('#newProject').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
   }
 
   // soft delete a project
@@ -86,5 +96,10 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
       $('#deleteProjectModal').modal('hide');
     }
+  }
+
+  initManageData() {
+    this.manageAction = 'Add Project';
+    this.projectTobeManaged = Project.getEmptyProject();
   }
 }

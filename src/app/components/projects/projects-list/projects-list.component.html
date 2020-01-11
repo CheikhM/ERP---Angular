@@ -11,5 +11,5 @@
 <!-- end of confim box -->
 
 <!-- new, edit project -->
-<app-edit-project-popup></app-edit-project-popup>
+<app-edit-project-popup [title]="manageAction" [project]="projectTobeManaged" (onExitModal)="initManageData()"></app-edit-project-popup>
 <!-- end popup -->

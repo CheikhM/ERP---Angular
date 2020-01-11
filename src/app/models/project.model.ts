@@ -32,4 +32,19 @@ export class Project {
     return projects;
   }
 
+  static getEmptyProject(): Project {
+    return  {
+      id: null,
+      name: null,
+      startDate: null,
+      endDate: null,
+      status: null,
+      manager: null,
+      code: null,
+      poValue: null,
+      expenses: null,
+      link: null
+    };
+  }
+
 }
