@@ -3,8 +3,12 @@
   text-align: left;
   width: 125px;
 }
+
 .listing-elt .text {
   display: inline-block;
+}
+
+.listing-elt img + .text {
   margin-left: 7px;
 }
 .listing-elt img {
@@ -15,19 +19,23 @@
   .listing-elt {
     width: auto;
     text-align: center;
+    font-size: 12px;
+  }
+  .listing-elt img {
+    width: 12px;
   }
 }
 
 @media screen and (max-width: 570px) {
   .filter {
-
+    display: none;
   }
   span.filter-container {
     display: block;
   }
 
   .listing th {
-    font-size: 14px;
+    font-size: 13px;
   }
   .listing td {
     font-size: 13px;

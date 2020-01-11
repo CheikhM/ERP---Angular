@@ -12,6 +12,7 @@ body {
 .hidden {
   display: none;
 }
+
 .aw-container {
   position: relative;
   background: white;
@@ -122,7 +123,6 @@ select.action {
 /* listing style */
 .listing table {
   width: 100%;
-  text-align: center;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -322,12 +322,21 @@ tr.white-bg:hover {
   .aw-container {
     border-radius: 0;
   }
+  .listing .control img {
+    width: 22px;
+  }
+  .listing td:nth-child(2),
+  .listing th:nth-child(2) {
+     display: none;
+  }
+
   .main-content span.title {
     font-size: 18px;
   }
+
   .main-content .add-icon {
-    width: 30px!important;
-    top: -15px!important;
+    width: 30px !important;
+    top: -15px !important;
   }
 
   .nav-opened .main-panel {
