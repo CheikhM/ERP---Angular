@@ -37,26 +37,37 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
   }
 
   saveProject() {
-
-
     // adding new project
     if (this.title === 'Add Project') {
       this.projectService.newProject(this.projectCopy).subscribe(
         result => {
           if (result['status'] === '200_OK' && result['data'].pid) {
             // tell the project about new data update
+            $('#newProject').modal('hide');
             this.sharedService.setNewUpdate(true);
-            this.toastrService.success('', 'Project Successfully added');
+            this.toastrService.success('', 'Successfully added');
           } else {
             this.toastrService.error('', 'An error was occurred');
           }
         },
         error => this.toastrService.error('', 'An error was occurred'),
-        () => {
-
-        }
+        () => {}
       );
-      $('#newProject').modal('hide');
+    } else if (this.title === 'Edit Project') {
+      this.projectService.updateProject(this.projectCopy).subscribe(
+        result => {
+          if (result['status'] === '200_OK' && result['data'].pid) {
+            $('#newProject').modal('hide');
+            // tell the project about new data update
+            this.sharedService.setNewUpdate(true);
+            this.toastrService.success('', 'Successfully updated');
+          } else {
+            this.toastrService.error('', 'An error was occurred');
+          }
+        },
+        error => this.toastrService.error('', 'An error was occurred'),
+        () => {}
+      );
     }
   }
 

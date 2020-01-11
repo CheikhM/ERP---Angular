@@ -37,4 +37,9 @@ export class ProjectService {
     return this.http.post(Connection.api.projects.newProject, project);
   }
 
+  // edit existing project
+  updateProject(project: Project) {
+    return this.http.post(Connection.api.projects.updateProject, project);
+  }
+
 }
