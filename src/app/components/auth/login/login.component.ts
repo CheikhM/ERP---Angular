@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {Connection} from '../../../config/connection.config';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,10 @@ import {Connection} from '../../../config/connection.config';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
-  loginError = false;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService,
+              private router: Router,
+              private toasterService: ToastrService) {
   }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', result.token);
           location.reload();
         } else {
-          this.loginError = true;
+          this.toasterService.error('Please try again...', 'Credentials error');
         }
       }
     );

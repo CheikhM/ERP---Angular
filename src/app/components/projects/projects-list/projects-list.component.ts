@@ -3,6 +3,7 @@ import {ProjectService} from '../../../services/project.service';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {Project} from '../../../models/project.model';
+import {ToastrService} from 'ngx-toastr';
 
 declare var $: any;
 
@@ -27,7 +28,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   projectTobeManaged: Project;
 
   constructor(private projectService: ProjectService,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit() {
@@ -86,9 +88,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
       this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
         // todo check for delete error
-        // console.log(result.status);
+        if (result.status === '200_OK') {
+          this.toastrService.success('', 'Project Successfully deleted');
+        } else {
+          this.toastrService.error('', 'An Error was occurred');
+        }
       }, error => {
-        // console.log('error: ', error);
+        this.toastrService.error('', 'An Error was occurred');
       }, () => {
         this.projects = this.projects.filter(project => project.id !== this.toBeDeletedId);
         this.filteredProjects = this.projects;

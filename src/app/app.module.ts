@@ -30,6 +30,7 @@ import {LoginComponent} from './components/auth/login/login.component';
 import {AuthInterceptor} from './services/auth.interceptor';
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    JwtModule
+    JwtModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     MatDatepickerModule,
