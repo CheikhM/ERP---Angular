@@ -42,4 +42,13 @@ cursor: pointer;
     padding-right: 10px;
     padding-left: 10px;
   }
+  .filter-text {
+    font-size: 18px;
+  }
+  .filter-text img {
+    width: 33px;
+    top: -3px;
+  }
+
+
 }

@@ -322,6 +322,13 @@ tr.white-bg:hover {
   .aw-container {
     border-radius: 0;
   }
+  .main-content span.title {
+    font-size: 18px;
+  }
+  .main-content .add-icon {
+    width: 30px!important;
+    top: -15px!important;
+  }
 
   .nav-opened .main-panel {
     -webkit-transform: translate3d(280px, 0, 0);

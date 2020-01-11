@@ -18,3 +18,9 @@
     width: calc(20% - 1px);
   }
 }
+
+@media screen and (max-width: 570px) {
+  .header-workflow .title {
+    width: 100%;
+  }
+}

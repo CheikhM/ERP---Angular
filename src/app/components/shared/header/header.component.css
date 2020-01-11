@@ -1,8 +1,12 @@
 header {
   height: 150px;
   background: white;
+  overflow-x: hidden;
 }
-
+/* todo remove */
+.config .user-profile {
+  cursor: pointer;
+}
 .config {
   padding: 5px 60px 40px 60px;
 }
@@ -24,7 +28,7 @@ header {
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .config {
     padding: 5px 10px 20px 10px;
   }
@@ -34,5 +38,12 @@ header {
   }
   .side-bar-toggle img {
     visibility: visible;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  header {
+    height: auto;
+    padding-bottom: 15px;
   }
 }

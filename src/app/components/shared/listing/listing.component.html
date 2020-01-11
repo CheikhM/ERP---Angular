@@ -14,7 +14,10 @@
     </tr>
     <tr *ngFor="let object of contents" class="list-element">
       <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]" (click)="setCurrentListingObject(object)">
-        {{ object[meta.attribute] }}
+        <span class="listing-elt">
+          <img *ngIf="meta.text === 'Status'" src="/assets/images/listing/{{ object['status'].toLowerCase().split(' ').join('') }}.svg"  />
+          <span class="text">{{ object[meta.attribute] }}</span>
+        </span>
       </td>
       <td class="control">
         <img (click)="editElement(object.id)" src="/assets/images/listing/edit-icon.svg" alt="" class="edit" />

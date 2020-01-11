@@ -81,4 +81,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     $('body').addClass('nav-opened');
     $('.close-layer').show();
   }
+
+  logOut() {
+    localStorage.removeItem('token');
+    window.location.replace('/login');
+  }
 }

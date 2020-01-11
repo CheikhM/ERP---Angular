@@ -8,3 +8,19 @@
   margin-top: 0;
   float: right;
 }
+
+@media screen and (max-width: 768px) {
+  .listing-details th:nth-child(3),
+  .listing-details th:nth-child(4),
+  .listing-details th:nth-child(6),
+  .listing-details th:nth-child(9),
+  .listing-details th:nth-child(10),
+  .listing-details td:nth-child(3),
+  .listing-details td:nth-child(4),
+  .listing-details td:nth-child(6),
+  .listing-details td:nth-child(9),
+  .listing-details td:nth-child(10)
+  {
+    display: none;
+  }
+}
