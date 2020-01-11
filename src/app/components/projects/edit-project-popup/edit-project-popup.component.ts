@@ -1,5 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Project} from '../../../models/project.model';
+import {ProjectService} from '../../../services/project.service';
+import {ToastrService} from 'ngx-toastr';
+import {SharedService} from '../../../services/shared.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-edit-project-popup',
@@ -16,7 +21,9 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
 
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {
+  constructor(private projectService: ProjectService,
+              private toastrService: ToastrService,
+              private sharedService: SharedService) {
   }
 
   ngOnInit() {
@@ -25,15 +32,32 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.project) {
-      console.log('changed ');
-      this.projectCopy = { ...this.project };
+      this.projectCopy = {...this.project};
     }
   }
 
   saveProject() {
-    console.log('p & pc: ');
-    console.log('p: ', this.project);
-    console.log('pc: ',  this.projectCopy);
+
+
+    // adding new project
+    if (this.title === 'Add Project') {
+      this.projectService.newProject(this.projectCopy).subscribe(
+        result => {
+          if (result['status'] === '200_OK' && result['data'].pid) {
+            // tell the project about new data update
+            this.sharedService.setNewUpdate(true);
+            this.toastrService.success('', 'Project Successfully added');
+          } else {
+            this.toastrService.error('', 'An error was occurred');
+          }
+        },
+        error => this.toastrService.error('', 'An error was occurred'),
+        () => {
+
+        }
+      );
+      $('#newProject').modal('hide');
+    }
   }
 
   restoreModal() {

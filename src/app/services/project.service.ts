@@ -27,9 +27,14 @@ export class ProjectService {
     return this.http.get(Connection.api.delete.get + '?id=' + id);
   }
 
-
-  getProjectByID(id: number): Observable <any> {
+  // get a project by id
+  getProjectByID(id: number): Observable<any> {
     return this.http.get(Connection.api.projects.getSingle + '?id=' + id);
+  }
+
+  // add new project
+  newProject(project: Project) {
+    return this.http.post(Connection.api.projects.newProject, project);
   }
 
 }

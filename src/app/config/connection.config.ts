@@ -7,7 +7,8 @@ export class Connection {
     return {
       projects: {
         getAll: this.apiProject + 'projects/all',
-        getSingle: this.apiProject + 'projects/project'
+        getSingle: this.apiProject + 'projects/project',
+        newProject: this.apiProject + 'projects/new'
       },
       delete: {
         get: this.apiProject + 'projects/delete'

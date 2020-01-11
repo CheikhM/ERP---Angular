@@ -8,6 +8,7 @@ export class SharedService {
   private searchText = new BehaviorSubject('');
   private workflowID = new BehaviorSubject(0);
   private CurrentListingElement = new BehaviorSubject(null);
+  private newUpdate = new BehaviorSubject(false);
 
   constructor() {
   }
@@ -37,6 +38,15 @@ export class SharedService {
 
   public setworkflowID(id: number) {
     this.workflowID.next(id);
+  }
+
+  // setters and getters for the workflow ID
+  public getNewUpdate() {
+    return this.newUpdate.asObservable();
+  }
+
+  public setNewUpdate(update: boolean) {
+    this.newUpdate.next(update);
   }
 
 }

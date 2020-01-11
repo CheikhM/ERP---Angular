@@ -20,7 +20,7 @@
               <div class="form-group">
                 <label>Start Date</label>
                 <mat-form-field>
-                  <input  matInput [matDatepicker]="pickerStartDate" type="text" [(ngModel)]="projectCopy.startDate" />
+                  <input  matInput [matDatepicker]="pickerStartDate" type="text" [(ngModel)]="projectCopy.startDate" (focus)="pickerStartDate.open()"/>
                   <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
                   <mat-datepicker #pickerStartDate></mat-datepicker>
                 </mat-form-field>
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <label>End Date</label>
                 <mat-form-field>
-                  <input matInput [matDatepicker]="pickerEndDate" type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" [(ngModel)]="projectCopy.endDate" />
+                  <input matInput [matDatepicker]="pickerEndDate" type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" [(ngModel)]="projectCopy.endDate" (focus)="pickerEndDate.open()" />
                   <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
                   <mat-datepicker #pickerEndDate></mat-datepicker>
                 </mat-form-field>

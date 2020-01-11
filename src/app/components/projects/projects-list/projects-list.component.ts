@@ -26,6 +26,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   private toBeDeletedId: number;
   manageAction = 'Add Project';
   projectTobeManaged: Project;
+  newUpdateSub: Subscription;
 
   constructor(private projectService: ProjectService,
               private sharedService: SharedService,
@@ -39,6 +40,9 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this.searchTextSub = this.sharedService.getSearchText().subscribe(item => {
       this.searchProject(item);
     });
+
+    // check for new update
+    this.newUpdateSub = this.sharedService.getNewUpdate().subscribe(update => this.getAllProjects());
   }
 
   // get all projects
@@ -72,9 +76,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     $('#deleteProjectModal').modal('show');
   }
 
-  ngOnDestroy(): void {
-    this.searchTextSub.unsubscribe();
-  }
 
   // search project by name
   private searchProject(text: string) {
@@ -89,7 +90,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
         // todo check for delete error
         if (result.status === '200_OK') {
-          this.toastrService.success('', 'Project Successfully deleted');
+          this.toastrService.success('', 'Successfully deleted');
         } else {
           this.toastrService.error('', 'An Error was occurred');
         }
@@ -107,5 +108,10 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   initManageData() {
     this.manageAction = 'Add Project';
     this.projectTobeManaged = Project.getEmptyProject();
+  }
+
+  ngOnDestroy(): void {
+    this.searchTextSub.unsubscribe();
+    this.newUpdateSub.unsubscribe();
   }
 }
