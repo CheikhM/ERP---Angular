@@ -4,6 +4,8 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 
+declare var $: any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -73,5 +75,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         sTitle: 'Project'
       };
     }
+  }
+
+  toggleSideBar() {
+    $('body').addClass('nav-opened');
+    $('.close-layer').show();
   }
 }

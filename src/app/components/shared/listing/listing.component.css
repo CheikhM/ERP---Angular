@@ -1,0 +1,18 @@
+
+
+
+@media screen and (max-width: 570px) {
+  .filter {
+
+  }
+  span.filter-container {
+    display: block;
+  }
+
+  .listing th {
+    font-size: 14px;
+  }
+  .listing td {
+    font-size: 13px;
+  }
+}

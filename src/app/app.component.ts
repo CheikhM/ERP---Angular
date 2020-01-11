@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './services/auth.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,4 +21,9 @@ export class AppComponent implements OnInit {
   }
 
 
+  closeNavBar() {
+    $('body').removeClass('nav-opened');
+    $('.close-layer').hide();
+
+  }
 }
