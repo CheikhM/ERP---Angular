@@ -54,6 +54,12 @@
 .elements .name + .arrow {
   float: right;
   width: 12px;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  -ms-transition: -ms-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
 }
 
 img.icon {
@@ -64,6 +70,12 @@ img.icon {
 
 .collapsed + .sub-elements {
   display: none;
+}
+
+.collapse .arrow {
+  transform: none !important;
+  -ms-transform: none !important;
+  -webkit-transform: none !important;
 }
 
 @media screen and (max-width: 991px) {

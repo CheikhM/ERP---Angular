@@ -20,7 +20,7 @@
   position: absolute;
   width: 30px;
   top: -10px;
-  right: 15px;
+  right: 12px;
 }
 
 .note .date {
@@ -31,23 +31,42 @@
 }
 
 .note .text {
+  width: 100%;
   height: 135px;
   overflow: auto;
   font-weight: 600;
+  border: none;
+  resize: none;
 }
 
 .note h5 {
-  margin-top: 20px;
   color: #89d38b;
+  margin-top: 12px;
 }
 
-.note .vertical-ellipsis {
-  width: 15px;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  cursor: pointer;
+.note .remove-icon:hover {
+  opacity: 1;
 }
+
+.note .remove-icon {
+  width: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  cursor: pointer;
+  opacity: 0.3;
+}
+.note .save-icon {
+  opacity: 0;
+  width: 30px;
+  bottom: 7px;
+  right: 12px;
+}
+
+.blinker {
+  animation: blinker 1s linear infinite;
+}
+
 
 .col-4 {
   padding: 0;

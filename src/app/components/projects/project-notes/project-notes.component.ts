@@ -9,6 +9,7 @@ import {SharedService} from '../../../services/shared.service';
 })
 export class ProjectNotesComponent implements OnInit {
   currentProjectID: number;
+  newNoteText = '';
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService) {
