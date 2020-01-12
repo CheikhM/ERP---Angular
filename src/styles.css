@@ -349,7 +349,7 @@ tr.white-bg:hover {
   }
 
   .nav-opened .wrapper {
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .nav-opened .side-bar-toggle img {
