@@ -51,7 +51,8 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
           }
         },
         error => this.toastrService.error('', 'An error was occurred'),
-        () => {}
+        () => {
+        }
       );
     } else if (this.title === 'Edit Project') {
       this.projectService.updateProject(this.projectCopy).subscribe(
@@ -66,7 +67,8 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
           }
         },
         error => this.toastrService.error('', 'An error was occurred'),
-        () => {}
+        () => {
+        }
       );
     }
   }

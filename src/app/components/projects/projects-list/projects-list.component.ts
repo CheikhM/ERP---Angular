@@ -38,7 +38,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
     // search project
     this.searchTextSub = this.sharedService.getSearchText().subscribe(item => {
-      this.searchProject(item);
+      this.searchProject(item.toLocaleLowerCase());
     });
 
     // check for new update
@@ -80,7 +80,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   // search project by name
   private searchProject(text: string) {
     if (this.projects) {
-      this.filteredProjects = this.projects.filter(project => project.name.includes(text));
+      this.filteredProjects = this.projects.filter(project => project.name.toLowerCase().includes(text));
     }
   }
 

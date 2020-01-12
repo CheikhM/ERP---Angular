@@ -45,9 +45,13 @@
           <input class="form-control" type="text" value="{{ project?.link }}" disabled />
         </div>
         <div class="submit">
-          <input class="btn btn-success" type="submit" value="Edit project" />
+          <input class="btn btn-success" type="submit" value="Edit project" (click)="triggerProjectEdit()" />
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- new, edit project -->
+<app-edit-project-popup [title]="'Edit Project'" [project]="project"></app-edit-project-popup>
+<!-- end popup -->

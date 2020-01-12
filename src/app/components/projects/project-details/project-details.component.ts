@@ -5,6 +5,8 @@ import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../../../services/project.service';
 import {Project} from '../../../models/project.model';
 
+declare var $: any;
+
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
@@ -14,8 +16,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   currentProjectID: number;
   currentProjectSub = new Subscription();
-  project: Project;
 
+  project: Project = Project.getEmptyProject();
+  newUpdateSub: Subscription;
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
@@ -29,12 +32,16 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrentProject();
+
+    // check for new update
+    this.newUpdateSub = this.sharedService.getNewUpdate().subscribe(update => this.getCurrentProject(true));
   }
 
 
   private getCurrentProject(remote = null) {
     // if no current project was found
-    if (remote) {
+    // todo replace true with "remote"
+    if (true) {
       this.projectService.getProjectByID(this.currentProjectID).subscribe(
         result => {
           if (result.status === '200_OK') {
@@ -57,9 +64,14 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentProjectSub.unsubscribe();
+    this.newUpdateSub.unsubscribe();
   }
 
   deleteElement(id: number) {
     // console.log(id);
+  }
+
+  triggerProjectEdit() {
+    $('#newProject').modal('show');
   }
 }

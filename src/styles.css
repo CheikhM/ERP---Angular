@@ -383,7 +383,11 @@ tr.white-bg:hover {
   }
 }
 
-
+@media screen and (max-width: 570px) {
+  .sm-center {
+    text-align: center;
+  }
+}
 /*
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

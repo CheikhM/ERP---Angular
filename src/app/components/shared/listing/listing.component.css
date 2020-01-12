@@ -18,8 +18,11 @@
 @media screen and (max-width: 768px) {
   .listing-elt {
     width: auto;
-    text-align: center;
     font-size: 12px;
+  }
+
+  .listing-elt.with-status {
+    text-align: center;
   }
   .listing-elt img {
     width: 12px;
@@ -27,6 +30,10 @@
 }
 
 @media screen and (max-width: 570px) {
+  .with-status .text {
+    min-width: 70px;
+  }
+
   .filter {
     display: none;
   }
