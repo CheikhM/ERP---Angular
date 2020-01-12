@@ -11,6 +11,9 @@ export class Connection {
         newProject: this.apiProject + 'projects/new',
         updateProject: this.apiProject + 'projects/update'
       },
+      notes: {
+        getAll: this.apiProject + 'notes/all'
+      },
       delete: {
         get: this.apiProject + 'projects/delete'
       },

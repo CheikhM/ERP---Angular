@@ -48,19 +48,27 @@
   opacity: 1;
 }
 
-.note .remove-icon {
+.note .remove-icon, .note .save-icon {
   width: 30px;
   position: absolute;
   bottom: 0;
   right: 5px;
   cursor: pointer;
-  opacity: 0.3;
 }
+
+.note .remove-icon {
+  opacity: 0.3;
+  display: none;
+}
+
 .note .save-icon {
-  opacity: 0;
-  width: 30px;
   bottom: 7px;
   right: 12px;
+  display: none;
+}
+
+.save-icon.visible, .remove-icon.visible {
+  display: initial !important;
 }
 
 .blinker {
