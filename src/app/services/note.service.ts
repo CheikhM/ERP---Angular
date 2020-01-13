@@ -22,4 +22,9 @@ export class NoteService {
     );
   }
 
+  // add new note
+  newNote(note: Note) {
+    return this.http.post(Connection.api.notes.newNote, note, {responseType: 'json'});
+  }
+
 }

@@ -3,6 +3,7 @@ import {Project} from '../../../models/project.model';
 import {ProjectService} from '../../../services/project.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
+import {NgModel} from '@angular/forms';
 
 declare var $: any;
 
@@ -75,5 +76,15 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
 
   restoreModal() {
     this.onExitModal.emit(true);
+  }
+
+  isEmpty(model: NgModel) {
+    console.log(model.errors);
+
+    return this.isNotValid(model) && model.errors.required;
+  }
+
+  isNotValid(model: NgModel) {
+    return model.invalid && (model.dirty || model.touched);
   }
 }

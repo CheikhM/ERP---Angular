@@ -3,6 +3,9 @@ import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {NoteService} from '../../../services/note.service';
 import {Note} from '../../../models/note.model';
+import {ToastrService} from 'ngx-toastr';
+
+declare var $: any;
 
 @Component({
   selector: 'app-project-notes',
@@ -13,12 +16,14 @@ import {Note} from '../../../models/note.model';
 export class ProjectNotesComponent implements OnInit {
   currentProjectID: number;
   newNoteText = '';
+  newNote: boolean;
   notes: any;
   filteredNotes: any;
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService,
-              private noteService: NoteService) {
+              private noteService: NoteService,
+              private toastService: ToastrService) {
   }
 
   ngOnInit() {
@@ -48,7 +53,42 @@ export class ProjectNotesComponent implements OnInit {
     return originNote.text !== note.text;
   }
 
-  private cloneDate() {
-    this.filteredNotes = [...this.notes];
+  addNewNote() {
+    const note = Note.getEmptyNote();
+    note.text = this.newNoteText;
+    note.type = 1;
+    note.typeID = this.currentProjectID;
+    this.noteService.newNote(note).subscribe(
+      res => {
+        if (res['status'] === '200_OK') {
+          this.toastService.success('', 'Successfully added');
+          this.notes.push(note);
+          this.filteredNotes.push(note);
+        } else {
+          this.toastService.error('', 'Error occurred');
+        }
+      },
+      error => {
+        this.toastService.error('', 'Error occurred');
+      },
+      () => {
+        this.newNote = false;
+        this.newNoteText = '';
+      }
+    );
+  }
+
+  toggleNewNote() {
+    if (!this.newNote) {
+      this.newNote = true;
+    }
+
+    setTimeout(() => {
+      $('#newNote').focus();
+    }, 30);
+  }
+
+  enableIt() {
+    alert('ff');
   }
 }

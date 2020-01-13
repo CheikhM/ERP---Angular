@@ -39,6 +39,11 @@
   resize: none;
 }
 
+.note .text[readonly="readonly"] {
+  outline: none;
+  cursor: default;
+}
+
 .note h5 {
   color: #89d38b;
   margin-top: 12px;

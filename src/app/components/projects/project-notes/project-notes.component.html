@@ -1,4 +1,4 @@
-<app-details-title [canAdd]="true" [title]="'Notes'"></app-details-title>
+<app-details-title [canAdd]="true" [title]="'Notes'" (onClickAdd)="toggleNewNote()"></app-details-title>
 <div class="listing">
   <select class="custom-select">
     <option>LAST UPDATE</option>
@@ -6,29 +6,31 @@
   </select>
 
   <div class="notes-list">
-    <div class="note new-note" *ngIf="true">
-      <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
-      <div class="date">JAN-12-2019</div>
-      <div class="content">
-        <h5>OWNER</h5>
-        <textarea class="text" placeholder="Write your note here..." [(ngModel)]="newNoteText"></textarea>
-      </div>
-      <img class="save-icon blinker" src="/assets/images/general/save.svg"
-           [ngClass]="{'visible': newNoteText.length >= 3}" alt=""/>
-    </div>
-
     <div class="note" *ngFor="let note of filteredNotes">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
       <div class="date">{{ note.lastUpdate }}</div>
       <div class="content">
         <h5>{{ note.writer }}</h5>
-        <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text"></textarea>
+        <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text" readonly="readonly"></textarea>
       </div>
       <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
            [ngClass]="{'visible': isChanged(note)}"/>
       <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}"
            alt=""/>
     </div>
+
+    <!-- to add new note -->
+    <div class="note new-note" *ngIf="newNote">
+      <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
+      <div class="date">{{ 'currentTime' }}</div>
+      <div class="content">
+        <h5>{{ 'currentUser' }}</h5>
+        <textarea class="text" id="newNote" placeholder="Write your note here..." [(ngModel)]="newNoteText"></textarea>
+      </div>
+      <img class="save-icon blinker" src="/assets/images/general/save.svg"
+           [ngClass]="{'visible': newNoteText.length >= 3}" alt="" (click)="addNewNote()"/>
+    </div>
+    <!-- to add new note -->
 
   </div>
 </div>

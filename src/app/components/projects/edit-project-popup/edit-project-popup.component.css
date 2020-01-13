@@ -11,3 +11,34 @@
 ::ng-deep .mat-input-underline {
   display: none;
 }
+
+.form-group {
+  position: relative;
+}
+
+.to-verify .message {
+  display: block!important;
+  width: 100%;
+  position: absolute;
+  bottom: -16px;
+  font-size: 11px;
+  font-style: italic;
+  text-align: right;
+  color: red;
+}
+
+.form-group .message {
+  display: none;
+}
+
+.to-verify input {
+  border-color: red;
+}
+
+.to-verify.currency-form:before {
+  border-right-color: red;
+}
+
+.to-verify div.mat-form-field-wrapper {
+  border-color: red !important;
+}

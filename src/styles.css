@@ -232,7 +232,7 @@ tr.white-bg:hover {
   color: black;
 }
 
-.edit-project input[type="text"] {
+.edit-project input[type="text"], .edit-project input[type="number"]  {
   font-weight: 700;
   text-align: center;
   color: black;
