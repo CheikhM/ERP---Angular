@@ -28,6 +28,12 @@ header {
   cursor: pointer;
 }
 
+@media screen and (max-width: 991px) {
+  .side-bar-toggle img {
+    visibility: visible;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .config {
     padding: 5px 10px 20px 10px;
@@ -36,14 +42,11 @@ header {
     padding-right: 10px;
     padding-left: 10px;
   }
-  .side-bar-toggle img {
-    visibility: visible;
-  }
 }
 
 @media screen and (max-width: 570px) {
   header {
     height: auto;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
   }
 }
