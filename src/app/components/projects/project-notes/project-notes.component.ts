@@ -55,7 +55,7 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
   }
 
   isChanged(note: Note) {
-    let originNote = this.notes.find(item => item.id === note.id);
+    const originNote = this.notes.find(item => item.id === note.id);
     return originNote.text !== note.text;
   }
 
@@ -63,6 +63,9 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
     const note = Note.getEmptyNote();
     note.text = this.newNoteText;
     note.type = 1;
+    note.createdAt = new Date();
+    note.lastUpdate = new Date();
+    console.log(this.currentUser);
     if (this.currentUser) {
       note.writer = this.currentUser.name;
     }
@@ -78,6 +81,7 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
         }
       },
       error => {
+        console.log(error);
         this.toastService.error('', 'Error occurred');
       },
       () => {
@@ -94,9 +98,9 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       $('#newNote').focus();
-/*      $('#newNote').on('blur', () => {
-        this.newNote = false;
-      });*/
+      /*      $('#newNote').on('blur', () => {
+              this.newNote = false;
+            });*/
     }, 30);
   }
 

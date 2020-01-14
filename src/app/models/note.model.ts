@@ -4,8 +4,8 @@ export class Note {
   type: number;
   typeID: number;
   text: string;
-  lastUpdate: string;
-  createdAt: string;
+  lastUpdate: Date;
+  createdAt: Date;
 
   constructor(data: any) {
     this.id = data.id;
