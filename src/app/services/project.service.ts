@@ -37,6 +37,12 @@ export class ProjectService {
     return this.http.post(Connection.api.projects.newProject, project);
   }
 
+  // add new invoice todo validate
+  newInvoice(invoice: any) {
+    return this.http.post(Connection.api.projects.newInvoice, invoice);
+  }
+
+
   // edit existing project
   updateProject(project: Project) {
     return this.http.post(Connection.api.projects.updateProject, project);

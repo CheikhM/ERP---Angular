@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgModel} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {ProjectService} from '../../../../services/project.service';
 
 @Component({
   selector: 'app-edit-invoice',
@@ -13,13 +15,15 @@ export class EditInvoiceComponent implements OnInit {
 
   noteCopy: any = {
     id: null,
-    project_id: this.projectID,
+    project_id: null,
     bill_num: null,
     amount: null,
     date: null
   };
 
-  constructor() {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService) {
+
   }
 
   ngOnInit() {
@@ -34,6 +38,8 @@ export class EditInvoiceComponent implements OnInit {
   }
 
   projectAction() {
-    console.log(this.noteCopy);
+    this.noteCopy.project_id = this.projectID;
+
+    this.projectService.newInvoice(this.noteCopy).subscribe(result => console.log(result));
   }
 }
