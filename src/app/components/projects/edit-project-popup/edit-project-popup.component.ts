@@ -79,8 +79,6 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
   }
 
   isEmpty(model: NgModel) {
-    console.log(model.errors);
-
     return this.isNotValid(model) && model.errors.required;
   }
 

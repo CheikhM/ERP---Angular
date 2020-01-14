@@ -3,6 +3,8 @@ import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {Connection} from '../../../config/connection.config';
 import {ToastrService} from 'ngx-toastr';
+import {SharedService} from '../../../services/shared.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private toasterService: ToastrService) {
+              private toasterService: ToastrService,
+              private sharedService: SharedService,
+              public jwtHelper: JwtHelperService
+  ) {
   }
 
   ngOnInit() {

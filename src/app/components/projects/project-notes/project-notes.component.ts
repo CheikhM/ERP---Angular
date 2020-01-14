@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {NoteService} from '../../../services/note.service';
 import {Note} from '../../../models/note.model';
 import {ToastrService} from 'ngx-toastr';
+import {Subscription} from 'rxjs';
 
 declare var $: any;
 
@@ -13,12 +14,15 @@ declare var $: any;
   styleUrls: ['./project-notes.component.css']
 })
 
-export class ProjectNotesComponent implements OnInit {
+export class ProjectNotesComponent implements OnInit, OnDestroy {
   currentProjectID: number;
   newNoteText = '';
   newNote: boolean;
   notes: any;
   filteredNotes: any;
+  private toBeDeletedId: number;
+  currentUser: any;
+  private currentUserSub: Subscription;
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService,
@@ -31,6 +35,8 @@ export class ProjectNotesComponent implements OnInit {
     this.sharedService.setworkflowID(this.currentProjectID);
 
     this.listAllNotes();
+
+    this.currentUserSub = this.sharedService.getCurrentUser().subscribe(user => this.currentUser = user);
   }
 
   // get all projects
@@ -49,7 +55,7 @@ export class ProjectNotesComponent implements OnInit {
   }
 
   isChanged(note: Note) {
-    const originNote = this.notes.find(item => item.id === note.id);
+    let originNote = this.notes.find(item => item.id === note.id);
     return originNote.text !== note.text;
   }
 
@@ -57,6 +63,9 @@ export class ProjectNotesComponent implements OnInit {
     const note = Note.getEmptyNote();
     note.text = this.newNoteText;
     note.type = 1;
+    if (this.currentUser) {
+      note.writer = this.currentUser.name;
+    }
     note.typeID = this.currentProjectID;
     this.noteService.newNote(note).subscribe(
       res => {
@@ -85,10 +94,42 @@ export class ProjectNotesComponent implements OnInit {
 
     setTimeout(() => {
       $('#newNote').focus();
+/*      $('#newNote').on('blur', () => {
+        this.newNote = false;
+      });*/
     }, 30);
   }
 
-  enableIt() {
-    alert('ff');
+
+  confirmNoteDelete(action: boolean) {
+    if (!action || !this.toBeDeletedId) {
+      return;
+    }
+    this.noteService.deleteNote(this.toBeDeletedId).subscribe(
+      res => {
+        if (res.status === '200_OK') {
+          this.toastService.success('', 'Successfully deleted');
+        } else {
+          this.toastService.error('', 'An Error was occurred');
+        }
+      },
+      error => this.toastService.error('', 'An Error was occurred'),
+      () => {
+        this.notes = this.notes.filter(note => note.id !== this.toBeDeletedId);
+        this.filteredNotes = this.filteredNotes.filter(note => note.id !== this.toBeDeletedId);
+        $('#deleteNoteModal').modal('hide');
+
+      }
+    );
+  }
+
+  deleteNote(noteID: number) {
+    // soft delete a project
+    this.toBeDeletedId = noteID;
+    $('#deleteNoteModal').modal('show');
+  }
+
+  ngOnDestroy(): void {
+    this.currentUserSub.unsubscribe();
   }
 }

@@ -24,7 +24,7 @@ export class ProjectService {
 
   // delete a project using the project id
   deleteProject(id: number): Observable<any> {
-    return this.http.get(Connection.api.delete.get + '?id=' + id);
+    return this.http.get(Connection.api.projects.delete + '?id=' + id);
   }
 
   // get a project by id

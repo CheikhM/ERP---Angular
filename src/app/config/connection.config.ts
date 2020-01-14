@@ -9,14 +9,13 @@ export class Connection {
         getAll: this.apiProject + 'projects/all',
         getSingle: this.apiProject + 'projects/project',
         newProject: this.apiProject + 'projects/new',
-        updateProject: this.apiProject + 'projects/update'
+        updateProject: this.apiProject + 'projects/update',
+        delete: this.apiProject + 'projects/delete'
       },
       notes: {
         getAll: this.apiProject + 'notes/all',
         newNote: this.apiProject + 'notes/new',
-      },
-      delete: {
-        get: this.apiProject + 'projects/delete'
+        delete: this.apiProject + 'notes/delete'
       },
       auth: {
         login: this.apiProject + 'auth/login'

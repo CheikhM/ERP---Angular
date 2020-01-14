@@ -2,7 +2,7 @@
 <div class="listing">
   <select class="custom-select">
     <option>LAST UPDATE</option>
-    <option>A-z</option>
+    <option>CREATED AT</option>
   </select>
 
   <div class="notes-list">
@@ -15,16 +15,16 @@
       </div>
       <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
            [ngClass]="{'visible': isChanged(note)}"/>
-      <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}"
+      <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}" (click)="deleteNote(note.id)"
            alt=""/>
     </div>
 
     <!-- to add new note -->
     <div class="note new-note" *ngIf="newNote">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
-      <div class="date">{{ 'currentTime' }}</div>
+      <div class="date">{{ 'now' }}</div>
       <div class="content">
-        <h5>{{ 'currentUser' }}</h5>
+        <h5>{{ currentUser?.name }}</h5>
         <textarea class="text" id="newNote" placeholder="Write your note here..." [(ngModel)]="newNoteText"></textarea>
       </div>
       <img class="save-icon blinker" src="/assets/images/general/save.svg"
@@ -34,3 +34,8 @@
 
   </div>
 </div>
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteNoteModal'" [deleteTitle]="'Delete note'" (confirmAction)="confirmNoteDelete($event)"></app-confirm-box>
+<!-- end of confim box -->

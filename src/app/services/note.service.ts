@@ -27,4 +27,9 @@ export class NoteService {
     return this.http.post(Connection.api.notes.newNote, note, {responseType: 'json'});
   }
 
+  // delete a project using the project id
+  deleteNote(id: number): Observable<any> {
+    return this.http.get(Connection.api.notes.delete + '?id=' + id);
+  }
+
 }

@@ -88,7 +88,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     if (action && this.toBeDeletedId) {
 
       this.projectService.deleteProject(this.toBeDeletedId).subscribe(result => {
-        // todo check for delete error
         if (result.status === '200_OK') {
           this.toastrService.success('', 'Successfully deleted');
         } else {

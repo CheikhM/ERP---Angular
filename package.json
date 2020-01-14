@@ -25,6 +25,7 @@
     "bootstrap": "^4.4.1",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
+    "jwt-decode": "^2.2.0",
     "ngx-toastr": "^11.3.0",
     "popper.js": "^1.14.3",
     "rxjs": "~6.4.0",

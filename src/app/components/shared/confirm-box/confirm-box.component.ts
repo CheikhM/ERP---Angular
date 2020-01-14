@@ -12,6 +12,9 @@ export class ConfirmBoxComponent implements OnInit {
 
   @Output() confirmAction: EventEmitter<any> = new EventEmitter();
 
+  @Input()
+  deleteTitle: string;
+
   constructor() {
   }
 
