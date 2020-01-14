@@ -65,7 +65,6 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
     note.type = 1;
     note.createdAt = new Date();
     note.lastUpdate = new Date();
-    console.log(this.currentUser);
     if (this.currentUser) {
       note.writer = this.currentUser.name;
     }
@@ -135,5 +134,34 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentUserSub.unsubscribe();
+  }
+
+  updateNote(note: Note) {
+    note.lastUpdate = new Date();
+    this.noteService.updateNote(note).subscribe(
+      result => {
+        if (result['status'] === '200_OK' && result['data'].nid) {
+          this.toastService.success('', 'Successfully updated');
+          this.notes = this.filteredNotes.map(item => Object.assign({}, item));
+        } else {
+          this.toastService.error('', 'An error was occurred');
+        }
+      },
+      error => this.toastService.error('', 'An error was occurred'),
+      () => {
+      }
+    );
+  }
+
+  sortItems(value) {
+    if (value && value === 'CREATED AT') {
+      this.filteredNotes = this.filteredNotes.sort((a, b) => {
+        return Math.abs(new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      });
+    } else if (value === 'UPDATED AT') {
+      this.filteredNotes = this.filteredNotes.sort((a, b) => {
+        return Math.abs(new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime());
+      });
+    }
   }
 }

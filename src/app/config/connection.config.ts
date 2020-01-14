@@ -15,6 +15,7 @@ export class Connection {
       notes: {
         getAll: this.apiProject + 'notes/all',
         newNote: this.apiProject + 'notes/new',
+        updateNote: this.apiProject + 'notes/update',
         delete: this.apiProject + 'notes/delete'
       },
       auth: {

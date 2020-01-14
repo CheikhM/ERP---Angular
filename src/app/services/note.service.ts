@@ -32,4 +32,9 @@ export class NoteService {
     return this.http.get(Connection.api.notes.delete + '?id=' + id);
   }
 
+
+  // edit existing note
+  updateNote(note: Note) {
+    return this.http.post(Connection.api.notes.updateNote, note);
+  }
 }

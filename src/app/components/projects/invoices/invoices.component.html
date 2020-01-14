@@ -1,4 +1,4 @@
-<app-details-title [canAdd]="true" [title]="'Invoices'"></app-details-title>
+<app-details-title [canAdd]="true" [title]="'Invoices'" (onClickAdd)="triggerProjectAction()"></app-details-title>
 <div class="listing listing-details">
   <div class="aw-pagination">
     <span>
@@ -7,7 +7,7 @@
       <span class="circle-sign">></span>
     </span>
   </div>
-  <table>
+  <table class="text-center">
     <tr>
       <th>ID</th>
       <th>Bill No</th>
@@ -21,80 +21,13 @@
       <td>C</td>
       <td>D</td>
       <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction()"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-
   </table>
 </div>
+
+<!-- to add and edit an invoice -->
+<app-edit-invoice [projectID]="currentProjectID"></app-edit-invoice>
+<!-- end -->

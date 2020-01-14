@@ -1,24 +1,23 @@
 <app-details-title [canAdd]="true" [title]="'Notes'" (onClickAdd)="toggleNewNote()"></app-details-title>
 <div class="listing">
-  <select class="custom-select">
-    <option>LAST UPDATE</option>
+  <select class="custom-select" (change)="sortItems($event.target.value)">
+    <option>UPDATED AT</option>
     <option>CREATED AT</option>
   </select>
 
   <div class="notes-list">
     <div class="note" *ngFor="let note of filteredNotes">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
-      <div class="date">{{ note.lastUpdate }}</div>
+      <div class="date">{{ note.lastUpdate | date:'MMM d, y h:m a' }}</div>
       <div class="content">
         <h5>{{ note.writer }}</h5>
         <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text" readonly="readonly"></textarea>
       </div>
       <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
-           [ngClass]="{'visible': isChanged(note)}"/>
+           [ngClass]="{'visible': isChanged(note)}" (click)="updateNote(note)"/>
       <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}" (click)="deleteNote(note.id)"
            alt=""/>
     </div>
-
     <!-- to add new note -->
     <div class="note new-note" *ngIf="newNote">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>

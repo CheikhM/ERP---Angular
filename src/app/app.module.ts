@@ -31,6 +31,7 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
+import { EditInvoiceComponent } from './components/projects/invoices/edit-invoice/edit-invoice.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {ToastrModule} from 'ngx-toastr';
     EditProjectPopupComponent,
     LoginComponent,
     DashboardComponent,
+    EditInvoiceComponent,
   ],
   imports: [
     BrowserModule,
