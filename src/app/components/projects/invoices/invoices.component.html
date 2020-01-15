@@ -22,7 +22,7 @@
       <td>{{ invoice.amount }}</td>
       <td class="control">
         <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction()"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
+        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete" (click)="deleteInvoice(invoice.id)"/>
       </td>
     </tr>
   </table>
@@ -33,3 +33,7 @@
 <!-- end -->
 
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteInvoiceModal'" [deleteTitle]="'Delete invoice'" (confirmAction)="confirmInvoiceDelete($event)"></app-confirm-box>
+<!-- end of confim box -->

@@ -44,8 +44,8 @@ export class ProjectService {
   }
 
   // get the list of all invoices of a given project
-  getAllInvoices(): Observable<Invoice []> {
-    return this.http.get(Connection.api.projects.getAllInvoices).pipe(
+  getAllInvoices(pid): Observable<Invoice []> {
+    return this.http.get(Connection.api.projects.getAllInvoices + '?pid=' + pid).pipe(
       map(response => response), map(invoices => {
         return Invoice.arrayCast(invoices);
       })

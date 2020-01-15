@@ -7,3 +7,7 @@ float: left;
 .content {
   padding-left: 70px;
 }
+button.cancel {
+  background: red;
+  border-color: red;
+}

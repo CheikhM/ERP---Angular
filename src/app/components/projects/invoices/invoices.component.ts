@@ -15,6 +15,7 @@ export class InvoicesComponent implements OnInit {
   private invoices: Invoice[];
   private invoicesCopy: Invoice[];
   p = 1;
+  private toBeDeletedId: number;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {
   }
@@ -32,8 +33,8 @@ export class InvoicesComponent implements OnInit {
     $('#newInvoice').modal('show');
   }
 
-  private getAllInvoices(id: number) {
-    this.projectService.getAllInvoices().subscribe(res => {
+  private getAllInvoices(pid: number) {
+    this.projectService.getAllInvoices(pid).subscribe(res => {
       this.invoices = res;
       this.invoicesCopy = this.invoices.map(item => Object.assign({}, item));
     });
@@ -46,5 +47,20 @@ export class InvoicesComponent implements OnInit {
     }
 
     $('#newInvoice').modal('hide');
+  }
+
+  confirmInvoiceDelete(action: boolean) {
+    if (!action || !this.toBeDeletedId) {
+      return;
+    }
+
+    console.log(this.toBeDeletedId);
+  }
+
+  deleteInvoice(id: number) {
+    this.toBeDeletedId = id;
+
+    $('#deleteInvoiceModal').modal('show');
+
   }
 }
