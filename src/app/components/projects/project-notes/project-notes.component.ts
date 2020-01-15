@@ -73,14 +73,15 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
       res => {
         if (res['status'] === '200_OK') {
           this.toastService.success('', 'Successfully added');
-          this.notes.push(note);
+          note.id = res['data'].nid;
+          console.log(note.id);
           this.filteredNotes.push(note);
+          this.notes = this.filteredNotes.map(item => Object.assign({}, item));
         } else {
           this.toastService.error('', 'Error occurred');
         }
       },
       error => {
-        console.log(error);
         this.toastService.error('', 'Error occurred');
       },
       () => {
