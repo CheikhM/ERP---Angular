@@ -412,6 +412,9 @@ tr.white-bg:hover {
 }
 
 
+.ngx-pagination.ng-star-inserted {
+  float: right !important;
+}
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;

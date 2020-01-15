@@ -6,6 +6,7 @@
 
 .listing-elt .text {
   display: inline-block;
+  white-space: nowrap;
 }
 
 .listing-elt img + .text {

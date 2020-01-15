@@ -1,11 +1,11 @@
 <app-details-title [canAdd]="true" [title]="'Invoices'" (onClickAdd)="triggerProjectAction()"></app-details-title>
 <div class="listing listing-details">
   <div class="aw-pagination">
-    <span>
-      1-5 of 5
+    <!--<span>
+      1-5 of {{ this.invoicesCopy.length }}
       <span class="circle-sign"><</span>
       <span class="circle-sign">></span>
-    </span>
+    </span>-->
   </div>
   <table class="text-center">
     <tr>
@@ -15,11 +15,11 @@
       <th>Value</th>
       <th>Control</th>
     </tr>
-    <tr class="white-bg">
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
+    <tr class="white-bg" *ngFor="let invoice of invoicesCopy | paginate: {itemsPerPage: 7, currentPage: p}">
+      <td>{{ invoice.id }}</td>
+      <td>{{ invoice.billNum }}</td>
+      <td>{{ invoice.date | date:'MMM d, y h:m a' }}</td>
+      <td>{{ invoice.amount }}</td>
       <td class="control">
         <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction()"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
@@ -29,5 +29,7 @@
 </div>
 
 <!-- to add and edit an invoice -->
-<app-edit-invoice [projectID]="currentProjectID"></app-edit-invoice>
+<app-edit-invoice [projectID]="currentProjectID" (newInvoiceAdded)="addNewInvoice($event)"></app-edit-invoice>
 <!-- end -->
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

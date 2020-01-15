@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <label>Start Date</label>
-          <input class="form-control" type="text" value="{{ project?.startDate }}" disabled />
+          <input class="form-control" type="text" value="{{ project?.startDate | date:'MMM d, y h:m a' }}" disabled />
         </div>
         <div class="form-group">
           <label>Status</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
           <label>End Date</label>
-          <input class="form-control" type="text" value="{{ project?.endDate }}" disabled />
+          <input class="form-control" type="text" value="{{ project?.endDate | date:'MMM d, y h:m a'}}" disabled />
         </div>
         <div class="form-group currency-form">
           <label>Expenses</label>

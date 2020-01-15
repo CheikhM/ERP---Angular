@@ -19,7 +19,7 @@
                      [ngClass]="{'to-verify': false }">
                   <label>Bill N.O.</label>
                   <input class="form-control" required type="text"
-                         name="bill_num" [(ngModel)]="noteCopy.bill_num"/>
+                         name="bill_num" [(ngModel)]="invoiceCopy.bill_num"/>
                   <div class="message">
                     <span>field required</span>
                   </div>
@@ -28,7 +28,7 @@
                   <label>Date</label>
                   <mat-form-field>
                     <input matInput [matDatepicker]="pickerStartDate" type="text" name="startDate"
-                           (focus)="pickerStartDate.open()" required [(ngModel)]="noteCopy.date"/>
+                           (focus)="pickerStartDate.open()" required [(ngModel)]="invoiceCopy.date"/>
                     <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
                     <mat-datepicker #pickerStartDate></mat-datepicker>
                   </mat-form-field>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group currency-form" [ngClass]="{'to-verify': false }">
                   <label>Value</label>
-                  <input class="form-control" type="number" step="0.01" required maxlength="20" name="Value" [(ngModel)]="noteCopy.amount" />
+                  <input class="form-control" type="number" step="0.01" required maxlength="20" name="Value" [(ngModel)]="invoiceCopy.amount" />
                   <div class="message">
                     <span>field required & must be a valid number</span>
                   </div>

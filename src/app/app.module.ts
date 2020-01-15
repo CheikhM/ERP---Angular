@@ -32,6 +32,7 @@ import {JWT_OPTIONS, JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
 import { EditInvoiceComponent } from './components/projects/invoices/edit-invoice/edit-invoice.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { EditInvoiceComponent } from './components/projects/invoices/edit-invoic
     MatDatepickerModule,
     MatNativeDateModule,
     JwtModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     MatDatepickerModule,

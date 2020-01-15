@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 
 @Component({
@@ -17,10 +17,19 @@ export class ListingComponent implements OnInit {
   @Output() onEditClick: EventEmitter<any> = new EventEmitter();
   @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
 
+  public innerWidth: any;
+
   constructor(private sharedService: SharedService) {
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
 
   // emit the project id, to be edited
@@ -32,8 +41,22 @@ export class ListingComponent implements OnInit {
   deleteElement(id: number) {
     this.onDeleteClick.emit(id);
   }
+
   // set the current object
   setCurrentListingObject(object: any) {
     this.sharedService.setCurrentListingElement(object);
+  }
+
+  getMaxText() {
+    if (this.innerWidth > 1400) {
+      return 22;
+    }
+    if (this.innerWidth > 1350) {
+      return 18;
+    }
+    if (this.innerWidth > 768) {
+      return 12;
+    }
+    return 12;
   }
 }

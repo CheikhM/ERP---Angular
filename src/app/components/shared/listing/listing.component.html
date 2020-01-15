@@ -1,27 +1,30 @@
 <div class="aw-container listing">
   <div class="listing-icon">
-    <img src="/assets/images/side-bar/icon-project.svg" alt="" />
+    <img src="/assets/images/side-bar/icon-project.svg" alt=""/>
   </div>
   <table>
     <tr>
       <th *ngFor="let meta of metaDefinition" [ngClass]="{'sm-center': meta.text === 'Status'}">
         {{ meta.text }}
         <span class="filter-container">
-            <img class="filter" src="/assets/images/listing/sort.svg" alt="" />
+            <img class="filter" src="/assets/images/listing/sort.svg" alt=""/>
         </span>
       </th>
       <th>control</th>
     </tr>
     <tr *ngFor="let object of contents" class="list-element">
-      <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]" (click)="setCurrentListingObject(object)">
-        <span class="listing-elt" [ngClass]="{'with-status':  meta.text === 'Status'}">
-          <img *ngIf="meta.text === 'Status'" src="/assets/images/listing/{{ object['status'].toLowerCase().split(' ').join('') }}.svg"  />
-          <span class="text">{{ object[meta.attribute] }}</span>
+      <td *ngFor="let meta of metaDefinition" [routerLink]="['/projects/project/' + object.id]"
+          (click)="setCurrentListingObject(object)">
+        <span class="listing-elt" [ngClass]="{'with-status':  meta.text === 'Status', 'pl-string': meta.type === 'PLString'}">
+          <img *ngIf="meta.text === 'Status'"
+               src="/assets/images/listing/{{ object['status'].toLowerCase().split(' ').join('') }}.svg"/>
+          <span
+            class="text">{{ meta.type === 'date' ? (object[meta.attribute] | date: 'MMM d, y') : (object[meta.attribute].length > getMaxText() ? (object[meta.attribute] | slice:0:getMaxText())+'..':(object[meta.attribute])) }}</span>
         </span>
       </td>
       <td class="control">
-        <img (click)="editElement(object.id)" src="/assets/images/listing/edit-icon.svg" alt="" class="edit" />
-        <img (click)="deleteElement(object.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete" />
+        <img (click)="editElement(object.id)" src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
+        <img (click)="deleteElement(object.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
   </table>

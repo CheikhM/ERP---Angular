@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Project} from '../models/project.model';
 import {Connection} from '../config/connection.config';
 import {map} from 'rxjs/operators';
+import {Invoice} from '../models/invoice.model';
 
 
 @Injectable({
@@ -40,6 +41,15 @@ export class ProjectService {
   // add new invoice todo validate
   newInvoice(invoice: any) {
     return this.http.post(Connection.api.projects.newInvoice, invoice);
+  }
+
+  // get the list of all invoices of a given project
+  getAllInvoices(): Observable<Invoice []> {
+    return this.http.get(Connection.api.projects.getAllInvoices).pipe(
+      map(response => response), map(invoices => {
+        return Invoice.arrayCast(invoices);
+      })
+    );
   }
 
 

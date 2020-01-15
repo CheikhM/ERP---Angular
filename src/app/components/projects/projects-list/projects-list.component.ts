@@ -16,10 +16,10 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   projects: any; // original data
   filteredProjects: any; // copy of original data
   metaDefinition = [
-    {text: 'Name', attribute: 'name'},
-    {text: 'Start Date', attribute: 'startDate'},
-    {text: 'End Date', attribute: 'endDate'},
-    {text: 'Status', attribute: 'status'},
+    {text: 'Name', attribute: 'name', type: 'PLString'},
+    {text: 'Start Date', attribute: 'startDate', type: 'date'},
+    {text: 'End Date', attribute: 'endDate', type: 'date'},
+    {text: 'Status', attribute: 'status', type: 'string'},
   ];
   searchText: string;
   private searchTextSub: Subscription;
