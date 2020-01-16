@@ -12,6 +12,7 @@ export class Connection {
         newProject: this.apiProject + 'projects/new',
         updateProject: this.apiProject + 'projects/update',
         delete: this.apiProject + 'projects/delete',
+        deleteInvoice: this.apiProject + 'projects/invoices/delete',
         newInvoice: this.apiProject + 'projects/invoices/new',
       },
       notes: {
@@ -22,6 +23,10 @@ export class Connection {
       },
       auth: {
         login: this.apiProject + 'auth/login'
+      },
+      users: {
+        getAll: this.apiProject + 'users/all',
+        getSingle: this.apiProject + 'users/user',
       }
     };
   }

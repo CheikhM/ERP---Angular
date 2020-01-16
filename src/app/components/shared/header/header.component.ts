@@ -3,9 +3,10 @@ import {Location} from '@angular/common';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
-
+@AutoUnsubscribe()
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -53,9 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.workflowIDSub = this.sharedService.getworkflowID().subscribe(id => this.workflowID = id);
   }
 
-  ngOnDestroy(): void {
-    this.workflowIDSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 
   // todo rework
   private loadHeaderTitlesInfos(path: string) {

@@ -1,19 +1,22 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Project} from '../../../models/project.model';
 import {ProjectService} from '../../../services/project.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {NgModel} from '@angular/forms';
+import {User} from '../../../models/user.model';
+import {AuthService} from '../../../services/auth.service';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
-
+@AutoUnsubscribe()
 @Component({
   selector: 'app-edit-project-popup',
   templateUrl: './edit-project-popup.component.html',
   styleUrls: ['./edit-project-popup.component.css']
 })
 
-export class EditProjectPopupComponent implements OnInit, OnChanges {
+export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   project: Project = Project.getEmptyProject();
   @Input()
@@ -21,14 +24,21 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
   projectCopy: Project;
 
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  managers: User [];
 
   constructor(private projectService: ProjectService,
               private toastrService: ToastrService,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
     this.projectCopy = Project.getEmptyProject();
+    this.getUsers(2);
+  }
+
+  getUsers(role: number) {
+    this.authService.getAllUsers(role).subscribe(result => this.managers = result);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -84,5 +94,8 @@ export class EditProjectPopupComponent implements OnInit, OnChanges {
 
   isNotValid(model: NgModel) {
     return model.invalid && (model.dirty || model.touched);
+  }
+
+  ngOnDestroy(): void {
   }
 }

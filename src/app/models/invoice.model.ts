@@ -31,7 +31,7 @@ export class Invoice {
 
   static revertCast(invoice) {
     invoice.bill_num = invoice.billNum;
-    invoice.project_id = null;
+    invoice.project_id = invoice.projectID;
     delete invoice.billNum;
     delete invoice.projectID;
 

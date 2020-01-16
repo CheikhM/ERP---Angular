@@ -1,43 +1,51 @@
 <app-details-title [canAdd]="true" [title]="'Invoices'" (onClickAdd)="triggerProjectAction()"></app-details-title>
-<div class="listing listing-details">
-  <div class="aw-pagination">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
-    <!--<span>
-      1-5 of {{ this.invoicesCopy.length }}
-      <span class="circle-sign"><</span>
-      <span class="circle-sign">></span>
-    </span>-->
-  </div>
-  <table class="text-center">
-    <tr>
-      <th>ID</th>
-      <th>Bill No</th>
-      <th>Date</th>
-      <th>Value</th>
-      <th>Control</th>
-    </tr>
-    <tr class="white-bg" *ngFor="let invoice of invoicesCopy | paginate: {itemsPerPage: 7, currentPage: p}">
-      <td>{{ invoice.id }}</td>
-      <td>{{ invoice.billNum }}</td>
-      <td>{{ invoice.date | date:'MMM d, y h:m a' }}</td>
-      <td>{{ invoice.amount }}</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction()"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete" (click)="deleteInvoice(invoice.id)"/>
-      </td>
-    </tr>
-  </table>
-  <div class="remaining">
-    <h3>Remaining From Total Value</h3>
-    <div class="value">
-      -12005 54554 5454 5454
+<div class="listing listing-details">
+  <ng-template #noResults>
+    <div class="white-bg no-attached" >
+      There is no invoice attached
     </div>
-  </div>
+  </ng-template>
+  <ng-container *ngIf="invoicesCopy && invoicesCopy.length >0; else noResults">
+    <div class="aw-pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <!--<span>
+        1-5 of {{ this.invoicesCopy.length }}
+        <span class="circle-sign"><</span>
+        <span class="circle-sign">></span>
+      </span>-->
+    </div>
+    <table class="text-center">
+      <tr>
+        <th>ID</th>
+        <th>Bill No</th>
+        <th>Date</th>
+        <th>Value</th>
+        <th>Control</th>
+      </tr>
+      <tr class="white-bg" *ngFor="let invoice of invoicesCopy | paginate: {itemsPerPage: 7, currentPage: p}">
+        <td>{{ invoice.id }}</td>
+        <td>{{ invoice.billNum }}</td>
+        <td>{{ invoice.date | date:'MMM d, y h:m a' }}</td>
+        <td>{{ invoice.amount }}</td>
+        <td class="control">
+          <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction(invoice)"/>
+          <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete" (click)="deleteInvoice(invoice.id)"/>
+        </td>
+      </tr>
+    </table>
+    <div class="remaining">
+      <h3>Remaining From Total Value</h3>
+      <div class="value">
+        -12005 54554 5454 5454
+      </div>
+    </div>
+  </ng-container>
+
 </div>
 
 <!-- to add and edit an invoice -->
-<app-edit-invoice [projectID]="currentProjectID" (newInvoiceAdded)="addNewInvoice($event)"></app-edit-invoice>
+<app-edit-invoice [projectID]="currentProjectID" (newInvoiceAdded)="addNewInvoice($event)" [invoiceCopy]="invoiceTobeEdited"></app-edit-invoice>
 <!-- end -->
 
 <!-- confirm project delete -->

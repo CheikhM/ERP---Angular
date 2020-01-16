@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {Connection} from '../../../config/connection.config';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   username: string;
   password: string;
 
@@ -40,5 +42,7 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+  ngOnDestroy(): void {
   }
 }

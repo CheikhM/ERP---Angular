@@ -52,6 +52,10 @@ export class ProjectService {
     );
   }
 
+  // delete a project using the project id
+  deleteInvoice(id: number): Observable<any> {
+    return this.http.get(Connection.api.projects.deleteInvoice + '?id=' + id);
+  }
 
   // edit existing project
   updateProject(project: Project) {

@@ -48,7 +48,9 @@
                 </div>
                 <div class="form-group">
                   <label>Project Manager</label>
-                  <input class="form-control" type="text" [(ngModel)]="projectCopy.manager" name="manager"/>
+                  <select class="form-control" [(ngModel)]="projectCopy.manager" name="manager">
+                    <option *ngFor="let manager of managers" value="{{manager.id}}">{{ manager.fullName }}</option>
+                  </select>
                 </div>
                 <div class="form-group" [ngClass]="{'to-verify': isNotValid(code) }">
                   <label>Project Code</label>

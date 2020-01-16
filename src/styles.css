@@ -429,6 +429,13 @@ tr.white-bg:hover {
   background-position: right !important;
   direction: rtl !important;
 }
+
+.no-attached {
+  padding: 7px;
+  margin-top: 15px;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;

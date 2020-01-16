@@ -4,9 +4,11 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../../../services/project.service';
 import {Project} from '../../../models/project.model';
+import {AuthService} from '../../../services/auth.service';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
-
+@AutoUnsubscribe()
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
@@ -20,9 +22,12 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project: Project = Project.getEmptyProject();
   newUpdateSub: Subscription;
 
+  managerName = '';
+
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private authService: AuthService) {
 
     // get the current project id
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
@@ -46,6 +51,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         result => {
           if (result.status === '200_OK') {
             this.project = new Project(result.data);
+            this.getManagerName(this.project.manager);
           }
         }
       );
@@ -62,10 +68,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
-    this.currentProjectSub.unsubscribe();
-    this.newUpdateSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 
   deleteElement(id: number) {
     // console.log(id);
@@ -73,5 +76,14 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   triggerProjectEdit() {
     $('#newProject').modal('show');
+  }
+
+  getManagerName(managerID: number) {
+    if (managerID) {
+      const sub = this.authService.getUserByID(managerID).subscribe(
+        res => {
+          this.managerName = res.data.full_name;
+        }, error =>  sub.unsubscribe() , () => sub.unsubscribe());
+    }
   }
 }

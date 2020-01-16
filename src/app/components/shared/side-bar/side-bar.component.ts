@@ -18,7 +18,4 @@ export class SideBarComponent implements OnInit {
     // console.log(this.location.path());
   }
 
-  test() {
-    return false;
-  }
 }

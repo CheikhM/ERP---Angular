@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from './services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {SharedService} from './services/shared.service';
-
 declare var $: any;
 
 @Component({
@@ -28,7 +27,6 @@ export class AppComponent implements OnInit {
   closeNavBar() {
     $('body').removeClass('nav-opened');
     $('.close-layer').hide();
-
   }
 
   private setCurrentUser() {

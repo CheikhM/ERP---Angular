@@ -1,34 +1,44 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../../../services/project.service';
 import {Invoice} from '../../../models/invoice.model';
+import {ToastrService} from 'ngx-toastr';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-invoices',
   templateUrl: './invoices.component.html',
   styleUrls: ['./invoices.component.css']
 })
-export class InvoicesComponent implements OnInit {
+export class InvoicesComponent implements OnInit, OnDestroy {
   currentProjectID: number;
   private invoices: Invoice[];
   private invoicesCopy: Invoice[];
   p = 1;
   private toBeDeletedId: number;
+  invoiceTobeEdited = Invoice.revertCast(Invoice.getEmptyInvoice());
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private  toastrService: ToastrService) {
   }
 
   ngOnInit() {
 
     // get the current project id
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-
     this.getAllInvoices(this.currentProjectID);
   }
 
-  triggerProjectAction() {
+  triggerProjectAction(invoice: Invoice = null) {
+    if (invoice) {
+      this.invoiceTobeEdited = {...invoice};
+    } else {
+      this.invoiceTobeEdited = Invoice.revertCast(Invoice.getEmptyInvoice());
+    }
 
     $('#newInvoice').modal('show');
   }
@@ -54,7 +64,25 @@ export class InvoicesComponent implements OnInit {
       return;
     }
 
-    console.log(this.toBeDeletedId);
+    this.projectService.deleteInvoice(this.toBeDeletedId).subscribe(
+      item => {
+
+        if (item.status === '200_OK' && item['data'].id) {
+          this.invoices = this.invoices.filter(itemInvoice => itemInvoice.id !== item['data'].id);
+          this.invoicesCopy = this.invoices.map(itemInv => Object.assign({}, itemInv));
+          this.toastrService.success('', 'Successfully deleted');
+        } else {
+          this.toastrService.success('', 'Note has been deleted by someone else');
+        }
+      }
+      , error => {
+        this.toastrService.success('', 'Note has been deleted by someone else');
+      }, () => {
+      }
+    );
+
+    $('#deleteInvoiceModal').modal('hide');
+
   }
 
   deleteInvoice(id: number) {
@@ -62,5 +90,8 @@ export class InvoicesComponent implements OnInit {
 
     $('#deleteInvoiceModal').modal('show');
 
+  }
+
+  ngOnDestroy(): void {
   }
 }

@@ -4,9 +4,10 @@ import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {Project} from '../../../models/project.model';
 import {ToastrService} from 'ngx-toastr';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
-
+@AutoUnsubscribe()
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
@@ -109,8 +110,5 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this.projectTobeManaged = Project.getEmptyProject();
   }
 
-  ngOnDestroy(): void {
-    this.searchTextSub.unsubscribe();
-    this.newUpdateSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }
