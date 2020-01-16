@@ -1,0 +1,15 @@
+.remaining {
+  float: right;
+  text-align: center;
+}
+.remaining h3 {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.remaining .value {
+  background: white;
+  font-weight: 700;
+  padding: 7px 5px 7px 5px;
+  font-size: 18px;
+}

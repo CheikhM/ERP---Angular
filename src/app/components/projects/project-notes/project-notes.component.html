@@ -6,20 +6,22 @@
   </select>
 
   <div class="notes-list">
-    <div class="note" *ngFor="let note of filteredNotes">
+    <div class="note" *ngFor="let note of filteredNotes" [ngClass]="{'text-arabic': detectDirection(note.text)}">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
       <div class="date">{{ note.lastUpdate | date:'MMM d, y h:m a' }}</div>
       <div class="content">
         <h5>{{ note.writer }}</h5>
-        <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text" readonly="readonly"></textarea>
+        <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text"
+                  readonly="readonly"></textarea>
       </div>
       <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
            [ngClass]="{'visible': isChanged(note)}" (click)="updateNote(note)"/>
-      <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}" (click)="deleteNote(note.id)"
+      <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}"
+           (click)="deleteNote(note.id)"
            alt=""/>
     </div>
     <!-- to add new note -->
-    <div class="note new-note" *ngIf="newNote">
+    <div class="note new-note" *ngIf="newNote" [ngClass]="{'text-arabic': detectDirection(newNoteText)}">
       <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
       <div class="date">{{ 'now' }}</div>
       <div class="content">
@@ -36,5 +38,6 @@
 
 
 <!-- confirm project delete -->
-<app-confirm-box [popupID]="'deleteNoteModal'" [deleteTitle]="'Delete note'" (confirmAction)="confirmNoteDelete($event)"></app-confirm-box>
+<app-confirm-box [popupID]="'deleteNoteModal'" [deleteTitle]="'Delete note'"
+                 (confirmAction)="confirmNoteDelete($event)"></app-confirm-box>
 <!-- end of confim box -->

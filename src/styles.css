@@ -415,6 +415,20 @@ tr.white-bg:hover {
 .ngx-pagination.ng-star-inserted {
   float: right !important;
 }
+
+.no-results {
+  text-align: center;
+  font-weight: 600;
+}
+.no-results img {
+  width: 25px;
+}
+
+.text-arabic {
+  text-align: right !important;
+  background-position: right !important;
+  direction: rtl !important;
+}
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;

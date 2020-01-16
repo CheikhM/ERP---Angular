@@ -1,6 +1,8 @@
 <app-details-title [canAdd]="true" [title]="'Invoices'" (onClickAdd)="triggerProjectAction()"></app-details-title>
 <div class="listing listing-details">
   <div class="aw-pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
     <!--<span>
       1-5 of {{ this.invoicesCopy.length }}
       <span class="circle-sign"><</span>
@@ -26,13 +28,17 @@
       </td>
     </tr>
   </table>
+  <div class="remaining">
+    <h3>Remaining From Total Value</h3>
+    <div class="value">
+      -12005 54554 5454 5454
+    </div>
+  </div>
 </div>
 
 <!-- to add and edit an invoice -->
 <app-edit-invoice [projectID]="currentProjectID" (newInvoiceAdded)="addNewInvoice($event)"></app-edit-invoice>
 <!-- end -->
-
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <!-- confirm project delete -->
 <app-confirm-box [popupID]="'deleteInvoiceModal'" [deleteTitle]="'Delete invoice'" (confirmAction)="confirmInvoiceDelete($event)"></app-confirm-box>

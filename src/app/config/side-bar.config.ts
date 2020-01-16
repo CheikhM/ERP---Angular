@@ -6,6 +6,7 @@ export const menuElements = [
     text: 'Sales', icon: 'icon-sales', route: 'default', parent: true, subelements: [
       {text: 'Bids', icon: 'bids-icon', route: '/sales/bids/all'},
       {text: 'Deals', icon: 'icon-deal', route: '/sales/deals/all'},
+      {text: 'Visits', icon: 'icon-visits', route: '/sales/visits/all'},
     ]
   },
   {
@@ -21,6 +22,7 @@ export const menuElements = [
     ]
   },
   {text: 'Warehouse', icon: 'warehouse-icon', route: 'default', parent: false},
+  {text: 'Tasks', icon: 'tasks', route: 'default', parent: false},
   {text: 'Users', icon: 'users', route: 'default', parent: false},
   {text: 'Backup', icon: 'backup-icon', route: 'default', parent: false},
 ];

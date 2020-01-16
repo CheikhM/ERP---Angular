@@ -165,4 +165,11 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  detectDirection(text: string) {
+    const firstLetter = text.charAt(0);
+    const arabic = /[\u0600-\u06FF]/;
+
+    return arabic.test(firstLetter);
+  }
 }

@@ -2,7 +2,11 @@
   <div class="listing-icon">
     <img src="/assets/images/side-bar/icon-project.svg" alt=""/>
   </div>
-  <table>
+  <div class="no-results" *ngIf="contents && contents.length === 0">
+    No results found
+    <img src="/assets/images/general/error.svg" alt=""/>
+  </div>
+  <table  *ngIf="contents && contents.length > 0">
     <tr>
       <th *ngFor="let meta of metaDefinition" [ngClass]="{'sm-center': meta.text === 'Status'}">
         {{ meta.text }}

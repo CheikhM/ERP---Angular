@@ -12,6 +12,7 @@
 input.search {
   width: 100%;
   padding-left: 32px;
+  padding-right: 32px;
   font-size: 18px;
   outline: none;
   background: url("/assets/images/search-bar/search-icon.svg") no-repeat;

@@ -17,4 +17,11 @@ export class SearchBarComponent implements OnInit {
   sendSearchText(text: string) {
     this.sharedService.setSearchText(text);
   }
+
+  detectDirection(text: string) {
+    const firstLetter = text.charAt(0);
+    const arabic = /[\u0600-\u06FF]/;
+
+    return arabic.test(firstLetter);
+  }
 }
