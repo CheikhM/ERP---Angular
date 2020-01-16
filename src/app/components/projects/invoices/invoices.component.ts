@@ -16,7 +16,7 @@ declare var $: any;
 export class InvoicesComponent implements OnInit, OnDestroy {
   currentProjectID: number;
   private invoices: Invoice[];
-  private invoicesCopy: Invoice[];
+  public invoicesCopy: Invoice[];
   p = 1;
   private toBeDeletedId: number;
   invoiceTobeEdited = Invoice.revertCast(Invoice.getEmptyInvoice());

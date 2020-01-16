@@ -1,1 +1,11 @@
-<p>page under construction !</p>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredBids"
+             [model]="'Sales'"
+             (onEditClick)="editProject($event)"
+             (onDeleteClick)="deleteProject($event)"
+></app-listing>
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteBidModal'" [deleteTitle]="'Delete bid'" (confirmAction)="confirmBidDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
