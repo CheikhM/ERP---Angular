@@ -67,6 +67,10 @@ button.add-new {
   background: white;
 }
 
+.text-red {
+  color: red !important;
+}
+
 select.action {
   height: 35px;
   float: left;

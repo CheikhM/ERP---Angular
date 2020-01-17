@@ -1,13 +1,13 @@
 <app-details-title [canAdd]="true" [title]="'Notes'" (onClickAdd)="toggleNewNote()"></app-details-title>
 <div class="listing">
 
-  <ng-template #noResults>
+  <ng-container *ngIf="(!filteredNotes || filteredNotes.length === 0)  && !newNote;">
     <div class="white-bg no-attached">
       There is no notes attached
     </div>
-  </ng-template>
-  <ng-container *ngIf="filteredNotes && filteredNotes.length >0; else noResults">
-    <select class="custom-select" (change)="sortItems($event.target.value)">
+  </ng-container>
+  <ng-container>
+    <select class="custom-select" (change)="sortItems($event.target.value)" *ngIf="filteredNotes && filteredNotes.length >0;">
       <option>UPDATED AT</option>
       <option>CREATED AT</option>
     </select>
@@ -26,6 +26,7 @@
              (click)="deleteNote(note.id)"
              alt=""/>
       </div>
+
       <!-- to add new note -->
       <div class="note new-note" *ngIf="newNote" [ngClass]="{'text-arabic': detectDirection(newNoteText)}">
         <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>

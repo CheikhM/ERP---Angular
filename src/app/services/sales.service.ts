@@ -5,6 +5,7 @@ import {Project} from '../models/project.model';
 import {Connection} from '../config/connection.config';
 import {map} from 'rxjs/operators';
 import {Invoice} from '../models/invoice.model';
+import {Bid} from '../models/bid.model';
 
 
 @Injectable({
@@ -15,10 +16,10 @@ export class SalesService {
   }
 
   // get the list of all non deleted projects
-  getAllBids(): Observable<Project []> {
-    return this.http.get(Connection.api.projects.getAll).pipe(
-      map(response => response), map(projects => {
-        return Project.arrayCast(projects);
+  getAllBids(): Observable<Bid []> {
+    return this.http.get(Connection.api.sales.getAllBids).pipe(
+      map(response => response), map(bids => {
+        return Bid.arrayCast(bids);
       })
     );
   }

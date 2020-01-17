@@ -1,6 +1,8 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',

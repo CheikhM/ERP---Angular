@@ -1,49 +1,52 @@
-export class Project {
+export class Bid {
   id: number;
   name: string;
-  startDate: string;
-  endDate: string;
+  clientName: string;
+  cost: string;
   status: string;
   manager: number;
-  code: string;
-  poValue: bigint;
-  expenses: bigint;
+  submissionDate: Date;
+  openingDate: Date;
+  comment: string;
   link: string;
+  letterOfGuarantee: boolean;
 
   constructor(data: any) {
     this.id = data.id;
     this.name = data.name;
-    this.startDate = data.start_date;
-    this.endDate = data.end_date;
+    this.clientName = data.client_name;
+    this.cost = data.cost;
     this.status = data.status;
     this.manager = data.manager;
-    this.code = data.code;
-    this.poValue = data.po_value;
-    this.expenses = data.expenses;
+    this.submissionDate = data.submission_date;
+    this.comment = data.comment;
     this.link = data.link;
+    this.letterOfGuarantee = data.letter_of_guarantee;
+    this.openingDate = data.opening_date;
   }
 
-  static arrayCast(data: any): Project [] {
-    const projects: Project [] = [];
-    data.data.forEach(projectItem => {
-      const project = new Project(projectItem);
-      projects.push(project);
+  static arrayCast(data: any): Bid [] {
+    const bids: Bid [] = [];
+    data.data.forEach(bidItem => {
+      const bid = new Bid(bidItem);
+      bids.push(bid);
     });
-    return projects;
+    return bids;
   }
 
-  static getEmptyProject(): Project {
-    return  {
+  static getEmptyBid(): Bid {
+    return {
       id: null,
       name: null,
-      startDate: null,
-      endDate: null,
+      clientName: null,
+      cost: null,
       status: null,
       manager: null,
-      code: null,
-      poValue: null,
-      expenses: null,
-      link: null
+      comment: null,
+      link: null,
+      submissionDate: null,
+      letterOfGuarantee: null,
+      openingDate: null,
     };
   }
 

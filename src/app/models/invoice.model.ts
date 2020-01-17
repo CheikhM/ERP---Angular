@@ -2,7 +2,7 @@ export class Invoice {
   id: number;
   projectID: number;
   billNum: string;
-  amount: number;
+  amount: any;
   date: string;
 
   constructor(data: any) {

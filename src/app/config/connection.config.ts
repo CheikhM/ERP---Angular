@@ -15,6 +15,9 @@ export class Connection {
         deleteInvoice: this.apiProject + 'projects/invoices/delete',
         newInvoice: this.apiProject + 'projects/invoices/new',
       },
+      sales: {
+        getAllBids: this.apiProject + 'sales/bids/all',
+      },
       notes: {
         getAll: this.apiProject + 'notes/all',
         newNote: this.apiProject + 'notes/new',

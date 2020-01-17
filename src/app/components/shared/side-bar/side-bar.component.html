@@ -1,11 +1,11 @@
 <div class="side-bar">
   <div class="elements-header">
-    
+
   </div>
   <div class="side-bar__elements">
     <ul class="elements">
       <ng-container *ngFor="let item of menuElements">
-        <li [routerLink]="[item.route]" [ngClass]="{'parent collapsed': item.parent, 'active': item.route === location.path()}">
+        <li (click)="navigateToRoute(item.route)" [ngClass]="{'parent collapsed': item.parent, 'active': item.route === location.path()}">
           <img class="icon" src="/assets/images/side-bar/{{ item.icon }}.svg" />
           <span class="name bold">{{ item.text }}</span>
           <img *ngIf="item.parent" src="/assets/images/side-bar/arrow-icon.svg" class="arrow" />
