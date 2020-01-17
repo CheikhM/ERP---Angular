@@ -4,6 +4,7 @@ import {ProjectService} from '../../../services/project.service';
 import {Invoice} from '../../../models/invoice.model';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {SharedService} from '../../../services/shared.service';
 
 declare var $: any;
 
@@ -25,13 +26,14 @@ export class InvoicesComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private sharedService: SharedService) {
   }
 
   ngOnInit() {
-
     // get the current project id
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.sharedService.setworkflowID(this.currentProjectID);
 
     // get the project value
     this.projectService.getProjectByID(this.currentProjectID).subscribe(item => {

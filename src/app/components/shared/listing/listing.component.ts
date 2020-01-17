@@ -20,6 +20,7 @@ export class ListingComponent implements OnInit {
   @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
 
   public innerWidth: any;
+  p = 1;
 
   constructor(private sharedService: SharedService) {
   }

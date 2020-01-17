@@ -52,6 +52,11 @@ export class ProjectService {
     );
   }
 
+  // get the list of all invoices of a given project
+  getAllBoqs(pid): Observable<any> {
+    return this.http.get(Connection.api.projects.getAllBOQs + '?pid=' + pid);
+  }
+
   // delete a project using the project id
   deleteInvoice(id: number): Observable<any> {
     return this.http.get(Connection.api.projects.deleteInvoice + '?id=' + id);

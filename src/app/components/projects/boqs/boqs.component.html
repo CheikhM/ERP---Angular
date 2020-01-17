@@ -1,10 +1,8 @@
 <app-details-title [canAdd]="true" [title]="'Bill of Quantities'"></app-details-title>
 
 <div class="listing listing-details">
-  <select class="custom-select">
-    <option>TEST</option>
-    <option>CISCO</option>
-    <option>TEST2</option>
+  <select class="custom-select" (change)="changeCurrentGroup($event.target.value)">
+    <option *ngFor="let group of groups" value="{{group.id}}">{{ group.name }}</option>
   </select>
 
   <div class="aw-pagination">
@@ -28,104 +26,8 @@
       <th>Percentage</th>
       <th>Control</th>
     </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
-      <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
-        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
-      </td>
-    </tr>
-    <tr class="white-bg">
-      <td>01</td>
+    <tr class="white-bg" *ngFor="let boq of currentGroupItems">
+      <td>{{ boq.name }}</td>
       <td>test item</td>
       <td>3</td>
       <td>1000</td>
