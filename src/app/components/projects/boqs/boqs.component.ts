@@ -50,8 +50,9 @@ export class BoqsComponent implements OnInit {
   }
 
   changeCurrentGroup(value: string) {
+    const groupID = parseInt(value, 10);
     this.currentGroupItems = this.items.filter(bid => {
-      return bid.group_id == value;
+      return bid.group_id === groupID;
     });
     console.log(this.currentGroupItems, value, this.items);
   }
