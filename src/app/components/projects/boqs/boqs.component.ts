@@ -54,6 +54,5 @@ export class BoqsComponent implements OnInit {
     this.currentGroupItems = this.items.filter(bid => {
       return bid.group_id === groupID;
     });
-    console.log(this.currentGroupItems, value, this.items);
   }
 }

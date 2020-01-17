@@ -66,11 +66,15 @@ export class InvoicesComponent implements OnInit, OnDestroy {
   }
 
   addNewInvoice(action: any) {
-    if (action.ok) {
+
+    if (action.ok && !action.update) {
       this.invoices.push(action.invoice);
-      this.invoicesCopy = this.invoices.map(item => Object.assign({}, item));
       this.getRemaining();
+    } else if (action.update) {
+      this.invoices[this.invoices.findIndex(el => el.id === action.invoice.id)] = action.invoice;
     }
+
+    this.invoicesCopy = this.invoices.map(item => Object.assign({}, item));
 
     $('#newInvoice').modal('hide');
   }

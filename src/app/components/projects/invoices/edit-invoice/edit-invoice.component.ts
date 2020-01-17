@@ -47,7 +47,6 @@ export class EditInvoiceComponent implements OnInit, OnDestroy {
     // to update an existing invoice
     if (this.invoiceCopy.id) {
 
-      return;
     }
     // add new invoice
     this.invoiceCopy.projectID = this.projectID;
@@ -55,9 +54,14 @@ export class EditInvoiceComponent implements OnInit, OnDestroy {
     this.projectService.newInvoice(this.invoiceCopy).subscribe(
       res => {
         if (res['status'] === '200_OK') {
-          this.toastService.success('', 'Successfully added');
-          this.invoiceCopy.id = res['data'].icid;
-          this.newInvoiceAdded.emit({ok: true, invoice: Invoice.Cast(this.invoiceCopy)});
+          if (!this.invoiceCopy.id) {
+            this.toastService.success('', 'Successfully added');
+            this.invoiceCopy.id = res['data'].icid;
+            this.newInvoiceAdded.emit({ok: true, invoice: Invoice.Cast(this.invoiceCopy), update: false});
+          } else {
+            this.toastService.success('', 'Successfully updated');
+            this.newInvoiceAdded.emit({ok: true, invoice: Invoice.Cast(this.invoiceCopy), update: true});
+          }
         } else {
           this.toastService.error('', 'Error occurred');
           this.newInvoiceAdded.emit({ok: false, invoice: null});
