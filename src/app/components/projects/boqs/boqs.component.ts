@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {ProjectService} from '../../../services/project.service';
 
+declare var $: any;
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-boqs',
@@ -58,6 +60,6 @@ export class BoqsComponent implements OnInit {
   }
 
   triggerAddBid() {
-
+    $('#newBoq').modal('show');
   }
 }
