@@ -1,4 +1,4 @@
-<app-details-title [canAdd]="true" [title]="'Bill of Quantities'"></app-details-title>
+<app-details-title [canAdd]="true" [title]="'Bill of Quantities'" (onClickAdd)="triggerAddBid()"></app-details-title>
 
 <div class="listing listing-details">
   <select class="custom-select" (change)="changeCurrentGroup($event.target.value)">
@@ -14,7 +14,6 @@
   </div>
   <table>
     <tr>
-      <th>ID</th>
       <th>Name</th>
       <th>Qty</th>
       <th>U Cost</th>
@@ -23,20 +22,19 @@
       <th>T Price</th>
       <th>Delivry Date</th>
       <th>Po_num</th>
-      <th>Percentage</th>
+      <th>Progress</th>
       <th>Control</th>
     </tr>
     <tr class="white-bg" *ngFor="let boq of currentGroupItems">
-      <td>{{ boq.name }}</td>
-      <td>test item</td>
-      <td>3</td>
-      <td>1000</td>
-      <td>3000</td>
-      <td>1200</td>
-      <td>1200</td>
-      <td>12-05-2019</td>
-      <td>777</td>
-      <td>40%</td>
+      <td>{{ boq.Item }}</td>
+      <td>{{ boq.quantity }}</td>
+      <td>{{ boq.cost }}</td>
+      <td>{{ 'tcost' }}</td>
+      <td>{{ boq.price }}</td>
+      <td>{{ 'tprice' }}</td>
+      <td>{{ boq.delivery_date }}</td>
+      <td>{{ boq.po_no }}</td>
+      <td>{{ boq.progress }}</td>
       <td class="control">
         <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>

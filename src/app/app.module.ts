@@ -33,6 +33,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
 import { EditInvoiceComponent } from './components/projects/invoices/edit-invoice/edit-invoice.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { EditBoqComponent } from './components/projects/boqs/edit-boq/edit-boq.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     DashboardComponent,
     EditInvoiceComponent,
+    EditBoqComponent,
   ],
   imports: [
     BrowserModule,

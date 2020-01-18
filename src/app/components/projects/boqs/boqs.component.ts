@@ -45,6 +45,7 @@ export class BoqsComponent implements OnInit {
         this.currentGroupItems = this.items.filter(bid => {
           return bid.group_id === this.currentGroupID;
         });
+        console.log(this.currentGroupItems);
       }
     );
   }
@@ -54,5 +55,9 @@ export class BoqsComponent implements OnInit {
     this.currentGroupItems = this.items.filter(bid => {
       return bid.group_id === groupID;
     });
+  }
+
+  triggerAddBid() {
+
   }
 }
