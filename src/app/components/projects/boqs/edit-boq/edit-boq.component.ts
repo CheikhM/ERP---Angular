@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProjectService} from '../../../../services/project.service';
+import {ActivatedRoute} from '@angular/router';
 
 declare var $: any;
 
@@ -25,11 +26,14 @@ export class EditBoqComponent implements OnInit, OnChanges {
   emitActionAdd: EventEmitter<any> = new EventEmitter<any>();
   @Input()
   currentGroupID: number;
+  private currentProjectID: number;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+
     if (!this.boq) {
       this.boqCopy = {
         id: null,
@@ -55,12 +59,15 @@ export class EditBoqComponent implements OnInit, OnChanges {
 
     const groupID = parseInt($('#groupID').val(), 10);
     if (groupID === 0 && groupText.length > 0) {
-      this.projectService.newGroup(groupText);
+      this.projectService.newGroup(this.currentProjectID, groupText).subscribe(result => {
+        console.log(result);
+      }, error => {
+      }, () => {
+      });
     } else if (groupID && groupID > 0) {
       this.boqCopy.group_id = groupID;
       this.emitActionAdd.emit(this.boqCopy);
     }
-
   }
 
   emptyGroupName() {

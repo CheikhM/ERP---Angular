@@ -85,9 +85,9 @@ export class BoqsComponent implements OnInit {
     $('#newBoq').modal('show');
   }
 
-  addNewBid(boq: any) {
-    this.projectService.newBid(boq).subscribe(result => {
-        if (result['status'] === '200_OK' && result['data'].bidid) {
+  addNewBoq(boq: any) {
+    this.projectService.newBoq(boq).subscribe(result => {
+        if (result['status'] === '200_OK' && result['data'].boqid) {
           this.toastService.success('', 'Successfully added');
           this.getAllBOQs();
         } else {

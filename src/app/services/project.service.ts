@@ -44,18 +44,15 @@ export class ProjectService {
   }
 
   // add new invoice todo validate
-  newBid(bid: any) {
-    return this.http.post(Connection.api.projects.newBid, bid);
+  newBoq(bid: any) {
+    return this.http.post(Connection.api.projects.newBoq, bid);
   }
 
-  /*
+
   // add new invoice todo validate
-  newGroup(name: string) {
-    return this.http.get(Connection.api.projects.newGroup, bid);
+  newGroup(pid: number, name: string) {
+    return this.http.get(Connection.api.projects.newGroup + '?pid=' + pid +  '&name=' + name);
   }
-  
-   */
-
 
   // get the list of all invoices of a given project
   getAllInvoices(pid): Observable<Invoice []> {
