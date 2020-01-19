@@ -10,6 +10,7 @@ export class SharedService {
   private CurrentListingElement = new BehaviorSubject(null);
   private newUpdate = new BehaviorSubject(false);
   private currentUser = new BehaviorSubject(null);
+  private currentWorkflowPath = new BehaviorSubject('');
 
   constructor() {
   }
@@ -57,6 +58,15 @@ export class SharedService {
 
   public setCurrentUser(user: any) {
     this.currentUser.next(user);
+  }
+
+  // setters and getters for the current user object
+  public getCurrentWorkflowPath() {
+    return this.currentWorkflowPath.asObservable();
+  }
+
+  public setCurrentWorkflowPath(path: string) {
+    this.currentWorkflowPath.next(path);
   }
 
 }

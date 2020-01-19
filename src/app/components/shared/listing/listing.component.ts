@@ -21,6 +21,11 @@ export class ListingComponent implements OnInit {
 
   public innerWidth: any;
   p = 1;
+  @Input()
+  icon: string;
+
+  @Input()
+  modulePath: string;
 
   constructor(private sharedService: SharedService) {
   }

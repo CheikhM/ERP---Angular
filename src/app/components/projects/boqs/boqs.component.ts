@@ -3,6 +3,7 @@ import {SharedService} from '../../../services/shared.service';
 import {ActivatedRoute} from '@angular/router';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {ProjectService} from '../../../services/project.service';
+import {ToastrService} from 'ngx-toastr';
 
 declare var $: any;
 
@@ -19,10 +20,14 @@ export class BoqsComponent implements OnInit {
   groups: any;
   currentGroupItems: any [];
   currentGroupID: number;
+  actionTitle: string = null;
+  boqToBeEdited: any = null;
+  private groupID: number;
 
   constructor(private  sharedService: SharedService,
               private  projectService: ProjectService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastService: ToastrService) {
   }
 
   ngOnInit() {
@@ -38,6 +43,7 @@ export class BoqsComponent implements OnInit {
         if (result.data) {
           this.items = result.data.items;
           this.groups = result.data.groups;
+          this.groupID = this.groups[0].id;
         }
       },
       error => {
@@ -47,19 +53,51 @@ export class BoqsComponent implements OnInit {
         this.currentGroupItems = this.items.filter(bid => {
           return bid.group_id === this.currentGroupID;
         });
-        console.log(this.currentGroupItems);
       }
     );
   }
 
   changeCurrentGroup(value: string) {
-    const groupID = parseInt(value, 10);
+    this.groupID = parseInt(value, 10);
     this.currentGroupItems = this.items.filter(bid => {
-      return bid.group_id === groupID;
+      return bid.group_id === this.groupID;
     });
   }
 
-  triggerAddBid() {
+  triggerBoqAction(boq: any = null) {
+    if (boq) {
+      this.actionTitle = 'Edit BOQ';
+      this.boqToBeEdited = boq;
+    } else {
+      this.actionTitle = null;
+      this.boqToBeEdited = {
+        id: null,
+        Item: null,
+        quantity: null,
+        cost: null,
+        price: null,
+        delivery_date: null,
+        po_no: null,
+        progress: null,
+      };
+    }
+
     $('#newBoq').modal('show');
+  }
+
+  addNewBid(boq: any) {
+    this.projectService.newBid(boq).subscribe(result => {
+        if (result['status'] === '200_OK' && result['data'].bidid) {
+          this.toastService.success('', 'Successfully added');
+          this.getAllBOQs();
+        } else {
+          this.toastService.error('', 'An error was occurred');
+        }
+      },
+      error => this.toastService.error('', 'An error was occurred'),
+      () => {
+        $('#newBoq').modal('hide');
+      }
+    );
   }
 }

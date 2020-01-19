@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'sales/bids/all', component: BidsComponent, canActivate: [AuthGuard] },
   { path: 'sales/deals/all', component: DealsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: '**', component: DashboardComponent },
 ];
 
 @NgModule({

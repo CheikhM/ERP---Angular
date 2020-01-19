@@ -43,6 +43,20 @@ export class ProjectService {
     return this.http.post(Connection.api.projects.newInvoice, invoice);
   }
 
+  // add new invoice todo validate
+  newBid(bid: any) {
+    return this.http.post(Connection.api.projects.newBid, bid);
+  }
+
+  /*
+  // add new invoice todo validate
+  newGroup(name: string) {
+    return this.http.get(Connection.api.projects.newGroup, bid);
+  }
+  
+   */
+
+
   // get the list of all invoices of a given project
   getAllInvoices(pid): Observable<Invoice []> {
     return this.http.get(Connection.api.projects.getAllInvoices + '?pid=' + pid).pipe(

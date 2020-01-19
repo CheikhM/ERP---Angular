@@ -1,4 +1,8 @@
-<app-details-title [canAdd]="true" [title]="'Bill of Quantities'" (onClickAdd)="triggerAddBid()"></app-details-title>
+<app-details-title [canAdd]="true"
+                   [title]="'Bill of Quantities'"
+                   (onClickAdd)="triggerBoqAction()">
+
+</app-details-title>
 
 <div class="listing listing-details">
   <select class="custom-select" (change)="changeCurrentGroup($event.target.value)">
@@ -29,14 +33,14 @@
       <td>{{ boq.Item }}</td>
       <td>{{ boq.quantity }}</td>
       <td>{{ boq.cost }}</td>
-      <td>{{ 'tcost' }}</td>
+      <td>{{ boq.cost * boq.quantity }}</td>
       <td>{{ boq.price }}</td>
-      <td>{{ 'tprice' }}</td>
+      <td>{{ boq.price * boq.quantity }}</td>
       <td>{{ boq.delivery_date }}</td>
       <td>{{ boq.po_no }}</td>
       <td>{{ boq.progress }}</td>
       <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"/>
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerBoqAction(boq)"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
@@ -44,4 +48,4 @@
 </div>
 
 
-<app-edit-boq></app-edit-boq>
+<app-edit-boq [groups]="this.groups" [currentGroupID]="groupID" [title]="actionTitle" [boq]="boqToBeEdited" (emitActionAdd)="addNewBid($event)"></app-edit-boq>

@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-projects-list',
@@ -35,6 +36,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/projects/project/');
     this.getAllProjects();
 
     // search project
@@ -110,5 +112,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this.projectTobeManaged = Project.getEmptyProject();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 }

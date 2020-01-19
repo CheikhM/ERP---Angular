@@ -29,6 +29,8 @@ export class BidsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/sales/bid/');
+
     this.getAllBids();
 
     // search project

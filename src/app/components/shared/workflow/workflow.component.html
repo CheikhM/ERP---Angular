@@ -1,4 +1,3 @@
-
 <!-- project details workflow -->
 <div class="header-workflow">
   <a class="collapse-icon">
@@ -7,19 +6,19 @@
     </span>
   </a>
   <div class="wf-elements">
-    <a [routerLink]="['/projects/project/' + objectID]" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID}">
+    <a [routerLink]="[itemsPath + objectID]" [ngClass]="{'_active': location.path() === itemsPath + objectID}">
       <span class="title">Details</span>
     </a>
-    <a [routerLink]="['/projects/project/' + objectID + '/notes']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/notes'}">
+    <a [routerLink]="[itemsPath + objectID + '/notes']" [ngClass]="{'_active': location.path() === itemsPath + objectID + '/notes'}">
       <span class="title">Notes</span>
     </a>
-    <a [routerLink]="['/projects/project/' + objectID + '/bill-of-quantities']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/bill-of-quantities'}">
+    <a *ngIf="itemsPath == '/projects/project/'" [routerLink]="[itemsPath + objectID + '/bill-of-quantities']" [ngClass]="{'_active': location.path() === itemsPath + objectID + '/bill-of-quantities'}">
       <span class="title">BoQs</span>
     </a>
-    <a [routerLink]="['/projects/project/' + objectID + '/deliverables']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/deliverables'}" >
+    <a *ngIf="itemsPath == '/projects/project/'" [routerLink]="[itemsPath + objectID + '/deliverables']" [ngClass]="{'_active': location.path() === itemsPath + objectID + '/deliverables'}" >
       <span class="title">Deliverables</span>
     </a>
-    <a [routerLink]="['/projects/project/' + objectID + '/invoices']" [ngClass]="{'_active': location.path() === '/projects/project/' + objectID + '/invoices'}">
+    <a *ngIf="itemsPath == '/projects/project/'" [routerLink]="[itemsPath + objectID + '/invoices']" [ngClass]="{'_active': location.path() === itemsPath + objectID + '/invoices'}">
       <span class="title">Invoices</span>
     </a>
   </div>
