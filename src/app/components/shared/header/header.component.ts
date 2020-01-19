@@ -83,6 +83,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut() {
     localStorage.removeItem('token');
-    window.location.replace('login');
+    // window.location.replace('login');
+    window.location.replace('/front/login');
   }
 }

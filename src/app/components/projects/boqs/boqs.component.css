@@ -8,7 +8,12 @@
   margin-top: 0;
   float: right;
 }
-
+.boq-summer {
+  margin-top: 15px;
+}
+.boq-summer td, .boq-summer th {
+  padding: 7px 5px 7px 5px;
+}
 @media screen and (max-width: 768px) {
   .listing-details th:nth-child(3),
   .listing-details th:nth-child(4),

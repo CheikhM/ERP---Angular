@@ -15,6 +15,8 @@ export class ProjectDevliverablesComponent implements OnInit {
   constructor(private  sharedService: SharedService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/projects/project/');
+
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.sharedService.setworkflowID(this.currentProjectID);
   }

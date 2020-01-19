@@ -36,6 +36,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/projects/project/');
+
     this.getCurrentProject();
 
     // check for new update

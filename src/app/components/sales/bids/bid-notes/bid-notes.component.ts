@@ -1,21 +1,23 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {SharedService} from '../../../../services/shared.service';
 import {ActivatedRoute} from '@angular/router';
-import {SharedService} from '../../../services/shared.service';
-import {NoteService} from '../../../services/note.service';
-import {Note} from '../../../models/note.model';
-import {ToastrService} from 'ngx-toastr';
 import {Subscription} from 'rxjs';
+import {NoteService} from '../../../../services/note.service';
+import {ToastrService} from 'ngx-toastr';
+import {Note} from '../../../../models/note.model';
+import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
 
+@AutoUnsubscribe()
 @Component({
-  selector: 'app-project-notes',
-  templateUrl: './project-notes.component.html',
-  styleUrls: ['./project-notes.component.css']
+  selector: 'app-bid-notes',
+  templateUrl: './bid-notes.component.html',
+  styleUrls: ['./bid-notes.component.css']
 })
+export class BidNotesComponent implements OnInit, OnDestroy {
 
-export class ProjectNotesComponent implements OnInit, OnDestroy {
-  currentProjectID: number;
+  currentBidID: number;
   newNoteText = '';
   newNote: boolean;
   notes: any;
@@ -28,13 +30,17 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
               private sharedService: SharedService,
               private noteService: NoteService,
               private toastService: ToastrService) {
+    // get the current project id
+    this.currentBidID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    // set the current project id
+    this.sharedService.setworkflowID(this.currentBidID);
   }
 
   ngOnInit() {
-    this.sharedService.setCurrentWorkflowPath('/projects/project/');
+    this.sharedService.setCurrentWorkflowPath('/sales/bid/');
 
-    this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    this.sharedService.setworkflowID(this.currentProjectID);
+    this.currentBidID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.sharedService.setworkflowID(this.currentBidID);
 
     this.listAllNotes();
 
@@ -43,7 +49,7 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
 
   // get all projects
   listAllNotes() {
-    this.noteService.getAllNotes(this.currentProjectID, 1).subscribe(
+    this.noteService.getAllNotes(this.currentBidID, 2).subscribe(
       resp => {
         this.notes = resp;
         this.filteredNotes = this.notes.map(note => Object.assign({}, note));
@@ -64,13 +70,13 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
   addNewNote() {
     const note = Note.getEmptyNote();
     note.text = this.newNoteText;
-    note.type = 1;
+    note.type = 2;
     note.createdAt = new Date();
     note.lastUpdate = new Date();
     if (this.currentUser) {
       note.writer = this.currentUser.name;
     }
-    note.typeID = this.currentProjectID;
+    note.typeID = this.currentBidID;
     this.noteService.newNote(note).subscribe(
       res => {
         if (res['status'] === '200_OK') {
@@ -174,4 +180,5 @@ export class ProjectNotesComponent implements OnInit, OnDestroy {
 
     return arabic.test(firstLetter);
   }
+
 }

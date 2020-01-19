@@ -5,6 +5,7 @@
 </app-details-title>
 
 <div class="listing listing-details">
+
   <select class="custom-select" (change)="changeCurrentGroup($event.target.value)">
     <option *ngFor="let group of groups" value="{{group.id}}">{{ group.name }}</option>
   </select>
@@ -46,6 +47,27 @@
     </tr>
   </table>
 </div>
+<table class="boq-summer">
+  <tr>
+    <th>Vendor</th>
+    <th>Expected Cost</th>
+    <th>Actually Cost</th>
+    <th>Selling</th>
+  </tr>
+  <tr class="white-bg" *ngFor="let group of groups">
+    <td>{{ group.name }}</td>
+    <td>{{ getTotalCostForGroup(group.id) }}</td>
+    <td>0</td>
+    <td>{{ getTotalPriceForGroup(group.id) }}</td>
+  </tr>
+  <tr class="white-bg">
+    <th>Total</th>
+    <td>{{totalExCost}}</td>
+    <td>0</td>
+    <td>{{totalSell}}</td>
+  </tr>
+</table>
 
 
-<app-edit-boq [groups]="this.groups" [currentGroupID]="groupID" [title]="actionTitle" [boq]="boqToBeEdited" (emitActionAdd)="addNewBoq($event)"></app-edit-boq>
+<app-edit-boq [groups]="this.groups" [currentGroupID]="groupID" [title]="actionTitle" [boq]="boqToBeEdited"
+              (emitActionAdd)="addNewBoq($event)"></app-edit-boq>

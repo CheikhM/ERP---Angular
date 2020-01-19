@@ -34,6 +34,9 @@ import {ToastrModule} from 'ngx-toastr';
 import { EditInvoiceComponent } from './components/projects/invoices/edit-invoice/edit-invoice.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { EditBoqComponent } from './components/projects/boqs/edit-boq/edit-boq.component';
+import { BidDetailsComponent } from './components/sales/bids/bid-details/bid-details.component';
+import { BidNotesComponent } from './components/sales/bids/bid-notes/bid-notes.component';
+import { EditBidPopupComponent } from './components/sales/bids/edit-bid-popup/edit-bid-popup.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { EditBoqComponent } from './components/projects/boqs/edit-boq/edit-boq.c
     DashboardComponent,
     EditInvoiceComponent,
     EditBoqComponent,
+    BidDetailsComponent,
+    BidNotesComponent,
+    EditBidPopupComponent,
   ],
   imports: [
     BrowserModule,

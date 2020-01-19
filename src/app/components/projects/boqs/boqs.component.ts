@@ -22,7 +22,9 @@ export class BoqsComponent implements OnInit {
   currentGroupID: number;
   actionTitle: string = null;
   boqToBeEdited: any = null;
-  private groupID: number;
+  public groupID: number;
+  public totalExCost = 0;
+  public totalSell = 0;
 
   constructor(private  sharedService: SharedService,
               private  projectService: ProjectService,
@@ -31,6 +33,8 @@ export class BoqsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/projects/project/');
+
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.sharedService.setworkflowID(this.currentProjectID);
 
@@ -53,6 +57,9 @@ export class BoqsComponent implements OnInit {
         this.currentGroupItems = this.items.filter(bid => {
           return bid.group_id === this.currentGroupID;
         });
+
+        this.getTotSellCost();
+        this.getTotExCost();
       }
     );
   }
@@ -99,5 +106,21 @@ export class BoqsComponent implements OnInit {
         $('#newBoq').modal('hide');
       }
     );
+  }
+
+  getTotalCostForGroup(id: any) {
+    return this.items.filter(el => el.group_id === id).map(item => item.cost * item.quantity).reduce((a, b) => a + b);
+  }
+
+  getTotalPriceForGroup(id: any) {
+    return this.items.filter(el => el.group_id === id).map(item => item.price * item.quantity).reduce((a, b) => a + b);
+  }
+
+  getTotExCost() {
+    this.totalExCost = this.items.map(item => item.cost * item.quantity).reduce((a, b) => a + b);
+  }
+
+  getTotSellCost() {
+    this.totalSell = this.items.map(item => item.price * item.quantity).reduce((a, b) => a + b);
   }
 }

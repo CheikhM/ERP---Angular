@@ -1,8 +1,8 @@
 <app-listing [metaDefinition]="metaDefinition"
              [contents]="filteredBids"
              [model]="'Sales'"
-             (onEditClick)="editProject($event)"
-             (onDeleteClick)="deleteProject($event)"
+             (onEditClick)="editBid($event)"
+             (onDeleteClick)="deleteBid($event)"
              [icon]="'bids-icon'"
              [modulePath]="'/sales/bid/'"
 ></app-listing>
@@ -11,3 +11,7 @@
 <!-- confirm project delete -->
 <app-confirm-box [popupID]="'deleteBidModal'" [deleteTitle]="'Delete bid'" (confirmAction)="confirmBidDelete($event)"></app-confirm-box>
 <!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-bid-popup [title]="manageAction" [bid]="bidTobeManaged" (onExitModal)="initManageData()"></app-edit-bid-popup>
+<!-- end popup -->

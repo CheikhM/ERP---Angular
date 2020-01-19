@@ -31,8 +31,12 @@ export class InvoicesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.sharedService.setCurrentWorkflowPath('/projects/project/');
+
     // get the current project id
     this.currentProjectID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+
+
     this.sharedService.setworkflowID(this.currentProjectID);
 
     // get the project value
@@ -62,7 +66,7 @@ export class InvoicesComponent implements OnInit, OnDestroy {
       this.invoices = res;
       this.invoicesCopy = this.invoices.map(item => Object.assign({}, item));
     }, error => {
-    }, () => this.getRemaining());
+    }, () => setTimeout(() => this.getRemaining()));
   }
 
   addNewInvoice(action: any) {

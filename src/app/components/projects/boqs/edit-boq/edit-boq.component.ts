@@ -60,7 +60,10 @@ export class EditBoqComponent implements OnInit, OnChanges {
     const groupID = parseInt($('#groupID').val(), 10);
     if (groupID === 0 && groupText.length > 0) {
       this.projectService.newGroup(this.currentProjectID, groupText).subscribe(result => {
-        console.log(result);
+        if (result && result['data'] && result['data'].gid) {
+          this.boqCopy.group_id = result['data'].gid;
+          this.emitActionAdd.emit(this.boqCopy);
+        }
       }, error => {
       }, () => {
       });

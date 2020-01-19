@@ -14,6 +14,7 @@ export class WorkflowComponent implements OnInit {
 
   @Input()
   objectID: number;
+
   itemsPath: string;
 
   constructor(public location: Location,

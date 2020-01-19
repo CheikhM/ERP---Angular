@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
     if (token && token !== '') {
       const decodedToken = this.jwtHelper.decodeToken(token);
       const user = {id: decodedToken['user_id'], name: decodedToken['full_name'], role: decodedToken['user_role']};
-      console.log(user);
       this.sharedService.setCurrentUser(user);
     }
   }

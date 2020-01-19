@@ -9,6 +9,7 @@ import {AuthService} from '../../../services/auth.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 
 declare var $: any;
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-edit-project-popup',
@@ -63,6 +64,7 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
         },
         error => this.toastrService.error('', 'An error was occurred'),
         () => {
+          this.onExitModal.emit(true);
         }
       );
     } else if (this.title === 'Edit Project') {
@@ -79,6 +81,7 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
         },
         error => this.toastrService.error('', 'An error was occurred'),
         () => {
+          this.onExitModal.emit(true);
         }
       );
     }
