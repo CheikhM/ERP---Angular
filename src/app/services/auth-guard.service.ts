@@ -1,7 +1,7 @@
 import {CanActivate, Router} from '@angular/router';
 import {AuthService} from './auth.service';
 import {Injectable} from '@angular/core';
-import {LOGIN_BASE_PATH} from '../config';
+import {BASE_PATH} from '../config';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
     if (!this.auth.isAuthenticated()) {
       // this.router.navigate(['login']);
       // window.location.replace('login');
-      window.location.replace(LOGIN_BASE_PATH);
+      window.location.replace(BASE_PATH + 'login');
 
       return false;
     }

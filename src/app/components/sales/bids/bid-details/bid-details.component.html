@@ -1,1 +1,82 @@
-<p>bid-details works!</p>
+<app-details-title [canAdd]="false" [title]="'Bid details'"></app-details-title>
+<div class="aw-container details">
+  <div class="header">
+    <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon"/>
+    <img src="/assets/images/general/back-icon.svg" alt="" class="return-icon" [routerLink]="'/sales/bids/all'"/>
+  </div>
+  <div class="edit-project container">
+    <div class="row">
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <label>Bid Name</label>
+          <input class="form-control" required type="text" name="bidName" value="{{bid?.name}}" disabled/>
+          <div class="message">
+            <span *ngIf="false">field required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Opening Date</label>
+          <input class="form-control" required type="text" value="{{bid?.openingDate}}" name="openingDate" disabled/>
+
+          <div class="message">
+            <span *ngIf="false">field required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <input class="form-control" required type="text" value="{{bid?.status}}" name="status" disabled/>
+
+        </div>
+        <div class="form-group">
+          <label>Bid Manager</label>
+          <input class="form-control" required type="text" value="{{managerName}}" name="manager" disabled/>
+
+        </div>
+        <div class="form-group">
+          <label>Letter of guarantee</label>
+          <input class="form-control" required type="text" value="{{bid?.letterOfGuarantee ? 'Yes' : 'No' }}"
+                 name="manager" disabled/>
+
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <label>Client Name</label>
+          <input class="form-control" type="text" name="clientName" value="{{bid?.clientName}}" disabled/>
+        </div>
+        <div class="form-group">
+          <label>Submission Date</label>
+          <input class="form-control" type="text" name="submissionDate" value="{{bid?.submissionDate}} " disabled/>
+          <div class="message">
+            <span>field required</span>
+          </div>
+        </div>
+
+        <div class="form-group currency-form">
+          <label>Cost</label>
+          <input class="form-control" type="text" required
+                 maxlength="20" name="cost" disabled value="{{bid?.cost}}"/>
+          <div class="message">
+            <span *ngIf="false">field required & must be a valid number</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-Link</label>
+          <input class="form-control" type="text" name="link" value="{{bid?.link}}" disabled/>
+          <div class="message">field required</div>
+        </div>
+        <div class="submit">
+          <input class="btn btn-success" type="submit" value="EDIT BID" (click)="triggerBidEdit()"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteBidModal'" [deleteTitle]="'Delete bid'" (confirmAction)="confirmBidDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-bid-popup [title]="'Edit Bid'" [bid]="bid" (onExitModal)="initManageData()"></app-edit-bid-popup>
+<!-- end popup -->

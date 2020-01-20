@@ -1,1 +1,2 @@
-export const LOGIN_BASE_PATH = '/front/login';
+// export const BASE_PATH = '/front/';
+export const BASE_PATH = '/';

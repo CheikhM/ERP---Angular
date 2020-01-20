@@ -4,7 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
-import {LOGIN_BASE_PATH} from '../../../config';
+import {BASE_PATH} from '../../../config';
 
 declare var $: any;
 
@@ -87,6 +87,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logOut() {
     localStorage.removeItem('token');
     // window.location.replace('login');
-    window.location.replace(LOGIN_BASE_PATH);
+    window.location.replace(BASE_PATH + 'login');
   }
 }

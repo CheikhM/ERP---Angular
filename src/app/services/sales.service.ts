@@ -30,8 +30,8 @@ export class SalesService {
   }
 
   // get a project by id
-  getProjectByID(id: number): Observable<any> {
-    return this.http.get(Connection.api.projects.getSingle + '?id=' + id);
+  getBidByID(id: number): Observable<any> {
+    return this.http.get(Connection.api.sales.getSingleBid + '?id=' + id);
   }
 
   // add new bid

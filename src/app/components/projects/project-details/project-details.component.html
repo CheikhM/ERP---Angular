@@ -1,8 +1,8 @@
 <app-details-title [canAdd]="false" [title]="'Project details'"></app-details-title>
 <div class="aw-container details">
   <div class="header">
-    <img (click)="deleteElement(project.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon" />
-    <img (click)="deleteElement(project.id)" src="/assets/images/general/back-icon.svg" alt="" class="return-icon" [routerLink]="'/projects/all'" />
+    <img (click)="triggerDeleteElement(project.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon" />
+    <img src="/assets/images/general/back-icon.svg" alt="" class="return-icon" [routerLink]="'/projects/all'" />
   </div>
   <div class="container">
     <div class="row">
@@ -56,3 +56,8 @@
 <!-- new, edit project -->
 <app-edit-project-popup [title]="'Edit Project'" [project]="project"></app-edit-project-popup>
 <!-- end popup -->
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteProjectModal'" [deleteTitle]="'Delete project'" (confirmAction)="confirmProjectDelete($event)"></app-confirm-box>
+<!-- end of confim box -->

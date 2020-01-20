@@ -98,6 +98,9 @@ select.action {
   padding-left: 10px;
   cursor: pointer;
 }
+.wf-elements.public-workflow span.title {
+  width: calc(50% - 5px);
+}
 
 /* scroll bar style */
 /* width */

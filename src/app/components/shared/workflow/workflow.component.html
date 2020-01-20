@@ -5,7 +5,7 @@
         <img src="/assets/images/general/menu.png" alt="" class=""/>  MENU
     </span>
   </a>
-  <div class="wf-elements">
+  <div class="wf-elements" [ngClass]="{'public-workflow': itemsPath !== '/projects/project/'}">
     <a [routerLink]="[itemsPath + objectID]" [ngClass]="{'_active': location.path() === itemsPath + objectID}">
       <span class="title">Details</span>
     </a>

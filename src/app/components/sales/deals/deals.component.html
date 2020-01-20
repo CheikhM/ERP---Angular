@@ -1,1 +1,20 @@
-<p>page under construction !</p>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredDeals"
+             [model]="'Sales'"
+             (onEditClick)="editDeal($event)"
+             (onDeleteClick)="deleteDeal($event)"
+             [icon]="'bids-icon'"
+             [modulePath]="'/sales/deal/'"
+></app-listing>
+
+
+<!--
+
+&lt;!&ndash; confirm project delete &ndash;&gt;
+<app-confirm-box [popupID]="'deleteBidModal'" [deleteTitle]="'Delete bid'" (confirmAction)="confirmBidDelete($event)"></app-confirm-box>
+&lt;!&ndash; end of confim box &ndash;&gt;
+
+&lt;!&ndash; new, edit project &ndash;&gt;
+<app-edit-bid-popup [title]="manageAction" [bid]="bidTobeManaged" (onExitModal)="initManageData()"></app-edit-bid-popup>
+&lt;!&ndash; end popup &ndash;&gt;
+-->
