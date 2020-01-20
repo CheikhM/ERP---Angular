@@ -4,8 +4,10 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {LOGIN_BASE_PATH} from '../../../config';
 
 declare var $: any;
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-header',
@@ -54,7 +56,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.workflowIDSub = this.sharedService.getworkflowID().subscribe(id => this.workflowID = id);
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 
   // todo rework
   private loadHeaderTitlesInfos(path: string) {
@@ -84,6 +87,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logOut() {
     localStorage.removeItem('token');
     // window.location.replace('login');
-    window.location.replace('/front/login');
+    window.location.replace(LOGIN_BASE_PATH);
   }
 }
