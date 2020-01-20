@@ -37,6 +37,7 @@ import { EditBoqComponent } from './components/projects/boqs/edit-boq/edit-boq.c
 import { BidDetailsComponent } from './components/sales/bids/bid-details/bid-details.component';
 import { BidNotesComponent } from './components/sales/bids/bid-notes/bid-notes.component';
 import { EditBidPopupComponent } from './components/sales/bids/edit-bid-popup/edit-bid-popup.component';
+import { VisitsComponent } from './components/sales/visits/visits.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EditBidPopupComponent } from './components/sales/bids/edit-bid-popup/ed
     BidDetailsComponent,
     BidNotesComponent,
     EditBidPopupComponent,
+    VisitsComponent,
   ],
   imports: [
     BrowserModule,
