@@ -20,6 +20,7 @@ export class Connection {
       },
       sales: {
         getAllBids: this.apiProject + 'sales/bids/all',
+        getAllDeals: this.apiProject + 'sales/deals/all',
         getSingleBid: this.apiProject + 'sales/bid',
         deleteBid: this.apiProject + 'sales/bids/delete',
         newBid: this.apiProject + 'sales/bids/new',

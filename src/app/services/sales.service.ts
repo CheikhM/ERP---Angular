@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Project} from '../models/project.model';
 import {Connection} from '../config/connection.config';
 import {map} from 'rxjs/operators';
 import {Invoice} from '../models/invoice.model';
 import {Bid} from '../models/bid.model';
+import {Deal} from '../models/deal.model';
 
 
 @Injectable({
@@ -15,11 +15,20 @@ export class SalesService {
   constructor(private http: HttpClient) {
   }
 
-  // get the list of all non deleted projects
+  // get the list of all non deleted bids
   getAllBids(): Observable<Bid []> {
     return this.http.get(Connection.api.sales.getAllBids).pipe(
       map(response => response), map(bids => {
         return Bid.arrayCast(bids);
+      })
+    );
+  }
+
+  // get the list of all non deleted deals
+  getAllDeals(): Observable<Deal []> {
+    return this.http.get(Connection.api.sales.getAllDeals).pipe(
+      map(response => response), map(deals => {
+        return Deal.arrayCast(deals);
       })
     );
   }
@@ -62,7 +71,6 @@ export class SalesService {
   deleteInvoice(id: number): Observable<any> {
     return this.http.get(Connection.api.projects.deleteInvoice + '?id=' + id);
   }
-
 
 
 }

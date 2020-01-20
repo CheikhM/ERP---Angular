@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SalesService} from '../../../services/sales.service';
 
 @Component({
   selector: 'app-deals',
@@ -14,10 +15,27 @@ export class DealsComponent implements OnInit {
   ];
 
   filteredDeals: any;
+  deals: any;
 
-  constructor() { }
+  constructor(private salesService: SalesService) {
+  }
 
   ngOnInit() {
+
+    this.getAllDeals();
+  }
+
+  getAllDeals() {
+    this.salesService.getAllDeals().subscribe(
+      resp => {
+        // console.log(resp);
+        this.deals = resp;
+        this.filteredDeals = resp;
+      },
+      error => // console.log(error),
+        () => {
+        }
+    );
   }
 
   editDeal($event: any) {
