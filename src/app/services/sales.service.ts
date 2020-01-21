@@ -33,10 +33,17 @@ export class SalesService {
     );
   }
 
+
   // delete a project using the project id
   deleteBid(id: number): Observable<any> {
     return this.http.get(Connection.api.sales.deleteBid + '?id=' + id);
   }
+
+  // delete a project using the project id
+  deleteDeal(id: number): Observable<any> {
+    return this.http.get(Connection.api.sales.deleteDeal + '?id=' + id);
+  }
+
 
   // get a project by id
   getBidByID(id: number): Observable<any> {
@@ -48,9 +55,20 @@ export class SalesService {
     return this.http.post(Connection.api.sales.newBid, bid);
   }
 
+  // add new bid
+  newDeal(deal: Deal) {
+    return this.http.post(Connection.api.sales.newDeal, deal);
+  }
+
   // edit existing bid
   updateBid(bid: Bid) {
     return this.http.post(Connection.api.sales.updateBid, bid);
+  }
+
+
+  // edit existing bid
+  updateDeal(deal: Deal) {
+    return this.http.post(Connection.api.sales.updateDeal, deal);
   }
 
   // add new invoice todo validate

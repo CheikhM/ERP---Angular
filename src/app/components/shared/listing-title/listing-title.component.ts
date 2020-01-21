@@ -29,6 +29,11 @@ export class ListingTitleComponent implements OnInit {
         backdrop: 'static',
         keyboard: false
       });
+    } else if (this.data.sTitle === 'Deal') {
+      $('#newDeal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
     }
   }
 }

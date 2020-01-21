@@ -38,6 +38,9 @@ import { BidDetailsComponent } from './components/sales/bids/bid-details/bid-det
 import { BidNotesComponent } from './components/sales/bids/bid-notes/bid-notes.component';
 import { EditBidPopupComponent } from './components/sales/bids/edit-bid-popup/edit-bid-popup.component';
 import { VisitsComponent } from './components/sales/visits/visits.component';
+import {DealNotesComponent} from './components/sales/deals/deal-notes/deal-notes.component';
+import { DealDetailsComponent } from './components/sales/deals/deal-details/deal-details.component';
+import { EditDealPopupComponent } from './components/sales/deals/edit-deal-popup/edit-deal-popup.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,9 @@ import { VisitsComponent } from './components/sales/visits/visits.component';
     BidNotesComponent,
     EditBidPopupComponent,
     VisitsComponent,
+    DealNotesComponent,
+    DealDetailsComponent,
+    EditDealPopupComponent
   ],
   imports: [
     BrowserModule,

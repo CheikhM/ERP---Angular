@@ -8,13 +8,11 @@
 ></app-listing>
 
 
-<!--
 
-&lt;!&ndash; confirm project delete &ndash;&gt;
-<app-confirm-box [popupID]="'deleteBidModal'" [deleteTitle]="'Delete bid'" (confirmAction)="confirmBidDelete($event)"></app-confirm-box>
-&lt;!&ndash; end of confim box &ndash;&gt;
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteDealModal'" [deleteTitle]="'Delete deal'" (confirmAction)="confirmDealDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
 
-&lt;!&ndash; new, edit project &ndash;&gt;
-<app-edit-bid-popup [title]="manageAction" [bid]="bidTobeManaged" (onExitModal)="initManageData()"></app-edit-bid-popup>
-&lt;!&ndash; end popup &ndash;&gt;
--->
+<!-- new, edit project -->
+<app-edit-deal-popup [title]="manageAction" [deal]="dealTobeManaged" ></app-edit-deal-popup>
+<!-- end popup -->

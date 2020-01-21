@@ -21,9 +21,9 @@
           (click)="setCurrentListingObject(object)">
         <span class="listing-elt" [ngClass]="{'with-status':  meta.text === 'Status', 'pl-string': meta.type === 'PLString'}">
           <img *ngIf="meta.text === 'Status'"
-               src="/assets/images/listing/{{ object['status'].toLowerCase().split(' ').join('') }}.svg"/>
+               src="/assets/images/listing/{{ object['status']?.toLowerCase().split(' ').join('') }}.svg"/>
           <span
-            class="text">{{ meta.type === 'date' ? (object[meta.attribute] | date: 'MMM d, y') : (object[meta.attribute].length > getMaxText() ? (object[meta.attribute] | slice:0:getMaxText())+'..':(object[meta.attribute])) }}</span>
+            class="text">{{ meta.type === 'date' ? (object[meta.attribute] | date: 'MMM d, y') : ((object[meta.attribute] && object[meta.attribute].length > getMaxText()) ? (object[meta.attribute] | slice:0:getMaxText())+'..':(object[meta.attribute])) }}</span>
         </span>
       </td>
       <td class="control">
