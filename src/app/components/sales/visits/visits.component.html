@@ -1,1 +1,19 @@
-<p>visits works!</p>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredVisits"
+             [model]="'Sales'"
+             (onEditClick)="editVisit($event)"
+             (onDeleteClick)="deleteVisit($event)"
+             [icon]="'icon-visits'"
+             [modulePath]="'/sales/deal/'"
+></app-listing>
+
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteDealModal'" [deleteTitle]="'Delete deal'" (confirmAction)="confirmVisitDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-deal-popup [title]="manageAction" [deal]="visitTobeManaged" ></app-edit-deal-popup>
+<!-- end popup -->
+

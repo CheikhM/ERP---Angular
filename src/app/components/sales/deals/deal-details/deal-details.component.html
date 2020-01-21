@@ -1,1 +1,66 @@
-<p>deal-details works!</p>
+<app-details-title [canAdd]="false" [title]="'Bid details'"></app-details-title>
+<div class="aw-container details">
+  <div class="header">
+    <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon"/>
+    <img src="/assets/images/general/back-icon.svg" alt="" class="return-icon" [routerLink]="'/sales/deals/all'"/>
+  </div>
+  <div class="edit-project container">
+    <div class="row">
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <label>Deal Name</label>
+          <input class="form-control" required type="text" name="dealName" value="{{deal.name}}"/>
+          <div class="message">
+            <span>field required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Expected close</label>
+          <input class="form-control" required type="text" name="expectedClose" value="{{deal.expectedClose}}"/>
+          <div class="message">
+            <span >field required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <input class="form-control" required type="text" name="status" value="{{deal.status}}"/>
+        </div>
+        <div class="form-group">
+          <label>Contact</label>
+          <input class="form-control" type="text" name="contact" value="{{deal.contact}}"/>
+        </div>
+
+      </div>
+      <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <label>Client Name</label>
+          <input class="form-control" type="text" name="clientName" value="{{deal.clientName}}"/>
+        </div>
+
+        <div class="form-group currency-form">
+          <label>Value</label>
+          <input class="form-control" type="text" name="value" value="{{deal.value}}">
+          <div class="message">
+            <span>field required & must be a valid number</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Bid Manager</label>
+          <input class="form-control" type="text" name="manager" value="{{deal.manager}}">
+
+        </div>
+        <div class="submit">
+          <input class="btn btn-success" type="submit" value="{{'Edit Deal'}}" (click)="triggerDealEdit()"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteDealModal'" [deleteTitle]="'Delete deal'" (confirmAction)="confirmDealDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-deal-popup [title]="'Edit Deal'" [deal]="deal" ></app-edit-deal-popup>
+<!-- end popup -->

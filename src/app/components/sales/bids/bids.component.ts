@@ -39,7 +39,7 @@ export class BidsComponent implements OnInit {
 
     this.getAllBids();
 
-    // search project
+    // search bid
     this.sharedService.getSearchText().subscribe(item => {
       this.searchBid(item.toLocaleLowerCase());
     });

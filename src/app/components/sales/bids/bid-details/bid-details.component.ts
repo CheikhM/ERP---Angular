@@ -1,11 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from '../../../../services/shared.service';
 import {ActivatedRoute} from '@angular/router';
 import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
-import {Project} from '../../../../models/project.model';
 import {SalesService} from '../../../../services/sales.service';
 import {Bid} from '../../../../models/bid.model';
-import {EventManager} from '@angular/platform-browser';
 import {AuthService} from '../../../../services/auth.service';
 
 declare var $: any;
@@ -16,7 +14,7 @@ declare var $: any;
   templateUrl: './bid-details.component.html',
   styleUrls: ['./bid-details.component.css']
 })
-export class BidDetailsComponent implements OnInit {
+export class BidDetailsComponent implements OnInit, OnDestroy {
   readonly currentBidId: number;
   private bid: Bid;
   managerName: string;
@@ -92,4 +90,8 @@ export class BidDetailsComponent implements OnInit {
       keyboard: false
     });
   }
+
+  ngOnDestroy(): void {
+  }
+
 }

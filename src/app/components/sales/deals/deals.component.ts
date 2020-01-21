@@ -37,6 +37,10 @@ export class DealsComponent implements OnInit {
     // check for new update
     this.sharedService.getNewUpdate().subscribe(update => this.getAllDeals());
 
+    // search deal
+    this.sharedService.getSearchText().subscribe(item => {
+      this.searchDeal(item.toLocaleLowerCase());
+    });
     this.getAllDeals();
   }
 
