@@ -17,7 +17,7 @@ declare var $: any;
 export class DealDetailsComponent implements OnInit, OnDestroy {
 
   readonly currentDealId: number;
-  private deal: Deal;
+  deal: Deal;
   managerName: string;
 
   constructor(private sharedService: SharedService,
@@ -44,7 +44,7 @@ export class DealDetailsComponent implements OnInit, OnDestroy {
     if (true) {
       this.saleService.getDealByID(this.currentDealId).subscribe(
         result => {
-          if (result.status === '200_OK') {
+          if (result && result.status === '200_OK') {
             this.deal = new Deal(result.data);
             this.getManagerName(this.deal.manager);
           }

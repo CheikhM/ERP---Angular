@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {Invoice} from '../models/invoice.model';
 import {Bid} from '../models/bid.model';
 import {Deal} from '../models/deal.model';
+import {Visit} from '../models/visit.model';
 
 
 @Injectable({
@@ -33,6 +34,15 @@ export class SalesService {
     );
   }
 
+  // get the list of all non deleted deals
+  getAllVisits(): Observable<Visit []> {
+    return this.http.get(Connection.api.sales.getAllVisits).pipe(
+      map(response => response), map(visits => {
+        return Visit.arrayCast(visits);
+      })
+    );
+  }
+
 
   // delete a project using the project id
   deleteBid(id: number): Observable<any> {
@@ -42,6 +52,11 @@ export class SalesService {
   // delete a project using the project id
   deleteDeal(id: number): Observable<any> {
     return this.http.get(Connection.api.sales.deleteDeal + '?id=' + id);
+  }
+
+  // delete a project using the project id
+  deleteVisit(id: number): Observable<any> {
+    return this.http.get(Connection.api.sales.deleteVisit + '?id=' + id);
   }
 
 

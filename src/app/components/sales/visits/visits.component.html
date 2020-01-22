@@ -4,13 +4,13 @@
              (onEditClick)="editVisit($event)"
              (onDeleteClick)="deleteVisit($event)"
              [icon]="'icon-visits'"
-             [modulePath]="'/sales/deal/'"
+             [modulePath]="'/sales/visit/'"
 ></app-listing>
 
 
 
 <!-- confirm project delete -->
-<app-confirm-box [popupID]="'deleteDealModal'" [deleteTitle]="'Delete deal'" (confirmAction)="confirmVisitDelete($event)"></app-confirm-box>
+<app-confirm-box [popupID]="'deleteVisitModal'" [deleteTitle]="'Delete visit'" (confirmAction)="confirmVisitDelete($event)"></app-confirm-box>
 <!-- end of confim box -->
 
 <!-- new, edit project -->
