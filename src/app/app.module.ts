@@ -41,6 +41,9 @@ import { VisitsComponent } from './components/sales/visits/visits.component';
 import {DealNotesComponent} from './components/sales/deals/deal-notes/deal-notes.component';
 import { DealDetailsComponent } from './components/sales/deals/deal-details/deal-details.component';
 import { EditDealPopupComponent } from './components/sales/deals/edit-deal-popup/edit-deal-popup.component';
+import { EditVisitPopupComponent } from './components/sales/visits/edit-visit-popup/edit-visit-popup.component';
+import { VisitDetailsComponent } from './components/sales/visits/visit-details/visit-details.component';
+import { VisitNotesComponent } from './components/sales/visits/visit-notes/visit-notes.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,10 @@ import { EditDealPopupComponent } from './components/sales/deals/edit-deal-popup
     VisitsComponent,
     DealNotesComponent,
     DealDetailsComponent,
-    EditDealPopupComponent
+    EditDealPopupComponent,
+    EditVisitPopupComponent,
+    VisitDetailsComponent,
+    VisitNotesComponent
   ],
   imports: [
     BrowserModule,

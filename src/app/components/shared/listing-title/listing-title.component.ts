@@ -34,6 +34,14 @@ export class ListingTitleComponent implements OnInit {
         backdrop: 'static',
         keyboard: false
       });
+    } else if (this.data.sTitle === 'Visit') {
+      $('#newVisit').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
     }
+    setTimeout(() => {
+      $('.autofocus').focus();
+    }, 500);
   }
 }

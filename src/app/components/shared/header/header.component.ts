@@ -76,6 +76,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         title: 'Projects',
         sTitle: 'Project'
       };
+    } else if (path.includes('visits')) {
+      this.listingTitleData = {
+        title: 'Visits',
+        sTitle: 'Visit'
+      };
     }
   }
 

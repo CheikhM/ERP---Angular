@@ -9,11 +9,11 @@
 
 
 
-<!-- confirm project delete -->
+<!-- confirm visit delete -->
 <app-confirm-box [popupID]="'deleteVisitModal'" [deleteTitle]="'Delete visit'" (confirmAction)="confirmVisitDelete($event)"></app-confirm-box>
 <!-- end of confim box -->
 
-<!-- new, edit project -->
-<app-edit-deal-popup [title]="manageAction" [deal]="visitTobeManaged" ></app-edit-deal-popup>
+<!-- new, edit visit -->
+<app-edit-visit-popup [title]="manageAction" [visit]="visitTobeManaged" ></app-edit-visit-popup>
 <!-- end popup -->
 

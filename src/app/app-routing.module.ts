@@ -16,6 +16,8 @@ import {BidNotesComponent} from './components/sales/bids/bid-notes/bid-notes.com
 import {VisitsComponent} from './components/sales/visits/visits.component';
 import {DealNotesComponent} from './components/sales/deals/deal-notes/deal-notes.component';
 import {DealDetailsComponent} from './components/sales/deals/deal-details/deal-details.component';
+import {VisitDetailsComponent} from './components/sales/visits/visit-details/visit-details.component';
+import {VisitNotesComponent} from './components/sales/visits/visit-notes/visit-notes.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'sales/deal/' + ':id', component: DealDetailsComponent, canActivate: [AuthGuard] },
   { path: 'sales/deal/' + ':id' + '/notes', component: DealNotesComponent, canActivate: [AuthGuard] },
   { path: 'sales/visits/all', component: VisitsComponent, canActivate: [AuthGuard] },
+  { path: 'sales/visit/' + ':id', component: VisitDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'sales/visit/' + ':id' + '/notes', component: VisitNotesComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: '**', component: DashboardComponent },
 ];

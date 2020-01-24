@@ -68,6 +68,10 @@ export class SalesService {
   getDealByID(id: number): Observable<any> {
     return this.http.get(Connection.api.sales.getSingleDeal + '?id=' + id);
   }
+  // get a visit by id
+  getVisitByID(id: number): Observable<any> {
+    return this.http.get(Connection.api.sales.getSingleVisit + '?id=' + id);
+  }
 
   // add new bid
   newBid(bid: Bid) {
@@ -79,6 +83,11 @@ export class SalesService {
     return this.http.post(Connection.api.sales.newDeal, deal);
   }
 
+  // add new visit
+  newVisit(visit: Visit) {
+    return this.http.post(Connection.api.sales.newVisit, visit);
+  }
+
   // edit existing bid
   updateBid(bid: Bid) {
     return this.http.post(Connection.api.sales.updateBid, bid);
@@ -88,6 +97,11 @@ export class SalesService {
   // edit existing bid
   updateDeal(deal: Deal) {
     return this.http.post(Connection.api.sales.updateDeal, deal);
+  }
+
+  // edit existing bid
+  updateVisit(visit: Visit) {
+    return this.http.post(Connection.api.sales.updateVisit, visit);
   }
 
   // add new invoice todo validate

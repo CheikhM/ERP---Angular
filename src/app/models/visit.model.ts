@@ -11,6 +11,7 @@ export class Visit {
     this.id = data.id;
     this.reason = data.reason;
     this.contact = data.contact;
+    this.date = data.date;
     this.manager = data.manager;
     this.lastUpdate = data.last_update;
     this.clientName = data.client_name;
@@ -25,7 +26,7 @@ export class Visit {
     return visits;
   }
 
-  static getEmptyDeal(): Visit {
+  static getEmptyVisit(): Visit {
     return {
       id: null,
       reason: null,

@@ -18,9 +18,4 @@ $(document).ready(function () {
     $('.note .text').not($(this)).attr('readonly', 'readonly');
   });
 
-
-  $('.form-group').each(function () {
-    // var message = '<div class="message">field required</div>';
-    // $(this).append(message);
-  })
 });

@@ -16,7 +16,7 @@ declare var $: any;
 })
 export class BidDetailsComponent implements OnInit, OnDestroy {
   readonly currentBidId: number;
-  private bid: Bid;
+  bid: Bid;
   managerName: string;
 
   constructor(private sharedService: SharedService,
