@@ -44,6 +44,9 @@ import { EditDealPopupComponent } from './components/sales/deals/edit-deal-popup
 import { EditVisitPopupComponent } from './components/sales/visits/edit-visit-popup/edit-visit-popup.component';
 import { VisitDetailsComponent } from './components/sales/visits/visit-details/visit-details.component';
 import { VisitNotesComponent } from './components/sales/visits/visit-notes/visit-notes.component';
+import { UsersComponent } from './components/users/users.component';
+import { EditUserPopupComponent } from './components/users/edit-user-popup/edit-user-popup.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,10 @@ import { VisitNotesComponent } from './components/sales/visits/visit-notes/visit
     EditDealPopupComponent,
     EditVisitPopupComponent,
     VisitDetailsComponent,
-    VisitNotesComponent
+    VisitNotesComponent,
+    UsersComponent,
+    EditUserPopupComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

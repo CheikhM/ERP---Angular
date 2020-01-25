@@ -7,6 +7,7 @@ export class Connection {
     return {
       projects: {
         getAll: this.apiProject + 'projects/all',
+        getAllCodes: this.apiProject + 'projects/codes',
         getAllInvoices: this.apiProject + 'projects/invoices/all',
         getAllBOQs: this.apiProject + 'projects/boqs/all',
         newGroup: this.apiProject + 'projects/boqs/group/new',
@@ -47,6 +48,9 @@ export class Connection {
       users: {
         getAll: this.apiProject + 'users/all',
         getSingle: this.apiProject + 'users/user',
+        deleteUser: this.apiProject + 'users/delete',
+        newUser: this.apiProject + 'users/new',
+        updateUser: this.apiProject + 'users/update',
       }
     };
   }

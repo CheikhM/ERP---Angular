@@ -1,19 +1,25 @@
 export class User {
   id: number;
-  fullName: string;
-  role: string;
+  name: string;
+  email: string;
+  roles: number [];
+  username: string;
+  createdAt: Date;
 
   constructor(data: any) {
     this.id = data.id;
-    this.fullName = data.full_name;
-    this.role = data.role;
+    this.name = data.name;
+    this.email = data.email;
+    this.roles = (data.role) ? data.role.split(',') : [];
+    this.username = data.username;
+    this.createdAt = data.created_at;
   }
 
   static arrayCast(data: any): User [] {
     const users: User [] = [];
     data.data.forEach(userItem => {
-      const note = new User(userItem);
-      users.push(note);
+      const user = new User(userItem);
+      users.push(user);
     });
     return users;
   }
@@ -21,8 +27,15 @@ export class User {
   static getEmptyUser(): User {
     return {
       id: null,
-      fullName: null,
-      role: null,
+      name: null,
+      createdAt: null,
+      username: null,
+      email: null,
+      roles: []
     };
+  }
+
+  static getEmptyRoles() {
+    return {CEO: null, SM: null, PM: null, AC: null, SA: null};
   }
 }

@@ -536,9 +536,64 @@ tr.white-bg:hover {
 .custom-select {
   margin-left: 5px;
 }
-
 /* emd notes style */
 
+.__styled-checkbox {
+  display: inline-block;
+  position: relative;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.__styled-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.__styled-checkbox .check-mark {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background: white;
+  border: 1px solid #0d1119;
+}
+
+.__styled-checkbox input:checked ~ .check-mark {
+  background-color: #0d1119;
+}
+
+.__styled-checkbox .check-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.__styled-checkbox input:checked ~ .check-mark:after {
+  display: block;
+}
+
+.__styled-checkbox .check-mark:after {
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;

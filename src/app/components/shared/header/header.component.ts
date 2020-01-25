@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
@@ -39,6 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.listingPage = true;
           this.loadHeaderTitlesInfos(event.url);
         } else if (event.url === '/') {
+          this.listingPage = false;
+          this.workflowPresent = false;
+        } else if (event.url.includes('users')) {
           this.listingPage = false;
           this.workflowPresent = false;
         } else {
@@ -80,6 +82,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.listingTitleData = {
         title: 'Visits',
         sTitle: 'Visit'
+      };
+    }  else if (path.includes('users')) {
+      this.listingTitleData = {
+        title: 'Users',
+        sTitle: 'User'
       };
     }
   }

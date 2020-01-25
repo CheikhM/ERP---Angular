@@ -23,6 +23,10 @@ export class ProjectService {
     );
   }
 
+  // get the list of all non deleted projects
+  getAllCodes(): Observable<any> {
+    return this.http.get(Connection.api.projects.getAllCodes);
+  }
   // delete a project using the project id
   deleteProject(id: number): Observable<any> {
     return this.http.get(Connection.api.projects.delete + '?id=' + id);

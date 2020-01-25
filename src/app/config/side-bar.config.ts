@@ -22,7 +22,7 @@ export const menuElements = [
     ]
   },
   {text: 'Warehouse', icon: 'warehouse-icon', route: 'default', parent: false},
-  {text: 'Tasks', icon: 'tasks', route: 'default', parent: false},
-  {text: 'Users', icon: 'users', route: 'default', parent: false},
+  {text: 'Tasks', icon: 'tasks', route: '/tasks/all', parent: false},
+  {text: 'Users', icon: 'users', route: '/users/all', parent: false},
   {text: 'Backup', icon: 'backup-icon', route: 'default', parent: false},
 ];

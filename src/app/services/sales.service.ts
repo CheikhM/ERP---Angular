@@ -7,6 +7,7 @@ import {Invoice} from '../models/invoice.model';
 import {Bid} from '../models/bid.model';
 import {Deal} from '../models/deal.model';
 import {Visit} from '../models/visit.model';
+import {User} from '../models/user.model';
 
 
 @Injectable({
@@ -42,8 +43,6 @@ export class SalesService {
       })
     );
   }
-
-
   // delete a project using the project id
   deleteBid(id: number): Observable<any> {
     return this.http.get(Connection.api.sales.deleteBid + '?id=' + id);

@@ -16,9 +16,7 @@ export class SideBarComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    // console.log(this.location.path());
-  }
+  ngOnInit() {}
 
   navigateToRoute(route: string | null) {
     if (!isNull(route)) {

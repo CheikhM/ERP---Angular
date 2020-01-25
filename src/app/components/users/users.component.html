@@ -1,0 +1,19 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredUsers"
+             [model]="'Users'"
+             (onEditClick)="editUser($event)"
+             (onDeleteClick)="deleteUser($event)"
+             [icon]="'users'"
+             [modulePath]="'/users/user/'"
+></app-listing>
+
+
+<!-- confirm visit delete -->
+<app-confirm-box [popupID]="'deleteUserModal'" [deleteTitle]="'Delete user'" (confirmAction)="confirmUserDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit visit -->
+<app-edit-user-popup [title]="manageAction" [user]="userTobeManaged" ></app-edit-user-popup>
+<!-- end popup -->
+
+

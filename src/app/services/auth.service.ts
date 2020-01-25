@@ -6,6 +6,7 @@ import {Connection} from '../config/connection.config';
 import {map} from 'rxjs/operators';
 import {Note} from '../models/note.model';
 import {User} from '../models/user.model';
+import {Bid} from '../models/bid.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,9 @@ export class AuthService {
     return this.http.post(Connection.api.auth.login, data).pipe(map(result => result['data']));
   }
 
-  // get the list of all non deleted users
-  getAllUsers(roleID): Observable<User []> {
+
+  // get the list of all non deleted user
+  getAllUsers(roleID = 0): Observable<User []> {
     return this.http.get(Connection.api.users.getAll + '?role=' + roleID).pipe(
       map(response => response), map(users => {
         return User.arrayCast(users);
@@ -49,4 +51,20 @@ export class AuthService {
   getUserByID(id: number): Observable<any> {
     return this.http.get(Connection.api.users.getSingle + '?id=' + id);
   }
+
+  // delete a project using the project id
+  deleteUser(id: number): Observable<any> {
+    return this.http.get(Connection.api.users.deleteUser + '?id=' + id);
+  }
+
+  // add new bid
+  newUser(user: User) {
+    return this.http.post(Connection.api.users.newUser, user);
+  }
+
+  // edit existing bid
+  updateUser(user: User) {
+    return this.http.post(Connection.api.users.updateUser, user);
+  }
+
 }
