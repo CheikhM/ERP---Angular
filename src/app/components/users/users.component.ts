@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
     {text: 'Full Name', attribute: 'name', type: 'PLString'},
     {text: 'Email', attribute: 'email'},
     {text: 'Username', attribute: 'username', type: 'string'},
-    {text: 'Created at', attribute: 'created_at', type: 'date'},
+    {text: 'Permissions', attribute: 'roles'},
   ];
 
   users: User [];

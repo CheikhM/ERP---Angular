@@ -39,7 +39,7 @@ export class EditDealPopupComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.dealCopy = Deal.getEmptyDeal();
-    this.getUsers(3);
+    this.getUsers('SM');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -48,7 +48,7 @@ export class EditDealPopupComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  getUsers(role: number) {
+  getUsers(role: string) {
     this.authService.getAllUsers(role).subscribe(result => this.managers = result);
   }
 

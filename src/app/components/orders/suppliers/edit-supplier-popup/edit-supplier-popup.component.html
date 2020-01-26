@@ -1,0 +1,58 @@
+<div class="modal fade custom-popup edit-project" id="newSupplier" tabindex="-1" role="dialog"
+     aria-labelledby="newSupplier"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-project container">
+          <form #loginForm="ngForm">
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
+            <div class="row">
+              <div class="col-12">
+                <h3 class="title">{{ title ? title : 'Add Supplier' }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(name) }">
+                  <label>Name</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="supplierCopy.name" #name="ngModel" name="name"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(name)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(shortName) }">
+                  <label>Short Name</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="supplierCopy.shortName" #shortName="ngModel" name="shortName"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(shortName)">field required</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(phone) }">
+                  <label>Email</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="supplierCopy.phone" #phone="ngModel" name="phone"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(phone)">field required</span>
+                  </div>
+                </div>
+                <div class="submit">
+                  <input class="btn btn-success" type="submit" style="margin-top: 15px;" value="{{ title ? title : 'Add Supplier' }}"
+                         (click)="saveSupplier()" [disabled]="loginForm.form.invalid && title !== 'Edit Supplier'"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

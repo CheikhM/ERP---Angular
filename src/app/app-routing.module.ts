@@ -20,6 +20,11 @@ import {VisitDetailsComponent} from './components/sales/visits/visit-details/vis
 import {VisitNotesComponent} from './components/sales/visits/visit-notes/visit-notes.component';
 import {UsersComponent} from './components/users/users.component';
 import {UserDetailsComponent} from './components/users/user-details/user-details.component';
+import {TasksComponent} from './components/tasks/tasks.component';
+import {TaskDetailsComponent} from './components/tasks/task-details/task-details.component';
+import {TaskNotesComponent} from './components/tasks/task-notes/task-notes.component';
+import {SuppliersComponent} from './components/orders/suppliers/suppliers.component';
+import {OrdersComponent} from './components/orders/orders.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -42,6 +47,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'users/all', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'users/user/' + ':id', component: UserDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'tasks/all', component: TasksComponent, canActivate: [AuthGuard] },
+  { path: 'tasks/task/' + ':id', component: TaskDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'tasks/task/' + ':id' + '/notes', component: TaskNotesComponent, canActivate: [AuthGuard] },
+  { path: 'orders/suppliers/all', component: SuppliersComponent, canActivate: [AuthGuard] },
+  { path: 'orders/all', component: OrdersComponent, canActivate: [AuthGuard] },
+
   { path: '**', component: DashboardComponent },
 ];
 

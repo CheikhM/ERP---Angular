@@ -35,10 +35,10 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.projectCopy = Project.getEmptyProject();
-    this.getUsers(2);
+    this.getUsers("PM");
   }
 
-  getUsers(role: number) {
+  getUsers(role: string) {
     this.authService.getAllUsers(role).subscribe(result => this.managers = result);
   }
 

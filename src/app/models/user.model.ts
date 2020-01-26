@@ -2,7 +2,7 @@ export class User {
   id: number;
   name: string;
   email: string;
-  roles: number [];
+  roles: string [];
   username: string;
   createdAt: Date;
 

@@ -11,8 +11,8 @@ export const menuElements = [
   },
   {
     text: 'Purchase orders', icon: 'purchase-icon', route: null, parent: true, subelements: [
-      {text: 'List all', icon: 'list-all-icon', route: 'default'},
-      {text: 'Suppliers', icon: 'icon-suppliers', route: 'default'},
+      {text: 'List all', icon: 'list-all-icon', route: '/orders/all'},
+      {text: 'Suppliers', icon: 'icon-suppliers', route: '/orders/suppliers/all'},
     ]
   },
   {

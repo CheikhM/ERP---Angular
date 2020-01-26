@@ -94,7 +94,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       const sub = this.authService.getUserByID(managerID).subscribe(
         res => {
           if (res && res.data) {
-            this.managerName = res.data.full_name;
+            this.managerName = res.data.name;
           }
         }, error => sub.unsubscribe(), () => sub.unsubscribe());
     }

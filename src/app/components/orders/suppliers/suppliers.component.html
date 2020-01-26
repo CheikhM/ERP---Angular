@@ -1,0 +1,12 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredSuppliers"
+             [model]="'Suppliers'"
+             (onEditClick)="editSupplier($event)"
+             (onDeleteClick)="deleteSupplier($event)"
+             [icon]="'icon-suppliers'"
+             [modulePath]="'/suppliers/supplier/'"
+></app-listing>
+
+<app-confirm-box [popupID]="'deleteSupplierModal'" [deleteTitle]="'Delete task'" (confirmAction)="confirmUserDelete($event)"></app-confirm-box>
+
+<app-edit-supplier-popup [title]="manageAction"></app-edit-supplier-popup>

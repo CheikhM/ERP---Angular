@@ -51,6 +51,27 @@ export class Connection {
         deleteUser: this.apiProject + 'users/delete',
         newUser: this.apiProject + 'users/new',
         updateUser: this.apiProject + 'users/update',
+      },
+      tasks: {
+        getAll: this.apiProject + 'tasks/all',
+        getSingle: this.apiProject + 'tasks/task',
+        deleteTask: this.apiProject + 'tasks/delete',
+        newTask: this.apiProject + 'tasks/new',
+        updateTask: this.apiProject + 'tasks/update',
+      },
+      suppliers: {
+        getAll: this.apiProject + 'suppliers/all',
+        getSingle: this.apiProject + 'suppliers/supplier',
+        deleteSupplier: this.apiProject + 'suppliers/delete',
+        newSupplier: this.apiProject + 'suppliers/new',
+        updateSupplier: this.apiProject + 'suppliers/update',
+      },
+      orders: {
+        getAll: this.apiProject + 'orders/all',
+        getSingle: this.apiProject + 'orders/order',
+        deleteOrder: this.apiProject + 'orders/delete',
+        newOrder: this.apiProject + 'orders/new',
+        updateOrder: this.apiProject + 'orders/update'
       }
     };
   }

@@ -47,6 +47,16 @@ import { VisitNotesComponent } from './components/sales/visits/visit-notes/visit
 import { UsersComponent } from './components/users/users.component';
 import { EditUserPopupComponent } from './components/users/edit-user-popup/edit-user-popup.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskNotesComponent } from './components/tasks/task-notes/task-notes.component';
+import { TaskDetailsComponent } from './components/tasks/task-details/task-details.component';
+import { EditTaskPopupComponent } from './components/tasks/edit-task-popup/edit-task-popup.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { SuppliersComponent } from './components/orders/suppliers/suppliers.component';
+import { SupplierDetailsComponent } from './components/orders/suppliers/supplier-details/supplier-details.component';
+import { EditSupplierPopupComponent } from './components/orders/suppliers/edit-supplier-popup/edit-supplier-popup.component';
+import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
+import { EditOrderPopupComponent } from './components/orders/edit-order-popup/edit-order-popup.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +96,17 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     VisitNotesComponent,
     UsersComponent,
     EditUserPopupComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    TasksComponent,
+    TaskNotesComponent,
+    TaskDetailsComponent,
+    EditTaskPopupComponent,
+    OrdersComponent,
+    SuppliersComponent,
+    SupplierDetailsComponent,
+    EditSupplierPopupComponent,
+    OrderDetailsComponent,
+    EditOrderPopupComponent
   ],
   imports: [
     BrowserModule,

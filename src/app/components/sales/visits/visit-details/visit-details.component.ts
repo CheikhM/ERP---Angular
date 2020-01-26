@@ -61,7 +61,7 @@ export class VisitDetailsComponent implements OnInit, OnDestroy {
       const sub = this.authService.getUserByID(managerID).subscribe(
         res => {
           if (res && res.data) {
-            this.managerName = res.data.full_name;
+            this.managerName = res.data.name;
           }
         }, error => sub.unsubscribe(), () => sub.unsubscribe());
     }
@@ -80,6 +80,6 @@ export class VisitDetailsComponent implements OnInit, OnDestroy {
   }
 
   confirmVisitDelete($event: any) {
-    
+
   }
 }

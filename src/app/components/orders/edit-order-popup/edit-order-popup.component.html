@@ -1,0 +1,132 @@
+<div class="modal fade custom-popup edit-project" id="newOrder" tabindex="-1" role="dialog"
+     aria-labelledby="newOrder"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-project container">
+          <form #loginForm="ngForm">
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
+            <div class="row">
+              <div class="col-12">
+                <h3 class="title">{{ title ? title : 'Add Deal' }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group" [ngClass]="{'to-verify': isNotValid(_vendor) }">
+                  <label>Vendor</label>
+                  <select class="form-control" [(ngModel)]="orderCopy.vendor" name="manager" #_vendor="ngModel" required>
+                    <option *ngFor="let vendor of vendors" value="{{vendor.id}}">{{ vendor.name }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(_vendor)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(shipTo) }">
+                  <label>Ship To</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="orderCopy.shipTo" #shipTo="ngModel" name="shipTo"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(shipTo)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(_approvedBy) }">
+                  <label>Approved By</label>
+                  <select class="form-control" [(ngModel)]="orderCopy.approvedBy" name="approvedBy" #_approvedBy="ngModel">
+                    <option *ngFor="let director of directors" value="{{director.id}}">{{ director.name }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(_approvedBy)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <label>Status</label>
+                  <select class="form-control" [(ngModel)]="orderCopy.status" name="status">
+                    <option value="Opened">Opened</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Terms & Conditions</label>
+                  <textarea class="form-control" type="text" [(ngModel)]="orderCopy.terms"
+                            name="terms" placeholder="write the terms & conditions here...">
+                  </textarea>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(discount) }">
+                  <label>Discount</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="orderCopy.discount" #discount="ngModel" name="discount"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(discount)">field required</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group" [ngClass]="{'to-verify': isNotValid(date) }">
+                  <label>Date</label>
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="pickerDate" required type="text" name="date"
+                           [(ngModel)]="orderCopy.date" (focus)="pickerDate.open()" #date="ngModel" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDate></mat-datepicker>
+                  </mat-form-field>
+                  <div class="message">
+                    <span *ngIf="isEmpty(date)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(_project) }">
+                  <label>Project</label>
+                  <select class="form-control" [(ngModel)]="orderCopy.project" name="_project" #_project="ngModel">
+                    <option *ngFor="let project of projects" value="{{project.id}}">{{ project.code }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(_project)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Currency</label>
+                  <select class="form-control" [(ngModel)]="orderCopy.currency" name="currency">
+                    <option value="sar" selected="selected">SAR</option>
+                    <option value="dol">DOL</option>
+                    <option value="eur">EUR</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Prepared  By</label>
+                  <input class="form-control" disabled type="text"
+                         [(ngModel)]="orderCopy.preparedBy"  name="preparedBy"/>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(link) }">
+                  <label>E-Link</label>
+                  <input class="form-control" required type="text"
+                         [(ngModel)]="orderCopy.link" #link="ngModel" name="link"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(link)">field required</span>
+                  </div>
+                </div>
+                <div class="select-item">
+                  <span class="vat-val" style="float: left;line-height: 32px;">VAT 5%</span>
+                  <label class="__styled-checkbox" style="margin-left: 10px;">
+                    <input type="checkbox" [(ngModel)]="orderCopy.vat" name="vat">
+                    <span class="check-mark"></span>
+                  </label>
+                </div>
+                <div class="submit">
+                  <input class="btn btn-success" type="submit" value="{{ title ? title : 'Add Order' }}"
+                         (click)="saveOrder()" [disabled]="loginForm.form.invalid"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

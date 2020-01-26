@@ -71,7 +71,7 @@
                 <div class="form-group">
                   <label>Bid Manager</label>
                   <select class="form-control" [(ngModel)]="dealCopy.manager" name="manager">
-                    <option *ngFor="let manager of managers" value="{{manager.id}}">{{ manager.fullName }}</option>
+                    <option *ngFor="let manager of managers" value="{{manager.id}}">{{ manager.name }}</option>
                   </select>
                 </div>
                 <div class="submit">

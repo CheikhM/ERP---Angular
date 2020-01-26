@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
-import {SalesService} from '../../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';

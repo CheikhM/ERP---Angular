@@ -8,7 +8,6 @@ import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
 
-
 declare var $: any;
 
 @AutoUnsubscribe()
@@ -39,7 +38,7 @@ export class EditVisitPopupComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.visitCopy = Visit.getEmptyVisit();
-    this.getUsers(3);
+    this.getUsers('SM');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -48,7 +47,7 @@ export class EditVisitPopupComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  getUsers(role: number) {
+  getUsers(role: string) {
     this.authService.getAllUsers(role).subscribe(result => this.managers = result);
   }
 

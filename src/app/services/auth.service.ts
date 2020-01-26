@@ -39,8 +39,8 @@ export class AuthService {
 
 
   // get the list of all non deleted user
-  getAllUsers(roleID = 0): Observable<User []> {
-    return this.http.get(Connection.api.users.getAll + '?role=' + roleID).pipe(
+  getAllUsers(role = 'all'): Observable<User []> {
+    return this.http.get(Connection.api.users.getAll + '?role=' + role).pipe(
       map(response => response), map(users => {
         return User.arrayCast(users);
       })

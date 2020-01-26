@@ -83,10 +83,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
         title: 'Visits',
         sTitle: 'Visit'
       };
-    }  else if (path.includes('users')) {
+    } else if (path.includes('users')) {
       this.listingTitleData = {
         title: 'Users',
         sTitle: 'User'
+      };
+    } else if (path.includes('tasks')) {
+      this.listingTitleData = {
+        title: 'Tasks',
+        sTitle: 'Task'
+      };
+    } else if (path.includes('suppliers')) {
+      this.listingTitleData = {
+        title: 'Suppliers',
+        sTitle: 'Supplier'
+      };
+    }  else if (path.includes('orders/all')) {
+      this.listingTitleData = {
+        title: 'Purchase Orders',
+        sTitle: 'Order'
       };
     }
   }

@@ -594,6 +594,10 @@ tr.white-bg:hover {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+textarea {
+  resize: none;
+}
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;
