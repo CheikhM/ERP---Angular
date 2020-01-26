@@ -32,6 +32,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
 
   password: string;
   purchaseCopy: Purchase;
+  projects: any;
 
   constructor(private orderService: OrderService,
               private toastrService: ToastrService,
@@ -67,15 +68,9 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   savePurchase() {
     const copyToSend = {
       ...this.purchaseCopy,
-      part_code: this.purchaseCopy.partCode,
-      project_id: this.purchaseCopy.projectID,
-      order_id: this.purchaseCopy.orderID,
     };
 
     // delete unused object
-    delete copyToSend.orderID;
-    delete copyToSend.partCode;
-    delete copyToSend.projectID;
 
     // adding new project
     if (this.title === 'Add Purchase') {
@@ -96,7 +91,6 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
         }
       );
     } else if (this.title === 'Edit Purchase') {
-      delete copyToSend.createdAt;
 
       this.orderService.updatePurchase(copyToSend).subscribe(
         result => {
@@ -117,4 +111,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
     }
   }
 
+  actionProject() {
+    
+  }
 }

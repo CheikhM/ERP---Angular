@@ -1,2 +1,55 @@
 <app-details-title [canAdd]="true" [title]="'Purchase Items'" (onClickAdd)="addNewOrderItem()"></app-details-title>
+
+<div class="listing listing-details">
+
+  <img src="/assets/images/general/print.svg" alt="" class="print" (click)="alertMessage('driver not supported')"/>
+
+  <div class="aw-pagination" *ngIf="false">
+    <span>
+      1-5 of 5
+      <span class="circle-sign"><</span>
+      <span class="circle-sign">></span>
+    </span>
+  </div>
+  <table>
+    <tr>
+      <th>Part NO.</th>
+      <th>Description</th>
+      <th>Qty</th>
+      <th>U Cost</th>
+      <th>Amount</th>
+      <th>Project Code</th>
+      <th>Received</th>
+      <th>Control</th>
+    </tr>
+    <tr class="white-bg" *ngFor="let item of items">
+      <td>{{ item.partCode }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.rate }}</td>
+      <td>{{ item.quantity * item.rate }}</td>
+      <td>{{ item.projectID }}</td>
+      <td>-</td>
+      <td class="control">
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerBoqAction(item)"/>
+        <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
+      </td>
+    </tr>
+  </table>
+</div>
+<table class="item-summer">
+  <tr>
+    <th>Discount</th>
+    <th>VAT 5%</th>
+    <th>Total</th>
+  </tr>
+  <tr style="background: white;">
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+
+</table>
+
+
 <app-purchase-edit-popup></app-purchase-edit-popup>

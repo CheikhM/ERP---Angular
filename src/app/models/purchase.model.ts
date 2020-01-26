@@ -12,7 +12,7 @@ export class Purchase {
     this.id = data.id;
     this.orderID = data.order_id;
     this.partCode = data.part_code;
-    this.projectID = data.project_id;
+    this.projectID = data.project;
     this.quantity = data.quantity;
     this.rate = data.rate;
     this.description = data.description;

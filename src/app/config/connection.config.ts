@@ -68,10 +68,15 @@ export class Connection {
       },
       orders: {
         getAll: this.apiProject + 'orders/all',
+        getAllTracks: this.apiProject + 'orders/tracks',
         getSingle: this.apiProject + 'orders/order',
         deleteOrder: this.apiProject + 'orders/delete',
         newOrder: this.apiProject + 'orders/new',
-        updateOrder: this.apiProject + 'orders/update'
+        updateOrder: this.apiProject + 'orders/update',
+        deleteTrack: this.apiProject + 'orders/tracks/delete',
+        newPurchase: this.apiProject + 'orders/items/new',
+        updatePurchase: this.apiProject + 'orders/items/update',
+        getAllItems: this.apiProject + 'orders/items/all',
       }
     };
   }

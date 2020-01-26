@@ -49,7 +49,7 @@ export class DealNotesComponent implements OnInit, OnDestroy {
 
   // get all projects
   listAllNotes() {
-    this.noteService.getAllNotes(this.currentDealID, 2).subscribe(
+    this.noteService.getAllNotes(this.currentDealID, 3).subscribe(
       resp => {
         this.notes = resp;
         this.filteredNotes = this.notes.map(note => Object.assign({}, note));
@@ -70,7 +70,7 @@ export class DealNotesComponent implements OnInit, OnDestroy {
   addNewNote() {
     const note = Note.getEmptyNote();
     note.text = this.newNoteText;
-    note.type = 2;
+    note.type = 3;
     note.createdAt = new Date();
     note.lastUpdate = new Date();
     if (this.currentUser) {

@@ -45,7 +45,7 @@ export class VisitNotesComponent implements OnInit, OnDestroy {
 
   // get all visit
   listAllNotes() {
-    this.noteService.getAllNotes(this.currentVisitID, 2).subscribe(
+    this.noteService.getAllNotes(this.currentVisitID, 4).subscribe(
       resp => {
         this.notes = resp;
         this.filteredNotes = this.notes.map(note => Object.assign({}, note));
@@ -66,7 +66,7 @@ export class VisitNotesComponent implements OnInit, OnDestroy {
   addNewNote() {
     const note = Note.getEmptyNote();
     note.text = this.newNoteText;
-    note.type = 2;
+    note.type = 4;
     note.createdAt = new Date();
     note.lastUpdate = new Date();
     if (this.currentUser) {

@@ -1,0 +1,13 @@
+.print {
+  width: 40px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.item-summer td, .item-summer th {
+  padding: 10px 10px 10px 0;
+}
+.item-summer td{
+  padding-left: 5px;
+}
