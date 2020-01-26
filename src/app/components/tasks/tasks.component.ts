@@ -4,6 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../decorators/autounsubscribe.decorator';
 import {Task} from '../../models/task.model';
 import {TasksService} from '../../services/tasks.service';
+import {User} from '../../models/user.model';
 
 
 declare var $: any;
@@ -101,5 +102,10 @@ export class TasksComponent implements OnInit {
 
       $('#deleteTaskModal').modal('hide');
     }
+  }
+
+  initManageData() {
+    this.manageAction = 'Add Task';
+    this.taskTobeManaged = Task.getEmptyTask();
   }
 }

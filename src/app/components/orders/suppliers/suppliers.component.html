@@ -3,10 +3,12 @@
              [model]="'Suppliers'"
              (onEditClick)="editSupplier($event)"
              (onDeleteClick)="deleteSupplier($event)"
+             (showPopupValues)="showSupplier($event)"
              [icon]="'icon-suppliers'"
              [modulePath]="'/suppliers/supplier/'"
+             [withWorkflow]="false"
 ></app-listing>
 
-<app-confirm-box [popupID]="'deleteSupplierModal'" [deleteTitle]="'Delete task'" (confirmAction)="confirmUserDelete($event)"></app-confirm-box>
+<app-confirm-box [popupID]="'deleteSupplierModal'" [deleteTitle]="'Delete Supplier'" (confirmAction)="confirmSupplierDelete($event)"></app-confirm-box>
 
-<app-edit-supplier-popup [title]="manageAction"></app-edit-supplier-popup>
+<app-edit-supplier-popup [title]="manageAction" [supplier]="supplierTobeManaged" [showOnly]="showOnly" (onExitModal)="exitPopup()"></app-edit-supplier-popup>

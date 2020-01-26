@@ -57,6 +57,10 @@ import { SupplierDetailsComponent } from './components/orders/suppliers/supplier
 import { EditSupplierPopupComponent } from './components/orders/suppliers/edit-supplier-popup/edit-supplier-popup.component';
 import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
 import { EditOrderPopupComponent } from './components/orders/edit-order-popup/edit-order-popup.component';
+import { PaymentTracksComponent } from './components/orders/payment-tracks/payment-tracks.component';
+import { EditTrackComponent } from './components/orders/payment-tracks/edit-track/edit-track.component';
+import { PurchaseEditPopupComponent } from './components/orders/purchase-edit-popup/purchase-edit-popup.component';
+import { PurchaseItemsComponent } from './components/orders/purchase-items/purchase-items.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +110,11 @@ import { EditOrderPopupComponent } from './components/orders/edit-order-popup/ed
     SupplierDetailsComponent,
     EditSupplierPopupComponent,
     OrderDetailsComponent,
-    EditOrderPopupComponent
+    EditOrderPopupComponent,
+    PaymentTracksComponent,
+    EditTrackComponent,
+    PurchaseEditPopupComponent,
+    PurchaseItemsComponent
   ],
   imports: [
     BrowserModule,

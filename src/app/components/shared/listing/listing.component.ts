@@ -1,6 +1,7 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {Router} from '@angular/router';
 
 @AutoUnsubscribe()
 @Component({
@@ -18,6 +19,7 @@ export class ListingComponent implements OnInit {
   // delete and edit actions
   @Output() onEditClick: EventEmitter<any> = new EventEmitter();
   @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
+  @Output() showPopupValues: EventEmitter<any> = new EventEmitter();
 
   public innerWidth: any;
   p = 1;
@@ -26,8 +28,11 @@ export class ListingComponent implements OnInit {
 
   @Input()
   modulePath: string;
+  @Input()
+  withWorkflow = true;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -52,7 +57,15 @@ export class ListingComponent implements OnInit {
 
   // set the current object
   setCurrentListingObject(object: any) {
-    this.sharedService.setCurrentListingElement(object);
+    // navigate if there is a workflow
+    if (this.withWorkflow) {
+      this.sharedService.setCurrentListingElement(object);
+      this.router.navigateByUrl(this.modulePath + object.id).then(item => {
+        // alert('ff');
+      });
+    } else {
+      this.showPopupValues.emit(object.id);
+    }
   }
 
   getMaxText() {

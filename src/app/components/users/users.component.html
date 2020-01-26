@@ -13,7 +13,7 @@
 <!-- end of confim box -->
 
 <!-- new, edit visit -->
-<app-edit-user-popup [title]="manageAction" [user]="userTobeManaged" ></app-edit-user-popup>
+<app-edit-user-popup [title]="manageAction" [user]="userTobeManaged" (onExitModal)="initManageData()"></app-edit-user-popup>
 <!-- end popup -->
 
 

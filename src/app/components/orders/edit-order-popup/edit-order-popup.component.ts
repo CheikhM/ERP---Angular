@@ -25,9 +25,6 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   title: string;
 
-  @Input()
-  order: any = Order.getEmptyOrder();
-
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   orderCopy: Order;
@@ -35,6 +32,9 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   directors: User [];
   projects: Project [];
   currentUser: string;
+
+  @Input()
+  order: any = Order.getEmptyOrder(this.currentUser);
 
   constructor(private orderService: OrderService,
               private toastrService: ToastrService,
@@ -69,9 +69,13 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   getDirectors() {
     this.authService.getAllUsers('CEO').subscribe(result => this.directors = result);
   }
+
   // get all directors
   getProjects() {
-    this.projectService.getAllProjects().subscribe(result => {this.projects = result; console.log(this.projects)});
+    this.projectService.getAllProjects().subscribe(result => {
+      this.projects = result;
+      console.log(this.projects);
+    });
   }
 
   restoreModal() {
@@ -103,6 +107,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
     delete copyToSend.preparedBy;
     delete copyToSend.approvedBy;
     delete copyToSend.shipTo;
+    delete copyToSend.num;
 
     // adding new project
     if (this.title === 'Add Order') {

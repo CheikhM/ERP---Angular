@@ -1,0 +1,51 @@
+<app-details-title [canAdd]="true" [title]="'Payment Tracking'" (onClickAdd)="triggerOrderAction()"></app-details-title>
+
+<div class="listing listing-details">
+  <ng-template #noResults>
+    <div class="white-bg no-attached" >
+      There is no track attached
+    </div>
+  </ng-template>
+  <ng-container *ngIf="tracksCopy && tracksCopy.length >0; else noResults">
+    <div class="aw-pagination" *ngIf="tracksCopy.length > 7">
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <table class="text-center">
+      <tr>
+        <th>ID</th>
+        <th>Payment Amount</th>
+        <th>Date</th>
+        <th>Percentage</th>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+      <tr class="white-bg" *ngFor="let track of tracksCopy | paginate: {itemsPerPage: 7, currentPage: p}">
+        <td>{{ track.id }}</td>
+        <td>{{ track.amount }}</td>
+        <td>{{ track.date | date:'MMM d, y h:m a' }}</td>
+        <td>-</td>
+        <td>{{ track.type }}</td>
+        <td class="control">
+          <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerOrderAction(track)"/>
+          <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete" (click)="deleteTrack(track.id)"/>
+        </td>
+      </tr>
+    </table>
+    <div class="remaining">
+      <h3>Remaining From Total Value</h3>
+      <div class="value" [ngClass]="{'text-red': remaining < 0 }">{{ remaining ? remaining : '-' }}</div>
+    </div>
+  </ng-container>
+
+</div>
+
+<!--
+
+&lt;!&ndash; to add and edit an track &ndash;&gt;
+<app-edit-track [orderID]="currentOrderID" (newTrackAdded)="addNewTrack($event)" [trackCopy]="trackTobeEdited"></app-edit-track>
+&lt;!&ndash; end &ndash;&gt;
+
+&lt;!&ndash; confirm order delete &ndash;&gt;
+<app-confirm-box [popupID]="'deleteTrackModal'" [deleteTitle]="'Delete track'" (confirmAction)="confirmTrackDelete($event)"></app-confirm-box>
+&lt;!&ndash; end of confim box &ndash;&gt;
+-->

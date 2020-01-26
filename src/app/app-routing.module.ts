@@ -25,6 +25,9 @@ import {TaskDetailsComponent} from './components/tasks/task-details/task-details
 import {TaskNotesComponent} from './components/tasks/task-notes/task-notes.component';
 import {SuppliersComponent} from './components/orders/suppliers/suppliers.component';
 import {OrdersComponent} from './components/orders/orders.component';
+import {OrderDetailsComponent} from './components/orders/order-details/order-details.component';
+import {PaymentTracksComponent} from './components/orders/payment-tracks/payment-tracks.component';
+import {PurchaseItemsComponent} from './components/orders/purchase-items/purchase-items.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -52,7 +55,9 @@ const routes: Routes = [
   { path: 'tasks/task/' + ':id' + '/notes', component: TaskNotesComponent, canActivate: [AuthGuard] },
   { path: 'orders/suppliers/all', component: SuppliersComponent, canActivate: [AuthGuard] },
   { path: 'orders/all', component: OrdersComponent, canActivate: [AuthGuard] },
-
+  { path: 'orders/order/' + ':id', component: OrderDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'orders/order/' + ':id' + '/tracks', component: PaymentTracksComponent, canActivate: [AuthGuard] },
+  { path: 'orders/order/' + ':id' + '/items', component: PurchaseItemsComponent, canActivate: [AuthGuard] },
   { path: '**', component: DashboardComponent },
 ];
 

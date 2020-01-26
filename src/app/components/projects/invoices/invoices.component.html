@@ -9,13 +9,6 @@
   <ng-container *ngIf="invoicesCopy && invoicesCopy.length >0; else noResults">
     <div class="aw-pagination" *ngIf="invoicesCopy.length > 7">
       <pagination-controls  (pageChange)="p = $event"></pagination-controls>
-      <!--
-      <span>
-        1-5 of {{ this.invoicesCopy.length }}
-        <span class="circle-sign"><</span>
-        <span class="circle-sign">></span>
-      </span>
-      -->
     </div>
     <table class="text-center">
       <tr>

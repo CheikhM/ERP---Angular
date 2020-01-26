@@ -2,7 +2,7 @@ import {User} from './user.model';
 
 export class Order {
   id: number;
-  num: number;
+  num: string;
   vendor: number;
   shipTo: string;
   discount: string;
@@ -19,7 +19,7 @@ export class Order {
 
   constructor(data: any) {
     this.id = data.id;
-    this.num = data.num;
+    this.num = 'PO-00' + data.id;
     this.vendor = data.vendor;
     this.shipTo = data.ship_to;
     this.discount = data.discount;

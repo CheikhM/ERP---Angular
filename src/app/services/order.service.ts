@@ -51,6 +51,7 @@ export class OrderService {
       })
     );
   }
+
   // delete a project using the project id
   deleteOrder(id: number): Observable<any> {
     return this.http.get(Connection.api.orders.deleteOrder + '?id=' + id);
@@ -65,4 +66,10 @@ export class OrderService {
   updateOrder(order: Order) {
     return this.http.post(Connection.api.orders.updateOrder, order);
   }
+
+  // get a order by id
+  getOrderByID(id: number): Observable<any> {
+    return this.http.get(Connection.api.orders.getSingle + '?id=' + id);
+  }
+
 }

@@ -100,7 +100,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       };
     }  else if (path.includes('orders/all')) {
       this.listingTitleData = {
-        title: 'Purchase Orders',
+        title: 'Orders',
         sTitle: 'Order'
       };
     }

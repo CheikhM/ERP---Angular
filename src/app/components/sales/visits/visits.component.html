@@ -12,6 +12,6 @@
 <!-- end of conf   im box -->
 
 <!-- new, edit visit -->
-<app-edit-visit-popup [title]="manageAction" [visit]="visitTobeManaged" ></app-edit-visit-popup>
+<app-edit-visit-popup [title]="manageAction" [visit]="visitTobeManaged" (onExitModal)="initManageData()"></app-edit-visit-popup>
 <!-- end popup -->
 

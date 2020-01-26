@@ -14,5 +14,5 @@
 <!-- end of confim box -->
 
 <!-- new, edit project -->
-<app-edit-deal-popup [title]="manageAction" [deal]="dealTobeManaged" ></app-edit-deal-popup>
+<app-edit-deal-popup [title]="manageAction" [deal]="dealTobeManaged" (onExitModal)="initManageData()"></app-edit-deal-popup>
 <!-- end popup -->

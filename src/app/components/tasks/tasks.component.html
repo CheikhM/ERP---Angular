@@ -9,10 +9,10 @@
 
 
 <!-- confirm visit delete -->
-<app-confirm-box [popupID]="'deleteTaskModal'" [deleteTitle]="'Delete task'" (confirmAction)="confirmUserDelete($event)"></app-confirm-box>
+<app-confirm-box [popupID]="'deleteTaskModal'" [deleteTitle]="'Delete task'" (confirmAction)="confirmTaskDelete($event)"></app-confirm-box>
 <!-- end of confim box -->
 
 <!-- new, edit visit -->
-<app-edit-task-popup [title]="manageAction" [task]="taskTobeManaged" ></app-edit-task-popup>
+<app-edit-task-popup [title]="manageAction" [task]="taskTobeManaged" (onExitModal)="initManageData()"></app-edit-task-popup>
 <!-- end popup -->
 

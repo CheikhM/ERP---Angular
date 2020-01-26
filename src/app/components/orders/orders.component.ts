@@ -67,7 +67,9 @@ export class OrdersComponent implements OnInit {
       this.filteredOrders = this.orders.filter(
         order => order.shipTo.toLowerCase().includes(text) ||
           order.terms.toLowerCase().includes(text) ||
-          order.currency.toLowerCase().includes(text)
+          order.currency.toLowerCase().includes(text) ||
+          order.num.toLowerCase().includes(text) ||
+          order.link.toLowerCase().includes(text)
       );
     }
   }

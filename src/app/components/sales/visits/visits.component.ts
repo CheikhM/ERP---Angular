@@ -2,8 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {SalesService} from '../../../services/sales.service';
 import {SharedService} from '../../../services/shared.service';
 import {ToastrService} from 'ngx-toastr';
+import {Deal} from '../../../models/deal.model';
+import {Visit} from '../../../models/visit.model';
 
 declare var $: any;
+
 @Component({
   selector: 'app-visits',
   templateUrl: './visits.component.html',
@@ -93,5 +96,10 @@ export class VisitsComponent implements OnInit {
 
       $('#deleteVisitModal').modal('hide');
     }
+  }
+
+  initManageData() {
+    this.manageAction = 'Add Visit';
+    this.visitTobeManaged = Visit.getEmptyVisit();
   }
 }

@@ -1,23 +1,23 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgModel} from '@angular/forms';
-import {AuthService} from '../../../../services/auth.service';
+import {AuthService} from '../../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
-import {SharedService} from '../../../../services/shared.service';
-import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
-import {Supplier} from '../../../../models/supplier.model';
-import {OrderService} from '../../../../services/order.service';
-import {DateHelper} from '../../../../helpers/date.helper';
+import {SharedService} from '../../../services/shared.service';
+import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {Purchase} from '../../../models/purchase.model';
+import {OrderService} from '../../../services/order.service';
+import {DateHelper} from '../../../helpers/date.helper';
 
 
 declare var $: any;
 
 @AutoUnsubscribe()
 @Component({
-  selector: 'app-edit-supplier-popup',
-  templateUrl: './edit-supplier-popup.component.html',
-  styleUrls: ['./edit-supplier-popup.component.css']
+  selector: 'app-purchase-edit-popup',
+  templateUrl: './purchase-edit-popup.component.html',
+  styleUrls: ['./purchase-edit-popup.component.css']
 })
-export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy {
+export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   title: string;
@@ -26,12 +26,12 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
   showOnly = false;
 
   @Input()
-  supplier: any = Supplier.getEmptySupplier();
+  purchase: any = Purchase.getEmptyPurchase();
 
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   password: string;
-  supplierCopy: Supplier;
+  purchaseCopy: Purchase;
 
   constructor(private orderService: OrderService,
               private toastrService: ToastrService,
@@ -39,13 +39,13 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnInit() {
-    this.supplierCopy = Supplier.getEmptySupplier();
+    this.purchaseCopy = Purchase.getEmptyPurchase();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
-    if (changes.supplier) {
-      this.supplierCopy = {...this.supplier};
+    if (changes.purchase) {
+      this.purchaseCopy = {...this.purchase};
     }
   }
 
@@ -64,24 +64,26 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
   ngOnDestroy(): void {
   }
 
-  saveSupplier() {
+  savePurchase() {
     const copyToSend = {
-      ...this.supplierCopy,
-      created_at: DateHelper.getDateTime(new Date()),
-      short_name: this.supplierCopy.shortName,
+      ...this.purchaseCopy,
+      part_code: this.purchaseCopy.partCode,
+      project_id: this.purchaseCopy.projectID,
+      order_id: this.purchaseCopy.orderID,
     };
 
     // delete unused object
-    delete copyToSend.createdAt;
-    delete copyToSend.shortName;
+    delete copyToSend.orderID;
+    delete copyToSend.partCode;
+    delete copyToSend.projectID;
 
     // adding new project
-    if (this.title === 'Add Supplier') {
-      this.orderService.newSupplier(copyToSend).subscribe(
+    if (this.title === 'Add Purchase') {
+      this.orderService.newPurchase(copyToSend).subscribe(
         result => {
           if (result['status'] === '200_OK' && result['data'].sid) {
             // tell the project about new data update
-            $('#newSupplier').modal('hide');
+            $('#newPurchase').modal('hide');
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully added');
           } else {
@@ -93,13 +95,13 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
           this.onExitModal.emit(true);
         }
       );
-    } else if (this.title === 'Edit Supplier') {
+    } else if (this.title === 'Edit Purchase') {
       delete copyToSend.createdAt;
 
-      this.orderService.updateSupplier(copyToSend).subscribe(
+      this.orderService.updatePurchase(copyToSend).subscribe(
         result => {
           if (result['status'] === '200_OK' && result['data'].sid) {
-            $('#newSupplier').modal('hide');
+            $('#newPurchase').modal('hide');
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully updated');
@@ -116,4 +118,3 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
 }
-

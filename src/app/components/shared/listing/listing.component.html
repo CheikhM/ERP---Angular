@@ -17,7 +17,7 @@
       <th>control</th>
     </tr>
     <tr *ngFor="let object of contents" class="list-element">
-      <td *ngFor="let meta of metaDefinition" [routerLink]="[modulePath + object.id]"
+      <td *ngFor="let meta of metaDefinition"
           (click)="setCurrentListingObject(object)">
         <span class="listing-elt" [ngClass]="{'with-status':  meta.text === 'Status', 'pl-string': meta.type === 'PLString'}">
           <img *ngIf="meta.text === 'Status'"

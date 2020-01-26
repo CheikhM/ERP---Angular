@@ -30,6 +30,7 @@ export class SuppliersComponent implements OnInit {
   manageAction = 'Add Supplier';
   supplierTobeManaged: Supplier;
   private toBeDeletedId: any;
+  showOnly: boolean;
 
   constructor(private sharedService: SharedService,
               private orderService: OrderService,
@@ -55,15 +56,20 @@ export class SuppliersComponent implements OnInit {
       },
       error => console.log(error),
       () => {
-        console.log(this.suppliers);
+        // console.log(this.suppliers);
       }
     );
   }
 
-// search project by name
+  // search project by name
   private searchSupplier(text: string) {
     if (this.suppliers) {
-      this.filteredSuppliers = this.suppliers.filter(supplier => supplier.name.toLowerCase().includes(text));
+      this.filteredSuppliers = this.suppliers.filter(
+        supplier =>
+          supplier.name.toLowerCase().includes(text) ||
+          supplier.phone.toLowerCase().includes(text) ||
+          supplier.shortName.toLowerCase().includes(text)
+      );
     }
   }
 
@@ -102,7 +108,16 @@ export class SuppliersComponent implements OnInit {
     }
   }
 
-  confirmUserDelete($event: any) {
+  showSupplier(id: number) {
+    this.supplierTobeManaged = this.suppliers.find(item => item.id === id);
+    this.manageAction = 'Supplier:';
+    this.showOnly = true;
 
+    $('#newSupplier').modal('show');
+  }
+
+  exitPopup() {
+    this.showOnly = false;
+    this.supplierTobeManaged = Supplier.getEmptySupplier();
   }
 }

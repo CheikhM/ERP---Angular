@@ -23,7 +23,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     {text: 'End Date', attribute: 'endDate', type: 'date'},
     {text: 'Status', attribute: 'status', type: 'string'},
   ];
-  searchText: string;
   private searchTextSub: Subscription;
   private toBeDeletedId: number;
   manageAction = 'Add Project';

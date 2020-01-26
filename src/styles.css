@@ -12,7 +12,12 @@ body {
 .hidden {
   display: none;
 }
-
+.container.no-events {
+  padding-top: 25px;
+}
+.no-events .title {
+  display: none;
+}
 .aw-container {
   position: relative;
   background: white;
@@ -100,6 +105,10 @@ select.action {
 }
 .wf-elements.public-workflow span.title {
   width: calc(50% - 5px);
+}
+
+.wf-elements.public-workflow.order-workflow span.title {
+  width: calc(33% - 5px);
 }
 
 /* scroll bar style */

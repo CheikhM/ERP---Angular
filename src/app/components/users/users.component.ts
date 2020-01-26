@@ -5,6 +5,7 @@ import {AutoUnsubscribe} from '../../decorators/autounsubscribe.decorator';
 import {SalesService} from '../../services/sales.service';
 import {User} from '../../models/user.model';
 import {AuthService} from '../../services/auth.service';
+import {Visit} from '../../models/visit.model';
 
 declare var $: any;
 
@@ -55,9 +56,9 @@ export class UsersComponent implements OnInit {
         this.filteredUsers = resp;
       },
       error => console.log(error),
-        () => {
+      () => {
         console.log(this.users);
-        }
+      }
     );
   }
 
@@ -101,5 +102,10 @@ export class UsersComponent implements OnInit {
 
       $('#deleteUserModal').modal('hide');
     }
+  }
+
+  initManageData() {
+    this.manageAction = 'Add User';
+    this.userTobeManaged = User.getEmptyUser();
   }
 }
