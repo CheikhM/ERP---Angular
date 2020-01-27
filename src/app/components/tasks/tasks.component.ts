@@ -51,13 +51,13 @@ export class TasksComponent implements OnInit {
   getAllTasks() {
     this.taskService.getAllTasks().subscribe(
       resp => {
-        console.log(resp);
+        //console.log(resp);
         this.tasks = resp;
         this.filteredTasks = resp;
       },
-      error => console.log(error),
+      error => {},
       () => {
-        console.log(this.tasks);
+        //console.log(this.tasks);
       }
     );
   }

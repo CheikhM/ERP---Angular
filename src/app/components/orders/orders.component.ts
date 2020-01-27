@@ -54,9 +54,9 @@ export class OrdersComponent implements OnInit {
         this.orders = resp;
         this.filteredOrders = resp;
       },
-      error => console.log(error),
+      error => {},
       () => {
-        console.log(this.orders);
+        //console.log(this.orders);
       }
     );
   }

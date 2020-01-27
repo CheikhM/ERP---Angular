@@ -44,7 +44,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    //console.log(changes);
     if (changes.purchase) {
       this.purchaseCopy = {...this.purchase};
     }
@@ -112,6 +112,6 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   actionProject() {
-    
+
   }
 }

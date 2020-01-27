@@ -85,7 +85,7 @@ export class EditDealPopupComponent implements OnInit, OnDestroy, OnChanges {
 
       this.saleService.newDeal(copyToSend).subscribe(
         result => {
-          console.log(result);
+          //console.log(result);
           if (result['status'] === '200_OK' && result['data'].did) {
             // tell the project about new data update
             $('#newDeal').modal('hide');

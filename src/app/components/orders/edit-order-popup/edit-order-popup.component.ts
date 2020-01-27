@@ -56,7 +56,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.order) {
       this.orderCopy = {...this.order};
-      console.log(this.orderCopy);
+      //console.log(this.orderCopy);
     }
   }
 
@@ -74,7 +74,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   getProjects() {
     this.projectService.getAllProjects().subscribe(result => {
       this.projects = result;
-      console.log(this.projects);
+      //console.log(this.projects);
     });
   }
 

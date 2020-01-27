@@ -40,9 +40,8 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.user) {
+    if (changes.user && !changes.user.firstChange) {
       this.roles = User.getEmptyRoles();
-
       this.userCopy = {...this.user};
       this.getRoles();
     }
@@ -92,9 +91,15 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
         error => this.toastrService.error('', 'An error was occurred'),
         () => {
           this.onExitModal.emit(true);
+          this.password = '';
         }
       );
     } else if (this.title === 'Edit User') {
+      delete copyToSend.created_at;
+
+      if (this.password && this.password.length < 8) {
+        delete copyToSend.password;
+      }
 
       this.authService.updateUser(copyToSend).subscribe(
         result => {
@@ -110,6 +115,7 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
         error => this.toastrService.error('', 'An error was occurred'),
         () => {
           this.onExitModal.emit(true);
+          this.password = '';
         }
       );
     }
@@ -120,5 +126,14 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
     roles.forEach(item => {
       this.roles[item] = true;
     });
+  }
+
+  isNotValidEmail(email: NgModel) {
+    return this.isNotValid(email) && email.errors.pattern;
+  }
+
+  isNotValidPassword(password: NgModel) {
+    return this.isNotValid(password) && password.errors.minlength;
+
   }
 }

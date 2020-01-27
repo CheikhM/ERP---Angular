@@ -36,6 +36,12 @@ export class User {
   }
 
   static getEmptyRoles() {
-    return {CEO: null, SM: null, PM: null, AC: null, SA: null};
+    return {
+      CEO: null,
+      SM: null,
+      PM: null,
+      AC: null,
+      SA: null
+    };
   }
 }

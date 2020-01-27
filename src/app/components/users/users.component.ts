@@ -51,13 +51,13 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this.authService.getAllUsers().subscribe(
       resp => {
-        console.log(resp);
+        // console.log(resp);
         this.users = resp;
         this.filteredUsers = resp;
       },
-      error => console.log(error),
+      error => {},
       () => {
-        console.log(this.users);
+        // console.log(this.users);
       }
     );
   }

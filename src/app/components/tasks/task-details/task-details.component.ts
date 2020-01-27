@@ -47,7 +47,7 @@ export class TaskDetailsComponent implements OnInit {
             this.task = new Task(result.data);
           }
         },
-        error => console.log('ici', error),
+        error => {},
         () => {}
       );
 
