@@ -7,18 +7,20 @@ import {map} from 'rxjs/operators';
 import {Note} from '../models/note.model';
 import {User} from '../models/user.model';
 import {Bid} from '../models/bid.model';
+import {LocalStorageHelper} from '../helpers/local-storage.helper';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  constructor(public jwtHelper: JwtHelperService, private http: HttpClient) {
+  constructor(public jwtHelper: JwtHelperService,
+              private http: HttpClient) {
   }
 
   // ...
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+    const token = LocalStorageHelper.getItem('token');
     // Check whether the token is expired and return
     // true or false
     try {

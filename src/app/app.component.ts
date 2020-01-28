@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from './services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {SharedService} from './services/shared.service';
+import {LocalStorageHelper} from './helpers/local-storage.helper';
+import {AuthHelper} from './helpers/auth.helper';
 declare var $: any;
 
 @Component({
@@ -14,8 +16,7 @@ export class AppComponent implements OnInit {
   isAuth: boolean;
 
   constructor(private auth: AuthService,
-              private jwtHelper: JwtHelperService,
-              private sharedService: SharedService) {
+              private jwtHelper: JwtHelperService) {
   }
 
   ngOnInit(): void {
@@ -30,11 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   private setCurrentUser() {
-    const token = localStorage.getItem('token');
+    const token = LocalStorageHelper.getItem('token');
     if (token && token !== '') {
       const decodedToken = this.jwtHelper.decodeToken(token);
       const user = {id: decodedToken['user_id'], name: decodedToken['full_name'], role: decodedToken['role']};
-      this.sharedService.setCurrentUser(user);
+      LocalStorageHelper.setItem('user', user);
+      // this.sharedService.setCurrentUser(user);
     }
   }
 }

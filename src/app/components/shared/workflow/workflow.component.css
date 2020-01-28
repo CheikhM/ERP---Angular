@@ -23,6 +23,9 @@
     margin-left: 1px;
     width: calc(50% - 1px);
   }
+  .wf-elements.public-workflow.order-workflow span.title {
+    width: calc(33% - 1px);
+  }
 }
 
 @media screen and (max-width: 570px) {
@@ -45,7 +48,7 @@
     width: 30px;
   }
   .wf-elements.public-workflow span.title {
-    margin-left: 1px;
-    width: 100%;
+    margin-left: 1px !important;
+    width: 100% !important;
   }
 }

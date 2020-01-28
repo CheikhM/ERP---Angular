@@ -11,3 +11,17 @@
 .item-summer td{
   padding-left: 5px;
 }
+
+@media screen and (max-width: 768px) {
+  .listing-details th:nth-child(2),
+  .listing-details th:nth-child(3),
+  .listing-details th:nth-child(4),
+  .listing-details th:nth-child(7),
+  .listing-details td:nth-child(2),
+  .listing-details td:nth-child(3),
+  .listing-details td:nth-child(4),
+  .listing-details td:nth-child(7)
+  {
+    display: none;
+  }
+}

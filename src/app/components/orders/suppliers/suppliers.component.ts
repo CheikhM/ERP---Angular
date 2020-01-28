@@ -118,6 +118,7 @@ export class SuppliersComponent implements OnInit {
 
   exitPopup() {
     this.showOnly = false;
+    this.manageAction = 'Add Supplier';
     this.supplierTobeManaged = Supplier.getEmptySupplier();
   }
 }

@@ -5,6 +5,8 @@ import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {User} from '../../../models/user.model';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import {BASE_PATH} from '../../../config';
 
 
 declare var $: any;
@@ -97,7 +99,7 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
     } else if (this.title === 'Edit User') {
       delete copyToSend.created_at;
 
-      if (this.password && this.password.length < 8) {
+      if (!this.password || this.password.length < 8) {
         delete copyToSend.password;
       }
 
@@ -116,6 +118,11 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
         () => {
           this.onExitModal.emit(true);
           this.password = '';
+          const currentUser = LocalStorageHelper.getItem('user');
+          if (currentUser.id === copyToSend.id) {
+            LocalStorageHelper.clear();
+            window.location.replace(BASE_PATH + 'login');
+          }
         }
       );
     }

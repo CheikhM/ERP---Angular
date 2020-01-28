@@ -3,6 +3,7 @@ import {menuElements} from '../../../config';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {isNull} from 'util';
+import {AuthHelper} from '../../../helpers/auth.helper';
 
 @Component({
   selector: 'app-side-bar',
@@ -16,7 +17,8 @@ export class SideBarComponent implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   navigateToRoute(route: string | null) {
     if (!isNull(route)) {
@@ -24,5 +26,9 @@ export class SideBarComponent implements OnInit {
         // alert('ff');
       });
     }
+  }
+
+  isPermitted(permission: string) {
+    return AuthHelper.isPermitted(permission, false);
   }
 }

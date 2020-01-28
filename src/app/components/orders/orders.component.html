@@ -14,5 +14,5 @@
 <!-- end of confim box -->
 
 <!-- new, edit project -->
-<app-edit-order-popup [title]="manageAction" [order]="orderTobeManaged" ></app-edit-order-popup>
+<app-edit-order-popup [title]="manageAction" [order]="orderTobeManaged" (onExitModal)="clearPopupDate()"></app-edit-order-popup>
 <!-- end popup -->

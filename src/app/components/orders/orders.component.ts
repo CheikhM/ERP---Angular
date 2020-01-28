@@ -6,6 +6,7 @@ import {SalesService} from '../../services/sales.service';
 import {Order} from '../../models/order.model';
 import {AuthService} from '../../services/auth.service';
 import {OrderService} from '../../services/order.service';
+import {LocalStorageHelper} from '../../helpers/local-storage.helper';
 
 declare var $: any;
 
@@ -107,5 +108,11 @@ export class OrdersComponent implements OnInit {
 
       $('#deleteOrderModal').modal('hide');
     }
+  }
+
+  clearPopupDate() {
+    this.manageAction = 'Add Order';
+    const userFullName = LocalStorageHelper.getItem('user').name;
+    this.orderTobeManaged = Order.getEmptyOrder(userFullName);
   }
 }

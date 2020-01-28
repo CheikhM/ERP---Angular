@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 
 @AutoUnsubscribe()
 @Component({
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.auth.checkCredentials(this.username, this.password).subscribe(
       result => {
         if (result && result.uid) {
-          localStorage.setItem('token', result.token);
+          LocalStorageHelper.setItem('token', result.token);
           location.reload();
         } else {
           this.toasterService.error('Please try again...', 'Credentials error');

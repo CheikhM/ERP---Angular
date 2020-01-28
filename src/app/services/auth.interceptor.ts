@@ -1,10 +1,11 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
+import {LocalStorageHelper} from '../helpers/local-storage.helper';
 
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const jwt = localStorage.getItem('token');
+    const jwt = LocalStorageHelper.getItem('token');
 
     if (jwt) {
       req = req.clone({

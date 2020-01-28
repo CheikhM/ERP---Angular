@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {Project} from '../../../models/project.model';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {AuthHelper} from '../../../helpers/auth.helper';
 
 declare var $: any;
 
@@ -32,6 +33,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   constructor(private projectService: ProjectService,
               private sharedService: SharedService,
               private toastrService: ToastrService) {
+    AuthHelper.isPermitted('PM');
   }
 
   ngOnInit() {

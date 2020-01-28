@@ -10,6 +10,7 @@ import {User} from '../../../models/user.model';
 import {Supplier} from '../../../models/supplier.model';
 import {Project} from '../../../models/project.model';
 import {ProjectService} from '../../../services/project.service';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 
 
 declare var $: any;
@@ -44,9 +45,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.sharedService.getCurrentUser().subscribe(user => {
-      this.currentUser = user.name;
-    });
+    this.currentUser = LocalStorageHelper.getItem('user').name;
     this.orderCopy = Order.getEmptyOrder(this.currentUser);
     this.getVendors();
     this.getDirectors();
