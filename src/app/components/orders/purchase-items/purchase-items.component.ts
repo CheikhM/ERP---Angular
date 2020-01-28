@@ -38,7 +38,7 @@ export class PurchaseItemsComponent implements OnInit {
     $('#newPurchase').modal('show');
   }
 
-  alertMessage(driverNotSupported: string) {
+  alertMessage(msg: string) {
     this.toastService.error('Driver not installed');
   }
 
@@ -54,7 +54,17 @@ export class PurchaseItemsComponent implements OnInit {
     );
   }
 
-  triggerBoqAction(item: Purchase) {
-    
+  getProjectDiscount() {
+
+  }
+  getProjectVAT() {
+
+  }
+  getTotal() {
+
+  }
+
+  triggerPurchaseItemAction(item: Purchase) {
+
   }
 }

@@ -31,7 +31,7 @@
       <td>{{ item.projectID }}</td>
       <td>-</td>
       <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerBoqAction(item)"/>
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerPurchaseItemAction(item)"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
@@ -44,9 +44,9 @@
     <th>Total</th>
   </tr>
   <tr style="background: white;">
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
+    <td>{{getProjectDiscount()}}</td>
+    <td>{{getProjectVAT()}}</td>
+    <td>{{getTotal()}}</td>
   </tr>
 
 </table>
