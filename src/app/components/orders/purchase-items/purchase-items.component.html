@@ -29,9 +29,15 @@
       <td>{{ item.rate }}</td>
       <td>{{ item.quantity * item.rate }}</td>
       <td>{{ item.projectID }}</td>
-      <td>-</td>
+      <td>
+        <label class="__styled-checkbox">
+          <input type="checkbox" name="received" [(ngModel)]="item.received" (ngModelChange)="changeStatus(item, $event)">
+          <span class="check-mark"></span>
+        </label>
+      </td>
       <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerPurchaseItemAction(item.id)"/>
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit"
+             (click)="triggerPurchaseItemAction(item.id)"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
@@ -51,4 +57,5 @@
 
 </table>
 
-<app-purchase-edit-popup [title]="manageAction" [purchase]="itemToBeManaged" [orderID]="currentOrderID" (onExitModal)="clearPopup()"></app-purchase-edit-popup>
+<app-purchase-edit-popup [title]="manageAction" [purchase]="itemToBeManaged" [orderID]="currentOrderID"
+                         (onExitModal)="clearPopup()"></app-purchase-edit-popup>

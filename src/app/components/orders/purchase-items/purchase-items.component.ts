@@ -114,4 +114,15 @@ export class PurchaseItemsComponent implements OnInit {
     this.orderVat = this.order.vat ? (this.sumItemsValue * 5) / 100 : 0;
     this.total = this.sumItemsValue - this.orderVat - this.orderDiscount;
   }
+
+  changeStatus(item: Purchase) {
+    const copy = {...item, received: item.received ? 1 : 0};
+    this.orderService.updatePurchase(copy).subscribe(
+      result => {
+        console.log(result);
+      }, error => {
+      },
+      () => {
+      });
+  }
 }
