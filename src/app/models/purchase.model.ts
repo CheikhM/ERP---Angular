@@ -4,7 +4,7 @@ export class Purchase {
   orderID: number;
   projectID: number;
   quantity: number;
-  rate: string;
+  rate: any;
   description: string;
 
 

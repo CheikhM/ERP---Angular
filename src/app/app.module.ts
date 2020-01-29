@@ -61,7 +61,7 @@ import { PaymentTracksComponent } from './components/orders/payment-tracks/payme
 import { EditTrackComponent } from './components/orders/payment-tracks/edit-track/edit-track.component';
 import { PurchaseEditPopupComponent } from './components/orders/purchase-edit-popup/purchase-edit-popup.component';
 import { PurchaseItemsComponent } from './components/orders/purchase-items/purchase-items.component';
-
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/material-moment-adapter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,14 +125,15 @@ import { PurchaseItemsComponent } from './components/orders/purchase-items/purch
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule,
     MatNativeDateModule,
+    MatMomentDateModule,
     JwtModule,
     ToastrModule.forRoot(),
     NgxPaginationModule
   ],
   providers: [
     MatDatepickerModule,
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

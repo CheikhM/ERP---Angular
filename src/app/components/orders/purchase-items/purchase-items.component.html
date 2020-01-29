@@ -11,7 +11,7 @@
       <span class="circle-sign">></span>
     </span>
   </div>
-  <table>
+  <table class="p-items">
     <tr>
       <th>Part NO.</th>
       <th>Description</th>
@@ -31,7 +31,7 @@
       <td>{{ item.projectID }}</td>
       <td>-</td>
       <td class="control">
-        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerPurchaseItemAction(item)"/>
+        <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerPurchaseItemAction(item.id)"/>
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
@@ -44,12 +44,11 @@
     <th>Total</th>
   </tr>
   <tr style="background: white;">
-    <td>{{getProjectDiscount()}}</td>
-    <td>{{getProjectVAT()}}</td>
-    <td>{{getTotal()}}</td>
+    <td>{{orderDiscount ? orderDiscount : 0}}</td>
+    <td>{{orderVat ? orderVat : 0 }}</td>
+    <td>{{total ? total : 0 }}</td>
   </tr>
 
 </table>
 
-
-<app-purchase-edit-popup></app-purchase-edit-popup>
+<app-purchase-edit-popup [title]="manageAction" [purchase]="itemToBeManaged" [orderID]="currentOrderID" (onExitModal)="clearPopup()"></app-purchase-edit-popup>

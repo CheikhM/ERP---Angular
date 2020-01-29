@@ -69,7 +69,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
     this.authService.getAllUsers('CEO').subscribe(result => this.directors = result);
   }
 
-  // get all directors
+  // get all projects
   getProjects() {
     this.projectService.getAllProjects().subscribe(result => {
       this.projects = result;

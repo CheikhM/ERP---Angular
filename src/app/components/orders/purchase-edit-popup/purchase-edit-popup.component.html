@@ -7,7 +7,7 @@
       <div class="modal-body">
         <div class="edit-project container">
           <form #loginForm="ngForm">
-            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"/>
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal" (click)="restoreModal()"/>
             <div class="row">
               <div class="col-12">
                 <h3 class="title">{{ title ? title : 'Add Item' }}</h3>
@@ -58,7 +58,7 @@
                   </div>
                 </div>
                 <div class="submit">
-                  <input class="btn btn-success" type="submit" (click)="actionProject()" value="{{ title ? title : 'Add Item' }}"
+                  <input class="btn btn-success" type="submit" (click)="savePurchase()" value="{{ title ? title : 'Add Item' }}"
                          [disabled]="loginForm.form.invalid" />
                 </div>
               </div>

@@ -12,6 +12,10 @@
   padding-left: 5px;
 }
 
+.p-items, .item-summer {
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .listing-details th:nth-child(2),
   .listing-details th:nth-child(3),
@@ -25,3 +29,5 @@
     display: none;
   }
 }
+
+

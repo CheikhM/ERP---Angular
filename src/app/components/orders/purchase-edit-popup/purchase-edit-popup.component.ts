@@ -7,6 +7,7 @@ import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {Purchase} from '../../../models/purchase.model';
 import {OrderService} from '../../../services/order.service';
 import {DateHelper} from '../../../helpers/date.helper';
+import {ProjectService} from '../../../services/project.service';
 
 
 declare var $: any;
@@ -23,6 +24,9 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   title: string;
 
   @Input()
+  orderID: number;
+
+  @Input()
   showOnly = false;
 
   @Input()
@@ -36,15 +40,16 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
 
   constructor(private orderService: OrderService,
               private toastrService: ToastrService,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private projectService: ProjectService) {
   }
 
   ngOnInit() {
     this.purchaseCopy = Purchase.getEmptyPurchase();
+    this.getProjects();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //console.log(changes);
     if (changes.purchase) {
       this.purchaseCopy = {...this.purchase};
     }
@@ -66,17 +71,25 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   savePurchase() {
+    console.log('ici', (this.title));
     const copyToSend = {
       ...this.purchaseCopy,
+      part_code: this.purchaseCopy.partCode,
+      order_id: this.orderID,
+      project: this.purchaseCopy.projectID
     };
+
+    delete copyToSend.partCode;
+    delete copyToSend.orderID;
+    delete copyToSend.projectID;
 
     // delete unused object
 
     // adding new project
-    if (this.title === 'Add Purchase') {
+    if (this.title === 'Add Item') {
       this.orderService.newPurchase(copyToSend).subscribe(
         result => {
-          if (result['status'] === '200_OK' && result['data'].sid) {
+          if (result['status'] === '200_OK' && result['data'].pid) {
             // tell the project about new data update
             $('#newPurchase').modal('hide');
             this.sharedService.setNewUpdate(true);
@@ -90,11 +103,11 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
           this.onExitModal.emit(true);
         }
       );
-    } else if (this.title === 'Edit Purchase') {
+    } else if (this.title === 'Edit Item') {
 
       this.orderService.updatePurchase(copyToSend).subscribe(
         result => {
-          if (result['status'] === '200_OK' && result['data'].sid) {
+          if (result['status'] === '200_OK' && result['data'].pid) {
             $('#newPurchase').modal('hide');
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);
@@ -111,7 +124,10 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
     }
   }
 
-  actionProject() {
-
+  // get all projects
+  getProjects() {
+    this.projectService.getAllProjects().subscribe(result => {
+      this.projects = result;
+    });
   }
 }

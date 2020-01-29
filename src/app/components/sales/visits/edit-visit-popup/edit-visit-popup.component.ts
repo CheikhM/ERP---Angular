@@ -102,6 +102,9 @@ export class EditVisitPopupComponent implements OnInit, OnDestroy, OnChanges {
         result => {
           if (result['status'] === '200_OK' && result['data'].vid) {
             $('#newVisit').modal('hide');
+            setTimeout(() => {
+              this.onExitModal.emit(true);
+            }, 100);
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully updated');
@@ -111,7 +114,6 @@ export class EditVisitPopupComponent implements OnInit, OnDestroy, OnChanges {
         },
         error => this.toastrService.error('', 'An error was occurred'),
         () => {
-          this.onExitModal.emit(true);
         }
       );
     }

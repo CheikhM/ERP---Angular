@@ -44,7 +44,11 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
     this.getCurrentOrder();
 
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentOrder(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentOrder();
+      }
+    });
   }
 
 
