@@ -60,7 +60,7 @@ export class ListingTitleComponent implements OnInit {
         keyboard: false
       });
     } else if (this.data.sTitle === 'Item') {
-      $('#newWarehouseItem').modal({
+      $('#newPurchase  ').modal({
         backdrop: 'static',
         keyboard: false
       });

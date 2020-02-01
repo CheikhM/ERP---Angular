@@ -7,7 +7,8 @@
       <div class="modal-body">
         <div class="edit-project container">
           <form #loginForm="ngForm">
-            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal" (click)="restoreModal()"/>
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
             <div class="row">
               <div class="col-12">
                 <h3 class="title">{{ title ? title : 'Add Item' }}</h3>
@@ -18,7 +19,8 @@
                 <div class="form-group"
                      [ngClass]="{'to-verify': isNotValid(partcode) }">
                   <label>Part Code</label>
-                  <input class="form-control" required type="text" [(ngModel)]="purchaseCopy.partCode" #partcode="ngModel" name="partcode"/>
+                  <input class="form-control" required type="text" [(ngModel)]="purchaseCopy.partCode"
+                         #partcode="ngModel" name="partcode"/>
                   <div class="message">
                     <span *ngIf="isEmpty(partcode)">field required</span>
                   </div>
@@ -33,22 +35,6 @@
                     <span *ngIf="isEmpty(_project)">field required</span>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label>Description</label>
-                  <textarea class="form-control" placeholder="write the description here..." type="text" [(ngModel)]="purchaseCopy.description"
-                            name="description">
-                  </textarea>
-                </div>
-              </div>
-              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
-                <div class="form-group" [ngClass]="{'to-verify': isNotValid(quantity) }">
-                  <label>Quantity</label>
-                  <input class="form-control" type="number" required name="quantity" #quantity="ngModel"
-                         [(ngModel)]="purchaseCopy.quantity"/>
-                  <div class="message">
-                    <span *ngIf="isEmpty(quantity)">field required</span>
-                  </div>
-                </div>
                 <div class="form-group currency-form" [ngClass]="{'to-verify': isNotValid(rate) }">
                   <label>Unit Price</label>
                   <input class="form-control" type="number" step="0.01" required maxlength="20" name="price"
@@ -57,9 +43,45 @@
                     <span *ngIf="isEmpty(rate)">field required</span>
                   </div>
                 </div>
+                <div class="form-group" *ngIf="wareHouse">
+                  <label>Status</label>
+                  <select class="form-control" [(ngModel)]="purchaseCopy.status" name="status">
+                    <option value="Check In">Check In</option>
+                    <option value="Check Out">Check Out</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(orderID) }" *ngIf="wareHouse">
+                  <label>Order</label>
+                  <select class="form-control" [(ngModel)]="purchaseCopy.orderID" name="orderID" #orderID="ngModel"
+                          required>
+                    <option *ngFor="let order of orders" value="{{order.id}}">{{ order.num }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(orderID)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'to-verify': isNotValid(quantity) }">
+                  <label>Quantity</label>
+                  <input class="form-control" type="number" required name="quantity" #quantity="ngModel"
+                         [(ngModel)]="purchaseCopy.quantity"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(quantity)">field required</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" placeholder="write the description here..." type="text"
+                            [(ngModel)]="purchaseCopy.description"
+                            name="description">
+                  </textarea>
+                </div>
                 <div class="submit">
-                  <input class="btn btn-success" type="submit" (click)="savePurchase()" value="{{ title ? title : 'Add Item' }}"
-                         [disabled]="loginForm.form.invalid" />
+                  <input class="btn btn-success" type="submit" (click)="savePurchase()"
+                         value="{{ title ? title : 'Add Item' }}"
+                         [disabled]="loginForm.form.invalid"/>
                 </div>
               </div>
             </div>

@@ -44,7 +44,7 @@ export class Purchase {
       description: null,
       received: 0,
       receivedDate: null,
-      status: 'initial'
+      status: 'Check In'
     };
   }
 }

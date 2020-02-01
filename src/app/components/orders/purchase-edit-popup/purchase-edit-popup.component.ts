@@ -8,6 +8,7 @@ import {Purchase} from '../../../models/purchase.model';
 import {OrderService} from '../../../services/order.service';
 import {DateHelper} from '../../../helpers/date.helper';
 import {ProjectService} from '../../../services/project.service';
+import {Order} from '../../../models/order.model';
 
 
 declare var $: any;
@@ -38,6 +39,10 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   purchaseCopy: Purchase;
   projects: any;
 
+  @Input()
+  wareHouse = false;
+  orders: Order [];
+
   constructor(private orderService: OrderService,
               private toastrService: ToastrService,
               private sharedService: SharedService,
@@ -47,6 +52,9 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   ngOnInit() {
     this.purchaseCopy = Purchase.getEmptyPurchase();
     this.getProjects();
+    if (this.wareHouse) {
+      this.getAllOrders();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -71,17 +79,20 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   savePurchase() {
-    console.log('ici', (this.title));
     const copyToSend = {
       ...this.purchaseCopy,
       part_code: this.purchaseCopy.partCode,
-      order_id: this.orderID,
-      project: this.purchaseCopy.projectID
+      order_id: !this.purchaseCopy.orderID ? this.orderID : this.purchaseCopy.orderID,
+      project: this.purchaseCopy.projectID,
+      received_date: this.purchaseCopy.orderID ? DateHelper.getDateTime(new Date()) : null,
+      received: this.purchaseCopy.orderID ? 1 : 0,
+      status: this.purchaseCopy.orderID ? this.purchaseCopy.status : 'Initial',
     };
 
     delete copyToSend.partCode;
     delete copyToSend.orderID;
     delete copyToSend.projectID;
+    delete copyToSend.receivedDate;
 
     // delete unused object
 
@@ -128,6 +139,14 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   getProjects() {
     this.projectService.getAllProjects().subscribe(result => {
       this.projects = result;
+    });
+  }
+
+  private getAllOrders() {
+    this.orderService.getAllOrders().subscribe(result => {
+      if (result) {
+        this.orders = result;
+      }
     });
   }
 }

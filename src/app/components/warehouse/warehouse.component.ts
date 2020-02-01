@@ -70,10 +70,10 @@ export class WarehouseComponent implements OnInit {
   }
 
   editWItem(WItemID: number) {
-    this.manageAction = 'Edit WItem';
+    this.manageAction = 'Edit Item';
     this.WItemTobeManaged = this.WItems.find(item => item.id === WItemID);
 
-    $('#newWItem').modal({
+    $('#newPurchase').modal({
       backdrop: 'static',
       keyboard: false
     });
@@ -105,11 +105,11 @@ export class WarehouseComponent implements OnInit {
     }
   }
 
-  initManageData() {
-    this.manageAction = 'Add WItem';
-    this.WItemTobeManaged = WItem.getEmptyWItem();
-  }
-
 
    */
+  initManageData() {
+    this.manageAction = 'Add Item';
+    this.WItemTobeManaged = Purchase.getEmptyPurchase();
+  }
+
 }
