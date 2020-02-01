@@ -51,7 +51,7 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
     this.getAllTracks(this.currentOrderID);
   }
 
-  triggerOrderAction(track: Track = null) {
+  triggerTrackAction(track: Track = null) {
     if (track) {
       this.trackTobeEdited = {...track};
     } else {
@@ -61,8 +61,8 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
     $('#newTrack').modal('show');
   }
 
-  private getAllTracks(pid: number) {
-    this.orderService.getAllTracks(pid).subscribe(res => {
+  private getAllTracks(tid: number) {
+    this.orderService.getAllTracks(tid).subscribe(res => {
       this.tracks = res;
       this.tracksCopy = this.tracks.map(item => Object.assign({}, item));
     }, error => {

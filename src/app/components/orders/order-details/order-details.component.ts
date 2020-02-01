@@ -9,6 +9,8 @@ import {BASE_PATH} from '../../../config';
 import {Subscription} from 'rxjs';
 import {Project} from '../../../models/project.model';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import {User} from '../../../models/user.model';
+import {ProjectService} from '../../../services/project.service';
 
 declare var $: any;
 
@@ -25,12 +27,16 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
   order: Order;
 
   private toBeDeletedId: number = null;
+  vendor: string;
+  approvedBy: User = User.getEmptyUser();
+  project: Project;
 
   constructor(private route: ActivatedRoute,
               private orderService: OrderService,
               private sharedService: SharedService,
               private authService: AuthService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private projectService: ProjectService) {
 
     // get the current order id
     this.currentOrderID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
@@ -60,8 +66,15 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
         result => {
           if (result.status === '200_OK') {
             this.order = new Order(result.data);
-            //this.getManagerName(this.order.manager);
+            // this.getManagerName(this.order.manager);
           }
+        },
+        error => {
+        },
+        () => {
+          this.getVendor(this.order.vendor);
+          this.getApprover(this.order.approvedBy);
+          this.getProjectCode(this.order.project);
         }
       );
 
@@ -124,4 +137,26 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
+  private getVendor(vendor: number) {
+    this.orderService.getSupplierByID(vendor).subscribe(item => {
+      this.vendor = item.shortName;
+    });
+
+  }
+
+  private getApprover(userID: number) {
+    this.authService.getUserByID(userID).subscribe(res => {
+      if (res && res['status'] === '200_OK') {
+        this.approvedBy = new User(res['data']);
+      }
+    });
+  }
+
+  private getProjectCode(project: number) {
+    this.projectService.getProjectByID(project).subscribe(result => {
+      if (result && result['status'] === '200_OK') {
+        this.project = new Project(result.data);
+      }
+    });
+  }
 }

@@ -62,6 +62,8 @@ import { EditTrackComponent } from './components/orders/payment-tracks/edit-trac
 import { PurchaseEditPopupComponent } from './components/orders/purchase-edit-popup/purchase-edit-popup.component';
 import { PurchaseItemsComponent } from './components/orders/purchase-items/purchase-items.component';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/material-moment-adapter';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +116,8 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/mat
     PaymentTracksComponent,
     EditTrackComponent,
     PurchaseEditPopupComponent,
-    PurchaseItemsComponent
+    PurchaseItemsComponent,
+    WarehouseComponent
   ],
   imports: [
     BrowserModule,
@@ -129,7 +132,8 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/mat
     MatMomentDateModule,
     JwtModule,
     ToastrModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    AutocompleteLibModule
   ],
   providers: [
     MatDatepickerModule,

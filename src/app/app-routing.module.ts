@@ -28,6 +28,7 @@ import {OrdersComponent} from './components/orders/orders.component';
 import {OrderDetailsComponent} from './components/orders/order-details/order-details.component';
 import {PaymentTracksComponent} from './components/orders/payment-tracks/payment-tracks.component';
 import {PurchaseItemsComponent} from './components/orders/purchase-items/purchase-items.component';
+import {WarehouseComponent} from './components/warehouse/warehouse.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: 'orders/order/' + ':id', component: OrderDetailsComponent, canActivate: [AuthGuard] },
   { path: 'orders/order/' + ':id' + '/tracks', component: PaymentTracksComponent, canActivate: [AuthGuard] },
   { path: 'orders/order/' + ':id' + '/items', component: PurchaseItemsComponent, canActivate: [AuthGuard] },
+  { path: 'warehouse/all', component: WarehouseComponent, canActivate: [AuthGuard] },
   { path: '**', component: DashboardComponent },
 ];
 

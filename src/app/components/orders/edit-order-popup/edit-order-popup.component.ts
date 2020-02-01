@@ -11,6 +11,7 @@ import {Supplier} from '../../../models/supplier.model';
 import {Project} from '../../../models/project.model';
 import {ProjectService} from '../../../services/project.service';
 import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import {DateHelper} from '../../../helpers/date.helper';
 
 
 declare var $: any;
@@ -99,6 +100,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
       approved_by: this.orderCopy.approvedBy,
       prepared_by: this.orderCopy.preparedBy,
       ship_to: this.orderCopy.shipTo,
+      date: DateHelper.getDateTime(new Date(this.orderCopy.date))
     };
 
     // delete unused object

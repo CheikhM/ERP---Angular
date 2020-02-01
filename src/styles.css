@@ -71,6 +71,9 @@ button.add-new {
 .white-bg {
   background: white;
 }
+tr.white-bg {
+  cursor: pointer;
+}
 
 .text-red {
   color: red !important;
@@ -607,6 +610,24 @@ tr.white-bg:hover {
 textarea {
   resize: none;
 }
+
+.remaining {
+  float: right;
+  text-align: center;
+}
+.remaining h3 {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.remaining .value {
+  background: white;
+  font-weight: 700;
+  padding: 7px 5px 7px 5px;
+  font-size: 18px;
+  color: #82af53;
+}
+
 @media screen and (max-width: 768px) {
   .aw-container {
     border-radius: 0;

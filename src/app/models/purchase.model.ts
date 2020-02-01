@@ -6,7 +6,7 @@ export class Purchase {
   quantity: number;
   rate: any;
   description: string;
-  received: number;
+  received: any;
 
 
   constructor(data: any) {

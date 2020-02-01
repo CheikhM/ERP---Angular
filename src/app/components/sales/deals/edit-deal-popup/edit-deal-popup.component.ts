@@ -7,6 +7,7 @@ import {SalesService} from '../../../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
+import {DateHelper} from '../../../../helpers/date.helper';
 
 
 declare var $: any;
@@ -71,7 +72,7 @@ export class EditDealPopupComponent implements OnInit, OnDestroy, OnChanges {
     const copyToSend = {
       ...this.dealCopy,
       client_name: this.dealCopy.clientName,
-      expected_close: this.dealCopy.expectedClose,
+      expected_close: DateHelper.getDateTime(new Date(this.dealCopy.expectedClose)),
       last_update: this.dealCopy.lastUpdate,
     };
 

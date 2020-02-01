@@ -76,6 +76,8 @@ export class Connection {
         deleteTrack: this.apiProject + 'orders/tracks/delete',
         newPurchase: this.apiProject + 'orders/items/new',
         updatePurchase: this.apiProject + 'orders/items/update',
+        newTrack: this.apiProject + 'orders/tracks/new',
+        updateTrack: this.apiProject + 'orders/tracks/update',
         getAllItems: this.apiProject + 'orders/items/all',
       }
     };

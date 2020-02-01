@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import {OrderService} from '../../../services/order.service';
 import {Purchase} from '../../../models/purchase.model';
 import {Order} from '../../../models/order.model';
+import {Project} from '../../../models/project.model';
 
 declare var $: any;
 
@@ -26,11 +27,14 @@ export class PurchaseItemsComponent implements OnInit {
   total: any;
   sumItemsValue: any;
   private order: Order;
+  p: number;
+  projectCode: string;
 
   constructor(private  sharedService: SharedService,
               private  orderService: OrderService,
               private route: ActivatedRoute,
-              private toastService: ToastrService) {
+              private toastService: ToastrService,
+              private projectService: ProjectService) {
     // get the current order id
     this.currentOrderID = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     // set the current order id
@@ -116,13 +120,32 @@ export class PurchaseItemsComponent implements OnInit {
   }
 
   changeStatus(item: Purchase) {
-    const copy = {...item, received: item.received ? 1 : 0};
+    const copy = {id: item.id, received: item.received ? 1 : 0};
+    $('#item_' + item.id).parent('.__styled-checkbox').css('pointer-events', 'none');
+
     this.orderService.updatePurchase(copy).subscribe(
       result => {
-        console.log(result);
+        if (result && result['status'] === '200_OK' && result['data'].pid) {
+          this.toastService.success('Successfully updated');
+        } else {
+          this.toastService.error('Error: X02222222V');
+        }
       }, error => {
+        this.toastService.error('Error: X02222222V');
+        $('#item_' + item.id).parent('.__styled-checkbox').css('pointer-events', 'initial');
       },
       () => {
+        $('#item_' + item.id).parent('.__styled-checkbox').css('pointer-events', 'initial');
       });
+  }
+
+  getProjectCode(projectID: number) {
+    if (projectID) {
+      this.projectService.getProjectByID(projectID).subscribe(result => {
+        if (result && result['status'] === '200_OK') {
+          this.projectCode = result['data'].code;
+        }
+      });
+    }
   }
 }

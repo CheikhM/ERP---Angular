@@ -21,7 +21,7 @@ export const menuElements = [
       {text: 'Beneficiaries', icon: 'icon-benefits', route: 'default'},
     ]
   },
-  {text: 'Warehouse', icon: 'warehouse-icon', route: 'default', parent: false, permission: 'AC'},
+  {text: 'Warehouse', icon: 'warehouse-icon', route: '/warehouse/all', parent: false, permission: 'AC'},
   {text: 'Tasks', icon: 'tasks', route: '/tasks/all', parent: false, permission: 'CS'},
   {text: 'Users', icon: 'users', route: '/users/all', parent: false, permission: 'CS'},
   {text: 'Backup', icon: 'backup-icon', route: 'default', parent: false, permission: 'CS'},

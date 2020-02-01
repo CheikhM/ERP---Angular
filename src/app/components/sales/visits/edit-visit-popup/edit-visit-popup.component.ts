@@ -7,6 +7,7 @@ import {SalesService} from '../../../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
+import {DateHelper} from '../../../../helpers/date.helper';
 
 declare var $: any;
 
@@ -71,6 +72,7 @@ export class EditVisitPopupComponent implements OnInit, OnDestroy, OnChanges {
       ...this.visitCopy,
       client_name: this.visitCopy.clientName,
       last_update: this.visitCopy.lastUpdate,
+      date: DateHelper.getDateTime(new Date(this.visitCopy.date))
     };
 
     // delete unused object

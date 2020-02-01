@@ -7,14 +7,14 @@ export class Order {
   shipTo: string;
   discount: string;
   preparedBy: string;
-  approvedBy: string;
+  approvedBy: number;
   currency: string;
   status: string;
   terms: string;
   link: string;
   project: number;
   vat: boolean;
-  date: Date;
+  date: string;
   createdAt: Date;
 
   constructor(data: any) {

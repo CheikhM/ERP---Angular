@@ -7,6 +7,7 @@ import {AuthService} from '../../../../services/auth.service';
 import {SalesService} from '../../../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../../services/shared.service';
+import {DateHelper} from '../../../../helpers/date.helper';
 
 declare var $: any;
 
@@ -68,8 +69,8 @@ export class EditBidPopupComponent implements OnInit, OnDestroy, OnChanges {
     const copyToSend = {
       ...this.bidCopy,
       client_name: this.bidCopy.clientName,
-      opening_date: this.bidCopy.openingDate,
-      submission_date: this.bidCopy.submissionDate,
+      opening_date: DateHelper.getDateTime(new Date(this.bidCopy.openingDate)),
+      submission_date: DateHelper.getDateTime(new Date(this.bidCopy.submissionDate)),
       letter_of_guarantee: this.bidCopy.letterOfGuarantee,
     };
 

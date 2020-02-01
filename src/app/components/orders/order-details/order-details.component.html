@@ -9,7 +9,7 @@
       <div class="col-lg-6 col-12 col-md-12 col-sm-12">
         <div class="form-group">
           <label>Vendor</label>
-          <input class="form-control" disabled type="text" name="vendor" value="{{order?.vendor}} "/>
+          <input class="form-control" disabled type="text" name="vendor" value="{{vendor}} "/>
         </div>
         <div class="form-group">
           <label>Ship To</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
           <label>Approved By</label>
-          <input class="form-control" disabled type="text" name="approvedBy" value="{{order?.approvedBy}}"/>
+          <input class="form-control" disabled type="text" name="approvedBy" value="{{approvedBy.name}}"/>
         </div>
         <div class="form-group" >
           <label>Status</label>
@@ -39,11 +39,11 @@
         </div>
         <div class="form-group">
           <label>Project</label>
-          <input class="form-control" disabled type="text" name="project" value="{{order?.project}}" />
+          <input class="form-control" disabled type="text" name="project" value="{{project?.code}}" />
         </div>
         <div class="form-group">
           <label>Currency</label>
-          <input class="form-control" disabled type="text" name="currency" value="{{order?.currency}}"/>
+          <input class="form-control text-uppercase" disabled type="text" name="currency" value="{{order?.currency}}"/>
         </div>
         <div class="form-group">
           <label>Prepared  By</label>

@@ -4,12 +4,8 @@
 
   <img src="/assets/images/general/print.svg" alt="" class="print" (click)="alertMessage('driver not supported')"/>
 
-  <div class="aw-pagination" *ngIf="false">
-    <span>
-      1-5 of 5
-      <span class="circle-sign"><</span>
-      <span class="circle-sign">></span>
-    </span>
+  <div class="aw-pagination" *ngIf="items && items.length > 7">
+    <pagination-controls  (pageChange)="p = $event"></pagination-controls>
   </div>
   <table class="p-items">
     <tr>
@@ -22,16 +18,16 @@
       <th>Received</th>
       <th>Control</th>
     </tr>
-    <tr class="white-bg" *ngFor="let item of items">
+    <tr class="white-bg" *ngFor="let item of items | paginate: {itemsPerPage: 7, currentPage: p}">
       <td>{{ item.partCode }}</td>
       <td>{{ item.description }}</td>
       <td>{{ item.quantity }}</td>
       <td>{{ item.rate }}</td>
       <td>{{ item.quantity * item.rate }}</td>
-      <td>{{ item.projectID }}</td>
+      <td>{{ '-' }}</td>
       <td>
         <label class="__styled-checkbox">
-          <input type="checkbox" name="received" [(ngModel)]="item.received" (ngModelChange)="changeStatus(item, $event)">
+          <input type="checkbox" name="received" id="item_{{ item.id }}" [(ngModel)]="item.received" (ngModelChange)="changeStatus(item)">
           <span class="check-mark"></span>
         </label>
       </td>

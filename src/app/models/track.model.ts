@@ -1,3 +1,5 @@
+import {DateHelper} from '../helpers/date.helper';
+
 export class Track {
   id: number;
   orderID: number;
@@ -32,6 +34,7 @@ export class Track {
 
   static revertCast(track) {
     track.order_id = track.orderID;
+    track.date = DateHelper.getDateTime(new Date(track.date));
     delete track.orderID;
 
     return track;

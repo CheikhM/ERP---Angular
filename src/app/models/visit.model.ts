@@ -4,7 +4,7 @@ export class Visit {
   contact: string;
   reason: string;
   manager: number;
-  date: Date;
+  date: string;
   lastUpdate: Date;
 
   constructor(data: any) {

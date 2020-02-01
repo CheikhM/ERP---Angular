@@ -59,6 +59,11 @@ export class ListingTitleComponent implements OnInit {
         backdrop: 'static',
         keyboard: false
       });
+    } else if (this.data.sTitle === 'Item') {
+      $('#newWarehouseItem').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
     }
     setTimeout(() => {
       $('.autofocus').focus();

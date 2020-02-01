@@ -59,7 +59,7 @@
                 <div class="form-group"
                      [ngClass]="{'to-verify': isNotValid(discount) }">
                   <label>Discount</label>
-                  <input class="form-control" required type="text"
+                  <input class="form-control" required type="number" step="0.01"
                          [(ngModel)]="orderCopy.discount" #discount="ngModel" name="discount"/>
                   <div class="message">
                     <span *ngIf="isEmpty(discount)">field required</span>

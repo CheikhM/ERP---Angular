@@ -26,9 +26,9 @@ export class OrderService {
     );
   }
 
-  // get a user by id
-  getSupplierByID(id: number): Observable<any> {
-    return this.http.get(Connection.api.suppliers.getSingle + '?id=' + id);
+  // get a supplier by id
+  getSupplierByID(id: number): Observable<Supplier> {
+    return this.http.get(Connection.api.suppliers.getSingle + '?id=' + id).pipe(map(results => results['data']), map(item => new Supplier(item)));
   }
 
   // delete a project using the project id
@@ -56,8 +56,18 @@ export class OrderService {
     return this.http.post(Connection.api.orders.newPurchase, purchase);
   }
 
+  // add new bid
+  newTrack(track: Track) {
+    return this.http.post(Connection.api.orders.newTrack, track);
+  }
+
   // edit existing bid
-  updatePurchase(purchase: Purchase) {
+  updateTrack(track: any) {
+    return this.http.post(Connection.api.orders.updateTrack, track);
+  }
+
+  // edit existing bid
+  updatePurchase(purchase: any) {
     return this.http.post(Connection.api.orders.updatePurchase, purchase);
   }
 
@@ -91,8 +101,8 @@ export class OrderService {
   }
 
   // get the list of all invoices of a given project
-  getAllTracks(orderID): Observable<Track []> {
-    return this.http.get(Connection.api.orders.getAllTracks + '?id=' + orderID).pipe(
+  getAllTracks(trackID): Observable<Track []> {
+    return this.http.get(Connection.api.orders.getAllTracks + '?id=' + trackID).pipe(
       map(response => response), map(tracks => {
         return Track.arrayCast(tracks);
       })

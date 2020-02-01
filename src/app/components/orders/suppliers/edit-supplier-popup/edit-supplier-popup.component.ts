@@ -94,7 +94,7 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
         }
       );
     } else if (this.title === 'Edit Supplier') {
-      delete copyToSend.createdAt;
+      delete copyToSend.created_at;
 
       this.orderService.updateSupplier(copyToSend).subscribe(
         result => {
