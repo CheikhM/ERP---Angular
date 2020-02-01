@@ -7,6 +7,8 @@ export class Purchase {
   rate: any;
   description: string;
   received: any;
+  receivedDate: string;
+  status: string;
 
 
   constructor(data: any) {
@@ -18,6 +20,8 @@ export class Purchase {
     this.rate = data.rate;
     this.description = data.description;
     this.received = data.received;
+    this.receivedDate = data.received_date;
+    this.status = data.status;
   }
 
   static arrayCast(data: any): Purchase [] {
@@ -38,7 +42,9 @@ export class Purchase {
       quantity: null,
       rate: null,
       description: null,
-      received: 0
+      received: 0,
+      receivedDate: null,
+      status: 'initial'
     };
   }
 }

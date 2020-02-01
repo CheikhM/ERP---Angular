@@ -111,8 +111,8 @@ export class OrderService {
 
 
   // get the list of all invoices of a given project
-  getAllItems(oid): Observable<Purchase []> {
-    return this.http.get(Connection.api.orders.getAllItems + '?id=' + oid).pipe(
+  getAllItems(oid = 0, received = 0): Observable<Purchase []> {
+    return this.http.get(Connection.api.orders.getAllItems + '?id=' + oid + '&received=' + received).pipe(
       map(response => response), map(items => {
         return Purchase.arrayCast(items);
       }));

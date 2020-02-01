@@ -17,12 +17,12 @@ export const menuElements = [
   },
   {
     text: 'Payment vouchers', icon: 'icon-payment', route: null, parent: true, permission: 'AC', subelements: [
-      {text: 'List all', icon: 'list-all-icon', route: 'default'},
-      {text: 'Beneficiaries', icon: 'icon-benefits', route: 'default'},
+      {text: 'List all', icon: 'list-all-icon', route: '/vouchers/all'},
+      {text: 'Beneficiaries', icon: 'icon-benefits', route: '/beneficiaries/all'},
     ]
   },
   {text: 'Warehouse', icon: 'warehouse-icon', route: '/warehouse/all', parent: false, permission: 'AC'},
   {text: 'Tasks', icon: 'tasks', route: '/tasks/all', parent: false, permission: 'CS'},
   {text: 'Users', icon: 'users', route: '/users/all', parent: false, permission: 'CS'},
-  {text: 'Backup', icon: 'backup-icon', route: 'default', parent: false, permission: 'CS'},
+  {text: 'Backup', icon: 'backup-icon', route: '/backup', parent: false, permission: 'CS'},
 ];

@@ -64,6 +64,9 @@ import { PurchaseItemsComponent } from './components/orders/purchase-items/purch
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/material-moment-adapter';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { BackupComponent } from './components/backup/backup.component';
+import { VouchersComponent } from './components/vouchers/vouchers.component';
+import { BeneficiariesComponent } from './components/beneficiaries/beneficiaries.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,7 +120,10 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
     EditTrackComponent,
     PurchaseEditPopupComponent,
     PurchaseItemsComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    BackupComponent,
+    VouchersComponent,
+    BeneficiariesComponent
   ],
   imports: [
     BrowserModule,
