@@ -79,6 +79,12 @@ export class Connection {
         newTrack: this.apiProject + 'orders/tracks/new',
         updateTrack: this.apiProject + 'orders/tracks/update',
         getAllItems: this.apiProject + 'orders/items/all',
+      },
+      vouchers: {
+        getAllBeneficiaries: this.apiProject + 'beneficiaries/all',
+        newBeneficiary: this.apiProject + 'beneficiaries/new',
+        updateBeneficiary: this.apiProject + 'beneficiaries/update',
+        deleteBeneficiary: this.apiProject + 'beneficiaries/delete',
       }
     };
   }

@@ -26,7 +26,7 @@ export class Beneficiary {
     return beneficiaries;
   }
 
-  static getEmptySupplier(): Beneficiary {
+  static getEmptyBeneficiary(): Beneficiary {
     return {
       id: null,
       name: null,

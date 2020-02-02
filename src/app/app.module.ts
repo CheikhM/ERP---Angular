@@ -67,6 +67,7 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { BackupComponent } from './components/backup/backup.component';
 import { VouchersComponent } from './components/vouchers/vouchers.component';
 import { BeneficiariesComponent } from './components/beneficiaries/beneficiaries.component';
+import { EditBeneficiaryPopupComponent } from './components/beneficiaries/edit-beneficiary-popup/edit-beneficiary-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +124,8 @@ import { BeneficiariesComponent } from './components/beneficiaries/beneficiaries
     WarehouseComponent,
     BackupComponent,
     VouchersComponent,
-    BeneficiariesComponent
+    BeneficiariesComponent,
+    EditBeneficiaryPopupComponent
   ],
   imports: [
     BrowserModule,

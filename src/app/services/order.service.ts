@@ -8,6 +8,7 @@ import {Order} from '../models/order.model';
 import {Invoice} from '../models/invoice.model';
 import {Track} from '../models/track.model';
 import {Purchase} from '../models/purchase.model';
+import {Beneficiary} from '../models/beneficiary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,16 @@ export class OrderService {
       })
     );
   }
+
+  // get the list of all non deleted user
+  getAllBeneficiaries(): Observable<Beneficiary []> {
+    return this.http.get(Connection.api.vouchers.getAllBeneficiaries).pipe(
+      map(response => response), map(beneficiaries => {
+        return Beneficiary.arrayCast(beneficiaries);
+      })
+    );
+  }
+
 
   // get a supplier by id
   getSupplierByID(id: number): Observable<Supplier> {
@@ -117,4 +128,20 @@ export class OrderService {
         return Purchase.arrayCast(items);
       }));
   }
+
+  // add new beneficiary
+  newBeneficiary(beneficiary: Beneficiary) {
+    return this.http.post(Connection.api.vouchers.newBeneficiary, beneficiary);
+  }
+
+  // edit existing beneficiary
+  updateBeneficiary(beneficiary: Beneficiary) {
+    return this.http.post(Connection.api.vouchers.updateBeneficiary, beneficiary);
+  }
+
+
+  deleteBeneficiary(toBeDeletedId: any) {
+    return this.http.get(Connection.api.vouchers.deleteBeneficiary + '?id=' + toBeDeletedId);
+  }
+
 }

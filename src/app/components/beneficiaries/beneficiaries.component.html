@@ -1,1 +1,16 @@
-<p>beneficiaries works!</p>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredBeneficiaries"
+             [model]="'beneficiaries'"
+             (onEditClick)="editBeneficiary($event)"
+             (onDeleteClick)="deleteBeneficiary($event)"
+             (showPopupValues)="showBeneficiary($event)"
+             [icon]="'icon-benefits'"
+             [modulePath]="'/beneficiaries/beneficiary/'"
+             [withWorkflow]="false"
+></app-listing>
+
+
+
+<app-confirm-box [popupID]="'deleteBeneficiaryModal'" [deleteTitle]="'Delete Beneficiary'" (confirmAction)="confirmBeneficiaryDelete($event)"></app-confirm-box>
+
+<app-edit-beneficiary-popup [title]="manageAction" [beneficiary]="beneficiaryTobeManaged" [showOnly]="showOnly" (onExitModal)="exitPopup()"></app-edit-beneficiary-popup>

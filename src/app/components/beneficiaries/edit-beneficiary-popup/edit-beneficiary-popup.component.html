@@ -1,0 +1,55 @@
+<div class="modal fade custom-popup edit-project" id="newBeneficiary" tabindex="-1" role="dialog"
+     aria-labelledby="newBeneficiary"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-project container" [ngClass]="{'no-events': showOnly}">
+          <form #loginForm="ngForm">
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
+            <div class="row">
+              <div class="col-12">
+                <h3 class="title">{{ title ? title : 'Add Beneficiary' }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(name) }">
+                  <label>Name</label>
+                  <input [readOnly]="showOnly" class="form-control" required type="text"
+                         [(ngModel)]="beneficiaryCopy.name" #name="ngModel" name="name"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(name)">Beneficiary name is required</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Short Name</label>
+                  <input [readOnly]="showOnly" class="form-control" type="text"
+                         [(ngModel)]="beneficiaryCopy.shortName" #shortName="ngModel" name="shortName"/>
+
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(phone) }">
+                  <label>Phone</label>
+                  <input [readOnly]="showOnly" class="form-control" required type="text"
+                         [(ngModel)]="beneficiaryCopy.phone" #phone="ngModel" name="phone"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(phone)">phone number is required</span>
+                  </div>
+                </div>
+                <div class="submit" *ngIf="!showOnly">
+                  <input class="btn btn-success" type="submit" style="margin-top: 15px;" value="{{ title ? title : 'Add Beneficiary' }}"
+                         (click)="saveBeneficiary()" [disabled]="loginForm.form.invalid"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

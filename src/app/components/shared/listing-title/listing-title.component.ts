@@ -54,13 +54,18 @@ export class ListingTitleComponent implements OnInit {
         backdrop: 'static',
         keyboard: false
       });
-    }  else if (this.data.sTitle === 'Order') {
+    } else if (this.data.sTitle === 'Order') {
       $('#newOrder').modal({
         backdrop: 'static',
         keyboard: false
       });
     } else if (this.data.sTitle === 'Item') {
       $('#newPurchase  ').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+    } else if (this.data.sTitle === 'Beneficiary') {
+      $('#newBeneficiary').modal({
         backdrop: 'static',
         keyboard: false
       });
