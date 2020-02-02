@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProjectService} from '../../../../services/project.service';
 import {ActivatedRoute} from '@angular/router';
+import {DateHelper} from '../../../../helpers/date.helper';
 
 declare var $: any;
 
@@ -57,6 +58,7 @@ export class EditBoqComponent implements OnInit, OnChanges {
   actionProject() {
     const groupText = $('#newGroupText').val();
 
+    this.boqCopy.delivery_date = DateHelper.getDateTime(new Date(this.boqCopy.delivery_date));
     const groupID = parseInt($('#groupID').val(), 10);
     if (groupID === 0 && groupText.length > 0) {
       this.projectService.newGroup(this.currentProjectID, groupText).subscribe(result => {

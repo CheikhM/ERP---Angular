@@ -18,8 +18,6 @@ declare var $: any;
 })
 export class WarehouseComponent implements OnInit {
 
-  itemToBeManaged: Purchase;
-
   filteredWItems: Purchase[];
 
   metaDefinition = [
@@ -33,13 +31,18 @@ export class WarehouseComponent implements OnInit {
   manageAction = 'Add Item';
   WItemTobeManaged: Purchase;
   private toBeDeletedId: number;
+
   constructor(private sharedService: SharedService,
-              private orderService: OrderService,
-              private toastrService: ToastrService) {
+              private orderService: OrderService) {
   }
+
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllWItems());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllWItems();
+      }
+    });
 
     // search WItem
     this.sharedService.getSearchText().subscribe(item => {
@@ -51,11 +54,11 @@ export class WarehouseComponent implements OnInit {
   getAllWItems() {
     this.orderService.getAllItems(0, 1).subscribe(
       resp => {
-        //console.log(resp);
         this.WItems = resp;
         this.filteredWItems = resp;
       },
-      error => {},
+      error => {
+      },
       () => {
         //console.log(this.WItems);
       }

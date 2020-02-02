@@ -41,7 +41,7 @@ export class Purchase {
       projectID: null,
       quantity: null,
       rate: null,
-      description: null,
+      description: '',
       received: 0,
       receivedDate: null,
       status: 'Check In'

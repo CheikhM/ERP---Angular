@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://wadan.lh/api/'
+  api: 'http://ec2-18-224-17-209.us-east-2.compute.amazonaws.com/api/'
 };
 
 /*
