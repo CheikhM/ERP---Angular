@@ -21,10 +21,10 @@ export class VouchersComponent implements OnInit {
   filteredVouchers: any;
 
   metaDefinition = [
-    {text: 'Name', attribute: 'name', type: 'PLString'},
-    {text: 'Priority', attribute: 'priority', type: 'PLString'},
-    {text: 'Status', attribute: 'status', type: 'string'},
-    {text: 'Created at', attribute: 'createdAt', type: 'date'},
+    {text: 'NO', attribute: 'id'},
+    {text: 'Beneficiary', attribute: 'beneficiary', type: 'PLString'},
+    {text: 'description', attribute: 'description', type: 'PLString'},
+    {text: 'Date', attribute: 'date', type: 'date'},
   ];
 
   vouchers: Voucher [];
@@ -65,7 +65,7 @@ export class VouchersComponent implements OnInit {
 // search project by name
   private searchVoucher(text: string) {
     if (this.vouchers) {
-      this.filteredVouchers = this.vouchers.filter(voucher => voucher.name.toLowerCase().includes(text));
+      this.filteredVouchers = this.vouchers.filter(voucher => voucher.description.toLowerCase().includes(text));
     }
   }
 

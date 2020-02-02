@@ -82,6 +82,7 @@ export class Connection {
       },
       vouchers: {
         getAllBeneficiaries: this.apiProject + 'beneficiaries/all',
+        getSingleBeneficiary: this.apiProject + 'beneficiaries/beneficiary',
         newBeneficiary: this.apiProject + 'beneficiaries/new',
         updateBeneficiary: this.apiProject + 'beneficiaries/update',
         deleteBeneficiary: this.apiProject + 'beneficiaries/delete',

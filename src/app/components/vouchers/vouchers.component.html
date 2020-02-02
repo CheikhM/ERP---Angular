@@ -7,3 +7,13 @@
              [modulePath]="'/vouchers/voucher/'"
 ></app-listing>
 
+
+
+<!-- confirm visit delete -->
+<app-confirm-box [popupID]="'deleteVoucherModal'" [deleteTitle]="'Delete voucher'" (confirmAction)="confirmVoucherDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit visit -->
+<app-edit-voucher-popup [title]="manageAction" [voucher]="voucherTobeManaged" (onExitModal)="initManageData()"></app-edit-voucher-popup>
+<!-- end popup -->
+

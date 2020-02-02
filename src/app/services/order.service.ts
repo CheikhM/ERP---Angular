@@ -9,6 +9,7 @@ import {Invoice} from '../models/invoice.model';
 import {Track} from '../models/track.model';
 import {Purchase} from '../models/purchase.model';
 import {Beneficiary} from '../models/beneficiary.model';
+import {Voucher} from '../models/voucher.model';
 
 @Injectable({
   providedIn: 'root'
@@ -144,4 +145,8 @@ export class OrderService {
     return this.http.get(Connection.api.vouchers.deleteBeneficiary + '?id=' + toBeDeletedId);
   }
 
+  // get a supplier by id
+  getBeneficiaryByID(id: number): Observable<Beneficiary> {
+    return this.http.get(Connection.api.vouchers.getSingleBeneficiary + '?id=' + id).pipe(map(results => results['data']), map(item => new Beneficiary(item)));
+  }
 }

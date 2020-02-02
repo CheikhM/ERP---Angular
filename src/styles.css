@@ -269,6 +269,9 @@ tr.white-bg:hover {
 .currency-form {
   position: relative;
 }
+.currency-form input {
+  text-align: center;
+}
 
 .currency-form:before {
   content: '$';

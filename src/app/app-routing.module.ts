@@ -32,6 +32,8 @@ import {WarehouseComponent} from './components/warehouse/warehouse.component';
 import {BackupComponent} from './components/backup/backup.component';
 import {VouchersComponent} from './components/vouchers/vouchers.component';
 import {BeneficiariesComponent} from './components/beneficiaries/beneficiaries.component';
+import {VoucherDetailsComponent} from './components/vouchers/voucher-details/voucher-details.component';
+import {VoucherNotesComponent} from './components/vouchers/voucher-notes/voucher-notes.component';
 
 // todo lazy loading
 const routes: Routes = [
@@ -65,6 +67,8 @@ const routes: Routes = [
   { path: 'warehouse/all', component: WarehouseComponent, canActivate: [AuthGuard] },
   { path: 'backup', component: BackupComponent, canActivate: [AuthGuard] },
   { path: 'vouchers/all', component: VouchersComponent, canActivate: [AuthGuard] },
+  { path: 'vouchers/voucher/' + ':id', component: VoucherDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'vouchers/voucher/' + ':id' + '/notes', component: VoucherNotesComponent, canActivate: [AuthGuard] },
   { path: 'beneficiaries/all', component: BeneficiariesComponent, canActivate: [AuthGuard] },
   { path: '**', component: DashboardComponent },
 ];
