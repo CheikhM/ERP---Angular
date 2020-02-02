@@ -4,6 +4,7 @@ import {SharedService} from '../../../services/shared.service';
 import {Subscription} from 'rxjs';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {BASE_PATH} from '../../../config';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 
 declare var $: any;
 
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public workflowID: number;
   private workflowIDSub: Subscription;
   listingTitleData: any;
+  profile: string;
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -27,6 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadPageHeader();
+    this.getProfile();
   }
 
   // the header is dynamic
@@ -40,7 +43,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         } else if (event.url === '/') {
           this.listingPage = false;
           this.workflowPresent = false;
-        } else if (event.url.includes('users')) {
+        } else if (event.url.includes('users')
+          || event.url.includes('backup')
+          || event.url.includes('settings')
+        ) {
           this.listingPage = false;
           this.workflowPresent = false;
         } else {
@@ -98,7 +104,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         title: 'Suppliers',
         sTitle: 'Supplier'
       };
-    }  else if (path.includes('orders/all')) {
+    } else if (path.includes('orders/all')) {
       this.listingTitleData = {
         title: 'Orders',
         sTitle: 'Order'
@@ -113,6 +119,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         title: 'Beneficiaries',
         sTitle: 'Beneficiary'
       };
+    } else if (path.includes('vouchers/all')) {
+      this.listingTitleData = {
+        title: 'Payment Vouchers',
+        sTitle: 'Voucher'
+      };
     }
   }
 
@@ -125,5 +136,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     localStorage.removeItem('token');
     // window.location.replace('login');
     window.location.replace(BASE_PATH + 'login');
+  }
+
+  private getProfile() {
+    const user = LocalStorageHelper.getItem('user');
+    if (user && user.id) {
+      this.profile = '/users/user/' + user.id;
+    }
   }
 }

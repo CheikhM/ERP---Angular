@@ -68,6 +68,9 @@ import { BackupComponent } from './components/backup/backup.component';
 import { VouchersComponent } from './components/vouchers/vouchers.component';
 import { BeneficiariesComponent } from './components/beneficiaries/beneficiaries.component';
 import { EditBeneficiaryPopupComponent } from './components/beneficiaries/edit-beneficiary-popup/edit-beneficiary-popup.component';
+import { EditVoucherPopupComponent } from './components/vouchers/edit-voucher-popup/edit-voucher-popup.component';
+import { VoucherDetailsComponent } from './components/vouchers/voucher-details/voucher-details.component';
+import { VoucherNotesComponent } from './components/vouchers/voucher-notes/voucher-notes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,7 +128,10 @@ import { EditBeneficiaryPopupComponent } from './components/beneficiaries/edit-b
     BackupComponent,
     VouchersComponent,
     BeneficiariesComponent,
-    EditBeneficiaryPopupComponent
+    EditBeneficiaryPopupComponent,
+    EditVoucherPopupComponent,
+    VoucherDetailsComponent,
+    VoucherNotesComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,12 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #e4ebf7;
 }
-
+span.required {
+  color: #ff2b2b;
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 600;
+}
 .hidden {
   display: none;
 }

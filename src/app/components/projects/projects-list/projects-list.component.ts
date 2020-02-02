@@ -80,11 +80,14 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     $('#deleteProjectModal').modal('show');
   }
 
-
   // search project by name
   private searchProject(text: string) {
     if (this.projects) {
-      this.filteredProjects = this.projects.filter(project => project.name.toLowerCase().includes(text));
+      this.filteredProjects = this.projects.filter(project =>
+        project.name.toLowerCase().includes(text) ||
+        project.code.toLowerCase().includes(text) ||
+        project.link.toLowerCase().includes(text)
+      );
     }
   }
 

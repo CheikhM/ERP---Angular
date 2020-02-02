@@ -1,15 +1,13 @@
 <header>
-
   <div class="config">
     <div class="items">
-      <a href="#">
+      <a>
         <img src="/assets/images/general/notification-icon.svg" alt="" class=""/>
       </a>
-      <a href="#">
-
+      <a alt="settings" title="settings" [routerLink]="['settings']">
         <img src="/assets/images/general/settings-icon.svg" alt="" class=""/>
       </a>
-      <a alt="log out" title="log out" (click)="logOut()">
+      <a alt="log out" title="log out" [routerLink]="[profile]">
         <img src="/assets/images/general/user-icon.svg" alt="log out" title="log out" class="user-profile"/>
       </a>
     </div>

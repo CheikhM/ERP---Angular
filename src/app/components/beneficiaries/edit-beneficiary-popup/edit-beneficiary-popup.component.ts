@@ -79,7 +79,7 @@ export class EditBeneficiaryPopupComponent implements OnInit, OnChanges, OnDestr
     if (this.title === 'Add Beneficiary') {
       this.orderService.newBeneficiary(copyToSend).subscribe(
         result => {
-          if (result['status'] === '200_OK' && result['data'].sid) {
+          if (result['status'] === '200_OK' && result['data'].bid) {
             // tell the project about new data update
             $('#newBeneficiary').modal('hide');
             this.sharedService.setNewUpdate(true);
@@ -98,7 +98,7 @@ export class EditBeneficiaryPopupComponent implements OnInit, OnChanges, OnDestr
 
       this.orderService.updateBeneficiary(copyToSend).subscribe(
         result => {
-          if (result['status'] === '200_OK' && result['data'].sid) {
+          if (result['status'] === '200_OK' && result['data'].bid) {
             $('#newBeneficiary').modal('hide');
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);

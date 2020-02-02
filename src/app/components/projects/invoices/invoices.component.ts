@@ -122,11 +122,15 @@ export class InvoicesComponent implements OnInit, OnDestroy {
 
   private getRemaining() {
     if (this.POValue && this.POValue > 0) {
-      // traveler.map(item => item.Amount).reduce((prev, next) => prev + next);
-      const sum = this.invoicesCopy.map(item => item.amount).reduce((prev, next) => prev + next);
-      if (sum && sum > 0) {
-        this.remaining = this.POValue - sum;
+
+      const localInvoicesCopy = this.invoicesCopy.map(item => item.amount);
+      if (localInvoicesCopy && localInvoicesCopy.length > 0) {
+        const sum = localInvoicesCopy.reduce((prev, next) => prev + next);
+        if (sum && sum > 0) {
+          this.remaining = this.POValue - sum;
+        }
       }
+
     }
   }
 }

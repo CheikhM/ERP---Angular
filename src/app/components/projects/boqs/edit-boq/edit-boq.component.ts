@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProjectService} from '../../../../services/project.service';
 import {ActivatedRoute} from '@angular/router';
 import {DateHelper} from '../../../../helpers/date.helper';
+import {NgModel} from '@angular/forms';
 
 declare var $: any;
 
@@ -28,6 +29,7 @@ export class EditBoqComponent implements OnInit, OnChanges {
   @Input()
   currentGroupID: number;
   private currentProjectID: number;
+  newItemsGroup: string;
 
   constructor(private projectService: ProjectService, private route: ActivatedRoute) {
   }
@@ -56,12 +58,10 @@ export class EditBoqComponent implements OnInit, OnChanges {
   }
 
   actionProject() {
-    const groupText = $('#newGroupText').val();
-
     this.boqCopy.delivery_date = DateHelper.getDateTime(new Date(this.boqCopy.delivery_date));
-    const groupID = parseInt($('#groupID').val(), 10);
-    if (groupID === 0 && groupText.length > 0) {
-      this.projectService.newGroup(this.currentProjectID, groupText).subscribe(result => {
+
+    if (this.currentGroupID == 0 && this.newItemsGroup.length > 0) {
+      this.projectService.newGroup(this.currentProjectID, this.newItemsGroup).subscribe(result => {
         if (result && result['data'] && result['data'].gid) {
           this.boqCopy.group_id = result['data'].gid;
           this.emitActionAdd.emit(this.boqCopy);
@@ -69,13 +69,27 @@ export class EditBoqComponent implements OnInit, OnChanges {
       }, error => {
       }, () => {
       });
-    } else if (groupID && groupID > 0) {
-      this.boqCopy.group_id = groupID;
+    } else if (this.currentGroupID && this.currentGroupID > 0) {
+      this.boqCopy.group_id = this.currentGroupID;
       this.emitActionAdd.emit(this.boqCopy);
     }
   }
 
   emptyGroupName() {
-    $('#newGroupText').val('');
+    if (this.currentGroupID === 0) {
+      setTimeout(() => {
+        $('#newGroupText').focus();
+      }, 20);
+    }
+    this.newItemsGroup = '';
   }
+
+  isEmpty(model: NgModel) {
+    return this.isNotValid(model) && model.errors.required;
+  }
+
+  isNotValid(model: NgModel) {
+    return model.invalid && (model.dirty || model.touched);
+  }
+
 }

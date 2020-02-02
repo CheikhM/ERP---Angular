@@ -85,6 +85,11 @@ export class Connection {
         newBeneficiary: this.apiProject + 'beneficiaries/new',
         updateBeneficiary: this.apiProject + 'beneficiaries/update',
         deleteBeneficiary: this.apiProject + 'beneficiaries/delete',
+        getAll: this.apiProject + 'vouchers/all',
+        getSingle: this.apiProject + 'vouchers/voucher',
+        deleteVoucher: this.apiProject + 'vouchers/delete',
+        newVoucher: this.apiProject + 'vouchers/new',
+        updateVoucher: this.apiProject + 'vouchers/update',
       }
     };
   }

@@ -1,1 +1,9 @@
-<p>vouchers works!</p>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredVouchers"
+             [model]="'Vouchers'"
+             (onEditClick)="editVoucher($event)"
+             (onDeleteClick)="deleteVoucher($event)"
+             [icon]="'icon-payment'"
+             [modulePath]="'/vouchers/voucher/'"
+></app-listing>
+

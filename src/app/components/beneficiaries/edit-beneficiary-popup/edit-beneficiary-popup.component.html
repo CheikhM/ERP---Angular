@@ -30,6 +30,12 @@
                          [(ngModel)]="beneficiaryCopy.shortName" #shortName="ngModel" name="shortName"/>
 
                 </div>
+                <div class="form-group">
+                  <label>Account NO</label>
+                  <input [readOnly]="showOnly" class="form-control" type="text"
+                         [(ngModel)]="beneficiaryCopy.account" #account="ngModel" name="account"/>
+
+                </div>
               </div>
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
                 <div class="form-group"
@@ -39,6 +45,15 @@
                          [(ngModel)]="beneficiaryCopy.phone" #phone="ngModel" name="phone"/>
                   <div class="message">
                     <span *ngIf="isEmpty(phone)">phone number is required</span>
+                  </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(bank) }">
+                  <label>Bank *</label>
+                  <input [readOnly]="showOnly" class="form-control" type="text"
+                         [(ngModel)]="beneficiaryCopy.bank" #bank="ngModel" name="bank"/>
+                  <div class="message">
+                    <span *ngIf="isEmpty(bank)">Bank name is required</span>
                   </div>
                 </div>
                 <div class="submit" *ngIf="!showOnly">

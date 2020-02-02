@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 import {ActivatedRoute} from '@angular/router';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
@@ -29,7 +29,8 @@ export class BoqsComponent implements OnInit {
   constructor(private  sharedService: SharedService,
               private  projectService: ProjectService,
               private route: ActivatedRoute,
-              private toastService: ToastrService) {
+              private toastService: ToastrService,
+              private cdRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -47,17 +48,18 @@ export class BoqsComponent implements OnInit {
         if (result.data) {
           this.items = result.data.items;
           this.groups = result.data.groups;
-          this.groupID = this.groups[0].id;
+          this.groupID = this.groups ? this.groups[0].id : 0;
         }
       },
       error => {
       },
       () => {
-        this.currentGroupID = this.groups[0].id;
-        this.currentGroupItems = this.items.filter(bid => {
-          return bid.group_id === this.currentGroupID;
-        });
-
+        this.currentGroupID = this.groups ? this.groups[0].id : 0;
+        if (this.items && this.items.length > 0) {
+          this.currentGroupItems = this.items.filter(bid => {
+            return bid.group_id === this.currentGroupID;
+          });
+        }
         this.getTotSellCost();
         this.getTotExCost();
       }
@@ -109,18 +111,30 @@ export class BoqsComponent implements OnInit {
   }
 
   getTotalCostForGroup(id: any) {
-    return this.items.filter(el => el.group_id === id).map(item => item.cost * item.quantity).reduce((a, b) => a + b);
+    const newItems = this.items.filter(el => el.group_id === id).map(item => item.cost * item.quantity);
+    if (newItems.length > 0) {
+      return newItems.reduce((a, b) => a + b);
+    }
+    return 0;
   }
 
   getTotalPriceForGroup(id: any) {
-    return this.items.filter(el => el.group_id === id).map(item => item.price * item.quantity).reduce((a, b) => a + b);
+    const newItems = this.items.filter(el => el.group_id === id).map(item => item.price * item.quantity);
+    if (newItems.length > 0) {
+      return newItems.reduce((a, b) => a + b);
+    }
+    return 0;
   }
 
   getTotExCost() {
-    this.totalExCost = this.items.map(item => item.cost * item.quantity).reduce((a, b) => a + b);
+    if (this.items && this.items.length > 0) {
+      this.totalExCost = this.items.map(item => item.cost * item.quantity).reduce((a, b) => a + b);
+    }
   }
 
   getTotSellCost() {
-    this.totalSell = this.items.map(item => item.price * item.quantity).reduce((a, b) => a + b);
+    if (this.items && this.items.length > 0) {
+      this.totalSell = this.items.map(item => item.price * item.quantity).reduce((a, b) => a + b);
+    }
   }
 }
