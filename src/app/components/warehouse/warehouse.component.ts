@@ -112,7 +112,7 @@ export class WarehouseComponent implements OnInit {
    */
   initManageData() {
     this.manageAction = 'Add Item';
-    this.WItemTobeManaged = Purchase.getEmptyPurchase();
+    this.WItemTobeManaged = Purchase.getEmptyPurchase(true);
   }
 
 }

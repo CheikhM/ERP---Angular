@@ -109,7 +109,7 @@ export class PurchaseItemsComponent implements OnInit {
   }
 
   clearPopup() {
-    this.itemToBeManaged = Purchase.getEmptyPurchase();
+    this.itemToBeManaged = Purchase.getEmptyPurchase(false);
     this.manageAction = 'Add Item';
   }
 
@@ -120,7 +120,11 @@ export class PurchaseItemsComponent implements OnInit {
   }
 
   changeStatus(item: Purchase) {
-    const copy = {id: item.id, received: item.received ? 1 : 0};
+    const copy = {
+      id: item.id,
+      received: item.received ? 1 : 0,
+      status: item.received ? 'Check In' : 'Initial',
+    };
     $('#item_' + item.id).parent('.__styled-checkbox').css('pointer-events', 'none');
 
     this.orderService.updatePurchase(copy).subscribe(

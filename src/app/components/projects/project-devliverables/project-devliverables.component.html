@@ -1,2 +1,24 @@
 <app-details-title [canAdd]="false" [title]="'Deliverables'"></app-details-title>
-page under construction
+<div class="listing listing-details">
+  <div class="aw-pagination" *ngIf="false">
+  </div>
+
+  <table>
+    <tr>
+      <th>Part NO</th>
+      <th>Description</th>
+      <th>Qty</th>
+      <th>U Cost</th>
+      <th>T Cost</th>
+      <th>Delivered Date</th>
+    </tr>
+    <tr class="white-bg" *ngFor="let delivered of deliverables">
+      <td>{{ delivered.partCode }}</td>
+      <td>{{ delivered.description }}</td>
+      <td>{{ delivered.quantity }}</td>
+      <td>{{ delivered.rate }}</td>
+      <td>{{ delivered.rate * delivered.quantity }}</td>
+      <td>{{ delivered.receivedDate }}</td>
+    </tr>
+  </table>
+</div>

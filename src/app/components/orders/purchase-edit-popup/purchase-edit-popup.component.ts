@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgModel} from '@angular/forms';
-import {AuthService} from '../../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
@@ -30,9 +29,6 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   @Input()
   showOnly = false;
 
-  @Input()
-  purchase: any = Purchase.getEmptyPurchase();
-
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   password: string;
@@ -41,6 +37,10 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
 
   @Input()
   wareHouse = false;
+
+  @Input()
+  purchase: any = Purchase.getEmptyPurchase(this.wareHouse);
+
   orders: Order [];
 
   constructor(private orderService: OrderService,
@@ -50,7 +50,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnInit() {
-    this.purchaseCopy = Purchase.getEmptyPurchase();
+    this.purchaseCopy = Purchase.getEmptyPurchase(this.wareHouse);
     this.getProjects();
     if (this.wareHouse) {
       this.getAllOrders();
@@ -84,9 +84,9 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
       part_code: this.purchaseCopy.partCode,
       order_id: !this.purchaseCopy.orderID ? this.orderID : this.purchaseCopy.orderID,
       project: this.purchaseCopy.projectID,
-      received_date: this.purchaseCopy.orderID ? DateHelper.getDateTime(new Date()) : null,
-      received: this.purchaseCopy.orderID ? 1 : 0,
-      status: this.purchaseCopy.orderID ? this.purchaseCopy.status : 'Initial',
+      received_date: this.purchaseCopy.status === 'Initial' ? DateHelper.getDateTime(new Date()) : null,
+      received: this.purchaseCopy.status === 'Initial' ? 0 : 1,
+      status: this.purchaseCopy.status
     };
 
     delete copyToSend.partCode;

@@ -1,3 +1,5 @@
+import {DateHelper} from '../helpers/date.helper';
+
 export class Purchase {
   id: number;
   partCode: string;
@@ -33,7 +35,7 @@ export class Purchase {
     return purchases;
   }
 
-  static getEmptyPurchase(): Purchase {
+  static getEmptyPurchase(wareHouse: boolean): Purchase {
     return {
       id: null,
       partCode: null,
@@ -43,8 +45,8 @@ export class Purchase {
       rate: null,
       description: '',
       received: 0,
-      receivedDate: null,
-      status: 'Check In'
+      receivedDate: wareHouse ? DateHelper.getDateTime(new Date()) : null,
+      status: wareHouse ? 'Check In' : 'Initial'
     };
   }
 }
