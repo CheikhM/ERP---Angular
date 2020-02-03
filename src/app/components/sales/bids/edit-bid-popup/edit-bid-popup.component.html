@@ -17,7 +17,7 @@
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
                 <div class="form-group"
                      [ngClass]="{'to-verify': isNotValid(name) }">
-                  <label>Bid Name</label>
+                  <label>Bid Name<span class="required">*</span></label>
                   <input class="form-control" required type="text"
                          [(ngModel)]="bidCopy.name" #name="ngModel" name="bidName"/>
                   <div class="message">
@@ -25,7 +25,7 @@
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'to-verify': isNotValid(openingDate) }">
-                  <label>Opening Date</label>
+                  <label>Opening Date<span class="required">*</span></label>
                   <mat-form-field>
                     <input matInput [matDatepicker]="pickeropeningDate" type="text" name="openingDate"
                            [(ngModel)]="bidCopy.openingDate" #openingDate="ngModel"
@@ -66,7 +66,7 @@
                          name="clientName"/>
                 </div>
                 <div class="form-group" [ngClass]="{'to-verify': isNotValid(submissionDate) }">
-                  <label>Submission Date</label>
+                  <label>Submission Date<span class="required">*</span></label>
                   <mat-form-field>
                     <input matInput [matDatepicker]="pickersubmissionDate" required type="text" name="endDate"
                            [(ngModel)]="bidCopy.submissionDate" (focus)="pickersubmissionDate.open()" #submissionDate="ngModel"/>
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="form-group currency-form" [ngClass]="{'to-verify': isNotValid(cost) }">
-                  <label>Cost</label>
+                  <label>Cost<span class="required">*</span></label>
                   <input class="form-control" type="number" step="0.01" required [(ngModel)]="bidCopy.cost"
                          maxlength="20" name="cost" #cost="ngModel"/>
                   <div class="message">

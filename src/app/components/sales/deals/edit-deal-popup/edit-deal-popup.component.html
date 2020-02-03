@@ -17,7 +17,7 @@
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
                 <div class="form-group"
                      [ngClass]="{'to-verify': isNotValid(name) }">
-                  <label>Deal Name</label>
+                  <label>Deal Name<span class="required">*</span></label>
                   <input class="form-control" required type="text"
                          [(ngModel)]="dealCopy.name" #name="ngModel" name="dealName"/>
                   <div class="message">
@@ -25,7 +25,7 @@
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'to-verify': isNotValid(expectedClose) }">
-                  <label>Expected close</label>
+                  <label>Expected close<span class="required">*</span></label>
                   <mat-form-field>
                     <input matInput [matDatepicker]="pickerexpectedClose" type="text" name="expectedClose"
                            [(ngModel)]="dealCopy.expectedClose" #expectedClose="ngModel"
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="form-group currency-form" [ngClass]="{'to-verify': isNotValid(value) }">
-                  <label>Value</label>
+                  <label>Value<span class="required">*</span></label>
                   <input class="form-control" type="number" step="0.01" required [(ngModel)]="dealCopy.value"
                          maxlength="20" name="value" #value="ngModel"/>
                   <div class="message">
