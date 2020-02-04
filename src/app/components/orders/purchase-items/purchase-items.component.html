@@ -2,7 +2,10 @@
 
 <div class="listing listing-details">
 
-  <img src="/assets/images/general/print.svg" alt="" class="print" (click)="alertMessage('driver not supported')"/>
+
+  <a href="http://wadan.lh/test" target="_blank">
+    <img src="/assets/images/general/print.svg" alt="" class="print" />
+  </a>
 
   <div class="aw-pagination" *ngIf="items && items.length > 7">
     <pagination-controls  (pageChange)="p = $event"></pagination-controls>
