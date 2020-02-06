@@ -1,4 +1,4 @@
-<app-details-title [canAdd]="false" [title]="'Order details'"></app-details-title>
+<app-details-title [canAdd]="false" [printable]="true" [title]="'Order details'" (onClickPrint)="printItems()"></app-details-title>
 <div class="aw-container details">
   <div class="header">
     <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon"/>
@@ -67,3 +67,5 @@
     </div>
   </div>
 </div>
+
+<app-pdf-viewer [src]="'http://wadan.lh/files/pdf/document.pdf?id=' + currentOrderID"></app-pdf-viewer>

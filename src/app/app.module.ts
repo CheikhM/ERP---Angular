@@ -71,6 +71,10 @@ import { EditBeneficiaryPopupComponent } from './components/beneficiaries/edit-b
 import { EditVoucherPopupComponent } from './components/vouchers/edit-voucher-popup/edit-voucher-popup.component';
 import { VoucherDetailsComponent } from './components/vouchers/voucher-details/voucher-details.component';
 import { VoucherNotesComponent } from './components/vouchers/voucher-notes/voucher-notes.component';
+import { PdfViewerComponent } from './components/shared/pdf-viewer/pdf-viewer.component';
+import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -131,7 +135,8 @@ import { VoucherNotesComponent } from './components/vouchers/voucher-notes/vouch
     EditBeneficiaryPopupComponent,
     EditVoucherPopupComponent,
     VoucherDetailsComponent,
-    VoucherNotesComponent
+    VoucherNotesComponent,
+    PdfViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -147,7 +152,9 @@ import { VoucherNotesComponent } from './components/vouchers/voucher-notes/vouch
     JwtModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule
   ],
   providers: [
     MatDatepickerModule,

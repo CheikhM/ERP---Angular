@@ -152,4 +152,8 @@ export class PurchaseItemsComponent implements OnInit {
       });
     }
   }
+
+  printOrder() {
+    $('#pdfViewer').modal('show');
+  }
 }

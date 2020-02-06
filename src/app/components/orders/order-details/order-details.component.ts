@@ -159,4 +159,8 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  printItems() {
+    $('#pdfViewer').modal('show');
+  }
 }

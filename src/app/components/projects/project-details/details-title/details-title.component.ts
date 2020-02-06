@@ -12,6 +12,10 @@ export class DetailsTitleComponent implements OnInit {
   title: string;
 
   @Output() onClickAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onClickPrint: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Input()
+  printable: boolean;
 
   constructor() {
   }
@@ -21,5 +25,9 @@ export class DetailsTitleComponent implements OnInit {
 
   addItem() {
     this.onClickAdd.emit(true);
+  }
+
+  printItem() {
+    this.onClickPrint.emit(true);
   }
 }

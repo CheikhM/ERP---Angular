@@ -105,4 +105,8 @@ export class VoucherDetailsComponent implements OnInit {
         });
     }
   }
+
+  printVoucher() {
+    $('#pdfViewer').modal('show');
+  }
 }

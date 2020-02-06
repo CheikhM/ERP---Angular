@@ -1,4 +1,4 @@
-<app-details-title [canAdd]="false" [title]="'Voucher details'"></app-details-title>
+<app-details-title [canAdd]="false" [printable]="true" (onClickPrint)="printVoucher()" [title]="'Voucher details'"></app-details-title>
 <div class="aw-container details">
   <div class="header">
     <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete-icon"/>
@@ -46,3 +46,4 @@
 <app-edit-voucher-popup [title]="'Edit Voucher'" [voucher]="voucher" ></app-edit-voucher-popup>
 <!-- end popup -->
 
+<app-pdf-viewer [src]="'http://wadan.lh/files/pdf/voucher.pdf?id=' + currentVoucherId"></app-pdf-viewer>
