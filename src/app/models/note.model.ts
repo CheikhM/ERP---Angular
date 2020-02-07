@@ -1,6 +1,6 @@
 export class Note {
   id: number;
-  writer: number;
+  writer: string;
   type: number;
   typeID: number;
   text: string;

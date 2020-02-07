@@ -70,10 +70,10 @@ export class InvoicesComponent implements OnInit, OnDestroy {
   }
 
   addNewInvoice(action: any) {
+    this.getRemaining();
 
     if (action.ok && !action.update) {
       this.invoices.push(action.invoice);
-      this.getRemaining();
     } else if (action.update) {
       this.invoices[this.invoices.findIndex(el => el.id === action.invoice.id)] = action.invoice;
     }
