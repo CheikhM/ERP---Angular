@@ -8,6 +8,7 @@ import {User} from '../../../models/user.model';
 import {ActivatedRoute} from '@angular/router';
 import {OrderService} from '../../../services/order.service';
 import {Order} from '../../../models/order.model';
+import {siteUrl} from '../../../config';
 
 
 declare var $: any;
@@ -25,6 +26,8 @@ export class VoucherDetailsComponent implements OnInit {
   voucher = Voucher.getEmptyVoucher();
   beneficiary: string;
   order: string;
+  voucherPath: string = siteUrl + 'files/pdf/voucher.pdf?id=';
+
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService,

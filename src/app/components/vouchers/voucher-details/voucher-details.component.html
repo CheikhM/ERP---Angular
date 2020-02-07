@@ -46,4 +46,4 @@
 <app-edit-voucher-popup [title]="'Edit Voucher'" [voucher]="voucher" ></app-edit-voucher-popup>
 <!-- end popup -->
 
-<app-pdf-viewer [src]="'http://wadan.lh/files/pdf/voucher.pdf?id=' + currentVoucherId"></app-pdf-viewer>
+<app-pdf-viewer [src]="voucherPath + currentVoucherId"></app-pdf-viewer>

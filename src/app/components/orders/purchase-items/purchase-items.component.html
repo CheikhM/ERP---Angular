@@ -56,4 +56,4 @@
 <app-purchase-edit-popup [title]="manageAction" [purchase]="itemToBeManaged" [orderID]="currentOrderID"
                          (onExitModal)="clearPopup()"></app-purchase-edit-popup>
 
-<app-pdf-viewer [src]="'http://wadan.lh/files/pdf/document.pdf?id=' + currentOrderID"></app-pdf-viewer>
+<app-pdf-viewer [src]="orderPath + currentOrderID"></app-pdf-viewer>

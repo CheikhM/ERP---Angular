@@ -5,7 +5,7 @@ import {SharedService} from '../../../services/shared.service';
 import {AuthService} from '../../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {Order} from '../../../models/order.model';
-import {BASE_PATH} from '../../../config';
+import {BASE_PATH, siteUrl} from '../../../config';
 import {Subscription} from 'rxjs';
 import {Project} from '../../../models/project.model';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
@@ -30,6 +30,7 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
   vendor: string;
   approvedBy: User = User.getEmptyUser();
   project: Project;
+  orderPath: string = siteUrl + 'files/pdf/document.pdf?id=';
 
   constructor(private route: ActivatedRoute,
               private orderService: OrderService,

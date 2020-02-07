@@ -7,7 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import {OrderService} from '../../../services/order.service';
 import {Purchase} from '../../../models/purchase.model';
 import {Order} from '../../../models/order.model';
-import {Project} from '../../../models/project.model';
+import {siteUrl} from '../../../config';
 
 declare var $: any;
 
@@ -29,6 +29,7 @@ export class PurchaseItemsComponent implements OnInit {
   private order: Order;
   p: number;
   projectCode: string;
+  orderPath: string = siteUrl + 'files/pdf/document.pdf?id=';
 
   constructor(private  sharedService: SharedService,
               private  orderService: OrderService,
