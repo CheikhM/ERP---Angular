@@ -1,1 +1,34 @@
-<p>filters works!</p>
+<div class="flex filters">
+  <div class="filters-item">
+    <label>Status</label>
+    <select name="status" [(ngModel)]="status" (ngModelChange)="changFilter()">
+      <option>All</option>
+      <option>In Progress</option>
+      <option>On Hold</option>
+      <option>Completed</option>
+      <option>Archived</option>
+    </select>
+  </div>
+  <div class="filters-item">
+    <label>From</label>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerStartDate" type="text" name="startDate"
+             (focus)="pickerStartDate.open()" required/>
+      <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStartDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="filters-item">
+    <label>To</label>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerEndDate" type="text" name="endDate"
+             (focus)="pickerEndDate.open()" required/>
+      <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEndDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <!--
+    <img src="/assets/images/general/filter.svg" alt="" />
+  -->
+
+</div>

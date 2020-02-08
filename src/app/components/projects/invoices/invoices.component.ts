@@ -55,7 +55,7 @@ export class InvoicesComponent implements OnInit, OnDestroy {
     if (invoice) {
       this.invoiceTobeEdited = {...invoice};
     } else {
-      this.invoiceTobeEdited = Invoice.revertCast(Invoice.getEmptyInvoice());
+      this.invoiceTobeEdited = Invoice.getEmptyInvoice();
     }
 
     $('#newInvoice').modal('show');
@@ -122,8 +122,8 @@ export class InvoicesComponent implements OnInit, OnDestroy {
 
   private getRemaining() {
     if (this.POValue && this.POValue > 0) {
-
       const localInvoicesCopy = this.invoicesCopy.map(item => item.amount);
+      console.log(localInvoicesCopy.length);
       if (localInvoicesCopy && localInvoicesCopy.length > 0) {
         const sum = localInvoicesCopy.reduce((prev, next) => prev + next);
         if (sum && sum > 0) {

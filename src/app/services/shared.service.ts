@@ -11,6 +11,7 @@ export class SharedService {
   private newUpdate = new BehaviorSubject(false);
   private currentUser = new BehaviorSubject(null);
   private currentWorkflowPath = new BehaviorSubject('');
+  public filters = new BehaviorSubject(false);
 
   constructor() {
   }

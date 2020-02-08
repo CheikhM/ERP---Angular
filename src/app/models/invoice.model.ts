@@ -1,3 +1,5 @@
+import {DateHelper} from '../helpers/date.helper';
+
 export class Invoice {
   id: number;
   projectID: number;
@@ -31,6 +33,7 @@ export class Invoice {
 
   static revertCast(invoice) {
     invoice.bill_num = invoice.billNum;
+    invoice.date = DateHelper.getDateTime(new Date(invoice.date));
     invoice.project_id = invoice.projectID;
     delete invoice.billNum;
     delete invoice.projectID;

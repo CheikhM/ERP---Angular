@@ -25,6 +25,10 @@
   <app-search-bar *ngIf="listingPage"></app-search-bar>
   <!-- end search bar -->
 
+  <!-- app filters -->
+  <app-filters *ngIf="false"></app-filters>
+  <!-- end app filters -->
+
 
   <!-- header of listing project element -->
   <app-workflow *ngIf="workflowPresent" [objectID]="workflowID"></app-workflow>

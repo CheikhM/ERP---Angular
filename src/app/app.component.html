@@ -17,9 +17,9 @@
   </div>
 </div>
 
-<div class="container" *ngIf="!isAuth">
+<ng-container *ngIf="!isAuth">
   <router-outlet></router-outlet>
-</div>
+</ng-container>
 
 <div class="close-layer hidden" (click)="closeNavBar()">
   <img src="/assets/images/side-bar/close-icon.svg" />

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from '../../../services/shared.service';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 
 @Component({
   selector: 'app-filters',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
+  status: string;
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+  }
 
   ngOnInit() {
   }
 
+  changFilter() {
+    // LocalStorageHelper
+    this.sharedService.filters.next(true);
+  }
 }

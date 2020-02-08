@@ -34,14 +34,6 @@ export class EditInvoiceComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  isEmpty(name: NgModel) {
-
-  }
-
-  isNotValid(startDate: NgModel) {
-
-  }
-
   projectAction() {
 
     // to update an existing invoice
