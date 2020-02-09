@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -23,5 +25,9 @@ export class SearchBarComponent implements OnInit {
     const arabic = /[\u0600-\u06FF]/;
 
     return arabic.test(firstLetter);
+  }
+
+  toggleFilters() {
+    $('.filters').toggleClass('hidden');
   }
 }

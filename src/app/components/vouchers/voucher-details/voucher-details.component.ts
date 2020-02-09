@@ -43,7 +43,11 @@ export class VoucherDetailsComponent implements OnInit {
     this.sharedService.setCurrentWorkflowPath('/vouchers/voucher/');
     this.getCurrentVoucher();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentVoucher(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentVoucher(true);
+      }
+    });
 
 
   }

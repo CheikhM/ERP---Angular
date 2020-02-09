@@ -46,7 +46,11 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.getCurrentProject();
 
     // check for new update
-    this.newUpdateSub = this.sharedService.getNewUpdate().subscribe(update => this.getCurrentProject(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentProject(true);
+      }
+    });
   }
 
 

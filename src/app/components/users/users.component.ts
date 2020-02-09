@@ -39,8 +39,11 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllUsers());
-
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllUsers();
+      }
+    });
     // search user
     this.sharedService.getSearchText().subscribe(item => {
       this.searchUser(item.toLocaleLowerCase());

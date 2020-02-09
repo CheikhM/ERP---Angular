@@ -4,14 +4,41 @@ export class GlobalHelper {
     const path = window.location.pathname;
     if (path.includes('projects')) {
       return 'project';
+    } else if (path.includes('tasks')) {
+      return 'task';
+    } else if (path.includes('bids')) {
+      return 'bid';
+    } else if (path.includes('deals')) {
+      return 'deal';
+    } else if (path.includes('visits')) {
+      return 'visit';
+    } else if (path.includes('orders')) {
+      return 'order';
+    } else if (path.includes('warehouse')) {
+      return 'warehouse';
+    } else {
+      return '';
     }
   }
 
   static isListingPage() {
     const path = window.location.pathname;
-    if (path.includes('all')) {
-      return true;
-    }
-    return false;
+
+    return path.includes('all');
+  }
+
+  static isFilterable() {
+    const path = window.location.pathname;
+    const notFilterable = (path.includes('vouchers') ||
+      path.includes('users') ||
+      path.includes('suppliers') ||
+      path.includes('visits') ||
+      path.includes('beneficiaries'));
+
+    return this.isListingPage() && !notFilterable;
+  }
+
+  static getKnownFilterableModules() {
+    return 'project, task, bid, deal, warehouse, order';
   }
 }

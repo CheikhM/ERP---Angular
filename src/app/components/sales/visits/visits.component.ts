@@ -34,7 +34,11 @@ export class VisitsComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllVisits());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllVisits();
+      }
+    });
 
     // search visit
     this.sharedService.getSearchText().subscribe(item => {

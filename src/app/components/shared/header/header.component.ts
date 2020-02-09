@@ -147,7 +147,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  isListingPage() {
-    return GlobalHelper.isListingPage();
+  isFilterable() {
+    return GlobalHelper.isFilterable();
   }
 }

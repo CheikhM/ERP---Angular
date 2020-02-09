@@ -34,7 +34,11 @@ export class BidDetailsComponent implements OnInit, OnDestroy {
 
     this.getCurrentBid();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentBid(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentBid(true);
+      }
+    });
   }
 
   private getCurrentBid(remote = null) {

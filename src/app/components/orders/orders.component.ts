@@ -40,7 +40,11 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllOrders());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllOrders();
+      }
+    });
 
     // search order
     this.sharedService.getSearchText().subscribe(item => {

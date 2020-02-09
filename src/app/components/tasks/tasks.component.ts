@@ -39,7 +39,11 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllTasks());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllTasks();
+      }
+    });
 
     // search task
     this.sharedService.getSearchText().subscribe(item => {
@@ -55,7 +59,8 @@ export class TasksComponent implements OnInit {
         this.tasks = resp;
         this.filteredTasks = resp;
       },
-      error => {},
+      error => {
+      },
       () => {
         //console.log(this.tasks);
       }

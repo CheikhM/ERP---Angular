@@ -47,18 +47,18 @@ export class ListingComponent implements OnInit, OnChanges {
     if (changes.contents && changes.contents.currentValue) {
       if (!this.dataBackUp) {
         this.dataBackUp = JSON.parse(JSON.stringify(changes.contents.currentValue));
-        const currentModule = GlobalHelper.getCurrentModule();
-        if (currentModule === 'project') {
-          const filters = LocalStorageHelper.getModuleFilters(currentModule);
-          if (filters.status !== '*') {
-            this.contents = this.dataBackUp.filter(object => object.status === filters.status);
-          } else {
-            this.contents = JSON.parse(JSON.stringify(this.dataBackUp));
-          }
-        }
-        this.listenToFilterChange();
       }
-
+      const currentModule = GlobalHelper.getCurrentModule();
+      const knownModule = GlobalHelper.getKnownFilterableModules();
+      if (knownModule.includes(currentModule)) {
+        const filters = LocalStorageHelper.getModuleFilters(currentModule);
+        if (filters.status !== '*') {
+          this.contents = this.dataBackUp.filter(object => object.status === filters.status);
+        } else {
+          this.contents = JSON.parse(JSON.stringify(this.dataBackUp));
+        }
+      }
+      this.listenToFilterChange();
     }
   }
 

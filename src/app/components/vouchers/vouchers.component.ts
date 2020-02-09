@@ -39,7 +39,11 @@ export class VouchersComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllVouchers());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllVouchers();
+      }
+    });
 
     // search voucher
     this.sharedService.getSearchText().subscribe(item => {

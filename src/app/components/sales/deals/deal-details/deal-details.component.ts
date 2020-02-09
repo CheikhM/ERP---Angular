@@ -35,7 +35,11 @@ export class DealDetailsComponent implements OnInit, OnDestroy {
 
     this.getCurrentDeal();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentDeal(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentDeal(true);
+      }
+    });
   }
 
   private getCurrentDeal(remote = null) {

@@ -35,7 +35,11 @@ export class VisitDetailsComponent implements OnInit, OnDestroy {
 
     this.getCurrentVisit();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentVisit(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentVisit();
+      }
+    });
   }
 
   private getCurrentVisit(remote = null) {

@@ -9,6 +9,10 @@ body {
   background: #e4ebf7;
 }
 
+.hidden {
+  display: none!important;
+}
+
 span.required {
   color: #ff2b2b;
   display: inline-block;
@@ -361,7 +365,7 @@ tr.white-bg:hover {
 @media screen and (max-width: 991px) {
 
   .login-form {
-    margin: 0!important;
+    margin: auto!important;
     height: auto!important;
   }
   .login-form .text  {
@@ -373,7 +377,7 @@ tr.white-bg:hover {
   }
 
   .logo-block {
-    padding: 0!important;
+    padding: 45px 25px !important;
   }
   .__form-check span {
     font-size: 10px;
@@ -381,6 +385,9 @@ tr.white-bg:hover {
     padding-top: 2px;
   }
 
+  .__form-group {
+    padding: 25px !important;
+  }
   .__form-group .form-control {
     padding: 18px!important;
     font-size: 12px!important;

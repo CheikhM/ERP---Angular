@@ -35,7 +35,11 @@ export class DealsComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllDeals());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllDeals();
+      }
+    });
 
     // search deal
     this.sharedService.getSearchText().subscribe(item => {

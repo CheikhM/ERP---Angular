@@ -10,7 +10,11 @@ export class LocalStorageHelper {
 
   static filters = [
     {module: 'project', filters: {status: 'In Progress', since: '*'}},
-    {module: 'task', filters: {status: 'In Progress', since: '*', priority: '*'}},
+    {module: 'task', filters: {status: 'Opened', since: '*'}},
+    {module: 'bid', filters: {status: 'In Progress', since: '*'}},
+    {module: 'deal', filters: {status: '*', since: '*'}},
+    {module: 'order', filters: {status: '*', since: '*'}},
+    {module: 'warehouse', filters: {status: '*', since: '*'}},
   ];
 
   public static setItem(key: string, text: any): void {

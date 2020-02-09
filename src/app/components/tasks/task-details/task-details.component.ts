@@ -34,7 +34,11 @@ export class TaskDetailsComponent implements OnInit {
 
     this.getCurrentTask();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentTask(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentTask(true);
+      }
+    });
   }
 
   private getCurrentTask(remote = null) {

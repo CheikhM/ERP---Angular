@@ -45,7 +45,11 @@ export class BidsComponent implements OnInit {
     });
 
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllBids());
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllBids();
+      }
+    });
   }
 
   // get all projects

@@ -39,8 +39,11 @@ export class SuppliersComponent implements OnInit {
 
   ngOnInit() {
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getAllSuppliers());
-
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllSuppliers();
+      }
+    });
     // search supplier
     this.sharedService.getSearchText().subscribe(item => {
       this.searchSupplier(item.toLocaleLowerCase());

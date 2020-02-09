@@ -29,7 +29,11 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
     this.getCurrentUser();
     // check for new update
-    this.sharedService.getNewUpdate().subscribe(update => this.getCurrentUser(true));
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getCurrentUser(true);
+      }
+    });
   }
 
   private getCurrentUser(remote = null) {

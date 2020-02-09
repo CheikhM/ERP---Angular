@@ -1,12 +1,9 @@
-<div class="flex filters">
+<div class="flex filters hidden">
   <div class="filters-item">
     <label>Status</label>
     <select name="status" [(ngModel)]="status" (ngModelChange)="changFilter()">
       <option value="*">All</option>
-      <option value="In Progress">In Progress</option>
-      <option value="On Hold">On Hold</option>
-      <option value="Completed">Completed</option>
-      <option value="Archived">Archived</option>
+      <option *ngFor="let item of knownItems" value="{{item}}">{{item}}</option>
     </select>
   </div>
   <div class="filters-item">
@@ -21,5 +18,4 @@
   <!--
     <img src="/assets/images/general/filter.svg" alt="" />
   -->
-
 </div>
