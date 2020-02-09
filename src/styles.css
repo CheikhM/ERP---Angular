@@ -8,21 +8,26 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #e4ebf7;
 }
+
 span.required {
   color: #ff2b2b;
   display: inline-block;
   margin-left: 5px;
   font-weight: 600;
 }
+
 .hidden {
   display: none;
 }
+
 .container.no-events {
   padding-top: 25px;
 }
+
 .no-events .title {
   display: none;
 }
+
 .aw-container {
   position: relative;
   background: white;
@@ -30,6 +35,11 @@ span.required {
   padding: 35px 20px 35px 20px;
   border-radius: 10px;
   margin-top: 18px;
+}
+
+.bg-default {
+  background: #1b2133;
+  color: white;
 }
 
 .submit {
@@ -76,6 +86,7 @@ button.add-new {
 .white-bg {
   background: white;
 }
+
 tr.white-bg {
   cursor: pointer;
 }
@@ -111,6 +122,7 @@ select.action {
   padding-left: 10px;
   cursor: pointer;
 }
+
 .wf-elements.public-workflow span.title {
   width: calc(50% - 5px);
 }
@@ -256,7 +268,7 @@ tr.white-bg:hover {
   color: black;
 }
 
-.edit-project input[type="text"], .edit-project input[type="number"]  {
+.edit-project input[type="text"], .edit-project input[type="number"] {
   font-weight: 700;
   text-align: center;
   color: black;
@@ -269,6 +281,7 @@ tr.white-bg:hover {
 .currency-form {
   position: relative;
 }
+
 .currency-form input {
   text-align: center;
 }
@@ -347,6 +360,25 @@ tr.white-bg:hover {
 
 @media screen and (max-width: 991px) {
 
+  .login-form {
+    margin: 0!important;
+    height: auto!important;
+  }
+  .login-form .text  {
+    display: none;
+  }
+
+  .login-form .logo {
+    padding: 0;
+  }
+
+  .__form-check span {
+    font-size: 10px;
+    font-weight: 600;
+    padding-top: 2px;
+  }
+
+
   .nav-opened .main-panel {
     -webkit-transform: translate3d(280px, 0, 0);
     transform: translate3d(280px, 0, 0);
@@ -412,7 +444,7 @@ tr.white-bg:hover {
 }
 
 .to-verify .message {
-  display: block!important;
+  display: block !important;
   width: 100%;
   position: absolute;
   bottom: -16px;
@@ -447,6 +479,7 @@ tr.white-bg:hover {
   text-align: center;
   font-weight: 600;
 }
+
 .no-results img {
   width: 25px;
 }
@@ -494,7 +527,7 @@ tr.white-bg:hover {
   padding-bottom: 5px;
   font-size: 12px;
   font-style: italic;
-  text-align: left!important;
+  text-align: left !important;
 }
 
 .note .text {
@@ -556,6 +589,7 @@ tr.white-bg:hover {
 .custom-select {
   margin-left: 5px;
 }
+
 /* emd notes style */
 
 .__styled-checkbox {
@@ -623,11 +657,13 @@ textarea {
   float: right;
   text-align: center;
 }
+
 .remaining h3 {
   font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
 }
+
 .remaining .value {
   background: white;
   font-weight: 700;
@@ -640,12 +676,14 @@ textarea {
   .aw-container {
     border-radius: 0;
   }
+
   .listing .control img {
     width: 22px;
   }
+
   .listing td:nth-child(2),
   .listing th:nth-child(2) {
-     display: none;
+    display: none;
   }
 
   .main-content span.title {
@@ -669,6 +707,7 @@ textarea {
     text-align: center;
   }
 }
+
 /*
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

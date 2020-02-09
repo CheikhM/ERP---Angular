@@ -8,12 +8,15 @@
 .login-form .row {
   height: 100%;
 }
+
 .first-col, .second-col {
   padding: 0;
 }
+
 .logo-block {
   padding: 15px;
 }
+
 .logo {
   padding: 25px;
 }
@@ -36,13 +39,72 @@
 .__form-group .form-control {
   border-radius: 35px;
   width: 100%;
+  padding: 21px;
+  font-size: 18px;
+  border: 2px solid #1b2133;
+  line-height: 0;
+  text-align: center;
 }
+
+label {
+  margin-left: 15px;
+  font-size: 15px;
+  color: #1b2133;
+}
+
 .submit-form {
   margin-bottom: 1rem;
 }
+.text {
+  width: 100%;
+}
+.text h5 {
+  font-size: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  letter-spacing: 5px;
+}
+
+.text h5:after {
+  display: block;
+  margin-top: 10px;
+  content: '';
+  background: #a4b939;
+  width: 35%;
+  padding: 7px;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.text p {
+  font-size: 38px;
+  font-style: italic;
+  font-weight: 300;
+}
+
 
 .logo-block {
-  color: white;
-  height: 100%;
-  background: #1b2133;
+color: white;
+height: 100%;
+background: #1b2133;
+}
+
+.__form-check {
+display: flex;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+.__form-check span {
+padding-left: 10px;
+display: inline-block;
+cursor: pointer;
+}
+
+.__form-check span:hover {
+color: #a2c442;
+}
+
+.google-login {
+  background: url(/assets/images/general/google-plus.png) no-repeat 4% 50%;
 }
