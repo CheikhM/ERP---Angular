@@ -49,8 +49,13 @@ export class LocalStorageHelper {
 
   public static updateFilters(moduleName: string, property: string, value: string) {
     if (property && property !== '') {
-      let newFilters = JSON.parse(LocalStorageHelper.getItem('filters'));
-      let item = newFilters.find(element => element.module === moduleName);
+      let newFilters = LocalStorageHelper.getItem('filters');
+
+      if (typeof newFilters === 'string') {
+        newFilters = JSON.parse(newFilters);
+      }
+
+      const item = newFilters.find(element => element.module === moduleName);
 
       item.filters[property] = value;
 
@@ -59,10 +64,12 @@ export class LocalStorageHelper {
   }
 
   public static getModuleFilters(moduleName) {
-    const filters = JSON.parse(LocalStorageHelper.getItem('filters'));
+    let filters = LocalStorageHelper.getItem('filters');
+    if (typeof filters === 'string') {
+      filters = JSON.parse(filters);
+    }
 
     const module = filters.find(element => element.module === moduleName);
-
     return module.filters;
   }
 }

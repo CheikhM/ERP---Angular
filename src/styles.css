@@ -369,15 +369,22 @@ tr.white-bg:hover {
   }
 
   .login-form .logo {
-    padding: 0;
+    padding: 0!important;
   }
 
+  .logo-block {
+    padding: 0!important;
+  }
   .__form-check span {
     font-size: 10px;
     font-weight: 600;
     padding-top: 2px;
   }
 
+  .__form-group .form-control {
+    padding: 18px!important;
+    font-size: 12px!important;
+  }
 
   .nav-opened .main-panel {
     -webkit-transform: translate3d(280px, 0, 0);

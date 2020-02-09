@@ -5,6 +5,8 @@ import {Subscription} from 'rxjs';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {BASE_PATH} from '../../../config';
 import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import Global = WebAssembly.Global;
+import {GlobalHelper} from '../../../helpers/global.helper';
 
 declare var $: any;
 
@@ -143,5 +145,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (user && user.id) {
       this.profile = '/users/user/' + user.id;
     }
+  }
+
+  isListingPage() {
+    return GlobalHelper.isListingPage();
   }
 }

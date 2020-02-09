@@ -10,21 +10,12 @@
     </select>
   </div>
   <div class="filters-item">
-    <label>From</label>
+    <label>Since</label>
     <mat-form-field>
-      <input matInput [matDatepicker]="pickerStartDate" type="text" name="startDate"
-             (focus)="pickerStartDate.open()" required/>
-      <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
-      <mat-datepicker #pickerStartDate></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div class="filters-item">
-    <label>To</label>
-    <mat-form-field>
-      <input matInput [matDatepicker]="pickerEndDate" type="text" name="endDate"
-             (focus)="pickerEndDate.open()" required/>
-      <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
-      <mat-datepicker #pickerEndDate></mat-datepicker>
+      <input matInput [matDatepicker]="pickerSinceDate" type="text" name="sinceDate"
+             (focus)="pickerSinceDate.open()" required/>
+      <mat-datepicker-toggle matSuffix [for]="pickerSinceDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerSinceDate></mat-datepicker>
     </mat-form-field>
   </div>
   <!--

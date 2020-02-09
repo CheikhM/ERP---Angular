@@ -41,24 +41,22 @@ export class ListingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
-    this.sharedService.filters.subscribe(filter => {
-      if (filter && filter.val !== '*') {
-        this.contents = this.dataBackUp.filter(object => object[filter.prop] === filter.val);
-      } else if (filter && filter.val === '*') {
-        this.contents = this.dataBackUp;
-      }
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.contents && changes.contents.currentValue) {
       if (!this.dataBackUp) {
-        this.dataBackUp = JSON.parse(JSON.stringify(this.contents));
+        this.dataBackUp = JSON.parse(JSON.stringify(changes.contents.currentValue));
         const currentModule = GlobalHelper.getCurrentModule();
         if (currentModule === 'project') {
           const filters = LocalStorageHelper.getModuleFilters(currentModule);
-          this.contents = this.dataBackUp.filter(object => object.status === filters.status);
+          if (filters.status !== '*') {
+            this.contents = this.dataBackUp.filter(object => object.status === filters.status);
+          } else {
+            this.contents = JSON.parse(JSON.stringify(this.dataBackUp));
+          }
         }
+        this.listenToFilterChange();
       }
 
     }
@@ -103,5 +101,15 @@ export class ListingComponent implements OnInit, OnChanges {
       return 12;
     }
     return 12;
+  }
+
+  private listenToFilterChange() {
+    this.sharedService.filters.subscribe(filter => {
+      if (this.dataBackUp && filter && filter.val !== '*') {
+        this.contents = this.dataBackUp.filter(object => object[filter.prop] === filter.val);
+      } else if (this.dataBackUp && filter && filter.val === '*') {
+        this.contents = this.dataBackUp;
+      }
+    });
   }
 }
