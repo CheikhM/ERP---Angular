@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       result => {
         if (result && result.uid) {
           LocalStorageHelper.setItem('token', result.token);
+          LocalStorageHelper.initialiseFilters();
           location.reload();
         } else {
           this.toasterService.error('Please try again...', 'Credentials error');
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   ngOnDestroy(): void {
   }
 }

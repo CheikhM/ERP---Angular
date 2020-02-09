@@ -14,10 +14,13 @@ export class FiltersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.status = LocalStorageHelper.getModuleFilters('project').status;
+    console.log(this.status);
+
   }
 
   changFilter() {
-    // LocalStorageHelper
-    this.sharedService.filters.next(true);
+    LocalStorageHelper.updateFilters('project', 'status', this.status);
+    this.sharedService.filters.next({prop: 'status', val: this.status});
   }
 }

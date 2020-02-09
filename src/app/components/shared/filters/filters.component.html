@@ -2,11 +2,11 @@
   <div class="filters-item">
     <label>Status</label>
     <select name="status" [(ngModel)]="status" (ngModelChange)="changFilter()">
-      <option>All</option>
-      <option>In Progress</option>
-      <option>On Hold</option>
-      <option>Completed</option>
-      <option>Archived</option>
+      <option value="*">All</option>
+      <option value="In Progress">In Progress</option>
+      <option value="On Hold">On Hold</option>
+      <option value="Completed">Completed</option>
+      <option value="Archived">Archived</option>
     </select>
   </div>
   <div class="filters-item">

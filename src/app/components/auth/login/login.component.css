@@ -5,6 +5,9 @@
   height: 80vh;
 }
 
+.login-form .row {
+  height: 100%;
+}
 .first-col, .second-col {
   padding: 0;
 }
@@ -22,12 +25,20 @@
 .login-form__inputs {
   height: 100%;
   display: flex;
-  padding-right: 15px;
 }
 
 .__form-group {
   margin: auto;
   width: 100%;
+  padding: 60px;
+}
+
+.__form-group .form-control {
+  border-radius: 35px;
+  width: 100%;
+}
+.submit-form {
+  margin-bottom: 1rem;
 }
 
 .logo-block {

@@ -1,7 +1,9 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {Router} from '@angular/router';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import {GlobalHelper} from '../../../helpers/global.helper';
 
 @AutoUnsubscribe()
 @Component({
@@ -9,7 +11,7 @@ import {Router} from '@angular/router';
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.css']
 })
-export class ListingComponent implements OnInit {
+export class ListingComponent implements OnInit, OnChanges {
   @Input()
   model: string;
   @Input()
@@ -26,6 +28,8 @@ export class ListingComponent implements OnInit {
   @Input()
   icon: string;
 
+  dataBackUp: any;
+
   @Input()
   modulePath: string;
   @Input()
@@ -37,7 +41,27 @@ export class ListingComponent implements OnInit {
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
+    this.sharedService.filters.subscribe(filter => {
+      if (filter && filter.val !== '*') {
+        this.contents = this.dataBackUp.filter(object => object[filter.prop] === filter.val);
+      } else if (filter && filter.val === '*') {
+        this.contents = this.dataBackUp;
+      }
+    });
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.contents && changes.contents.currentValue) {
+      if (!this.dataBackUp) {
+        this.dataBackUp = JSON.parse(JSON.stringify(this.contents));
+        const currentModule = GlobalHelper.getCurrentModule();
+        if (currentModule === 'project') {
+          const filters = LocalStorageHelper.getModuleFilters(currentModule);
+          this.contents = this.dataBackUp.filter(object => object.status === filters.status);
+        }
+      }
+
+    }
   }
 
   @HostListener('window:resize', ['$event'])

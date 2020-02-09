@@ -6,6 +6,8 @@ import {Project} from '../../../models/project.model';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {AuthHelper} from '../../../helpers/auth.helper';
+import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import {GlobalHelper} from '../../../helpers/global.helper';
 
 declare var $: any;
 
@@ -41,12 +43,18 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this.getAllProjects();
 
     // search project
-    this.searchTextSub = this.sharedService.getSearchText().subscribe(item => {
-      this.searchProject(item.toLocaleLowerCase());
+    this.sharedService.getSearchText().subscribe(item => {
+      if (item) {
+        this.searchProject(item.toLocaleLowerCase());
+      }
     });
 
     // check for new update
-    this.newUpdateSub = this.sharedService.getNewUpdate().subscribe(update => this.getAllProjects());
+    this.newUpdateSub = this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllProjects();
+      }
+    });
   }
 
   // get all projects
@@ -83,10 +91,16 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   // search project by name
   private searchProject(text: string) {
     if (this.projects) {
+
+      const currentModule = GlobalHelper.getCurrentModule();
+      const filters = LocalStorageHelper.getModuleFilters(currentModule);
+
       this.filteredProjects = this.projects.filter(project =>
+        (filters.status === '*' ||
+          project.status === filters.status) && (
         project.name.toLowerCase().includes(text) ||
         project.code.toLowerCase().includes(text) ||
-        project.link.toLowerCase().includes(text)
+        project.link.toLowerCase().includes(text))
       );
     }
   }

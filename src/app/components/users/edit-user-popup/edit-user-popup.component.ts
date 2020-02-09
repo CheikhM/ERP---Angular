@@ -120,7 +120,7 @@ export class EditUserPopupComponent implements OnInit, OnChanges, OnDestroy {
           this.password = '';
           const currentUser = LocalStorageHelper.getItem('user');
           if (currentUser.id === copyToSend.id) {
-            LocalStorageHelper.clear();
+            LocalStorageHelper.removeItem('token');
             window.location.replace(BASE_PATH + 'login');
           }
         }
