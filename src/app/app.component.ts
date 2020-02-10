@@ -4,6 +4,8 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {SharedService} from './services/shared.service';
 import {LocalStorageHelper} from './helpers/local-storage.helper';
 import {AuthHelper} from './helpers/auth.helper';
+import {BASE_PATH} from './config';
+
 declare var $: any;
 
 @Component({
@@ -22,6 +24,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.isAuth = this.auth.isAuthenticated();
     this.setCurrentUser();
+
+    // initialize filters
+    const filters = LocalStorageHelper.getItem('filters');
+    if (!filters && window.location.pathname !== BASE_PATH + 'login') {
+      LocalStorageHelper.initialiseFilters();
+    }
   }
 
 

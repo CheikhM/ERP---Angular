@@ -4,6 +4,7 @@ import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {Router} from '@angular/router';
 import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 import {GlobalHelper} from '../../../helpers/global.helper';
+import {Subscription} from 'rxjs';
 
 @AutoUnsubscribe()
 @Component({
@@ -34,6 +35,7 @@ export class ListingComponent implements OnInit, OnChanges {
   modulePath: string;
   @Input()
   withWorkflow = true;
+  private filterSub: Subscription;
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -54,8 +56,10 @@ export class ListingComponent implements OnInit, OnChanges {
         const filters = LocalStorageHelper.getModuleFilters(currentModule);
         if (filters.status !== '*') {
           this.contents = this.dataBackUp.filter(object => object.status === filters.status);
+          this.sharedService.filters.next({prop: 'status', val: filters.status});
         } else {
           this.contents = JSON.parse(JSON.stringify(this.dataBackUp));
+          this.sharedService.filters.next({prop: 'status', val: '*'});
         }
       }
       this.listenToFilterChange();
@@ -104,7 +108,8 @@ export class ListingComponent implements OnInit, OnChanges {
   }
 
   private listenToFilterChange() {
-    this.sharedService.filters.subscribe(filter => {
+    this.filterSub = this.sharedService.filters.subscribe(filter => {
+      console.log(filter);
       if (this.dataBackUp && filter && filter.val !== '*') {
         this.contents = this.dataBackUp.filter(object => object[filter.prop] === filter.val);
       } else if (this.dataBackUp && filter && filter.val === '*') {

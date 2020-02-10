@@ -26,11 +26,12 @@ export class FiltersComponent implements OnInit {
     this.status = LocalStorageHelper.getModuleFilters(this.module).status;
 
     this.getStatus();
+
+
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.module = GlobalHelper.getCurrentModule();
         this.status = LocalStorageHelper.getModuleFilters(this.module).status;
-
         this.getStatus();
         $('.filters').addClass('hidden');
       }
