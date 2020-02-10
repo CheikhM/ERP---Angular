@@ -96,13 +96,14 @@ export class BidsComponent implements OnInit {
         if (result && result.status === '200_OK') {
           this.toastrService.success('', 'Successfully deleted');
           this.bids = this.bids.filter(bid => bid.id !== this.toBeDeletedId);
-          this.filteredBids = this.bids;
+          this.filteredBids = this.bids.filter(bid => bid.id !== this.toBeDeletedId);
         } else {
           this.toastrService.error('', 'An Error was occurred');
         }
       }, error => {
         this.toastrService.error('', 'An Error was occurred');
-      }, () => {});
+      }, () => {
+      });
 
       $('#deleteBidModal').modal('hide');
     }

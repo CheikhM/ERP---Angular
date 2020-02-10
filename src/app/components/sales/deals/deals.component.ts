@@ -37,6 +37,7 @@ export class DealsComponent implements OnInit {
     // check for new update
     this.sharedService.getNewUpdate().subscribe(update => {
       if (update) {
+        console.log('get deals');
         this.getAllDeals();
       }
     });

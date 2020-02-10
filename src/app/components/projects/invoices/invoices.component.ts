@@ -70,7 +70,6 @@ export class InvoicesComponent implements OnInit, OnDestroy {
   }
 
   addNewInvoice(action: any) {
-    this.getRemaining();
 
     if (action.ok && !action.update) {
       this.invoices.push(action.invoice);
@@ -80,6 +79,7 @@ export class InvoicesComponent implements OnInit, OnDestroy {
 
     this.invoicesCopy = this.invoices.map(item => Object.assign({}, item));
 
+    setTimeout(() => this.getRemaining(), 200);
     $('#newInvoice').modal('hide');
   }
 
@@ -123,7 +123,6 @@ export class InvoicesComponent implements OnInit, OnDestroy {
   private getRemaining() {
     if (this.POValue && this.POValue > 0) {
       const localInvoicesCopy = this.invoicesCopy.map(item => item.amount);
-      console.log(localInvoicesCopy.length);
       if (localInvoicesCopy && localInvoicesCopy.length > 0) {
         const sum = localInvoicesCopy.reduce((prev, next) => prev + next);
         if (sum && sum > 0) {

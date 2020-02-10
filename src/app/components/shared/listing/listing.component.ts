@@ -47,9 +47,8 @@ export class ListingComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.contents && changes.contents.currentValue) {
-      if (!this.dataBackUp) {
-        this.dataBackUp = JSON.parse(JSON.stringify(changes.contents.currentValue));
-      }
+      this.dataBackUp = JSON.parse(JSON.stringify(changes.contents.currentValue));
+
       const currentModule = GlobalHelper.getCurrentModule();
       const knownModule = GlobalHelper.getKnownFilterableModules();
       if (knownModule.includes(currentModule) && currentModule !== '') {
