@@ -52,7 +52,7 @@ export class ListingComponent implements OnInit, OnChanges {
       }
       const currentModule = GlobalHelper.getCurrentModule();
       const knownModule = GlobalHelper.getKnownFilterableModules();
-      if (knownModule.includes(currentModule)) {
+      if (knownModule.includes(currentModule) && currentModule !== '') {
         const filters = LocalStorageHelper.getModuleFilters(currentModule);
         if (filters.status !== '*') {
           this.contents = this.dataBackUp.filter(object => object.status === filters.status);
@@ -109,7 +109,6 @@ export class ListingComponent implements OnInit, OnChanges {
 
   private listenToFilterChange() {
     this.filterSub = this.sharedService.filters.subscribe(filter => {
-      console.log(filter);
       if (this.dataBackUp && filter && filter.val !== '*') {
         this.contents = this.dataBackUp.filter(object => object[filter.prop] === filter.val);
       } else if (this.dataBackUp && filter && filter.val === '*') {

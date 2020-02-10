@@ -4,9 +4,11 @@
   font-size: 20px;
   font-weight: 700;
 }
+
 .filters .mat-form-field {
   display: inline-block !important;
 }
+
 .filters-item {
   margin-right: 10px;
 }
@@ -25,4 +27,16 @@
 
 .filters label {
   margin-right: 10px;
+}
+
+
+@media screen and (max-width: 991px) {
+  .filters.flex {
+    padding: 5px;
+    display: block;
+    margin-top: 10px;
+  }
+  .filters-item {
+    text-align: center;
+  }
 }

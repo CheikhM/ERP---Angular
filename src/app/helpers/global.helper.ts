@@ -16,6 +16,12 @@ export class GlobalHelper {
       return 'order';
     } else if (path.includes('warehouse')) {
       return 'warehouse';
+    } else if (path.includes('beneficiaries')) {
+      return 'beneficiary';
+    } else if (path.includes('vouchers')) {
+      return 'voucher';
+    } else if (path.includes('suppliers')) {
+      return 'supplier';
     } else {
       return '';
     }

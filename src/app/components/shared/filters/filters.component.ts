@@ -29,10 +29,13 @@ export class FiltersComponent implements OnInit {
 
 
     this.router.events.subscribe((val) => {
+      const known = GlobalHelper.getKnownFilterableModules();
       if (val instanceof NavigationEnd) {
         this.module = GlobalHelper.getCurrentModule();
-        this.status = LocalStorageHelper.getModuleFilters(this.module).status;
-        this.getStatus();
+        if (known.includes(this.module) && this.module !== '') {
+          this.status = LocalStorageHelper.getModuleFilters(this.module).status;
+          this.getStatus();
+        }
         $('.filters').addClass('hidden');
       }
     });
