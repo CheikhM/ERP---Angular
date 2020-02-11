@@ -22,8 +22,8 @@
       <td>{{ item.partCode }}</td>
       <td>{{ item.description }}</td>
       <td>{{ item.quantity }}</td>
-      <td>{{ item.rate }}</td>
-      <td>{{ item.quantity * item.rate }}</td>
+      <td>{{ item.rate | number }}</td>
+      <td>{{ item.quantity * item.rate | number }}</td>
       <td>{{ '-' }}</td>
       <td>
         <label class="__styled-checkbox">

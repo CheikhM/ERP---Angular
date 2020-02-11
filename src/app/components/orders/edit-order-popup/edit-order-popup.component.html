@@ -83,6 +83,7 @@
                      [ngClass]="{'to-verify': isNotValid(_project) }">
                   <label>Project</label>
                   <select class="form-control" [(ngModel)]="orderCopy.project" name="_project" #_project="ngModel">
+                    <option value="0">DARDELTA</option>
                     <option *ngFor="let project of projects" value="{{project.id}}">{{ project.code }}</option>
                   </select>
                   <div class="message">

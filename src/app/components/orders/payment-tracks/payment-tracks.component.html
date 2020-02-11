@@ -21,7 +21,7 @@
       </tr>
       <tr class="white-bg" *ngFor="let track of tracksCopy | paginate: {itemsPerPage: 7, currentPage: p}">
         <td>{{ track.id }}</td>
-        <td>{{ track.amount }}</td>
+        <td>{{ track.amount | number }}</td>
         <td>{{ track.date | date:'MMM d, y' }}</td>
         <td>-</td>
         <td>{{ track.type }}</td>

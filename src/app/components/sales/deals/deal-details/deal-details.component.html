@@ -39,7 +39,7 @@
 
         <div class="form-group currency-form">
           <label>Value</label>
-          <input class="form-control" type="text" name="value" value="{{deal?.value}}">
+          <input class="form-control" type="text" name="value" value="{{deal?.value | number}}">
           <div class="message">
             <span>field required & must be a valid number</span>
           </div>

@@ -13,7 +13,7 @@
   <div class="aw-pagination" *ngIf="false">
   </div>
 
-  <table>
+  <table class="table-striped">
     <tr>
       <th>Name</th>
       <th>Qty</th>
@@ -26,13 +26,14 @@
       <th>Progress</th>
       <th>Control</th>
     </tr>
+    <tbody>
     <tr class="white-bg" *ngFor="let boq of currentGroupItems">
       <td>{{ boq.Item }}</td>
       <td>{{ boq.quantity }}</td>
-      <td>{{ boq.cost }}</td>
+      <td>{{ boq.cost | number}}</td>
       <td>{{ boq.cost * boq.quantity }}</td>
-      <td>{{ boq.price }}</td>
-      <td>{{ boq.price * boq.quantity }}</td>
+      <td>{{ boq.price | number }}</td>
+      <td>{{ (boq.price * boq.quantity) | number}}</td>
       <td>{{ boq.delivery_date }}</td>
       <td>{{ boq.po_no }}</td>
       <td>{{ boq.progress }}</td>
@@ -41,27 +42,30 @@
         <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
+    </tbody>
   </table>
 </div>
-<table class="boq-summer">
+<table class="boq-summer table-striped">
   <tr>
     <th>Vendor</th>
     <th>Expected Cost</th>
     <th>Actually Cost</th>
     <th>Selling</th>
   </tr>
+  <tbody>
   <tr class="white-bg" *ngFor="let group of groups">
     <td>{{ group.name }}</td>
-    <td>{{ getTotalCostForGroup(group.id) }}</td>
+    <td>{{ getTotalCostForGroup(group.id) | number }}</td>
     <td>0</td>
-    <td>{{ getTotalPriceForGroup(group.id) }}</td>
+    <td>{{ getTotalPriceForGroup(group.id) | number }}</td>
   </tr>
   <tr class="white-bg">
     <th>Total</th>
-    <td>{{totalExCost}}</td>
+    <td>{{totalExCost | number }}</td>
     <td>0</td>
-    <td>{{totalSell}}</td>
+    <td>{{totalSell | number }}</td>
   </tr>
+  </tbody>
 </table>
 
 

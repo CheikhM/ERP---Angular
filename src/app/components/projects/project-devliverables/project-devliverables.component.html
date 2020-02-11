@@ -2,8 +2,7 @@
 <div class="listing listing-details">
   <div class="aw-pagination" *ngIf="false">
   </div>
-
-  <table>
+  <table class="table-striped">
     <tr>
       <th>Part NO</th>
       <th>Description</th>
@@ -12,13 +11,15 @@
       <th>T Cost</th>
       <th>Delivered Date</th>
     </tr>
+    <tbody>
     <tr class="white-bg" *ngFor="let delivered of deliverables">
       <td>{{ delivered.partCode }}</td>
       <td>{{ delivered.description }}</td>
       <td>{{ delivered.quantity }}</td>
-      <td>{{ delivered.rate }}</td>
-      <td>{{ delivered.rate * delivered.quantity }}</td>
+      <td>{{ delivered.rate | number }}</td>
+      <td>{{ (delivered.rate * delivered.quantity) | number }}</td>
       <td>{{ delivered.receivedDate }}</td>
     </tr>
+    </tbody>
   </table>
 </div>

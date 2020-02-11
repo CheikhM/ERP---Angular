@@ -10,7 +10,7 @@
     <div class="aw-pagination" *ngIf="invoicesCopy.length > 7">
       <pagination-controls  (pageChange)="p = $event"></pagination-controls>
     </div>
-    <table class="text-center">
+    <table class="text-center table-striped">
       <tr>
         <th>ID</th>
         <th>Bill No</th>
@@ -18,23 +18,24 @@
         <th>Value</th>
         <th>Control</th>
       </tr>
+      <tbody>
       <tr class="white-bg" *ngFor="let invoice of invoicesCopy | paginate: {itemsPerPage: 7, currentPage: p}">
         <td>{{ invoice.id }}</td>
         <td>{{ invoice.billNum }}</td>
         <td>{{ invoice.date | date:'MMM d, y' }}</td>
-        <td>{{ invoice.amount }}</td>
+        <td>{{ invoice.amount | number }}</td>
         <td class="control">
           <img src="/assets/images/listing/edit-icon.svg" alt="" class="edit" (click)="triggerProjectAction(invoice)"/>
           <img src="/assets/images/listing/delete-icon.svg" alt="" class="delete" (click)="deleteInvoice(invoice.id)"/>
         </td>
       </tr>
+      </tbody>
     </table>
     <div class="remaining">
       <h3>Remaining From Total Value</h3>
-      <div class="value" [ngClass]="{'text-red': remaining < 0 }">{{ remaining ? remaining : '-' }}</div>
+      <div class="value" [ngClass]="{'text-red': remaining < 0 }">{{ (remaining ? remaining : '-')  | number }}</div>
     </div>
   </ng-container>
-
 </div>
 
 <!-- to add and edit an invoice -->

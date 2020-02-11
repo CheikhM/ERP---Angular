@@ -6,7 +6,7 @@
     No results found
     <img src="/assets/images/general/error.svg" alt=""/>
   </div>
-  <table  *ngIf="contents && contents.length > 0">
+  <table  *ngIf="contents && contents.length > 0" class="table-striped">
     <tr>
       <th *ngFor="let meta of metaDefinition" [ngClass]="{'sm-center': meta.text === 'Status'}">
         {{ meta.text }}
@@ -16,6 +16,7 @@
       </th>
       <th>control</th>
     </tr>
+    <tbody>
     <tr *ngFor="let object of contents" class="list-element">
       <td *ngFor="let meta of metaDefinition"
           (click)="setCurrentListingObject(object)">
@@ -31,5 +32,6 @@
         <img (click)="deleteElement(object.id)" src="/assets/images/listing/delete-icon.svg" alt="" class="delete"/>
       </td>
     </tr>
+    </tbody>
   </table>
 </div>

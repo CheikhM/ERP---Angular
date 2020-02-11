@@ -154,6 +154,16 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getProjectCode(project: number) {
+
+
+    // in case of local projects
+    if (project === 0) {
+      const _project = Project.getEmptyProject();
+      _project.code = 'DARDELTA';
+
+      this.project = _project;
+      return;
+    }
     this.projectService.getProjectByID(project).subscribe(result => {
       if (result && result['status'] === '200_OK') {
         this.project = new Project(result.data);

@@ -29,6 +29,7 @@
                      [ngClass]="{'to-verify': isNotValid(_project) }">
                   <label>Project</label>
                   <select class="form-control" [(ngModel)]="purchaseCopy.projectID" name="_project" #_project="ngModel">
+                    <option value="0">DARDELTA</option>
                     <option *ngFor="let project of projects" value="{{project.id}}">{{ project.code }}</option>
                   </select>
                   <div class="message">
@@ -53,7 +54,7 @@
               </div>
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
                 <div class="form-group"
-                     [ngClass]="{'to-verify': isNotValid(orderID) }" *ngIf="wareHouse">
+                     [ngClass]="{'to-verify': isNotValid(orderID) }" *ngIf="false">
                   <label>Order</label>
                   <select class="form-control" [(ngModel)]="purchaseCopy.orderID" name="orderID" #orderID="ngModel"
                           required>
