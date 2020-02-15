@@ -60,8 +60,9 @@ export class BidsComponent implements OnInit {
         this.bids = resp;
         this.filteredBids = resp;
       },
-      error => // console.log(error),
+      error => console.log(error),
         () => {
+        console.log(this.bids);
         }
     );
   }

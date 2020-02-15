@@ -36,9 +36,10 @@ span.required {
   position: relative;
   background: white;
   height: auto;
-  padding: 35px 20px 35px 20px;
+  padding: 35px 20px 15px 20px;
   border-radius: 10px;
   margin-top: 18px;
+  margin-bottom: 18px;
 }
 
 .bg-default {

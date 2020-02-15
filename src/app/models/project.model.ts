@@ -1,8 +1,10 @@
+import * as moment from 'moment';
+
 export class Project {
   id: number;
   name: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   status: string;
   manager: number;
   code: string;
@@ -13,8 +15,8 @@ export class Project {
   constructor(data: any) {
     this.id = data.id;
     this.name = data.name;
-    this.startDate = data.start_date;
-    this.endDate = data.end_date;
+    this.startDate = moment(data.start_date, 'DD/MM/YYYY').toDate();
+    this.endDate = moment(data.end_date, 'DD/MM/YYYY').toDate();
     this.status = data.status;
     this.manager = data.manager;
     this.code = data.code;

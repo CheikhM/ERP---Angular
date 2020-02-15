@@ -5,6 +5,7 @@ import {SharedService} from './services/shared.service';
 import {LocalStorageHelper} from './helpers/local-storage.helper';
 import {AuthHelper} from './helpers/auth.helper';
 import {BASE_PATH} from './config';
+import * as moment from 'moment';
 
 declare var $: any;
 

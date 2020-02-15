@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export class Supplier {
   id: number;
   name: string;
@@ -10,7 +12,7 @@ export class Supplier {
     this.name = data.name;
     this.phone = data.phone;
     this.shortName = data.short_name;
-    this.createdAt = data.created_at;
+    this.createdAt = moment(data.created_at, 'YYYY-MM-DD h:i:s').toDate();
   }
 
   static arrayCast(data: any): Supplier [] {
