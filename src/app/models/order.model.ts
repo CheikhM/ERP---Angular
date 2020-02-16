@@ -1,4 +1,5 @@
 import {User} from './user.model';
+import * as moment from 'moment';
 
 export class Order {
   id: number;
@@ -14,7 +15,7 @@ export class Order {
   link: string;
   project: number;
   vat: boolean;
-  date: string;
+  date: Date;
   createdAt: Date;
 
   constructor(data: any) {
@@ -32,7 +33,7 @@ export class Order {
     this.project = data.project;
     this.vat = data.vat;
     this.createdAt = data.created_at;
-    this.date = data.date;
+    this.date = moment(data.date, 'DD/MM/YYYY').toDate();
   }
 
   static arrayCast(data: any): Order [] {

@@ -17,7 +17,7 @@
       <th>control</th>
     </tr>
     <tbody>
-    <tr *ngFor="let object of contents" class="list-element">
+    <tr *ngFor="let object of contents  | paginate: {itemsPerPage: 7, currentPage: p}" class="list-element">
       <td *ngFor="let meta of metaDefinition"
           (click)="setCurrentListingObject(object)">
         <span class="listing-elt" [ngClass]="{'with-status':  meta.text === 'Status', 'pl-string': meta.type === 'PLString'}">
@@ -35,3 +35,4 @@
     </tbody>
   </table>
 </div>
+<pagination-controls *ngIf="contents.length > 7"  (pageChange)="p = $event"></pagination-controls>
