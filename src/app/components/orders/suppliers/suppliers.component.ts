@@ -57,9 +57,9 @@ export class SuppliersComponent implements OnInit {
         this.suppliers = resp;
         this.filteredSuppliers = resp;
       },
-      error => {},
+      error => {console.log(error);},
       () => {
-        // console.log(this.suppliers);
+        console.log(this.suppliers);
       }
     );
   }

@@ -4,6 +4,8 @@ export class GlobalHelper {
     const path = window.location.pathname;
     if (path.includes('projects')) {
       return 'project';
+    } else if (path.includes('suppliers')) {
+      return 'supplier';
     } else if (path.includes('tasks')) {
       return 'task';
     } else if (path.includes('bids')) {
@@ -20,8 +22,6 @@ export class GlobalHelper {
       return 'beneficiary';
     } else if (path.includes('vouchers')) {
       return 'voucher';
-    } else if (path.includes('suppliers')) {
-      return 'supplier';
     } else {
       return '';
     }
