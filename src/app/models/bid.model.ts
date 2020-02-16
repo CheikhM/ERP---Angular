@@ -1,5 +1,3 @@
-import * as moment from 'moment';
-
 export class Bid {
   id: number;
   name: string;
@@ -20,11 +18,11 @@ export class Bid {
     this.cost = data.cost;
     this.status = data.status;
     this.manager = data.manager;
-    this.submissionDate = moment(data.submission_date, 'DD/MM/YYYY h:i').toDate();
+    this.submissionDate = data.submission_date;
     this.comment = data.comment;
     this.link = data.link;
     this.letterOfGuarantee = data.letter_of_guarantee;
-    this.openingDate = moment(data.opening_date, 'DD/MM/YYYY h:i').toDate();
+    this.openingDate = data.opening_date;
   }
 
   static arrayCast(data: any): Bid [] {
