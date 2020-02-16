@@ -15,7 +15,7 @@ export class Order {
   link: string;
   project: number;
   vat: boolean;
-  date: string;
+  date: Date;
   createdAt: Date;
 
   constructor(data: any) {
@@ -33,7 +33,7 @@ export class Order {
     this.project = data.project;
     this.vat = data.vat;
     this.createdAt = data.created_at;
-    this.date = moment(data.date, 'DD/MM/YYYY').toString();
+    this.date = moment(data.date, 'DD/MM/YYYY').toDate();
   }
 
   static arrayCast(data: any): Order [] {
