@@ -48,13 +48,13 @@ export class BoqsComponent implements OnInit {
         if (result.data) {
           this.items = result.data.items;
           this.groups = result.data.groups;
-          this.groupID = this.groups ? this.groups[0].id : 0;
+          this.groupID = 0;
         }
       },
       error => {
       },
       () => {
-        this.currentGroupID = this.groups ? this.groups[0].id : 0;
+        this.currentGroupID = 0;
         if (this.items && this.items.length > 0) {
           this.currentGroupItems = this.items.filter(bid => {
             return bid.group_id === this.currentGroupID;

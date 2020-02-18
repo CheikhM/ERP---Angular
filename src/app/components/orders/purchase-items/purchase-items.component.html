@@ -46,9 +46,9 @@
     <th>Total</th>
   </tr>
   <tr style="background: white;">
-    <td>{{orderDiscount ? orderDiscount : 0}}</td>
-    <td>{{orderVat ? orderVat : 0 }}</td>
-    <td>{{total ? total : 0 }}</td>
+    <td>{{orderDiscount ? orderDiscount.toFixed(2) : 0}}</td>
+    <td>{{orderVat ? orderVat.toFixed(2) : 0 }}</td>
+    <td>{{total ? total.toFixed(2) : 0 }}</td>
   </tr>
 
 </table>

@@ -15,7 +15,7 @@ export class Order {
   link: string;
   project: number;
   vat: boolean;
-  date: Date;
+  date: string;
   createdAt: Date;
 
   constructor(data: any) {

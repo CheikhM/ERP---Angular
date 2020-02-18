@@ -5,6 +5,7 @@ import {Bid} from '../../../models/bid.model';
 import {SharedService} from '../../../services/shared.service';
 import {ToastrService} from 'ngx-toastr';
 import {Project} from '../../../models/project.model';
+import { AuthHelper } from 'src/app/helpers/auth.helper';
 
 declare var $: any;
 
@@ -35,6 +36,8 @@ export class BidsComponent implements OnInit {
   }
 
   ngOnInit() {
+    AuthHelper.isPermitted('SM');
+
     this.sharedService.setCurrentWorkflowPath('/sales/bid/');
 
     this.getAllBids();
