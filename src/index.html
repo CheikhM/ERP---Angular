@@ -7,16 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,600,700&display=swap" rel="stylesheet">
+
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- BEGIN Pre-requisites -->
-  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
-  </script>
-  <!-- END Pre-requisites -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <!-- inject rtl style -->
 <!--
@@ -25,48 +23,8 @@
   <!-- end of rtl style -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Continuing the <head> section -->
-  <script>
-      function start() {
-          gapi.load('auth2', function() {
-              auth2 = gapi.auth2.init({
-                  client_id: '814637056390-smr59kqkspgntgqbjr9cd5oa5t39rch2.apps.googleusercontent.com\n',
-                  // Scopes to request in addition to 'profile' and 'email'
-                  //scope: 'additional_scope'
-              });
-          });
-      }
-  </script>
 </head>
 <body>
   <app-root></app-root>
-  <script>
-      var googleUser = {};
-      var startApp = function() {
-          gapi.load('auth2', function(){
-              // Retrieve the singleton for the GoogleAuth library and set up the client.
-              auth2 = gapi.auth2.init({
-                  client_id: '814637056390-vdq7hllgs3avm6t7kgulp96mts3i57dq.apps.googleusercontent.com',
-                  cookiepolicy: 'single_host_origin',
-
-                  // Request scopes in addition to 'profile' and 'email'
-                  //scope: 'additional_scope'
-              });
-              attachSignin(document.getElementById('customBtn'));
-          });
-      };
-
-      function attachSignin(element) {
-          console.log(element.id);
-          auth2.attachClickHandler(element, {},
-              function(googleUser) {
-                  document.getElementById('name').innerText = "Signed in: " +
-                      googleUser.getBasicProfile().getName();
-              }, function(error) {
-                  alert(JSON.stringify(error, undefined, 2));
-              });
-      }
-  </script>
 </body>
 </html>

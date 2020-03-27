@@ -103,7 +103,7 @@ export class PurchaseItemsComponent implements OnInit {
         return;
       },
       () => {
-        this.orderDiscount = this.order.discount;
+        this.orderDiscount = parseFloat(this.order.discount);
         this.getOrderStatistics(this.currentOrderID);
       }
     );

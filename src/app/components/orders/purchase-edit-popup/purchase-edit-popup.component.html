@@ -18,7 +18,7 @@
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
                 <div class="form-group"
                      [ngClass]="{'to-verify': isNotValid(partcode) }">
-                  <label>Part Code</label>
+                  <label>Part Codde</label>
                   <input class="form-control" required type="text" [(ngModel)]="purchaseCopy.partCode"
                          #partcode="ngModel" name="partcode"/>
                   <div class="message">
@@ -53,17 +53,7 @@
                 </div>
               </div>
               <div class="col-lg-6 col-12 col-md-12 col-sm-12">
-                <div class="form-group"
-                     [ngClass]="{'to-verify': isNotValid(orderID) }" *ngIf="false">
-                  <label>Order</label>
-                  <select class="form-control" [(ngModel)]="purchaseCopy.orderID" name="orderID" #orderID="ngModel"
-                          required>
-                    <option *ngFor="let order of orders" value="{{order.id}}">{{ order.num }}</option>
-                  </select>
-                  <div class="message">
-                    <span *ngIf="isEmpty(orderID)">field required</span>
-                  </div>
-                </div>
+            
                 <div class="form-group" [ngClass]="{'to-verify': isNotValid(quantity) }">
                   <label>Quantity</label>
                   <input class="form-control" type="number" required name="quantity" #quantity="ngModel"

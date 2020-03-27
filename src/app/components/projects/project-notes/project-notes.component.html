@@ -37,9 +37,10 @@
                     [(ngModel)]="newNoteText"></textarea>
         </div>
         <img class="save-icon blinker" src="/assets/images/general/save.svg"
-             [ngClass]="{'visible': newNoteText.length >= 3}" alt="" (click)="addNewNote()"/>
+             [ngClass]="{'visible': newNoteText.length >= 1}" alt="" (click)="addNewNote()"/>
       </div>
       <!-- to add new note -->
+
 
     </div>
   </ng-container>

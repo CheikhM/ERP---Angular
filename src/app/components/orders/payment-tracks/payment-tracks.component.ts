@@ -5,6 +5,7 @@ import {Track} from '../../../models/track.model';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {SharedService} from '../../../services/shared.service';
+import { Order } from 'src/app/models/order.model';
 
 declare var $: any;
 
@@ -23,6 +24,13 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
   trackTobeEdited = Track.revertCast(Track.getEmptyTrack());
   remaining: any;
   POValue: any;
+  items: any;
+  order: any;
+  sumItemsValue: any;
+  orderVat: any;
+  total: any;
+  orderDiscount: any;
+  sumRemaining: any;
 
   constructor(private route: ActivatedRoute,
               private orderService: OrderService,
@@ -40,15 +48,37 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
     this.sharedService.setworkflowID(this.currentOrderID);
 
     // get the order value
-    this.orderService.getOrderByID(this.currentOrderID).subscribe(item => {
-      if (item.data && item.data.po_value > 0) {
-        this.POValue = item.data.po_value;
+ 
+
+    this.getAllTracks(this.currentOrderID);
+    this.getAllItems();
+      // check for new update
+      this.sharedService.getNewUpdate().subscribe(update => {
+        if (update) {
+          this.getAllTracks(this.currentOrderID);
+          this.getAllItems();
+        }
+      });
+  }
+
+  getCurrentOrder(id: number) {
+    if (!id) {
+      return;
+    }
+    this.orderService.getOrderByID(this.currentOrderID).subscribe(result => {
+    
+      if (result && result.status === '200_OK') {
+        this.order = new Order(result.data);
+      } else {
+        return;
       }
     }, error => {
     }, () => {
+      this.orderDiscount = parseFloat(this.order.discount);
+      this.getOrderStatistics(this.currentOrderID);
+
     });
 
-    this.getAllTracks(this.currentOrderID);
   }
 
   triggerTrackAction(track: Track = null) {
@@ -121,12 +151,28 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
   }
 
   private getRemaining() {
-    if (this.POValue && this.POValue > 0) {
-      // traveler.map(item => item.Amount).reduce((prev, next) => prev + next);
-      const sum = this.tracksCopy.map(item => item.amount).reduce((prev, next) => prev + next);
-      if (sum && sum > 0) {
-        this.remaining = this.POValue - sum;
-      }
-    }
+      this.sumRemaining = this.tracksCopy.map(item => item.amount).reduce((prev, next) => prev + next);
   }
+
+
+  private getAllItems() {
+    this.orderService.getAllItems(this.currentOrderID).subscribe(
+      result => {
+        this.items = result;
+      },
+      error => {
+      },
+      () => {
+        this.getCurrentOrder(this.currentOrderID);
+      }
+    );
+  }
+
+  private getOrderStatistics(currentOrderID: number) {
+    this.sumItemsValue = this.items.map(item => (item.rate * item.quantity)).reduce((prev, next) => prev + next, 0);
+    this.orderVat = this.order.vat ? (this.sumItemsValue * 5) / 100 : 0;
+    this.total = this.sumItemsValue - this.orderVat - this.orderDiscount;
+  }
+
+
 }

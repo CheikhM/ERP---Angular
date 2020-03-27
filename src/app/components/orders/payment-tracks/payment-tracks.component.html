@@ -33,7 +33,7 @@
     </table>
     <div class="remaining">
       <h3>Remaining From Total Value</h3>
-      <div class="value" [ngClass]="{'text-red': remaining < 0 }">{{ remaining ? remaining : '-' }}</div>
+      <div class="value" [ngClass]="{'text-red': remaining < 0 }">{{ ((total && sumRemaining)  ? (total - sumRemaining) : 0) | number }}</div>
     </div>
   </ng-container>
 
