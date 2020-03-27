@@ -30,13 +30,18 @@ export class AuthService {
     }
   }
 
-
+  // login with uname and password
   checkCredentials(user: string, pwd: string): Observable<any> {
     const data = {
       username: user,
       password: pwd
     };
     return this.http.post(Connection.api.auth.login, data).pipe(map(result => result['data']));
+  }
+
+  //login with google email
+  checkLoginEmail(email: string): Observable<any> {
+    return this.http.get(Connection.api.auth.loginEmail + '?email=' + email).pipe(map(result => result['data']));
   }
 
 

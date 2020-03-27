@@ -526,7 +526,7 @@ tr.white-bg:hover {
   background: white;
   padding-right: 15px;
   padding-left: 15px;
-  flex: 1 0 21%;
+  width: 100%;
   margin: 5px 5px 15px 5px;
 }
 
