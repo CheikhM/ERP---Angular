@@ -74,6 +74,7 @@ import { VoucherNotesComponent } from './components/vouchers/voucher-notes/vouch
 import { PdfViewerComponent } from './components/shared/pdf-viewer/pdf-viewer.component';
 import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -154,7 +155,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     NgxPaginationModule,
     AutocompleteLibModule,
     NgxExtendedPdfViewerModule,
-    PdfViewerModule
+    PdfViewerModule,
+    ChartsModule
   ],
   providers: [
     MatDatepickerModule,

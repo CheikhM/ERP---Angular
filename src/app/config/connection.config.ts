@@ -18,6 +18,7 @@ export class Connection {
         deleteInvoice: this.apiProject + 'projects/invoices/delete',
         newInvoice: this.apiProject + 'projects/invoices/new',
         newBoq: this.apiProject + 'projects/boqs/new',
+        groupeByStatus: this.apiProject  + 'entity/groupby'
       },
       sales: {
         getAllBids: this.apiProject + 'sales/bids/all',

@@ -82,4 +82,9 @@ export class ProjectService {
     return this.http.post(Connection.api.projects.updateProject, project);
   }
 
+
+  // to be moved to global service
+  groupEntityByStatus(entity: string, attr: string) {
+    return this.http.get(Connection.api.projects.groupeByStatus + '?entity=' + entity  + '&attr=' + attr).pipe(map(res => res['data']));
+  }
 }
