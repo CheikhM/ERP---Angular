@@ -113,9 +113,19 @@
                   </div>
                 </div>
                 <div class="select-item">
-                  <span class="vat-val" style="float: left;line-height: 32px;">VAT 5%</span>
+                  <span class="vat-val">VAT <b>0%</b></span>
                   <label class="__styled-checkbox" style="margin-left: 10px;">
-                    <input type="checkbox" [(ngModel)]="orderCopy.vat" name="vat">
+                    <input type="radio" [checked]="orderCopy.vat && orderCopy.vatValue === 5" name="vat">
+                    <span class="check-mark"></span>
+                  </label>
+                  <span class="vat-val ml-1">VAT <b>5%</b></span>
+                  <label class="__styled-checkbox" style="margin-left: 10px;">
+                    <input type="radio" [checked]="orderCopy.vat && orderCopy.vatValue === 5" name="vat">
+                    <span class="check-mark"></span>
+                  </label>
+                  <span class="vat-val ml-1">VAT <b>15%</b></span>
+                  <label class="__styled-checkbox" style="margin-left: 10px;">
+                    <input type="radio"  name="vat" [checked]="orderCopy.vat && orderCopy.vatValue === 15">
                     <span class="check-mark"></span>
                   </label>
                 </div>

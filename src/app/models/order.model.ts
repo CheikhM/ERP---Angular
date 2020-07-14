@@ -15,6 +15,7 @@ export class Order {
   link: string;
   project: number;
   vat: boolean;
+  vatValue: number;
   date: string;
   createdAt: Date;
 
@@ -32,6 +33,7 @@ export class Order {
     this.link = data.link;
     this.project = data.project;
     this.vat = data.vat;
+    this.vatValue = data.vat_value;
     this.createdAt = data.created_at;
     this.date = data.date;
   }
@@ -61,7 +63,8 @@ export class Order {
       project: null,
       vat: null,
       createdAt: null,
-      date: null
+      date: null,
+      vatValue: null
     };
   }
 }
