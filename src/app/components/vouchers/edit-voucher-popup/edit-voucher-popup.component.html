@@ -59,6 +59,7 @@
                      [ngClass]="{'to-verify': isNotValid(_order) }">
                   <label>Purchase Order</label>
                   <select class="form-control" [(ngModel)]="voucherCopy.orderID" name="order" #_order="ngModel">
+                    <option value="0">{{ projectName }}</option>
                     <option *ngFor="let order of orders" value="{{order.id}}">{{ order.num }}</option>
                   </select>
                   <div class="message">

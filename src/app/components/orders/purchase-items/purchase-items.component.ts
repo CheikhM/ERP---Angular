@@ -116,7 +116,7 @@ export class PurchaseItemsComponent implements OnInit {
 
   private getOrderStatistics(currentOrderID: number) {
     this.sumItemsValue = this.items.map(item => (item.rate * item.quantity)).reduce((prev, next) => prev + next, 0);
-    this.orderVat = this.order.vat ? (this.sumItemsValue * 5) / 100 : 0;
+    this.orderVat = this.order.vatValue ? (this.sumItemsValue * this.order.vatValue) / 100 : 0;
     this.total = this.sumItemsValue - this.orderVat - this.orderDiscount;
   }
 

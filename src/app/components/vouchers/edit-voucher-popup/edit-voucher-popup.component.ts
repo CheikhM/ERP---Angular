@@ -11,6 +11,7 @@ import {DateHelper} from '../../../helpers/date.helper';
 import {Beneficiary} from '../../../models/beneficiary.model';
 import {OrderService} from '../../../services/order.service';
 import {Order} from '../../../models/order.model';
+import { localProject } from 'src/app/config';
 
 
 declare var $: any;
@@ -35,6 +36,7 @@ export class EditVoucherPopupComponent implements OnInit, OnChanges, OnDestroy {
   voucherCopy: Voucher;
   beneficiaries: Beneficiary[];
   orders: Order[];
+  projectName = localProject;
 
 
   constructor(private voucherService: VoucherService,

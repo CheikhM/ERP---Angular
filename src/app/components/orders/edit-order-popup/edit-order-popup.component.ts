@@ -12,7 +12,7 @@ import {Project} from '../../../models/project.model';
 import {ProjectService} from '../../../services/project.service';
 import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 import {DateHelper} from '../../../helpers/date.helper';
-
+import { localProject } from 'src/app/config';
 
 declare var $: any;
 
@@ -34,6 +34,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   directors: User [];
   projects: Project [];
   currentUser: string;
+  projectName = localProject;
 
   @Input()
   order: any = Order.getEmptyOrder(this.currentUser);

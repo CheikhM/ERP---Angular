@@ -48,7 +48,7 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
     this.sharedService.setworkflowID(this.currentOrderID);
 
     // get the order value
- 
+
 
     this.getAllTracks(this.currentOrderID);
     this.getAllItems();
@@ -66,7 +66,7 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
       return;
     }
     this.orderService.getOrderByID(this.currentOrderID).subscribe(result => {
-    
+
       if (result && result.status === '200_OK') {
         this.order = new Order(result.data);
       } else {
@@ -170,7 +170,7 @@ export class PaymentTracksComponent implements OnInit, OnDestroy {
 
   private getOrderStatistics(currentOrderID: number) {
     this.sumItemsValue = this.items.map(item => (item.rate * item.quantity)).reduce((prev, next) => prev + next, 0);
-    this.orderVat = this.order.vat ? (this.sumItemsValue * 5) / 100 : 0;
+    this.orderVat = this.order.vatValue ? (this.sumItemsValue * this.order.vatValue) / 100 : 0;
     this.total = this.sumItemsValue - this.orderVat - this.orderDiscount;
   }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://api-erp.lh/api/'
+  api: 'http://erp.dardelta.lh/api/'
 };
 
 /*
