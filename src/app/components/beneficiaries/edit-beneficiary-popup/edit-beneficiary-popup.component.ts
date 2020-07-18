@@ -43,7 +43,6 @@ export class EditBeneficiaryPopupComponent implements OnInit, OnChanges, OnDestr
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes.beneficiary) {
       this.beneficiaryCopy = {...this.beneficiary};
     }

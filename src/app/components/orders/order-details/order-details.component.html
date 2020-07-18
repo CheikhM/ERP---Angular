@@ -56,17 +56,17 @@
         <div class="select-item">
           <span class="vat-val">VAT <b>0%</b></span>
           <label class="__styled-checkbox" style="margin-left: 10px;">
-            <input type="radio" [checked]="order.vatValue === 0" value="0" name="vat">
+            <input type="radio" [checked]="order?.vatValue === 0" value="0" name="vat">
             <span class="check-mark"></span>
           </label>
           <span class="vat-val ml-1">VAT <b>5%</b></span>
           <label class="__styled-checkbox" style="margin-left: 10px;">
-            <input type="radio" [checked]="order.vatValue === 5" value="5" name="vat">
+            <input type="radio" [checked]="order?.vatValue === 5" value="5" name="vat">
             <span class="check-mark"></span>
           </label>
           <span class="vat-val ml-1">VAT <b>15%</b></span>
           <label class="__styled-checkbox" style="margin-left: 10px;">
-            <input type="radio"  name="vat" [checked]="order.vatValue === 15" value="15">
+            <input type="radio"  name="vat" [checked]="order?.vatValue === 15" value="15">
             <span class="check-mark"></span>
           </label>
         </div>

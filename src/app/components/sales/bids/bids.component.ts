@@ -65,7 +65,7 @@ export class BidsComponent implements OnInit {
       },
       error => console.log(error),
         () => {
-        console.log(this.bids);
+          // console.log(this.bids);
         }
     );
   }

@@ -54,7 +54,6 @@ export class EditVoucherPopupComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.voucher) {
       this.voucherCopy = {...this.voucher};
-      console.log(this.voucherCopy);
     }
   }
 
@@ -130,7 +129,12 @@ export class EditVoucherPopupComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private getAllOrders() {
-    this.orderService.getAllOrders().subscribe(result => this.orders = result);
+    this.orderService.getAllOrders().subscribe(result => this.orders = this.filterOrders(result));
+  }
 
+  // Return only On hold and In progress projects
+  filterOrders(orders: Order []) {
+    const acceptedStatus =  ['Opened'];
+    return orders.filter(item => acceptedStatus.includes(item.status));
   }
 }

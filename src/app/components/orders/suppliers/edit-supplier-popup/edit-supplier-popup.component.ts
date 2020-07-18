@@ -43,7 +43,6 @@ export class EditSupplierPopupComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes.supplier) {
       this.supplierCopy = {...this.supplier};
     }

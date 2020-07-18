@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
 
         let profile = googleUser.getBasicProfile();
 
-        // console.log('Token || ' + googleUser.getAuthResponse().id_token);
         let email = profile.getEmail();
         if (email) {
           this.auth.checkLoginEmail(email).subscribe(
@@ -69,13 +68,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
             });
 
         }
-        /*
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
-       */
 
       }, (error) => {
         this.toasterService.error('Please try again...', 'Google login error');

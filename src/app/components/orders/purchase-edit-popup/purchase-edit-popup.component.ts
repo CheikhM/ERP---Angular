@@ -8,6 +8,7 @@ import {OrderService} from '../../../services/order.service';
 import {DateHelper} from '../../../helpers/date.helper';
 import {ProjectService} from '../../../services/project.service';
 import {Order} from '../../../models/order.model';
+import { Project } from 'src/app/models/project.model';
 
 
 declare var $: any;
@@ -138,8 +139,14 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
   // get all projects
   getProjects() {
     this.projectService.getAllProjects().subscribe(result => {
-      this.projects = result;
+      this.projects = this.filterProjects(result);
     });
+  }
+
+  // Return only On hold and In progress projects
+  filterProjects(projects: Project []) {
+    const acceptedStatus =  ['In Progress', 'On Hold'];
+    return projects.filter(item => acceptedStatus.includes(item.status));
   }
 
   private getAllOrders() {

@@ -75,8 +75,15 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
   getProjects() {
     this.projectService.getAllProjects().subscribe(result => {
       this.projects = result;
-      //console.log(this.projects);
+    }, error => console.log('Error: Could not retreive projectlist'), () => {
+      this.filterProjects();
     });
+  }
+
+  // Return only On hold and In progress projects
+  filterProjects() {
+    const acceptedStatus =  ['In Progress', 'On Hold'];
+    this.projects = this.projects.filter(item => acceptedStatus.includes(item.status));
   }
 
   restoreModal() {

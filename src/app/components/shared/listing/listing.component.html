@@ -35,4 +35,4 @@
     </tbody>
   </table>
 </div>
-<pagination-controls *ngIf="contents.length > 7"  (pageChange)="p = $event"></pagination-controls>
+<pagination-controls *ngIf="contents && contents.length > 7"  (pageChange)="p = $event"></pagination-controls>

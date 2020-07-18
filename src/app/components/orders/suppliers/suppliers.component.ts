@@ -59,7 +59,7 @@ export class SuppliersComponent implements OnInit {
       },
       error => {console.log(error);},
       () => {
-        console.log(this.suppliers);
+        // console.log(this.suppliers);
       }
     );
   }

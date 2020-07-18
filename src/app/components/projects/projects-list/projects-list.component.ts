@@ -66,8 +66,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       },
       error => console.log(error),
         () => {
-          console.log(this.projects);
-          console.log('ggg');
+          // console.log(this.projects);
         }
     );
   }
