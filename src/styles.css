@@ -169,8 +169,8 @@ select.action {
 }
 
 .listing td {
-  padding: 15px 5px 15px 5px;
-  font-size: 15px;
+  padding: 13px 5px 13px 5px;
+  font-size: 13px;
 }
 
 .listing th {
@@ -686,6 +686,15 @@ textarea {
   font-size: 18px;
   color: #82af53;
 }
+
+
+.select-item {
+  display: flex;
+}
+.select-item .__styled-checkbox .check-mark {
+  top: 0;
+}
+
 
 @media screen and (max-width: 768px) {
   .aw-container {

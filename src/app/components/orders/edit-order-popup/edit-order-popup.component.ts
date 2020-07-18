@@ -100,6 +100,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
       approved_by: this.orderCopy.approvedBy,
       prepared_by: this.orderCopy.preparedBy,
       ship_to: this.orderCopy.shipTo,
+      vat_value: this.orderCopy.vatValue,
       date: DateHelper.getDateTime(new Date(this.orderCopy.date))
     };
 
@@ -109,6 +110,7 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
     delete copyToSend.approvedBy;
     delete copyToSend.shipTo;
     delete copyToSend.num;
+    delete copyToSend.vatValue;
 
     // adding new project
     if (this.title === 'Add Order') {
@@ -148,6 +150,13 @@ export class EditOrderPopupComponent implements OnInit, OnChanges, OnDestroy {
         }
       );
     }
+  }
+
+
+  //Change TVA value
+  changeVAT(event: any) {
+    const value = event.target.value;
+    this.orderCopy.vatValue = value;
   }
 }
 
