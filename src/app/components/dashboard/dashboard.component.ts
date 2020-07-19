@@ -3,6 +3,7 @@ import {ToastrService} from 'ngx-toastr';
 import { Label, MultiDataSet, Colors } from 'ng2-charts';
 import { ChartType } from 'chart.js';
 import { ProjectService } from 'src/app/services/project.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,8 @@ import { ProjectService } from 'src/app/services/project.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private toasterService: ToastrService,
-              private projectService: ProjectService){ }
+              private projectService: ProjectService,
+              private notificationService: NotificationService){ }
 
   public projectLabels: Label[] = [];
   public projetctDataset: MultiDataSet = [[]];

@@ -7,6 +7,7 @@ import {NgModel} from '@angular/forms';
 import {User} from '../../../models/user.model';
 import {AuthService} from '../../../services/auth.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
+import { NotificationService } from 'src/app/services/notification.service';
 
 declare var $: any;
 
@@ -30,7 +31,8 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private projectService: ProjectService,
               private toastrService: ToastrService,
               private sharedService: SharedService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -56,6 +58,8 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
           if (result['status'] === '200_OK' && result['data'].pid) {
             // tell the project about new data update
             $('#newProject').modal('hide');
+            console.log(this.projectCopy);
+            this.notifyUser(result['data'].pid, this.projectCopy.manager);
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully added');
           } else {
@@ -86,6 +90,27 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
       );
     }
   }
+
+
+  // Send notifcation to user when creating project
+  notifyUser(projectID: number, managerID: number) {
+    const manager = this.managers.find(item => item.id == managerID);
+
+    const managerEmail = manager ? manager.email : 'saud@dardelta.com.sa';
+    const data = {
+      code: 1215,
+      id: projectID,
+      email: managerEmail,
+    }
+
+
+
+    this.notificationService.notifyUser(data).subscribe(result => {
+      console.log(result);
+
+    });
+  }
+
 
   restoreModal() {
     this.onExitModal.emit(true);

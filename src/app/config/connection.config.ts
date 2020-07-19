@@ -93,6 +93,9 @@ export class Connection {
         deleteVoucher: this.apiProject + 'vouchers/delete',
         newVoucher: this.apiProject + 'vouchers/new',
         updateVoucher: this.apiProject + 'vouchers/update',
+      },
+      notification: {
+        notify: this.apiProject + 'notify'
       }
     };
   }

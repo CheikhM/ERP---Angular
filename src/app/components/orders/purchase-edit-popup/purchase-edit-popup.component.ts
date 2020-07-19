@@ -83,7 +83,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
     const copyToSend = {
       ...this.purchaseCopy,
       part_code: this.purchaseCopy.partCode,
-      order_id: !this.purchaseCopy.orderID ? this.orderID : this.purchaseCopy.orderID,
+      order_id: this.wareHouse ? 0 : (!this.purchaseCopy.orderID ? this.orderID : this.purchaseCopy.orderID),
       project: this.purchaseCopy.projectID,
       received_date: this.purchaseCopy.status === 'Initial' ? DateHelper.getDateTime(new Date()) : null,
       received: this.purchaseCopy.status === 'Initial' ? 0 : 1,
@@ -134,6 +134,7 @@ export class PurchaseEditPopupComponent implements OnInit, OnChanges, OnDestroy 
         }
       );
     }
+
   }
 
   // get all projects
