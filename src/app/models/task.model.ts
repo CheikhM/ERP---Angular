@@ -4,6 +4,7 @@ export class Task {
   description: string;
   priority: number [];
   status: string;
+  owner: number;
   createdAt: Date;
 
   constructor(data: any) {
@@ -13,6 +14,7 @@ export class Task {
     this.priority = data.priority;
     this.description = data.description;
     this.createdAt = data.created_at;
+    this.owner = data.owner;
   }
 
   static arrayCast(data: any): Task [] {
@@ -31,7 +33,8 @@ export class Task {
       createdAt: null,
       description: null,
       priority: null,
-      status: null
+      status: null,
+      owner: null
     };
   }
 

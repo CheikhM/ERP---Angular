@@ -21,6 +21,12 @@
                          name="contact" required/>
                 </div>
                 <div class="form-group">
+                  <label>Owner</label>
+                  <select class="form-control" required [(ngModel)]="taskCopy.owner" name="owner">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Description</label>
                   <textarea class="form-control" type="text" [(ngModel)]="taskCopy.description"
                             name="contact">

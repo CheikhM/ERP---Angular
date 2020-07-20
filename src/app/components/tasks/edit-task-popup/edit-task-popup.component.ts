@@ -8,6 +8,8 @@ import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {Task} from '../../../models/task.model';
 import {TasksService} from '../../../services/tasks.service';
 import {DateHelper} from '../../../helpers/date.helper';
+import { User } from 'src/app/models/user.model';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 declare var $: any;
@@ -32,14 +34,24 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
 
   taskCopy: Task;
 
+  users: User [];
+
 
   constructor(private taskService: TasksService,
               private toastrService: ToastrService,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private authService: AuthService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.taskCopy = Task.getEmptyTask();
+    this.getAllUsers();
+  }
+
+  // Retrieve all users
+  getAllUsers() {
+    this.authService.getAllUsers().subscribe(users => this.users = users);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -82,6 +94,7 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
             $('#newTask').modal('hide');
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully added');
+            this.notifyUser(result['data'].tid, this.taskCopy.owner);
           } else {
             this.toastrService.error('', 'An error was occurred');
           }
@@ -111,5 +124,26 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
       );
     }
   }
+
+
+  // Send notifcation to user when creating project
+  notifyUser(taskID: number, userID: number) {
+    const owner = this.users.find(item => item.id == userID);
+
+    const ownerEmail = owner ? owner.email : 'saud@dardelta.com.sa';
+    const data = {
+      code: 1216,
+      id: taskID,
+      email: ownerEmail,
+    }
+
+
+
+    this.notificationService.notifyUser(data).subscribe(result => {
+      console.log(result);
+
+    });
+  }
+
 
 }
