@@ -4,6 +4,8 @@ import { Label, MultiDataSet, Colors } from 'ng2-charts';
 import { ChartType } from 'chart.js';
 import { ProjectService } from 'src/app/services/project.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private toasterService: ToastrService,
               private projectService: ProjectService,
-              private notificationService: NotificationService){ }
+              private notificationService: NotificationService,
+              private auth: AuthService,
+              private router: Router){ }
 
   public projectLabels: Label[] = [];
   public projetctDataset: MultiDataSet = [[]];
@@ -71,6 +75,9 @@ export class DashboardComponent implements OnInit {
   ];
 
   ngOnInit() {
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['/login']);
+    }
     this.getProjectStats();
     this.getTaskStats();
     this.getBidStats();
