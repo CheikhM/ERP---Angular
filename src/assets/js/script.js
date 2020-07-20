@@ -18,4 +18,6 @@ $(document).ready(function () {
     $('.note .text').not($(this)).attr('readonly', 'readonly');
   });
 
+  $('[data-toggle="tooltip"]').tooltip();
+
 });

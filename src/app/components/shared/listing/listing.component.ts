@@ -6,6 +6,8 @@ import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 import {GlobalHelper} from '../../../helpers/global.helper';
 import {Subscription} from 'rxjs';
 
+declare var $: any;
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-listing',
@@ -64,6 +66,18 @@ export class ListingComponent implements OnInit, OnChanges {
       }
       this.listenToFilterChange();
     }
+  }
+
+  isRTL(text: any): boolean {
+
+    if(!(typeof text === 'string')) {
+      return false;
+    }
+
+    const firstLetter = text.charAt(0);
+    const arabic = /[\u0600-\u06FF]/;
+
+    return arabic.test(firstLetter);
   }
 
   @HostListener('window:resize', ['$event'])

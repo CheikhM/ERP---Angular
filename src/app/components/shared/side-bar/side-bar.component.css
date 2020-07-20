@@ -12,6 +12,9 @@
   z-index: 999;
 }
 
+.sys-slug {
+  cursor: pointer;
+}
 .side-bar__elements {
   position: relative;
   height: calc(100vh - 150px);

@@ -13,6 +13,10 @@ body {
   display: none!important;
 }
 
+.direction-rtl {
+  direction: rtl;
+}
+
 span.required {
   color: #ff2b2b;
   display: inline-block;
