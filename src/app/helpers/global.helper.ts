@@ -22,6 +22,8 @@ export class GlobalHelper {
       return 'beneficiary';
     } else if (path.includes('vouchers')) {
       return 'voucher';
+    } else if (path.includes('users')) {
+      return 'user';
     } else {
       return '';
     }
@@ -44,7 +46,9 @@ export class GlobalHelper {
     return this.isListingPage() && !notFilterable;
   }
 
+
+  // Todo correct function name
   static getKnownFilterableModules() {
-    return 'project, task, bid, deal, warehouse, order';
+    return 'project, task, bid, deal, warehouse, order, user, visit, supplier, voucher, beneficiary';
   }
 }

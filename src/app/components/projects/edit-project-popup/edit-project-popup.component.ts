@@ -58,7 +58,6 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
           if (result['status'] === '200_OK' && result['data'].pid) {
             // tell the project about new data update
             $('#newProject').modal('hide');
-            console.log(this.projectCopy);
             this.notifyUser(result['data'].pid, this.projectCopy.manager);
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully added');
@@ -79,6 +78,10 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully updated');
+            if (this.projectCopy.manager !== this.project.manager) {
+              this.notifyUser(result['data'].pid, this.projectCopy.manager, this.project.manager);
+            }
+
           } else {
             this.toastrService.error('', 'An error was occurred');
           }
@@ -93,7 +96,7 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
 
 
   // Send notifcation to user when creating project
-  notifyUser(projectID: number, managerID: number) {
+  notifyUser(projectID: number, managerID: number, oldUserID = null) {
     const manager = this.managers.find(item => item.id == managerID);
 
     const managerEmail = manager ? manager.email : 'saud@dardelta.com.sa';
@@ -103,12 +106,16 @@ export class EditProjectPopupComponent implements OnInit, OnChanges, OnDestroy {
       email: managerEmail,
     }
 
+    this.notificationService.notifyUser(data).subscribe();
 
-
-    this.notificationService.notifyUser(data).subscribe(result => {
-      console.log(result);
-
-    });
+    // Notify that task is unassigned
+    if (oldUserID) {
+      const oldUser = this.managers.find(item => item.id == oldUserID);
+      const oldUserEmail = oldUser ? oldUser.email : 'saud@dardelta.com.sa';
+      data.code = 1214;
+      data.email = oldUserEmail;
+      this.notificationService.notifyUser(data).subscribe();
+    }
   }
 
 

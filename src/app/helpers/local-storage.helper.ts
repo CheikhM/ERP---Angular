@@ -74,6 +74,9 @@ export class LocalStorageHelper {
     }
 
     const module = filters.find(element => element.module === moduleName);
-    return module.filters;
+    if(module) {
+      return module.filters;
+    }
+    return false;
   }
 }

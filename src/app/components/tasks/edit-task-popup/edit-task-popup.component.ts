@@ -28,7 +28,7 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
   title: string;
 
   @Input()
-  task: any = Task.getEmptyTask();
+  task: Task = Task.getEmptyTask();
 
   @Output() onExitModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -113,6 +113,11 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
             // tell the project about new data update
             this.sharedService.setNewUpdate(true);
             this.toastrService.success('', 'Successfully updated');
+
+            if (copyToSend.owner !== this.task.owner) {
+              this.notifyUser(result['data'].tid, copyToSend.owner, this.task.owner);
+            }
+
           } else {
             this.toastrService.error('', 'An error was occurred');
           }
@@ -127,7 +132,7 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
 
 
   // Send notifcation to user when creating project
-  notifyUser(taskID: number, userID: number) {
+  notifyUser(taskID: number, userID: number, oldUserID = null) {
     const owner = this.users.find(item => item.id == userID);
 
     const ownerEmail = owner ? owner.email : 'saud@dardelta.com.sa';
@@ -136,13 +141,16 @@ export class EditTaskPopupComponent implements OnInit, OnChanges, OnDestroy {
       id: taskID,
       email: ownerEmail,
     }
+    this.notificationService.notifyUser(data).subscribe();
 
-
-
-    this.notificationService.notifyUser(data).subscribe(result => {
-      console.log(result);
-
-    });
+    // Notify that task is unassigned
+    if (oldUserID) {
+      const oldUser = this.users.find(item => item.id == oldUserID);
+      const oldUserEmail = oldUser ? oldUser.email : 'saud@dardelta.com.sa';
+      data.code = 1217;
+      data.email = oldUserEmail;
+      this.notificationService.notifyUser(data).subscribe();
+    }
   }
 
 

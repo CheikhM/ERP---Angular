@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         }
 
       }, (error) => {
-        this.toasterService.error('Please try again...', 'Google login error');
+        // this.toasterService.error('Please try again...', 'Google login error');
         // alert(JSON.stringify(error, undefined, 2));
       });
   }

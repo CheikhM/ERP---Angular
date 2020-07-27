@@ -12,6 +12,10 @@
           <input class="form-control" type="text" name="name" disabled value="{{task.name}}"/>
         </div>
         <div class="form-group">
+          <label>Owner</label>
+          <input class="form-control" type="text" name="name" disabled value="{{ owner ? owner : '' }}"/>
+        </div>
+        <div class="form-group">
           <label>Description</label>
           <textarea class="form-control" type="text" name="desciption" disabled>{{task.description}}</textarea>
         </div>

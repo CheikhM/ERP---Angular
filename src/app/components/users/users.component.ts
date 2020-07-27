@@ -38,6 +38,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // check for new update
     this.sharedService.getNewUpdate().subscribe(update => {
       if (update) {
@@ -57,6 +58,7 @@ export class UsersComponent implements OnInit {
         // console.log(resp);
         this.users = resp;
         this.filteredUsers = resp;
+        console.log(this.users, this.filteredUsers);
       },
       error => {},
       () => {
