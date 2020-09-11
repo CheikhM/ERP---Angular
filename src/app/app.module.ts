@@ -47,10 +47,6 @@ import { VisitNotesComponent } from './modules/sales/visits/visit-notes/visit-no
 import { UsersComponent } from './modules/users/users.component';
 import { EditUserPopupComponent } from './modules/users/edit-user-popup/edit-user-popup.component';
 import { UserDetailsComponent } from './modules/users/user-details/user-details.component';
-import { TasksComponent } from './modules/tasks/tasks.component';
-import { TaskNotesComponent } from './modules/tasks/task-notes/task-notes.component';
-import { TaskDetailsComponent } from './modules/tasks/task-details/task-details.component';
-import { EditTaskPopupComponent } from './modules/tasks/edit-task-popup/edit-task-popup.component';
 import { OrdersComponent } from './modules/orders/orders.component';
 import { SuppliersComponent } from './modules/orders/suppliers/suppliers.component';
 import { SupplierDetailsComponent } from './modules/orders/suppliers/supplier-details/supplier-details.component';
@@ -75,6 +71,7 @@ import { PdfViewerComponent } from './modules/shared/pdf-viewer/pdf-viewer.compo
 import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ChartsModule } from 'ng2-charts';
+import { TaskModule } from './modules/tasks/task.module';
 
 @NgModule({
   declarations: [
@@ -115,10 +112,6 @@ import { ChartsModule } from 'ng2-charts';
     UsersComponent,
     EditUserPopupComponent,
     UserDetailsComponent,
-    TasksComponent,
-    TaskNotesComponent,
-    TaskDetailsComponent,
-    EditTaskPopupComponent,
     OrdersComponent,
     SuppliersComponent,
     SupplierDetailsComponent,
@@ -156,8 +149,10 @@ import { ChartsModule } from 'ng2-charts';
     AutocompleteLibModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
-    ChartsModule
+    ChartsModule,
+    TaskModule
   ],
+  exports: [ListingComponent],
   providers: [
     MatDatepickerModule,
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},

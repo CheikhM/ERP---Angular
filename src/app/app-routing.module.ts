@@ -20,9 +20,6 @@ import {VisitDetailsComponent} from './modules/sales/visits/visit-details/visit-
 import {VisitNotesComponent} from './modules/sales/visits/visit-notes/visit-notes.component';
 import {UsersComponent} from './modules/users/users.component';
 import {UserDetailsComponent} from './modules/users/user-details/user-details.component';
-import {TasksComponent} from './modules/tasks/tasks.component';
-import {TaskDetailsComponent} from './modules/tasks/task-details/task-details.component';
-import {TaskNotesComponent} from './modules/tasks/task-notes/task-notes.component';
 import {SuppliersComponent} from './modules/orders/suppliers/suppliers.component';
 import {OrdersComponent} from './modules/orders/orders.component';
 import {OrderDetailsComponent} from './modules/orders/order-details/order-details.component';
@@ -56,9 +53,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'users/all', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'users/user/' + ':id', component: UserDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'tasks/all', component: TasksComponent, canActivate: [AuthGuard] },
-  { path: 'tasks/task/' + ':id', component: TaskDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'tasks/task/' + ':id' + '/notes', component: TaskNotesComponent, canActivate: [AuthGuard] },
   { path: 'orders/suppliers/all', component: SuppliersComponent, canActivate: [AuthGuard] },
   { path: 'orders/all', component: OrdersComponent, canActivate: [AuthGuard] },
   { path: 'orders/order/' + ':id', component: OrderDetailsComponent, canActivate: [AuthGuard] },
