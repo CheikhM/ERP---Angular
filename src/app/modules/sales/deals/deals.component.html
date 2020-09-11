@@ -1,0 +1,18 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredDeals"
+             [model]="'Sales'"
+             (onEditClick)="editDeal($event)"
+             (onDeleteClick)="deleteDeal($event)"
+             [icon]="'icon-deal'"
+             [modulePath]="'/sales/deal/'"
+></app-listing>
+
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteDealModal'" [deleteTitle]="'Delete deal'" (confirmAction)="confirmDealDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-deal-popup [title]="manageAction" [deal]="dealTobeManaged" (onExitModal)="initManageData()"></app-edit-deal-popup>
+<!-- end popup -->

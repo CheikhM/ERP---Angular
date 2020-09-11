@@ -1,8 +1,0 @@
-<div class="flex search-bar">
-  <label for="search"></label>
-  <input class="search" #search [ngClass]="{'text-arabic': detectDirection(search.value)}" type="text" id="search" alt="search input" (keyup)="sendSearchText($event.target.value)" />
-  <span class="filter-text">
-    Filters
-    <img src="/assets/images/search-bar/icon-filter.svg" alt="" (click)="toggleFilters()" />
-  </span>
-</div>

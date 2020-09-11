@@ -1,0 +1,53 @@
+<app-details-title [canAdd]="true" [title]="'Notes'" (onClickAdd)="toggleNewNote()"></app-details-title>
+<div class="listing">
+
+  <ng-container *ngIf="(!filteredNotes || filteredNotes.length === 0)  && !newNote;">
+    <div class="white-bg no-attached">
+      There is no notes attached
+    </div>
+  </ng-container>
+  <ng-container>
+    <select class="custom-select" (change)="sortItems($event.target.value)" *ngIf="filteredNotes && filteredNotes.length >0;">
+      <option>UPDATED AT</option>
+      <option>CREATED AT</option>
+    </select>
+    <div class="notes-list">
+      <div class="note" *ngFor="let note of filteredNotes" [ngClass]="{'text-arabic': detectDirection(note.text)}">
+        <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
+        <div class="date">{{ note.lastUpdate | date:'MMM d, y h:m a' }}</div>
+        <div class="content">
+          <h5>{{ note.writer }}</h5>
+          <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text"
+                    readonly="readonly"></textarea>
+        </div>
+        <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
+             [ngClass]="{'visible': isChanged(note)}" (click)="updateNote(note)"/>
+        <img class="remove-icon" src="/assets/images/listing/delete-icon.svg" [ngClass]="{'visible': !isChanged(note)}"
+             (click)="deleteNote(note.id)"
+             alt=""/>
+      </div>
+
+      <!-- to add new note -->
+      <div class="note new-note" *ngIf="newNote" [ngClass]="{'text-arabic': detectDirection(newNoteText)}">
+        <img class="pin-icon" src="/assets/images/listing/push-pin.svg" alt=""/>
+        <div class="date">{{ 'now' }}</div>
+        <div class="content">
+          <h5>{{ currentUser?.name }}</h5>
+          <textarea class="text" id="newNote" placeholder="Write your note here..."
+                    [(ngModel)]="newNoteText"></textarea>
+        </div>
+        <img class="save-icon blinker" src="/assets/images/general/save.svg"
+             [ngClass]="{'visible': newNoteText.length >= 1}" alt="" (click)="addNewNote()"/>
+      </div>
+      <!-- to add new note -->
+
+
+    </div>
+  </ng-container>
+</div>
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteNoteModal'" [deleteTitle]="'Delete note'"
+                 (confirmAction)="confirmNoteDelete($event)"></app-confirm-box>
+<!-- end of confim box -->

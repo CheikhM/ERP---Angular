@@ -1,0 +1,13 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredWItems"
+             [model]="'WItems'"
+             (onEditClick)="editWItem($event)"
+             (onDeleteClick)="deleteWItem($event)"
+             [icon]="'warehouse-icon'"
+             [modulePath]="'/warehouse/item/'"
+             [withWorkflow]="false"
+></app-listing>
+
+
+<app-purchase-edit-popup [title]="manageAction" [purchase]="WItemTobeManaged"
+                         (onExitModal)="initManageData()" [wareHouse]="true"></app-purchase-edit-popup>

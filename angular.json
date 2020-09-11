@@ -27,7 +27,7 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/ngx-toastr/toastr.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "src/assets/js/script.js"
@@ -130,5 +130,10 @@
       }
     }
   },
-  "defaultProject": "erp-dardelta-front"
+  "defaultProject": "erp-dardelta-front",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

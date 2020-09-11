@@ -1,0 +1,17 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredVisits"
+             [model]="'Visits'"
+             (onEditClick)="editVisit($event)"
+             (onDeleteClick)="deleteVisit($event)"
+             [icon]="'icon-visits'"
+             [modulePath]="'/sales/visit/'"
+></app-listing>
+
+<!-- confirm visit delete -->
+<app-confirm-box [popupID]="'deleteVisitModal'" [deleteTitle]="'Delete visit'" (confirmAction)="confirmVisitDelete($event)"></app-confirm-box>
+<!-- end of conf   im box -->
+
+<!-- new, edit visit -->
+<app-edit-visit-popup [title]="manageAction" [visit]="visitTobeManaged" (onExitModal)="initManageData()"></app-edit-visit-popup>
+<!-- end popup -->
+

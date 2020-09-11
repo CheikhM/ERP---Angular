@@ -1,0 +1,18 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredOrders"
+             [model]="'Sales'"
+             (onEditClick)="editOrder($event)"
+             (onDeleteClick)="deleteOrder($event)"
+             [icon]="'purchase-icon'"
+             [modulePath]="'/orders/order/'"
+></app-listing>
+
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteOrderModal'" [deleteTitle]="'Delete order'" (confirmAction)="confirmOrderDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-order-popup [title]="manageAction" [order]="orderTobeManaged" (onExitModal)="clearPopupDate()"></app-edit-order-popup>
+<!-- end popup -->

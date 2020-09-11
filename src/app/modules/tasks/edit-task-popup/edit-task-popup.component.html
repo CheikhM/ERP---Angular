@@ -1,0 +1,64 @@
+<div class="modal fade custom-popup edit-project" id="newTask" tabindex="-1" role="dialog"
+     aria-labelledby="newTask"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-project container">
+          <form #loginForm="ngForm">
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
+            <div class="row">
+              <div class="col-12">
+                <h3 class="title">{{ title ? title : 'Add Task' }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input class="form-control autofocus" type="text" [(ngModel)]="taskCopy.name"
+                         name="contact" required/>
+                </div>
+                <div class="form-group">
+                  <label>Owner</label>
+                  <select class="form-control" required [(ngModel)]="taskCopy.owner" name="owner">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" type="text" [(ngModel)]="taskCopy.description"
+                            name="contact">
+                  </textarea>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label>Status</label>
+                  <select class="form-control" required [(ngModel)]="taskCopy.status" name="status">
+                    <option value="Opened">Opened</option>
+                    <option value="On Hold">On Hold</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Priority</label>
+                  <select class="form-control" required [(ngModel)]="taskCopy.priority" name="priority">
+                    <option value="High">High</option>
+                    <option value="Meduim">Meduim</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </div>
+                <div class="submit">
+                  <input class="btn btn-success" type="submit" value="{{ title ? title : 'Add Task' }}"
+                         (click)="saveTask()" [disabled]="loginForm.form.invalid"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

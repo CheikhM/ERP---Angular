@@ -1,0 +1,80 @@
+<div class="modal fade custom-popup edit-beneficiary" id="newVoucher" tabindex="-1" role="dialog"
+     aria-labelledby="newVoucher"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="edit-beneficiary container">
+          <form #loginForm="ngForm">
+            <img src="/assets/images/general/cross.svg" alt="" class="close-icon" data-dismiss="modal"
+                 (click)="restoreModal()"/>
+            <div class="row">
+              <div class="col-12">
+                <h3 class="title">{{ title ? title : 'Add Voucher' }}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': false }">
+                  <label>Payment Method</label>
+                  <select class="form-control" [(ngModel)]="voucherCopy.type" name="type">
+                    <option value="Cash">Cash</option>
+                    <option value="Check">Check</option>
+                    <option value="Wire Transfer">Wire Transfer</option>
+                    <option value="LC">LC</option>
+                    <option value="PDC">PDC</option>
+                  </select>
+                  <div class="message">
+                    <span>field required</span>
+                  </div>
+                </div>
+                <div class="form-group currency-form" [ngClass]="{'to-verify': false }">
+                  <label>Amount</label>
+                  <input class="form-control" type="number" step="0.01" required maxlength="20" name="amount" [(ngModel)]="voucherCopy.amount" />
+                  <div class="message">
+                    <span>field required & must be a valid number</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" placeholder="Write your description here..." name="desciption" [(ngModel)]="voucherCopy.description"></textarea>
+                </div>
+                <div class="submit-center">
+              </div>
+              </div>
+              <div class="col-lg-6 col-12 col-md-12 col-sm-12">
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(_beneficiary) }">
+                  <label>Beneficiary name</label>
+                  <select class="form-control" [(ngModel)]="voucherCopy.beneficiary" name="_beneficiary" #_beneficiary="ngModel">
+                    <option *ngFor="let beneficiary of beneficiaries" value="{{beneficiary.id}}">{{ beneficiary.name }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(_beneficiary)">field required</span>
+                  </div>
+                </div>
+
+                <div class="form-group"
+                     [ngClass]="{'to-verify': isNotValid(_order) }">
+                  <label>Purchase Order</label>
+                  <select class="form-control" [(ngModel)]="voucherCopy.orderID" name="order" #_order="ngModel">
+                    <option value="0">{{ projectName }}</option>
+                    <option *ngFor="let order of orders" value="{{order.id}}">{{ order.num }}</option>
+                  </select>
+                  <div class="message">
+                    <span *ngIf="isEmpty(_order)">field required</span>
+                  </div>
+                </div>
+                <div class="submit">
+                  <input class="btn btn-success" type="submit" value="{{ title ? title : 'Add Voucher' }}"
+                         (click)="saveVoucher()" [disabled]="loginForm.form.invalid"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

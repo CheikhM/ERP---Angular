@@ -1,0 +1,17 @@
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredProjects"
+             [model]="'Project'"
+             (onEditClick)="editProject($event)"
+             (onDeleteClick)="deleteProject($event)"
+             [icon]="'icon-project'"
+             [modulePath]="'/projects/project/'"
+></app-listing>
+
+
+<!-- confirm project delete -->
+<app-confirm-box [popupID]="'deleteProjectModal'" [deleteTitle]="'Delete project'" (confirmAction)="confirmProjectDelete($event)"></app-confirm-box>
+<!-- end of confim box -->
+
+<!-- new, edit project -->
+<app-edit-project-popup [title]="manageAction" [project]="projectTobeManaged" (onExitModal)="initManageData()"></app-edit-project-popup>
+<!-- end popup -->
