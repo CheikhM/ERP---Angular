@@ -18,10 +18,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailsTitleComponent } from './details-title/details-title.component';
-import { JwtModule } from '@auth0/angular-jwt';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
@@ -50,10 +47,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatMomentDateModule,
     RouterModule,
     NgxPaginationModule,
-    JwtModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    BrowserModule,
     AutocompleteLibModule,
     AutocompleteLibModule,
     NgxExtendedPdfViewerModule,
@@ -81,10 +75,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatNativeDateModule,
     MatMomentDateModule,
     NgxPaginationModule,
-    JwtModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    BrowserModule,
     AutocompleteLibModule,
     AutocompleteLibModule,
     NgxExtendedPdfViewerModule,

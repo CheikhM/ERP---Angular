@@ -3,7 +3,7 @@ import {Task} from '../../../models/task.model';
 import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
-import {TasksService} from '../../../services/tasks.service';
+import {TasksService} from '../tasks.service';
 
 declare var $: any;
 

@@ -5,12 +5,13 @@ import { PageNotFound } from './components/404-not-found/404-not-found.component
 
 // todo lazy loading
 const routes: Routes = [
+  { path: 'tasks', loadChildren: './modules/tasks/task.module#TaskModule' },
   { path: '', component: DashboardComponent },
   { path: '**', component: PageNotFound }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: []
 })
 export class AppRoutingModule { }

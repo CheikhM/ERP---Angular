@@ -6,8 +6,6 @@ import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
 import {GlobalHelper} from '../../../helpers/global.helper';
 import {Subscription} from 'rxjs';
 
-declare var $: any;
-
 @AutoUnsubscribe()
 @Component({
   selector: 'app-listing',

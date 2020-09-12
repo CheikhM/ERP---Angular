@@ -4,7 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {Task} from '../../../models/task.model';
-import {TasksService} from '../../../services/tasks.service';
+import {TasksService} from '../tasks.service';
 import {DateHelper} from '../../../helpers/date.helper';
 import { User } from 'src/app/models/user.model';
 import { NotificationService } from 'src/app/services/notification.service';

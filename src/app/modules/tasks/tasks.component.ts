@@ -3,7 +3,7 @@ import {SharedService} from '../../services/shared.service';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../decorators/autounsubscribe.decorator';
 import {Task} from '../../models/task.model';
-import {TasksService} from '../../services/tasks.service';
+import {TasksService} from './tasks.service';
 
 declare var $: any;
 
