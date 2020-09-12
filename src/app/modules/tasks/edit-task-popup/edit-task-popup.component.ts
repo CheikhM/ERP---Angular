@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgModel} from '@angular/forms';
-import {AuthService} from '../../../services/auth.service';
-import {SalesService} from '../../../services/sales.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
@@ -10,6 +8,7 @@ import {TasksService} from '../../../services/tasks.service';
 import {DateHelper} from '../../../helpers/date.helper';
 import { User } from 'src/app/models/user.model';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AuthService } from '../../auth/auth.service';
 
 
 declare var $: any;

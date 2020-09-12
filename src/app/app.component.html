@@ -1,25 +1,15 @@
-<div class="wrapper" *ngIf="isAuth">
-  <!-- side bar -->
+<div class="wrapper" *ngIf="isAuth; else anonymous">
   <app-side-bar></app-side-bar>
-  <!--end side bar -->
-
   <div class="main-panel">
-
-    <!-- app header -->
     <app-header></app-header>
-    <!-- end of app header -->
-
-    <!-- the main content -->
     <div class="main-content">
       <router-outlet></router-outlet>
     </div>
-    <!-- end of the main content -->
   </div>
 </div>
-
-<ng-container *ngIf="!isAuth">
-  <router-outlet></router-outlet>
-</ng-container>
+<ng-template #anonymous>
+  <app-login></app-login>
+</ng-template>
 
 <div class="close-layer normal-hidden" (click)="closeNavBar()">
   <img src="/assets/images/side-bar/close-icon.svg" />

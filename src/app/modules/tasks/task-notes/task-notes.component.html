@@ -17,8 +17,8 @@
         <div class="date">{{ note.lastUpdate | date:'MMM d, y h:m a' }}</div>
         <div class="content">
           <h5>{{ note.writer }}</h5>
-          <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text"
-                    readonly="readonly"></textarea>
+          <!-- <textarea class="text" placeholder="Write your note here..." [(ngModel)]="note.text"
+                    readonly="readonly"></textarea> -->
         </div>
         <img class="save-icon blinker" src="/assets/images/general/save.svg" alt=""
              [ngClass]="{'visible': isChanged(note)}" (click)="updateNote(note)"/>
@@ -33,8 +33,8 @@
         <div class="date">{{ 'now' }}</div>
         <div class="content">
           <h5>{{ currentUser?.name }}</h5>
-          <textarea class="text" id="newNote" placeholder="Write your note here..."
-                    [(ngModel)]="newNoteText"></textarea>
+          <!-- <textarea class="text" id="newNote" placeholder="Write your note here..."
+                    [(ngModel)]="newNoteText"></textarea> -->
         </div>
         <img class="save-icon blinker" src="/assets/images/general/save.svg"
              [ngClass]="{'visible': newNoteText.length >= 1}" alt="" (click)="addNewNote()"/>

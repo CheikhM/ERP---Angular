@@ -4,8 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {TasksService} from '../../../services/tasks.service';
-import { AuthService } from 'src/app/services/auth.service';
-import {User} from '../../../models/user.model';
 
 declare var $: any;
 
@@ -24,8 +22,7 @@ export class TaskDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService,
-              private taskService: TasksService,
-              private authService: AuthService) {
+              private taskService: TasksService) {
     // get the current visit id
     this.currentTaskId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.sharedService.setworkflowID(this.currentTaskId);
@@ -68,13 +65,15 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   getTaskOwner(id: number): void {
+    this.owner = 'Ahmed salem'
+    /*
     this.authService.getUserByID(id).subscribe(result => {
       if (result && result.status === '200_OK') {
         const user = new User(result['data']);
         this.owner = user.name;
       }
     })
-
+  */
   }
 
 

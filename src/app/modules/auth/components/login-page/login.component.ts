@@ -1,12 +1,10 @@
 import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
-import {Connection} from '../../../config/connection.config';
 import {ToastrService} from 'ngx-toastr';
-import {SharedService} from '../../../services/shared.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
-import {LocalStorageHelper} from '../../../helpers/local-storage.helper';
+import {AutoUnsubscribe} from '../../../../decorators/autounsubscribe.decorator';
+import {LocalStorageHelper} from '../../../../helpers/local-storage.helper';
+import { AuthService } from '../../auth.service';
 
 declare const gapi: any;
 
@@ -25,7 +23,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(private auth: AuthService,
               private router: Router,
               private toasterService: ToastrService,
-              private sharedService: SharedService,
               public jwtHelper: JwtHelperService
   ) {
   }

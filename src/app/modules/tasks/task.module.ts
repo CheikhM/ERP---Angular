@@ -5,7 +5,7 @@ import { TaskNotesComponent } from './task-notes/task-notes.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { EditTaskPopupComponent } from './edit-task-popup/edit-task-popup.component';
 import { TaskRoutingModule } from './task-routing.module';
-import { AppModule } from 'src/app/app.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,6 +19,7 @@ import { AppModule } from 'src/app/app.module';
   imports: [
     CommonModule,
     TaskRoutingModule,
+    SharedModule
   ]
 })
 export class TaskModule { }
