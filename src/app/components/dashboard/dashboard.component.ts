@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import { Label, MultiDataSet, Colors } from 'ng2-charts';
-import { ChartType } from 'chart.js';
 import { ProjectService } from 'src/app/services/project.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Router } from '@angular/router';
@@ -18,19 +16,6 @@ export class DashboardComponent implements OnInit {
               private notificationService: NotificationService,
               private router: Router){ }
 
-  public projectLabels: Label[] = [];
-  public projetctDataset: MultiDataSet = [[]];
-
-  public taskLabels: Label[] = [];
-  public taskDataset: MultiDataSet = [[]];
-
-  public bidLabels: Label[] = [];
-  public bidDataset: MultiDataSet = [[]];
-
-  public dealLabels: Label[] = [];
-  public dealDataset: MultiDataSet = [[]];
-
-  public shartType: ChartType = 'doughnut';
   public colors1 = [
     {
       backgroundColor: [
@@ -83,10 +68,7 @@ export class DashboardComponent implements OnInit {
   getProjectStats() {
     this.projectService.groupEntityByStatus('project', 'status').subscribe(res => {
       if(res && res.length) {
-        res.forEach(item => {
-          this.projectLabels.push(item['status']);
-          this.projetctDataset[0].push(item['sum']);
-        });
+
       }
     });
   }
@@ -95,10 +77,7 @@ export class DashboardComponent implements OnInit {
   getTaskStats() {
     this.projectService.groupEntityByStatus('task', 'status').subscribe(res => {
       if(res && res.length) {
-        res.forEach(item => {
-          this.taskLabels.push(item['status']);
-          this.taskDataset[0].push(item['sum']);
-        });
+
       }
     });
   }
@@ -108,10 +87,7 @@ export class DashboardComponent implements OnInit {
   getBidStats() {
     this.projectService.groupEntityByStatus('bid', 'status').subscribe(res => {
       if(res && res.length) {
-        res.forEach(item => {
-          this.bidLabels.push(item['status']);
-          this.bidDataset[0].push(item['sum']);
-        });
+
       }
     });
   }
@@ -120,10 +96,7 @@ export class DashboardComponent implements OnInit {
     getDealStats() {
       this.projectService.groupEntityByStatus('deal', 'status').subscribe(res => {
         if(res && res.length) {
-          res.forEach(item => {
-            this.dealLabels.push(item['status']);
-            this.dealDataset[0].push(item['sum']);
-          });
+
         }
       });
     }
