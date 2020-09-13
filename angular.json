@@ -13,6 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "hammerjs",
+              "url",
+              "ng2-pdf-viewer",
+              "util"
+             ],
             "outputPath": "dist/erp-dardelta-front",
             "index": "src/index.html",
             "main": "src/main.ts",

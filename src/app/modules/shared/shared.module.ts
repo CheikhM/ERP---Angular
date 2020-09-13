@@ -19,7 +19,6 @@ import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailsTitleComponent } from './details-title/details-title.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
@@ -48,8 +47,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     RouterModule,
     NgxPaginationModule,
     HttpClientModule,
-    AutocompleteLibModule,
-    AutocompleteLibModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
 
@@ -76,8 +73,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatMomentDateModule,
     NgxPaginationModule,
     HttpClientModule,
-    AutocompleteLibModule,
-    AutocompleteLibModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
   ]
