@@ -5,7 +5,7 @@ import { PageNotFound } from './components/404-not-found/404-not-found.component
 
 // todo lazy loading
 const routes: Routes = [
-  { path: 'tasks', loadChildren: './modules/tasks/task.module#TaskModule' },
+  { path: 'tasks', loadChildren: () => import('./modules/tasks/task.module').then(m => m.TaskModule) },
   { path: '', component: DashboardComponent },
   { path: '**', component: PageNotFound }
 ];
