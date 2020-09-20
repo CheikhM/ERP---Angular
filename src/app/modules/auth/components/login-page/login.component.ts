@@ -76,15 +76,20 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   checkLogin() {
     this.auth.checkCredentials(this.username, this.password).subscribe(
       result => {
-        if (result && result.uid) {
-          LocalStorageHelper.setItem('token', result.token);
-          LocalStorageHelper.initialiseFilters();
+        if (result && result.user && result.user.id) {
+          LocalStorageHelper.setItem('token', result.access_token);
+          this.setCurrentUser(result.user);
           location.reload();
         } else {
           this.toasterService.error('Please try again...', 'Credentials error');
         }
       }
     );
+  }
+
+  private setCurrentUser(loggedUser) {
+    const user = {id: loggedUser.id, name: loggedUser.name, role: 'SA'};
+    LocalStorageHelper.setItem('user', user);
   }
 
   ngOnDestroy(): void {

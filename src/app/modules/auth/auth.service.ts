@@ -29,12 +29,12 @@ export class AuthService {
   }
 
   // login with uname and password
-  checkCredentials(user: string, pwd: string): Observable<any> {
+  checkCredentials(email: string, pwd: string): Observable<any> {
     const data = {
-      username: user,
+      email: email,
       password: pwd
     };
-    return this.http.post(Connection.api.auth.login, data).pipe(map(result => result['data']));
+    return this.http.post(Connection.api.auth.login, data);
   }
 
   //login with google email

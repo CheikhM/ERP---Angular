@@ -44,7 +44,7 @@ export class Connection {
         delete: this.apiProject + 'notes/delete'
       },
       auth: {
-        login: this.apiProject + 'auth/login',
+        login: this.apiProject + 'login',
         loginEmail: this.apiProject + 'auth/login/email'
       },
       users: {
