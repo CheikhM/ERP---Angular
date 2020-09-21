@@ -14,17 +14,13 @@ export class TasksService {
   }
 
   // get the list of all non deleted user
-  getAllTasks(): Observable<Task []> {
-    return this.http.get(Connection.api.tasks.getAll).pipe(
-      map(response => response), map(tasks => {
-        return Task.arrayCast(tasks);
-      })
-    );
+  getAllTasks(): Observable<any> {
+    return this.http.get(Connection.api.tasks);
   }
 
   // get a user by id
   getTaskByID(id: number): Observable<any> {
-    return this.http.get(Connection.api.tasks.getSingle + '?id=' + id);
+    return this.http.get(`${Connection.api.tasks}/${id}`).pipe(map(response => response['data']));
   }
 
   // delete a project using the project id

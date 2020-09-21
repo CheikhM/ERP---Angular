@@ -13,7 +13,7 @@ import {WorkflowComponent} from './workflow/workflow.component';
 import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -49,7 +49,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     HttpClientModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
-
+    MatDialogModule
   ],
   exports: [
     FiltersComponent,
@@ -75,6 +75,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     HttpClientModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
+    MatDialogModule
   ]
 })
 export class SharedModule {}

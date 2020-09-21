@@ -1,41 +1,15 @@
-<div class="row dashboard">
-  <div class="col-lg-4 col-md-12">
-    <h3 modifiable>To do</h3>
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList, inProgressList]"
-      class="column-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="column-box" *ngFor="let task of todo" cdkDrag>{{ task.name }}</div>
-    </div>
-  </div>
 
-  <div class="col-lg-4 col-md-12">
-    <h3>In progress</h3>
-    <div
-      cdkDropList
-      #inProgressList="cdkDropList"
-      [cdkDropListData]="inProgress"
-      [cdkDropListConnectedTo]="[doneList, todoList]"
-      class="column-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="column-box" *ngFor="let task of inProgress" cdkDrag>{{ task.name }}</div>
-    </div>
-  </div>
+<app-listing [metaDefinition]="metaDefinition"
+             [contents]="filteredTasks"
+             [model]="'Tasks'"
+             (onEditClick)="editTask($event)"
+             (onDeleteClick)="deleteTask($event)"
+             [icon]="'tasks'"
+             [modulePath]="'/tasks/task/'"
+></app-listing>
 
-  <div class="col-lg-4 col-md-12">
-    <h3>Done</h3>
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList, inProgressList]"
-      class="column-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="column-box" *ngFor="let task of done" cdkDrag>{{ task.name }}</div>
-    </div>
-  </div>
 
-</div>
+
+<!-- new, edit visit -->
+<app-edit-task-popup [title]="manageAction" [task]="taskTobeManaged" (onExitModal)="initManageData()"></app-edit-task-popup>
+<!-- end popup -->

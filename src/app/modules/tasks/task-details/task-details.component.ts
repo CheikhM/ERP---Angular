@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Task} from '../../../models/task.model';
 import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {TasksService} from '../tasks.service';
-
+import {Task} from '../models/task.model';
 declare var $: any;
 
 @AutoUnsubscribe()
@@ -16,27 +15,24 @@ declare var $: any;
 
 export class TaskDetailsComponent implements OnInit {
 
-  readonly currentTaskId: number;
+  readonly currentTaskId: number = parseInt(this.route.snapshot.paramMap.get('id'), 10);
   owner: string;
-  task = Task.getEmptyTask();
+  task: Task;
 
   constructor(private route: ActivatedRoute,
               private sharedService: SharedService,
               private taskService: TasksService) {
-    // get the current visit id
-    this.currentTaskId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    this.sharedService.setworkflowID(this.currentTaskId);
-
   }
 
   ngOnInit() {
     this.sharedService.setCurrentWorkflowPath('/tasks/task/');
+    this.sharedService.setworkflowID(this.currentTaskId);
 
     this.getCurrentTask();
     // check for new update
     this.sharedService.getNewUpdate().subscribe(update => {
       if (update) {
-        this.getCurrentTask(true);
+        this.getCurrentTask();
       }
     });
 
@@ -44,24 +40,13 @@ export class TaskDetailsComponent implements OnInit {
 
   }
 
-  private getCurrentTask(remote = null) {
-    // if no current task was found
-    // todo replace true with "remote"
-    if (true) {
+  private getCurrentTask(): void {
       this.taskService.getTaskByID(this.currentTaskId).subscribe(
-        result => {
-          if (result && result.status === '200_OK') {
-            this.task = new Task(result.data);
+        task => {
+          if(task && task.id) {
+            this.task = task;
           }
-        },
-        error => {},
-        () => {
-          this.getTaskOwner(this.task.owner);
-        }
-      );
-
-      return true;
-    }
+        });
   }
 
   getTaskOwner(id: number): void {

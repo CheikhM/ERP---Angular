@@ -9,25 +9,25 @@
       <div class="col-lg-6 col-12 col-md-12 col-sm-12">
         <div class="form-group">
           <label>Name</label>
-          <input class="form-control" type="text" name="name" disabled value="{{task.name}}"/>
+          <input class="form-control" type="text" name="name" disabled value="{{task?.title}}"/>
         </div>
         <div class="form-group">
           <label>Owner</label>
-          <input class="form-control" type="text" name="name" disabled value="{{ owner ? owner : '' }}"/>
+          <input class="form-control" type="text" name="name" disabled value="{{ (task && task.user) ? task.user.name : '' }}"/>
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea class="form-control" type="text" name="desciption" disabled>{{task.description}}</textarea>
+          <textarea class="form-control" type="text" name="desciption" disabled>{{task?.description}}</textarea>
         </div>
       </div>
       <div class="col-lg-6 col-12 col-md-12 col-sm-12">
         <div class="form-group">
           <label>Status</label>
-          <input class="form-control" type="text" name="status" disabled value="{{task.status}}"/>
+          <input class="form-control" type="text" name="status" disabled value="{{task?.status}}"/>
         </div>
         <div class="form-group">
           <label>Priority</label>
-          <input class="form-control" type="text" name="priority" disabled value="{{task.priority}}"/>
+          <input class="form-control" type="text" name="priority" disabled value="{{task?.priority}}"/>
         </div>
         <div class="submit">
           <input class="btn btn-success" type="submit" value="Edit Task" (click)="triggerTaskEdit()"/>

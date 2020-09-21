@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import {SharedService} from '../../services/shared.service';
+import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../decorators/autounsubscribe.decorator';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { Task } from 'src/app/models/task.model';
+import {Task} from '../../models/task.model';
+import {TasksService} from './tasks.service'
+import { ConfirmBoxComponent } from '../shared/confirm-box/confirm-box.component';
+import { MatDialog } from '@angular/material';
+declare var $: any;
 
 @AutoUnsubscribe()
 @Component({
@@ -11,24 +16,98 @@ import { Task } from 'src/app/models/task.model';
 })
 export class TasksComponent implements OnInit {
 
-  todo: Task [];
-  done: Task [];
-  inProgress: Task [];
 
-  constructor() {
+  filteredTasks: any;
+
+  metaDefinition = [
+    {text: 'Title', attribute: 'title', type: 'PLString'},
+    {text: 'Priority', attribute: 'priority', type: 'PLString'},
+    {text: 'Status', attribute: 'status', type: 'string'},
+    {text: 'Created at', attribute: 'createdAt', type: 'date'},
+  ];
+
+  tasks: Task [];
+  manageAction = 'Add Task';
+  taskTobeManaged: Task;
+  private toBeDeletedId: any;
+
+  constructor(private sharedService: SharedService,
+              private taskService: TasksService,
+              private toastrService: ToastrService,
+              private dialog: MatDialog) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // check for new update
+    this.sharedService.getNewUpdate().subscribe(update => {
+      if (update) {
+        this.getAllTasks();
+      }
+    });
 
-  drop(event: CdkDragDrop<any>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+    // search task
+    this.sharedService.getSearchText().subscribe(item => {
+      this.searchTask(item.toLocaleLowerCase());
+    });
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
+    this.taskService.getAllTasks().subscribe(
+      resp => {
+        this.tasks = resp;
+        this.filteredTasks = resp;
+      });
+  }
+
+// search project by name
+  private searchTask(text: string) {
+    if (this.tasks) {
+      this.filteredTasks = this.tasks.filter(task => task.name.toLowerCase().includes(text));
     }
   }
 
+  editTask(taskID: number) {
+    this.manageAction = 'Edit Task';
+    this.taskTobeManaged = this.tasks.find(item => item.id === taskID);
+
+    $('#newTask').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+  }
+
+  deleteTask(taskID: number):void {
+    this.toBeDeletedId = taskID;
+    const dialogRef = this.dialog.open(ConfirmBoxComponent, {
+      width: '250px'
+    });
+
+
+    //$('#deleteTaskModal').modal('show');
+  }
+
+  confirmTaskDelete(action: boolean) {
+    if (action && this.toBeDeletedId) {
+      this.taskService.deleteTask(this.toBeDeletedId).subscribe(result => {
+        if (result && result.status === '200_OK') {
+          this.toastrService.success('', 'Successfully deleted');
+          this.tasks = this.tasks.filter(task => task.id !== this.toBeDeletedId);
+          this.filteredTasks = this.tasks;
+        } else {
+          this.toastrService.error('', 'An Error was occurred');
+        }
+      }, error => {
+        this.toastrService.error('', 'An Error was occurred');
+      }, () => {
+      });
+
+      $('#deleteTaskModal').modal('hide');
+    }
+  }
+
+  initManageData() {
+    this.manageAction = 'Add Task';
+    this.taskTobeManaged = Task.getEmptyTask();
+  }
 }

@@ -54,13 +54,7 @@ export class Connection {
         newUser: this.apiProject + 'users/new',
         updateUser: this.apiProject + 'users/update',
       },
-      tasks: {
-        getAll: this.apiProject + 'tasks/all',
-        getSingle: this.apiProject + 'tasks/task',
-        deleteTask: this.apiProject + 'tasks/delete',
-        newTask: this.apiProject + 'tasks/new',
-        updateTask: this.apiProject + 'tasks/update',
-      },
+      tasks: this.apiProject + 'tasks',
       suppliers: {
         getAll: this.apiProject + 'suppliers/all',
         getSingle: this.apiProject + 'suppliers/supplier',
