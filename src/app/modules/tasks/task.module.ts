@@ -6,7 +6,8 @@ import { EditTaskPopupComponent } from './edit-task-popup/edit-task-popup.compon
 import { TaskRoutingModule } from './task-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { StoreModule } from '@ngrx/store';
+import { taskReducer } from './task.reducer';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   imports: [
     TaskRoutingModule,
     SharedModule,
-    DragDropModule
+    DragDropModule,
+    StoreModule.forFeature('task', taskReducer)
   ]
 })
 export class TaskModule { }

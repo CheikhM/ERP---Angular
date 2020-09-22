@@ -4,6 +4,11 @@ import {SharedService} from '../../../services/shared.service';
 import {AutoUnsubscribe} from '../../../decorators/autounsubscribe.decorator';
 import {TasksService} from '../tasks.service';
 import {Task} from '../models/task.model';
+import * as actions from '../task.actions';
+import * as fromTask from '../task.reducer';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
 declare var $: any;
 
 @AutoUnsubscribe()

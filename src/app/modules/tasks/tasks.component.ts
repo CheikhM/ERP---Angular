@@ -2,10 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../services/shared.service';
 import {ToastrService} from 'ngx-toastr';
 import {AutoUnsubscribe} from '../../decorators/autounsubscribe.decorator';
-import {Task} from '../../models/task.model';
 import {TasksService} from './tasks.service'
 import { ConfirmBoxComponent } from '../shared/confirm-box/confirm-box.component';
 import { MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as actions from './task.actions';
+import * as fromTask from './task.reducer';
+import { Task } from './models/task.model';
+
 declare var $: any;
 
 @AutoUnsubscribe()
@@ -16,6 +21,7 @@ declare var $: any;
 })
 export class TasksComponent implements OnInit {
 
+  myTestingTasks: Observable<any> = this.store.select(fromTask.selectAll);
 
   filteredTasks: any;
 
@@ -34,7 +40,8 @@ export class TasksComponent implements OnInit {
   constructor(private sharedService: SharedService,
               private taskService: TasksService,
               private toastrService: ToastrService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private store: Store<fromTask.State>) {
   }
 
   ngOnInit() {
@@ -50,8 +57,38 @@ export class TasksComponent implements OnInit {
       this.searchTask(item.toLocaleLowerCase());
     });
     this.getAllTasks();
+
+    this.myTestingTasks.subscribe(res => console.log(res));
+
+    setTimeout(() => this.addItemTesting() , 3000);
   }
 
+  addItemTesting() {
+    console.log('adding the second element');
+    const task: Task = {
+      id: 2,
+      title: 'fsfs',
+      description: 'sfs',
+      priority: 'sfsf',
+      status: 'efef',
+      user: 'efef',
+      createdAt: 'efef',
+      comments: null
+    };
+    const task2: Task = {
+      id: 3,
+      title: 'afaf',
+      description: 'af',
+      priority: 'sffsf',
+      status: 'ee',
+      user: 'vv',
+      createdAt: 'rr',
+      comments: null
+    };
+    this.store.dispatch(new actions.Create(task));
+    this.store.dispatch(new actions.Create(task2));
+
+  }
   getAllTasks() {
     this.taskService.getAllTasks().subscribe(
       resp => {
@@ -63,7 +100,7 @@ export class TasksComponent implements OnInit {
 // search project by name
   private searchTask(text: string) {
     if (this.tasks) {
-      this.filteredTasks = this.tasks.filter(task => task.name.toLowerCase().includes(text));
+      this.filteredTasks = this.tasks.filter(task => task.title.toLowerCase().includes(text));
     }
   }
 
@@ -108,6 +145,15 @@ export class TasksComponent implements OnInit {
 
   initManageData() {
     this.manageAction = 'Add Task';
-    this.taskTobeManaged = Task.getEmptyTask();
+    this.taskTobeManaged = {
+      id: null,
+      title: null,
+      description: null,
+      priority: null,
+      status: null,
+      user: null,
+      createdAt: null,
+      comments: null
+    }
   }
 }
