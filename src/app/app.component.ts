@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {LocalStorageHelper} from './helpers/local-storage.helper';
-import { AuthService } from './modules/auth/auth.service';
+import { AuthService } from './auth/auth.service';
 
 declare var $: any;
 

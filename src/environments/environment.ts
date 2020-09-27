@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   api: 'http://awlygerp.lh/api/'
 };
+export const path = '/';
+export const url = 'http://erp.dardelta.lh/api/';
+export const entreprise = 'DARDELTA';
 
 /*
  * For easier debugging in development mode, you can import the following file

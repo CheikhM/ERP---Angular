@@ -1,0 +1,15 @@
+export const en__sideBar = {
+  dashboard: '',
+  projects: '',
+  sales: '',
+  bids: '',
+  deals: '',
+  purchase_orders: '',
+  list_all: '',
+  suppliers: '',
+  payment_voucher: '',
+  beneficiars: '',
+  warehouse: '',
+  users: '',
+  backup: '',
+};

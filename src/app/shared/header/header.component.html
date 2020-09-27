@@ -1,0 +1,19 @@
+<header>
+  <div class="config">
+    <div class="items">
+      <a>
+        <img src="/assets/images/general/notification-icon.svg" alt="" class=""/>
+      </a>
+      <a title="settings" [routerLink]="['settings']">
+        <img src="/assets/images/general/settings-icon.svg" alt="" class=""/>
+      </a>
+      <a title="log out" (click)="logOut()">
+        <img src="/assets/images/general/logout.svg" alt="log out" title="log out" class="user-profile"/>
+      </a>
+    </div>
+
+    <div class="side-bar-toggle" (click)="toggleSideBar()">
+      <img src="/assets/images/side-bar/nav-icon.png" alt="" class=""/>
+    </div>
+  </div>
+</header>

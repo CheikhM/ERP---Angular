@@ -4,22 +4,25 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MatDatepickerModule} from '@angular/material';
-import {AuthInterceptor} from './modules/auth/auth.interceptor';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {ToastrModule} from 'ngx-toastr';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import { SharedModule } from './modules/shared/shared.module';
-import { AuthModule } from './modules/auth/auth.module';
-import { PageNotFound } from './components/404-not-found/404-not-found.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './modules/tasks/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
+import { EffectsModule } from '@ngrx/effects';
+import { PageNotFound } from './shared/404-not-found/404-not-found.component';
+import { DashboardComponent } from './shared/dashboard/dashboard.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { reducers } from './tasks/reducers';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25
-    })
+    }),
+    EntityDataModule.forRoot(entityConfig),
+    EffectsModule.forRoot([])
   ],
   exports: [SharedModule],
   providers: [
