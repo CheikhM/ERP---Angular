@@ -38,6 +38,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "ng2-pdf-viewer": "^6.0.2",
+    "ngrx-data": "^6.1.0-beta.3",
     "ngx-extended-pdf-viewer": "^2.0.0-alpha.2",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.3.0",

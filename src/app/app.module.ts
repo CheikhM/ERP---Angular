@@ -23,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { reducers } from './tasks/reducers';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AppStoreModule } from './store/app-store.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       maxAge: 25
     }),
     EntityDataModule.forRoot(entityConfig),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    AppStoreModule
   ],
   exports: [SharedModule],
   providers: [
